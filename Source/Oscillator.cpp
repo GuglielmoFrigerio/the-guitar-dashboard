@@ -12,19 +12,26 @@
 
 const float DoublePi = 2 * M_PI;
 
-Oscillator::Oscillator(double sampleRate, float frequency) {
+Oscillator::Oscillator(double sampleRate, float frequency) 
+{
     m_stepPerSample = DoublePi * (frequency / sampleRate);    
 }
 
-void Oscillator::play(float *pBuffer, int bufferLength, float volume) {
+void Oscillator::play(float *pBuffer, int bufferLength, IModulationSource* pModulationSource) {
     for (int index = 0; index < bufferLength; ++index)
     {
         auto sample = sin (m_currentRadians);
-        *pBuffer += (sample * volume);
+        *pBuffer += (sample * pModulationSource->getNext());
         ++pBuffer;
         m_currentRadians += m_stepPerSample;
         if (m_currentRadians >= DoublePi)
             m_currentRadians -= DoublePi;
     }
+}
+
+void Oscillator::play(float* pBuffer, int bufferLength, float volume)
+{
+    FixedModulation fm(volume);
+    play(pBuffer, bufferLength, &fm);
 }
 

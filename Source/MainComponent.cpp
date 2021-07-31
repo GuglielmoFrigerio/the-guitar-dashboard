@@ -69,6 +69,7 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
 
     m_osc1Ptr = std::make_unique<Oscillator>(sampleRate, 440.0);
     m_osc2Ptr = std::make_unique<Oscillator>(sampleRate, 660.0);
+    m_lfo = std::make_unique<Lfo>(sampleRate, 1.0);
 }
 
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
@@ -104,7 +105,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
                 if (channel == 0) 
                 {
                     m_osc1Ptr->play(outBuffer, bufferToFill.numSamples, 0.2);
-                    m_osc2Ptr->play(outBuffer, bufferToFill.numSamples, 0.1);
+                    m_osc2Ptr->play(outBuffer, bufferToFill.numSamples, m_lfo.get());
                 }
 
 

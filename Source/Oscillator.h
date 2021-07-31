@@ -6,6 +6,7 @@
 //
 
 #pragma once
+#include "IModulationSource.h"
 
 class Oscillator {
 private:    // fields
@@ -15,6 +16,7 @@ private:    // fields
 public:
     Oscillator(double sampleRate, float frequency);
     
-    void play(float* pBuffer, int bufferLength, float volume);    
-    
+    void play(float* pBuffer, int bufferLength, IModulationSource * pModulationSource);    
+    void play(float* pBuffer, int bufferLength, float volume);
+
 };

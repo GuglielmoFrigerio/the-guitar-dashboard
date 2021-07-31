@@ -3,6 +3,7 @@
 #include <JuceHeader.h>
 #include "LimitFollower.h"
 #include "Oscillator.h"
+#include "Lfo.h"
 
 //==============================================================================
 /*
@@ -45,6 +46,7 @@ private:
     LimitFollower m_limitFollower;
     std::unique_ptr<Oscillator> m_osc1Ptr;
     std::unique_ptr<Oscillator> m_osc2Ptr;
+    std::unique_ptr<Lfo> m_lfo;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
