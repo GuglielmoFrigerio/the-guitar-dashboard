@@ -70,6 +70,7 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     m_osc1Ptr = std::make_unique<Oscillator>(sampleRate, 440.0);
     m_osc2Ptr = std::make_unique<Oscillator>(sampleRate, 660.0);
     m_lfo = std::make_unique<Lfo>(sampleRate, 1.0);
+    m_pitchDetector = std::make_unique<PitchDetector>(sampleRate);
 }
 
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
@@ -110,6 +111,9 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
 
 
                 m_limitFollower.update(inBuffer, bufferToFill.numSamples);
+
+                m_pitchDetector->addSamples(inBuffer, bufferToFill.numSamples);
+                m_sum = m_pitchDetector->computeSum(109); // at 48000 sample rate is the A at 440 
             }
         }
     }

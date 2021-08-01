@@ -4,6 +4,7 @@
 #include "LimitFollower.h"
 #include "Oscillator.h"
 #include "Lfo.h"
+#include "PitchDetector.h"
 
 //==============================================================================
 /*
@@ -47,6 +48,9 @@ private:
     std::unique_ptr<Oscillator> m_osc1Ptr;
     std::unique_ptr<Oscillator> m_osc2Ptr;
     std::unique_ptr<Lfo> m_lfo;
+    std::unique_ptr<PitchDetector> m_pitchDetector;
+
+    float m_sum;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
