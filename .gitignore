@@ -1,3 +1,6 @@
-**/Builds
+**/Builds/VisualStudio2019/*
 **/JuceLibraryCode
 **/.DS_Store
+!Builds/VisualStudio2019/the-guitar-dashboard.sln
+!Builds/VisualStudio2019/the-guitar-dashboard_App.vcxproj
+!Builds/VisualStudio2019/the-guitar-dashboard_App.vcxproj.filters
