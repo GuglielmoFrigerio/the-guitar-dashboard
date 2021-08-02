@@ -19,13 +19,14 @@ float PitchDetector::computeSum(int sampleCount)
 	if (m_sampleBufferPtr->getCount() >= required)
 	{
 		sum = 0.0;
-		m_sampleBufferPtr->doublePlay(sampleCount, [sum](float first, float second)
+		m_sampleBufferPtr->doublePlay(sampleCount, [sum](float first, float second) mutable
 			{
 				auto delta = first - second;
 				sum += (delta * delta);
 			});
+		m_sampleBufferPtr->empty(required);
 
 	}
 
-	return 0.0f;
+	return sum;
 }

@@ -2,9 +2,27 @@
 
 <JUCERPROJECT id="NxdLG6" name="the-guitar-dashboard" projectType="guiapp"
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
-              jucerFormatVersion="1">
+              jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="lNhr9o" name="AudioBuffer.cpp" compile="1" resource="0" file="Source/AudioBuffer.cpp"/>
+      <FILE id="aMHFVl" name="AudioBuffer.h" compile="0" resource="0" file="Source/AudioBuffer.h"/>
+      <FILE id="V33xGv" name="CircularBuffer.cpp" compile="1" resource="0"
+            file="Source/CircularBuffer.cpp"/>
+      <FILE id="XhRB50" name="CircularBuffer.h" compile="0" resource="0"
+            file="Source/CircularBuffer.h"/>
+      <FILE id="udoPtb" name="IModulationSource.h" compile="0" resource="0"
+            file="Source/IModulationSource.h"/>
+      <FILE id="aDBQGl" name="Lfo.cpp" compile="1" resource="0" file="Source/Lfo.cpp"/>
+      <FILE id="rWRDIa" name="Lfo.h" compile="0" resource="0" file="Source/Lfo.h"/>
+      <FILE id="XIrf8m" name="LimitFollower.cpp" compile="1" resource="0"
+            file="Source/LimitFollower.cpp"/>
+      <FILE id="AFfCen" name="LimitFollower.h" compile="0" resource="0" file="Source/LimitFollower.h"/>
+      <FILE id="v8PTpr" name="Oscillator.cpp" compile="1" resource="0" file="Source/Oscillator.cpp"/>
+      <FILE id="lijwg3" name="Oscillator.h" compile="0" resource="0" file="Source/Oscillator.h"/>
+      <FILE id="GxVTrG" name="PitchDetector.cpp" compile="1" resource="0"
+            file="Source/PitchDetector.cpp"/>
+      <FILE id="DUPNeo" name="PitchDetector.h" compile="0" resource="0" file="Source/PitchDetector.h"/>
       <FILE id="m8s2gA" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="STehB8" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="tGi0iV" name="MainComponent.cpp" compile="1" resource="0"

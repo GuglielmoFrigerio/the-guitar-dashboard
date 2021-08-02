@@ -22,6 +22,8 @@ void CircularBuffer::add(const float* pData, int dataLength)
 		throw std::runtime_error(message.toUTF8());
 	}
 	auto firstChunk = m_bufferLength - m_writeIndex;
+	firstChunk = std::min(firstChunk, dataLength);
+
 	std::memcpy((&m_pBuffer[m_writeIndex]), pData, firstChunk);
 	auto leftChunk = dataLength - firstChunk;
 	if (leftChunk > 0)
@@ -59,4 +61,5 @@ void CircularBuffer::empty(int dataLength)
 	}
 
 	m_readIndex = (m_readIndex + dataLength) % m_bufferLength;
+	m_itemsCount -= dataLength;
 }
