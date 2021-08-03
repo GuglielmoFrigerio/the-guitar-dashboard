@@ -24,10 +24,10 @@ void CircularBuffer::add(const float* pData, int dataLength)
 	auto firstChunk = m_bufferLength - m_writeIndex;
 	firstChunk = std::min(firstChunk, dataLength);
 
-	std::memcpy((&m_pBuffer[m_writeIndex]), pData, firstChunk);
+	std::memcpy((&m_pBuffer[m_writeIndex]), pData, firstChunk * sizeof(float));
 	auto leftChunk = dataLength - firstChunk;
 	if (leftChunk > 0)
-		std::memcpy(m_pBuffer, &pData[firstChunk], leftChunk);
+		std::memcpy(m_pBuffer, &pData[firstChunk], leftChunk * sizeof(float));
 	m_itemsCount += dataLength;
 	m_writeIndex = (m_writeIndex + dataLength) % m_bufferLength;
 }

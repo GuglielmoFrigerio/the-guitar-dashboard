@@ -22,7 +22,7 @@ AudioBuffer::~AudioBuffer()
 	delete[] m_pBuffer;
 }
 
-void AudioBuffer::add(const float* pData, int dataLength)
+int AudioBuffer::add(const float* pData, int dataLength)
 {
 	auto roomLeft = m_bufferLength - m_dataCount;
 	if (roomLeft < dataLength)
@@ -30,4 +30,7 @@ void AudioBuffer::add(const float* pData, int dataLength)
 		auto message = juce::String::formatted("AudioBuffer::add: buffer overflow. Requested %d, available %d", dataLength, roomLeft);
 		throw std::runtime_error(message.toUTF8());
 	}
+	std::memcpy(&m_pBuffer[m_dataCount], pData, dataLength * sizeof(float));
+	m_dataCount += dataLength;
+	return m_dataCount;
 }

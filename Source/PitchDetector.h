@@ -1,16 +1,20 @@
 #pragma once
 #include <memory>
 #include <cmath>
-#include "CircularBuffer.h"
+#include "AudioBuffer.h"
 
 class PitchDetector {
-private:
-	std::unique_ptr<CircularBuffer> m_sampleBufferPtr;
+private:	// private fields
+	std::unique_ptr<AudioBuffer> m_sampleBufferPtr;
 	const int MinimumMidiNote = 40;
 	const float ReferenceFrequency = 440.0;
+	float m_noiseGateThreashold;
 
-public:
-	PitchDetector(double sampleRate);
+private:	// implementation
+	float computeVolume(int sampleCount);
+
+public:		// public interface
+	PitchDetector(double sampleRate, float noiseGateThreashold);
 
 	int detectPitch(const float* pAudioSamples, int samplesCount);
 

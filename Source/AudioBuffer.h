@@ -21,6 +21,17 @@ public:
     AudioBuffer(int bufferLength);
     ~AudioBuffer();
 
-    void add(const float* pData, int dataLength);
-    
+    int add(const float* pData, int dataLength);
+
+    const float* getBuffer() const {
+        return m_pBuffer;
+    }
+
+    int getCount() const {
+        return m_dataCount;
+    }
+
+    void empty() {
+        m_dataCount = 0;
+    }
 };
