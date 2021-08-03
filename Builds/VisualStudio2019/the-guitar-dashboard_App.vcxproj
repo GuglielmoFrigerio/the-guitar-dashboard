@@ -139,6 +139,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\CorrelationSlot.cpp"/>
     <ClCompile Include="..\..\Source\AudioBuffer.cpp"/>
     <ClCompile Include="..\..\Source\CircularBuffer.cpp"/>
     <ClCompile Include="..\..\Source\Lfo.cpp"/>
@@ -2053,6 +2054,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\CorrelationSlot.h"/>
     <ClInclude Include="..\..\Source\AudioBuffer.h"/>
     <ClInclude Include="..\..\Source\CircularBuffer.h"/>
     <ClInclude Include="..\..\Source\IModulationSource.h"/>
