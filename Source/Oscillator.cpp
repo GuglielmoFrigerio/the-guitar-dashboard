@@ -7,14 +7,12 @@
 
 #define _USE_MATH_DEFINES
 #include <cmath>
-
 #include "Oscillator.h"
-
-const float DoublePi = 2 * M_PI;
+#include "GuitarDashCommon.h"
 
 Oscillator::Oscillator(double sampleRate, float frequency) 
 {
-    m_stepPerSample = DoublePi * (frequency / sampleRate);    
+    m_stepPerSample = DoublePi * (frequency / (float)sampleRate);    
 }
 
 void Oscillator::play(float *pBuffer, int bufferLength, IModulationSource* pModulationSource) {

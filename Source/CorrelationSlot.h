@@ -13,4 +13,7 @@
 struct CorrelationSlot {
     int     sampleCount;
     float   correlationSum;
+    int     midiNote;
+
+    CorrelationSlot(int sampleCount, int midiNote);
 };

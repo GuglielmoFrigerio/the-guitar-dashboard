@@ -22,10 +22,10 @@ void LimitFollower::reset()
 
 float LimitFollower::getLower()
 {
-	return (m_lower == std::numeric_limits<float>::max()) ? 0.0 : m_lower;
+	return (m_lower == std::numeric_limits<float>::max()) ? 0.0f : m_lower;
 }
 
 float LimitFollower::getHigher()
 {
-	return (m_higher == std::numeric_limits<float>::lowest()) ? 0.0 : m_higher;
+	return (m_higher == std::numeric_limits<float>::lowest()) ? 0.0f : m_higher;
 }

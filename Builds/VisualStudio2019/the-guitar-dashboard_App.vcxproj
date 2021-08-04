@@ -2054,6 +2054,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\GuitarDashCommon.h"/>
     <ClInclude Include="..\..\Source\CorrelationSlot.h"/>
     <ClInclude Include="..\..\Source\AudioBuffer.h"/>
     <ClInclude Include="..\..\Source\CircularBuffer.h"/>

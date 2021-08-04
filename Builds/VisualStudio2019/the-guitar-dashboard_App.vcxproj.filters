@@ -2493,6 +2493,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\GuitarDashCommon.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CorrelationSlot.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

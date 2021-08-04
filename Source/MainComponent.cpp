@@ -112,8 +112,7 @@ void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& buffe
 
                 m_limitFollower.update(inBuffer, bufferToFill.numSamples);
 
-                m_pitchDetector->addSamples(inBuffer, bufferToFill.numSamples);
-                m_sum = m_pitchDetector->computeSum(109); // at 48000 sample rate is the A at 440 
+                auto midiNote = m_pitchDetector->detectPitch(inBuffer, bufferToFill.numSamples);
             }
         }
     }

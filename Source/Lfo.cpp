@@ -1,13 +1,12 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include "Lfo.h"
-
-const float DoublePi = 2 * M_PI;
+#include "GuitarDashCommon.h"
 
 
 Lfo::Lfo(double sampleRate, float frequency)
 {
-    m_stepPerSample = DoublePi * (frequency / sampleRate);
+    m_stepPerSample = DoublePi * (frequency / (float)sampleRate);
 }
 
 float Lfo::getNext()
