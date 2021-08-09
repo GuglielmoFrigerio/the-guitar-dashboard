@@ -5,10 +5,8 @@
 //  Created by Guglielmo Frigerio on 07/07/21.
 //
 
-#define _USE_MATH_DEFINES
-#include <cmath>
-#include "Oscillator.h"
 #include "GuitarDashCommon.h"
+#include "Oscillator.h"
 
 Oscillator::Oscillator(double sampleRate, float frequency) 
 {

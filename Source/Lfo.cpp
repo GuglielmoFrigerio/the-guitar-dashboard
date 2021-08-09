@@ -1,7 +1,5 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
-#include "Lfo.h"
 #include "GuitarDashCommon.h"
+#include "Lfo.h"
 
 
 Lfo::Lfo(double sampleRate, float frequency)

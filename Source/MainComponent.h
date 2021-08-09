@@ -14,6 +14,7 @@
 class MainComponent  : 
     public juce::AudioAppComponent,
     public juce::ChangeListener,
+    public juce::Button::Listener,
     private juce::Timer
 {
 public:
@@ -36,6 +37,7 @@ private:    // implementation
     static juce::String getListOfActiveBits(const juce::BigInteger& b);
     void timerCallback() override;
     void changeListenerCallback(juce::ChangeBroadcaster*) override;
+    void buttonClicked(juce::Button* button) override;
 
 private:
     //==============================================================================
@@ -49,6 +51,7 @@ private:
     std::unique_ptr<Oscillator> m_osc2Ptr;
     std::unique_ptr<Lfo> m_lfo;
     std::unique_ptr<PitchDetector> m_pitchDetector;
+    juce::TextButton m_saveCorrelationButton;
 
     float m_sum;
 

@@ -34,3 +34,40 @@ int AudioBuffer::add(const float* pData, int dataLength)
 	m_dataCount += dataLength;
 	return m_dataCount;
 }
+
+float AudioBuffer::computeSum(int sampleCount) const
+{
+	float sum = NAN;
+	sum = 0.0;
+
+	auto pFirst = m_pBuffer;
+	auto pSecond = &pFirst[sampleCount];
+
+	while (sampleCount > 0)
+	{
+		auto delta = *pFirst - *pSecond;
+		sum += (delta * delta);
+		pFirst++;
+		pSecond++;
+		sampleCount--;
+	}
+
+	return sum;
+}
+
+float AudioBuffer::computeVolume(int sampleCount) const
+{
+	auto pSamples = m_pBuffer;
+	float sum = 0.0;
+
+	while (sampleCount > 0)
+	{
+		auto value = *pSamples;
+		sum += (value * value);
+		pSamples++;
+		sampleCount--;
+	}
+
+	return sum;
+}
+

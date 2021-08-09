@@ -14,6 +14,8 @@ MainComponent::MainComponent()
 {
     addAndMakeVisible(audioSetupComp);
     addAndMakeVisible(diagnosticsBox);
+    addAndMakeVisible(m_saveCorrelationButton);
+    m_saveCorrelationButton.setButtonText("Save");
 
     diagnosticsBox.setMultiLine(true);
     diagnosticsBox.setReturnKeyStartsNewLine(true);
@@ -46,6 +48,7 @@ MainComponent::MainComponent()
     }
 
     deviceManager.addChangeListener(this);
+    m_saveCorrelationButton.addListener(this);
 
     startTimer(50);
 }
@@ -139,7 +142,10 @@ void MainComponent::resized()
 {
     auto rect = getLocalBounds();
 
-    audioSetupComp.setBounds(rect.removeFromLeft(proportionOfWidth(0.6f)));
+    auto audioSetupAndButtonRect = rect.removeFromLeft(proportionOfWidth(0.6f));
+    m_saveCorrelationButton.setBounds(audioSetupAndButtonRect.removeFromBottom(20));
+    audioSetupComp.setBounds(audioSetupAndButtonRect);
+
     rect.reduce(10, 10);
 
     auto topLine(rect.removeFromTop(20));
@@ -209,4 +215,10 @@ void MainComponent::changeListenerCallback(juce::ChangeBroadcaster*)
 {
     dumpDeviceInfo();
     m_limitFollower.reset();
+}
+
+void MainComponent::buttonClicked(juce::Button* button)
+{
+    m_pitchDetector->saveCorrelationSet("correlationSet.csv");
+
 }

@@ -34,4 +34,7 @@ public:
     void empty() {
         m_dataCount = 0;
     }
+
+    float computeSum(int sampleCount) const;
+    float computeVolume(int sampleCount) const;
 };
