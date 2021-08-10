@@ -2,6 +2,7 @@
 #include <memory>
 #include <cmath>
 #include <vector>
+#include <tuple>
 #include "AudioBuffer.h"
 #include "CorrelationSlot.h"
 #include "CorrelationSet.h"
@@ -20,7 +21,7 @@ private:	// implementation
 public:		// public interface
 	PitchDetector(double sampleRate, float noiseGateThreashold);
 
-	int detectPitch(const float* pAudioSamples, int samplesCount);
+	std::tuple<int, float> detectPitch(const float* pAudioSamples, int samplesCount);
 	void saveCorrelationSet(const char* pFilename) const
 	{
 		m_correlationSet.save(pFilename);

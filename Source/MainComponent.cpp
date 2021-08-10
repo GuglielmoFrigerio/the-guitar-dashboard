@@ -1,5 +1,9 @@
 #include "MainComponent.h"
 
+
+const int MaxInputChannels = 32;
+
+
 //==============================================================================
 MainComponent::MainComponent()
     : audioSetupComp(deviceManager,
@@ -39,12 +43,12 @@ MainComponent::MainComponent()
         && ! juce::RuntimePermissions::isGranted (juce::RuntimePermissions::recordAudio))
     {
         juce::RuntimePermissions::request (juce::RuntimePermissions::recordAudio,
-                                           [&] (bool granted) { setAudioChannels (granted ? 2 : 0, 2); });
+                                           [&] (bool granted) { setAudioChannels (granted ? 6 : 0, 6); });
     }
     else
     {
         // Specify the number of input and output channels that we want to open
-        setAudioChannels (2, 2);
+        setAudioChannels (6, 6);
     }
 
     deviceManager.addChangeListener(this);
@@ -73,51 +77,50 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
     m_osc1Ptr = std::make_unique<Oscillator>(sampleRate, 440.0);
     m_osc2Ptr = std::make_unique<Oscillator>(sampleRate, 660.0);
     m_lfo = std::make_unique<Lfo>(sampleRate, 1.0);
-    m_pitchDetector = std::make_unique<PitchDetector>(sampleRate, 0.1);
+    m_pitchDetector = std::make_unique<PitchDetector>(sampleRate, 0.001);
+    chooseInputChannelIndex();
 }
 
 void MainComponent::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
 {
     auto* device = deviceManager.getCurrentAudioDevice();
-
     auto activeInputChannels = device->getActiveInputChannels();
-    auto activeOutputChannels = device->getActiveOutputChannels();
+    auto maxInputChannels = activeInputChannels.getHighestBit() + 1;
 
-    auto maxInputChannels = activeInputChannels.countNumberOfSetBits();
+    auto activeOutputChannels = device->getActiveOutputChannels();
     auto maxOutputChannels = activeOutputChannels.countNumberOfSetBits();
 
-    for (auto channel = 0; channel < maxOutputChannels; ++channel)
+    //for (auto channel = 0; channel < maxOutputChannels; ++channel)
+    //{
+    //    if ((!activeOutputChannels[channel]) || maxInputChannels == 0)
+    //    {
+    //        bufferToFill.buffer->clear(channel, bufferToFill.startSample, bufferToFill.numSamples);
+    //    }
+    //    else
+    //    {
+    //        auto actualInputChannel = channel % maxInputChannels; // [1]
+
+    //        if (!activeInputChannels[channel]) // [2]
+    //        {
+    //            bufferToFill.buffer->clear(channel, bufferToFill.startSample, bufferToFill.numSamples);
+    //        }
+    //        else // [3]
+    //        {
+    //            auto* inBuffer = bufferToFill.buffer->getReadPointer(actualInputChannel,
+    //                bufferToFill.startSample);
+    //            auto* outBuffer = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
+    //        }
+    //    }
+    //}
+
+    if (m_inputChannelIndex != -1)
     {
-        if ((!activeOutputChannels[channel]) || maxInputChannels == 0)
-        {
-            bufferToFill.buffer->clear(channel, bufferToFill.startSample, bufferToFill.numSamples);
-        }
-        else
-        {
-            auto actualInputChannel = channel % maxInputChannels;
-
-            if (!activeInputChannels[channel])
-            {
-                bufferToFill.buffer->clear(channel, bufferToFill.startSample, bufferToFill.numSamples);
-            }
-            else
-            {
-                auto* inBuffer = bufferToFill.buffer->getReadPointer(actualInputChannel,
-                    bufferToFill.startSample);
-                auto* outBuffer = bufferToFill.buffer->getWritePointer(channel, bufferToFill.startSample);
-
-                if (channel == 0) 
-                {
-                    //m_osc1Ptr->play(outBuffer, bufferToFill.numSamples, 0.2);
-                    //m_osc2Ptr->play(outBuffer, bufferToFill.numSamples, m_lfo.get());
-                }
-
-
-                m_limitFollower.update(inBuffer, bufferToFill.numSamples);
-
-                auto midiNote = m_pitchDetector->detectPitch(inBuffer, bufferToFill.numSamples);
-            }
-        }
+        auto* inBuffer = bufferToFill.buffer->getReadPointer(m_inputChannelIndex, bufferToFill.startSample);
+        m_limitFollower.update(inBuffer, bufferToFill.numSamples);
+        auto [noteNumber, volume] = m_pitchDetector->detectPitch(inBuffer, bufferToFill.numSamples);
+        m_midiNote = noteNumber;
+        if (volume != 0.f)
+            m_volume = volume;
     }
 }
 
@@ -203,7 +206,7 @@ void MainComponent::timerCallback()
 
     if (++timerCounter % 20 == 0)
     {
-        auto message = juce::String::formatted("lower limit: %g, upper limit: %g, sum: %g", m_limitFollower.getLower(), m_limitFollower.getHigher(), m_sum);
+        auto message = juce::String::formatted("lower limit: %g, upper limit: %g, sum: %g, midiNote: %d, volume: %g", m_limitFollower.getLower(), m_limitFollower.getHigher(), m_sum, m_midiNote, m_volume);
         logMessage(message);
     }
 
@@ -215,10 +218,20 @@ void MainComponent::changeListenerCallback(juce::ChangeBroadcaster*)
 {
     dumpDeviceInfo();
     m_limitFollower.reset();
+    auto* device = deviceManager.getCurrentAudioDevice();
+
+    chooseInputChannelIndex();
 }
 
 void MainComponent::buttonClicked(juce::Button* button)
 {
     m_pitchDetector->saveCorrelationSet("correlationSet.csv");
 
+}
+
+void MainComponent::chooseInputChannelIndex()
+{
+    auto* device = deviceManager.getCurrentAudioDevice();
+    auto activeInputChannels = device->getActiveInputChannels();
+    m_inputChannelIndex = activeInputChannels[m_preferredInputChannelIndex] ? m_preferredInputChannelIndex : 0;
 }

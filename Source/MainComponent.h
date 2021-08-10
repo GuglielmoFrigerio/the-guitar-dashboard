@@ -38,6 +38,7 @@ private:    // implementation
     void timerCallback() override;
     void changeListenerCallback(juce::ChangeBroadcaster*) override;
     void buttonClicked(juce::Button* button) override;
+    void chooseInputChannelIndex();
 
 private:
     //==============================================================================
@@ -53,8 +54,11 @@ private:
     std::unique_ptr<PitchDetector> m_pitchDetector;
     juce::TextButton m_saveCorrelationButton;
 
-    float m_sum;
-
+    float m_sum = 0.;
+    int m_inputChannelIndex = -1;
+    int m_preferredInputChannelIndex = 4;
+    int m_midiNote;
+    float m_volume = 0.f;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

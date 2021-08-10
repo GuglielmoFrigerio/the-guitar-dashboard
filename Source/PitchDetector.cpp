@@ -16,13 +16,14 @@ PitchDetector::PitchDetector(double sampleRate, float noiseGateThreashold)
 	m_sampleBufferPtr = std::make_unique<AudioBuffer>((int)(m_minimumSampleCount * 3));
 }
 
-int PitchDetector::detectPitch(const float* pAudioSamples, int samplesCount)
+std::tuple<int, float>  PitchDetector::detectPitch(const float* pAudioSamples, int samplesCount)
 {
 	int midiNote = -1;
+	float level = 0.;
 	auto sampleCount = m_sampleBufferPtr->add(pAudioSamples, samplesCount);
 	if (sampleCount >= m_minimumSampleCount) 
 	{
-		auto level = m_sampleBufferPtr->computeSum(m_minimumSampleCount);
+		level = m_sampleBufferPtr->computeVolume(m_minimumSampleCount);
 		if (level > m_noiseGateThreashold)
 		{
 			midiNote = m_correlationSet.computeAutoCorrelation(m_sampleBufferPtr.get());
@@ -30,5 +31,5 @@ int PitchDetector::detectPitch(const float* pAudioSamples, int samplesCount)
 
 		m_sampleBufferPtr->empty();
 	}
-	return midiNote;
+	return { midiNote, level };
 }
