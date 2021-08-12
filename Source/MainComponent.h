@@ -5,6 +5,7 @@
 #include "Oscillator.h"
 #include "Lfo.h"
 #include "PitchDetector.h"
+#include "SetupPage.h"
 
 //==============================================================================
 /*
@@ -32,27 +33,20 @@ public:
     void resized() override;
 
 private:    // implementation
-    void logMessage(const juce::String& m);
-    void dumpDeviceInfo();
-    static juce::String getListOfActiveBits(const juce::BigInteger& b);
     void timerCallback() override;
     void changeListenerCallback(juce::ChangeBroadcaster*) override;
     void buttonClicked(juce::Button* button) override;
     void chooseInputChannelIndex();
 
 private:
-    //==============================================================================
-    juce::AudioDeviceSelectorComponent audioSetupComp;
-    juce::Label cpuUsageLabel;
-    juce::Label cpuUsageText;
-    juce::TextEditor diagnosticsBox;
-
     LimitFollower m_limitFollower;
     std::unique_ptr<Oscillator> m_osc1Ptr;
     std::unique_ptr<Oscillator> m_osc2Ptr;
     std::unique_ptr<Lfo> m_lfo;
     std::unique_ptr<PitchDetector> m_pitchDetector;
-    juce::TextButton m_saveCorrelationButton;
+    juce::TextButton m_openSettings;
+    juce::TextButton m_closeSettings;
+    std::unique_ptr<SetupPage> m_setupPagePtr;
 
     float m_sum = 0.;
     int m_inputChannelIndex = -1;

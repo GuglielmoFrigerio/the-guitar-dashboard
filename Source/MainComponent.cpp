@@ -6,35 +6,13 @@ const int MaxInputChannels = 32;
 
 //==============================================================================
 MainComponent::MainComponent()
-    : audioSetupComp(deviceManager,
-        0,     // minimum input channels
-        256,   // maximum input channels
-        0,     // minimum output channels
-        256,   // maximum output channels
-        false, // ability to select midi inputs
-        false, // ability to select midi output device
-        false, // treat channels as stereo pairs
-        false) // hide advanced options
 {
-    addAndMakeVisible(audioSetupComp);
-    addAndMakeVisible(diagnosticsBox);
-    addAndMakeVisible(m_saveCorrelationButton);
-    m_saveCorrelationButton.setButtonText("Save");
+    addAndMakeVisible(m_openSettings);
+    m_openSettings.setButtonText("Open Settings");
 
-    diagnosticsBox.setMultiLine(true);
-    diagnosticsBox.setReturnKeyStartsNewLine(true);
-    diagnosticsBox.setReadOnly(true);
-    diagnosticsBox.setScrollbarsShown(true);
-    diagnosticsBox.setCaretVisible(false);
-    diagnosticsBox.setPopupMenuEnabled(true);
-    diagnosticsBox.setColour(juce::TextEditor::backgroundColourId, juce::Colour(0x32ffffff));
-    diagnosticsBox.setColour(juce::TextEditor::outlineColourId, juce::Colour(0x1c000000));
-    diagnosticsBox.setColour(juce::TextEditor::shadowColourId, juce::Colour(0x16000000));
+    addAndMakeVisible(m_closeSettings);
+    m_closeSettings.setButtonText("Close Settings");
 
-    cpuUsageLabel.setText("CPU Usage", juce::dontSendNotification);
-    cpuUsageText.setJustificationType(juce::Justification::right);
-    addAndMakeVisible(&cpuUsageLabel);
-    addAndMakeVisible(&cpuUsageText);    // Make sure you set the size of the component after
     // you add any child components.
     setSize (800, 600);
 
@@ -52,7 +30,8 @@ MainComponent::MainComponent()
     }
 
     deviceManager.addChangeListener(this);
-    m_saveCorrelationButton.addListener(this);
+    m_openSettings.addListener(this);
+    m_closeSettings.addListener(this);
 
     startTimer(50);
 }
@@ -144,60 +123,15 @@ void MainComponent::paint (juce::Graphics& g)
 void MainComponent::resized()
 {
     auto rect = getLocalBounds();
-
-    auto audioSetupAndButtonRect = rect.removeFromLeft(proportionOfWidth(0.6f));
-    m_saveCorrelationButton.setBounds(audioSetupAndButtonRect.removeFromBottom(20));
-    audioSetupComp.setBounds(audioSetupAndButtonRect);
-
-    rect.reduce(10, 10);
-
-    auto topLine(rect.removeFromTop(20));
-    cpuUsageLabel.setBounds(topLine.removeFromLeft(topLine.getWidth() / 2));
-    cpuUsageText.setBounds(topLine);
-    rect.removeFromTop(20);
-
-    diagnosticsBox.setBounds(rect);
-}
-
-void MainComponent::logMessage(const juce::String& m)
-{
-    diagnosticsBox.moveCaretToEnd();
-    diagnosticsBox.insertTextAtCaret(m + juce::newLine);
-}
-
-void MainComponent::dumpDeviceInfo()
-{
-    logMessage("--------------------------------------");
-    logMessage("Current audio device type: " + (deviceManager.getCurrentDeviceTypeObject() != nullptr
-        ? deviceManager.getCurrentDeviceTypeObject()->getTypeName()
-        : "<none>"));
-
-    if (auto* device = deviceManager.getCurrentAudioDevice())
+    auto buttonsSize = rect.removeFromTop(20);
+    auto right = buttonsSize.removeFromLeft(rect.getWidth() / 2);
+    m_openSettings.setBounds(right);
+    m_closeSettings.setBounds(buttonsSize);
+    if (m_setupPagePtr != nullptr)
     {
-        logMessage("Current audio device: " + device->getName().quoted());
-        logMessage("Sample rate: " + juce::String(device->getCurrentSampleRate()) + " Hz");
-        logMessage("Block size: " + juce::String(device->getCurrentBufferSizeSamples()) + " samples");
-        logMessage("Bit depth: " + juce::String(device->getCurrentBitDepth()));
-        logMessage("Input channel names: " + device->getInputChannelNames().joinIntoString(", "));
-        logMessage("Active input channels: " + getListOfActiveBits(device->getActiveInputChannels()));
-        logMessage("Output channel names: " + device->getOutputChannelNames().joinIntoString(", "));
-        logMessage("Active output channels: " + getListOfActiveBits(device->getActiveOutputChannels()));
+        m_setupPagePtr->setBounds(rect);
     }
-    else
-    {
-        logMessage("No audio device open");
-    }
-}
 
-juce::String MainComponent::getListOfActiveBits(const juce::BigInteger& b)
-{
-    juce::StringArray bits;
-
-    for (auto i = 0; i <= b.getHighestBit(); ++i)
-        if (b[i])
-            bits.add(juce::String(i));
-
-    return bits.joinIntoString(", ");
 }
 
 void MainComponent::timerCallback()
@@ -207,16 +141,16 @@ void MainComponent::timerCallback()
     if (++timerCounter % 20 == 0)
     {
         auto message = juce::String::formatted("lower limit: %g, upper limit: %g, sum: %g, midiNote: %d, volume: %g", m_limitFollower.getLower(), m_limitFollower.getHigher(), m_sum, m_midiNote, m_volume);
-        logMessage(message);
+        //logMessage(message);
     }
 
-    auto cpu = deviceManager.getCpuUsage() * 100;
-    cpuUsageText.setText(juce::String(cpu, 6) + " %", juce::dontSendNotification);
+    //auto cpu = deviceManager.getCpuUsage() * 100;
+    //cpuUsageText.setText(juce::String(cpu, 6) + " %", juce::dontSendNotification);
 }
 
 void MainComponent::changeListenerCallback(juce::ChangeBroadcaster*)
 {
-    dumpDeviceInfo();
+    //dumpDeviceInfo();
     m_limitFollower.reset();
     auto* device = deviceManager.getCurrentAudioDevice();
 
@@ -225,8 +159,16 @@ void MainComponent::changeListenerCallback(juce::ChangeBroadcaster*)
 
 void MainComponent::buttonClicked(juce::Button* button)
 {
-    m_pitchDetector->saveCorrelationSet("correlationSet.csv");
-
+    if (button == &m_openSettings) 
+    {
+        m_setupPagePtr = std::make_unique<SetupPage>(deviceManager);
+        addAndMakeVisible(m_setupPagePtr.get());
+        resized();
+    } else {
+        removeChildComponent(m_setupPagePtr.get());
+        m_setupPagePtr = nullptr;
+        resized();
+    }    
 }
 
 void MainComponent::chooseInputChannelIndex()
