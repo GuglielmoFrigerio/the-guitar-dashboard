@@ -139,6 +139,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SetupPage.cpp"/>
     <ClCompile Include="..\..\Source\GuitarDashCommon.cpp"/>
     <ClCompile Include="..\..\Source\CorrelationSet.cpp"/>
     <ClCompile Include="..\..\Source\CorrelationSlot.cpp"/>
@@ -2056,6 +2057,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SetupPage.h"/>
     <ClInclude Include="..\..\Source\CorrelationSet.h"/>
     <ClInclude Include="..\..\Source\GuitarDashCommon.h"/>
     <ClInclude Include="..\..\Source\CorrelationSlot.h"/>

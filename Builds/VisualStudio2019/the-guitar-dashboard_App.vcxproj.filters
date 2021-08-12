@@ -424,6 +424,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SetupPage.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\GuitarDashCommon.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2499,6 +2502,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SetupPage.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\CorrelationSet.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
