@@ -32,6 +32,7 @@ MainComponent::MainComponent()
     deviceManager.addChangeListener(this);
     m_openSettings.addListener(this);
     m_closeSettings.addListener(this);
+    addKeyListener(this);
 
     startTimer(50);
 }
@@ -176,4 +177,9 @@ void MainComponent::chooseInputChannelIndex()
     auto* device = deviceManager.getCurrentAudioDevice();
     auto activeInputChannels = device->getActiveInputChannels();
     m_inputChannelIndex = activeInputChannels[m_preferredInputChannelIndex] ? m_preferredInputChannelIndex : 0;
+}
+
+bool MainComponent::keyPressed(const juce::KeyPress& key, juce::Component* originatingComponent)
+{
+    return false;
 }

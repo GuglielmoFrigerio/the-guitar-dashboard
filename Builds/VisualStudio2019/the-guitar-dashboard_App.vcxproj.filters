@@ -424,6 +424,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TimePoint.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\EventList.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Event.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Page.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SongLibrary.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SongCollection.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Track.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Song.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SetupPage.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2502,6 +2526,33 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\IPlayable.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TimePoint.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\EventList.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Event.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Page.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SongLibrary.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SongCollection.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Track.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Song.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\SetupPage.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

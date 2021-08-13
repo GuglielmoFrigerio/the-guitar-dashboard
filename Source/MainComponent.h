@@ -16,7 +16,8 @@ class MainComponent  :
     public juce::AudioAppComponent,
     public juce::ChangeListener,
     public juce::Button::Listener,
-    private juce::Timer
+    private juce::Timer,
+    private juce::KeyListener
 {
 public:
     //==============================================================================
@@ -37,6 +38,7 @@ private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster*) override;
     void buttonClicked(juce::Button* button) override;
     void chooseInputChannelIndex();
+    bool keyPressed(const juce::KeyPress& key, juce::Component* originatingComponent) override;
 
 private:
     LimitFollower m_limitFollower;

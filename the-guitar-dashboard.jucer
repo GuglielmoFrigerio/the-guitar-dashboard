@@ -5,6 +5,25 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="EE5fYj" name="IPlayable.h" compile="0" resource="0" file="Source/IPlayable.h"/>
+      <FILE id="KwvFZ6" name="TimePoint.cpp" compile="1" resource="0" file="Source/TimePoint.cpp"/>
+      <FILE id="xIb458" name="TimePoint.h" compile="0" resource="0" file="Source/TimePoint.h"/>
+      <FILE id="Y6JKDn" name="EventList.cpp" compile="1" resource="0" file="Source/EventList.cpp"/>
+      <FILE id="p6npFq" name="EventList.h" compile="0" resource="0" file="Source/EventList.h"/>
+      <FILE id="Mva4wP" name="Event.cpp" compile="1" resource="0" file="Source/Event.cpp"/>
+      <FILE id="AiWFAp" name="Event.h" compile="0" resource="0" file="Source/Event.h"/>
+      <FILE id="cfzrGM" name="Page.cpp" compile="1" resource="0" file="Source/Page.cpp"/>
+      <FILE id="XGLrnZ" name="Page.h" compile="0" resource="0" file="Source/Page.h"/>
+      <FILE id="Qx8QqY" name="SongLibrary.cpp" compile="1" resource="0" file="Source/SongLibrary.cpp"/>
+      <FILE id="pNG9NK" name="SongLibrary.h" compile="0" resource="0" file="Source/SongLibrary.h"/>
+      <FILE id="UEgx4a" name="SongCollection.cpp" compile="1" resource="0"
+            file="Source/SongCollection.cpp"/>
+      <FILE id="Wul6xk" name="SongCollection.h" compile="0" resource="0"
+            file="Source/SongCollection.h"/>
+      <FILE id="PRb42Q" name="Track.cpp" compile="1" resource="0" file="Source/Track.cpp"/>
+      <FILE id="HpXlyj" name="Track.h" compile="0" resource="0" file="Source/Track.h"/>
+      <FILE id="bHHzgh" name="Song.cpp" compile="1" resource="0" file="Source/Song.cpp"/>
+      <FILE id="dAef9x" name="Song.h" compile="0" resource="0" file="Source/Song.h"/>
       <FILE id="dPwQjr" name="SetupPage.cpp" compile="1" resource="0" file="Source/SetupPage.cpp"/>
       <FILE id="P96VFF" name="SetupPage.h" compile="0" resource="0" file="Source/SetupPage.h"/>
       <FILE id="m5HVJi" name="GuitarDashCommon.cpp" compile="1" resource="0"

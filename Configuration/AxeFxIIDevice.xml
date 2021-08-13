@@ -1,0 +1,200 @@
+﻿<AxeFxII>
+  <Library name="The Lambs">
+    <Patches name="Firth of Fifth">
+      <Track name="Firth Of Fifth - Genesis.mp3">
+        <Marker>00:01:08</Marker>
+        <Marker>00:05:08</Marker>
+        <Marker>00:05:40</Marker>
+      </Track>
+      <Patch>12</Patch>
+      <Patch>497</Patch>
+      <Patch>12</Patch>
+      <Patch>13</Patch>
+      <Patch>12</Patch>
+      <Patch>10</Patch>
+      <Patch>12</Patch>
+    </Patches>
+    <Patches name="21st Century Schizoid Man">
+      <Track name="21st Century Schizoid Man - Greg Lake.mp3">
+        <Marker>00:01:33</Marker>
+        <Marker>00:02:45</Marker>  
+        <Marker>00:03:23</Marker>
+      </Track>
+      <Patch>14</Patch>
+      <Patch>15</Patch>
+    </Patches>
+    <Patches name="Cinema Show">
+      <Patch>30</Patch>
+      <Patch>437</Patch>
+      <Patch>507</Patch>
+    </Patches>
+    <Patches name="Confortably Numb">
+      <Patch>36</Patch>
+      <Patch>37</Patch>
+      <Patch>38</Patch>
+      <Patch>39</Patch>
+    </Patches>
+    <Patches name="After the Ordeal">
+      <Patch>41</Patch>
+      <Patch preset="42">
+        <Modifier controllerNumber="17">
+          <Value description="dry">0</Value>
+          <Value description="wet">127</Value>
+        </Modifier>
+      </Patch>
+    </Patches>
+    <Patches name="Watcher Of The Skies">
+      <Track name="Watcher Of The Skies.mp3">
+        <Marker>00:01:27</Marker>
+        <Marker>00:03:04</Marker>
+        <Marker>00:05:47</Marker>
+      </Track>
+      <Patch>487</Patch>
+      <Patch>491</Patch>
+      <Patch>490</Patch>
+    </Patches>
+    <Patches name="The Musical Box">
+      <Track name="01 - The Musical Box.flac">
+      </Track>
+      <Patch>479</Patch>
+      <Patch>506</Patch>
+    </Patches>
+  </Library>
+  <Library name="King Crimson's Medley">
+    <Patches name="The Court Of The CK">
+      <Track name="The Court Of The Crimson King.mp3">
+        
+      </Track>
+      <Patch>499</Patch>
+      <Patch>496</Patch>
+      <Patch>499</Patch>
+    </Patches>
+    <Patches name="21st Century Schizoid Man">
+      <Patch>14</Patch>
+      <Patch>15</Patch>
+      <Patch>14</Patch>
+    </Patches>
+    <Patches name="Epitaph">
+      <Patch>492</Patch>
+      <Patch>493</Patch>
+    </Patches>
+  </Library>
+  <Library name="The Lamb Lies Down">
+    <Patches name="The Lamb Lies Down On Broadway">
+      <Track name="The Lamb Lies Down on Broadway - Genesis.mp3">
+        <Marker>00:00:29</Marker>
+        <Marker>00:02:50</Marker>
+      </Track>
+      <Patch name="Ronzio (11-12)">254</Patch>
+      <Patch>8</Patch>
+      <Patch>9</Patch>
+    </Patches>
+    <Patches name="Fly on a windshield / Broadway Meody">
+      <Track name="Fly on a WindshieldBroadway Melody of 1974 - Genesis.mp3">
+        <Marker>00:00:00</Marker>
+        <Marker>00:00:35</Marker>
+        <Marker>00:01:14</Marker>
+        <Marker>00:02:45</Marker>
+        <Marker>00:04:13</Marker>
+      </Track>
+      <Patch>27</Patch>
+      <Patch>28</Patch>
+      <Patch>79</Patch>
+      <Patch>489</Patch>
+    </Patches>
+    <Patches name="CuckooCocoon">
+      <Track name="Genesis - Cuckoo Cocoon.mp3">
+      </Track>
+      <Patch>430</Patch>
+      <Patch>486</Patch>
+    </Patches>
+    <Patches name="In the cage">
+      <Track name="In the Cage - Genesis.mp3">
+      </Track>
+      <Patch>20</Patch>
+      <Patch>21</Patch>
+    </Patches>
+    <Patches name="Back in N.Y.C.">
+      <Patch>34</Patch>
+      <Patch>35</Patch>
+    </Patches>
+    <Patches name="Hairless Heart">
+      <Track name="Hairless Heart - Genesis.mp3">
+      </Track>
+      <Patch>16</Patch>
+      <Patch>17</Patch>
+    </Patches>
+    <Patches name="The Chamber of 32 Doors" track="The Chamber of 32 Doors - Genesis.mp3">
+      <Patch>24</Patch>
+      <Patch>25</Patch>
+    </Patches>
+    <Patches name="Lilywhite Lilith" track="Lilywhite Lilith - Genesis.mp3">
+      <Patch>4</Patch>
+      <Patch>5</Patch>
+    </Patches>
+    <Patches name="Anyway">
+      <Track name="Anyway - Genesis.mp3">
+        <Marker>00:01:20</Marker>
+        <Marker>00:02:25</Marker>
+      </Track>
+      <Patch scene="1">22</Patch>
+      <Patch scene="2">22</Patch>
+      <Patch>23</Patch>
+      <Patch scene="1">18</Patch>
+      <Patch scene="2">18</Patch>
+    </Patches>
+    <Patches name="Here Comes the Supernatural Anesthetist" >
+      <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3">
+        <Marker>00:00:00</Marker>
+        <Marker>00:01:14</Marker>
+        <Marker>00:01:50</Marker>
+      </Track>
+      <Patch>494</Patch>
+      <Patch>478</Patch>
+    </Patches>
+    <Patches name="The Lamia" >
+      <Track name="The Lamia - Genesis.mp3">
+        <Marker>00:05:24</Marker>
+      </Track>
+      <Patch>0</Patch>
+      <Patch>1</Patch>
+      <Patch>3</Patch>
+      <Patch>2</Patch>
+    </Patches>
+  </Library>
+  <Library name="Selling England by the Pound">
+    <Patches name="Dancing with the Moonlit Knight" >
+      <Track name="Dancing With The Moonlight Knight (2008 - Remaster).mp3">
+        <Marker>00:01:14</Marker>
+        <Marker>00:01:57</Marker>
+        <Marker>00:02:28</Marker>
+        <Marker>00:05:06</Marker>
+      </Track>
+      <Patch name="Intro">502</Patch>
+      <Patch scene="1" name="Tapping">500</Patch>
+      <Patch scene="2" name="Pitch 24">500</Patch>
+      <Patch scene="3" name="Pitch 12">500</Patch>
+      <Patch scene="4">500</Patch>
+      <Patch scene="5">500</Patch>
+      <Patch scene="1">503</Patch>
+      <Patch>502</Patch>
+      <Patch name="" >254</Patch>
+    </Patches>
+  </Library>
+  <Library name="IQ">
+    <Patches name="RedDust Shadow">
+      <Patch>404</Patch>
+      <Patch>88</Patch>
+    </Patches>
+    <Patches name="Frequency">
+      <Patch>485</Patch>
+      <Patch>46</Patch>
+      <Patch>484</Patch>
+    </Patches>
+  </Library>
+  <Library name="Police">
+    <Patches name="Roxanne">
+      <Patch>016</Patch>
+     </Patches>
+  </Library>
+</AxeFxII>

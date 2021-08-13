@@ -139,6 +139,14 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TimePoint.cpp"/>
+    <ClCompile Include="..\..\Source\EventList.cpp"/>
+    <ClCompile Include="..\..\Source\Event.cpp"/>
+    <ClCompile Include="..\..\Source\Page.cpp"/>
+    <ClCompile Include="..\..\Source\SongLibrary.cpp"/>
+    <ClCompile Include="..\..\Source\SongCollection.cpp"/>
+    <ClCompile Include="..\..\Source\Track.cpp"/>
+    <ClCompile Include="..\..\Source\Song.cpp"/>
     <ClCompile Include="..\..\Source\SetupPage.cpp"/>
     <ClCompile Include="..\..\Source\GuitarDashCommon.cpp"/>
     <ClCompile Include="..\..\Source\CorrelationSet.cpp"/>
@@ -2057,6 +2065,15 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\IPlayable.h"/>
+    <ClInclude Include="..\..\Source\TimePoint.h"/>
+    <ClInclude Include="..\..\Source\EventList.h"/>
+    <ClInclude Include="..\..\Source\Event.h"/>
+    <ClInclude Include="..\..\Source\Page.h"/>
+    <ClInclude Include="..\..\Source\SongLibrary.h"/>
+    <ClInclude Include="..\..\Source\SongCollection.h"/>
+    <ClInclude Include="..\..\Source\Track.h"/>
+    <ClInclude Include="..\..\Source\Song.h"/>
     <ClInclude Include="..\..\Source\SetupPage.h"/>
     <ClInclude Include="..\..\Source\CorrelationSet.h"/>
     <ClInclude Include="..\..\Source\GuitarDashCommon.h"/>
