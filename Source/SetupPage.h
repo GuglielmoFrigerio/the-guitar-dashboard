@@ -11,11 +11,12 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Page.h"
 
 //==============================================================================
 /*
 */
-class SetupPage  : public juce::Component
+class SetupPage  : public Page
 {
 private:    // fields
     //==============================================================================

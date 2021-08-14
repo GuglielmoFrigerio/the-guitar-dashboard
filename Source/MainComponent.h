@@ -46,9 +46,9 @@ private:
     std::unique_ptr<Oscillator> m_osc2Ptr;
     std::unique_ptr<Lfo> m_lfo;
     std::unique_ptr<PitchDetector> m_pitchDetector;
-    juce::TextButton m_openSettings;
-    juce::TextButton m_closeSettings;
-    std::unique_ptr<SetupPage> m_setupPagePtr;
+    juce::TextButton m_setupButton;
+    juce::TextButton m_virtualBandButton;
+    std::unique_ptr<Page> m_activePage;
 
     float m_sum = 0.;
     int m_inputChannelIndex = -1;

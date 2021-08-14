@@ -1,4 +1,5 @@
 #include "MainComponent.h"
+#include "VirtualBandPage.h"
 
 
 const int MaxInputChannels = 32;
@@ -7,11 +8,11 @@ const int MaxInputChannels = 32;
 //==============================================================================
 MainComponent::MainComponent()
 {
-    addAndMakeVisible(m_openSettings);
-    m_openSettings.setButtonText("Open Settings");
+    addAndMakeVisible(m_setupButton);
+    m_setupButton.setButtonText("Setup");
 
-    addAndMakeVisible(m_closeSettings);
-    m_closeSettings.setButtonText("Close Settings");
+    addAndMakeVisible(m_virtualBandButton);
+    m_virtualBandButton.setButtonText("Virtual Band");
 
     // you add any child components.
     setSize (800, 600);
@@ -30,8 +31,8 @@ MainComponent::MainComponent()
     }
 
     deviceManager.addChangeListener(this);
-    m_openSettings.addListener(this);
-    m_closeSettings.addListener(this);
+    m_setupButton.addListener(this);
+    m_virtualBandButton.addListener(this);
     addKeyListener(this);
 
     startTimer(50);
@@ -126,11 +127,11 @@ void MainComponent::resized()
     auto rect = getLocalBounds();
     auto buttonsSize = rect.removeFromTop(20);
     auto right = buttonsSize.removeFromLeft(rect.getWidth() / 2);
-    m_openSettings.setBounds(right);
-    m_closeSettings.setBounds(buttonsSize);
-    if (m_setupPagePtr != nullptr)
+    m_setupButton.setBounds(right);
+    m_virtualBandButton.setBounds(buttonsSize);
+    if (m_activePage != nullptr)
     {
-        m_setupPagePtr->setBounds(rect);
+        m_activePage->setBounds(rect);
     }
 
 }
@@ -160,16 +161,22 @@ void MainComponent::changeListenerCallback(juce::ChangeBroadcaster*)
 
 void MainComponent::buttonClicked(juce::Button* button)
 {
-    if (button == &m_openSettings) 
+    if (m_activePage != nullptr)
     {
-        m_setupPagePtr = std::make_unique<SetupPage>(deviceManager);
-        addAndMakeVisible(m_setupPagePtr.get());
+        removeChildComponent(m_activePage.get());
+        m_activePage = nullptr;
         resized();
+    }
+
+    if (button == &m_setupButton) 
+    {
+        m_activePage = std::make_unique<SetupPage>(deviceManager);
     } else {
-        removeChildComponent(m_setupPagePtr.get());
-        m_setupPagePtr = nullptr;
-        resized();
+        m_activePage = std::make_unique<VirtualBandPage>();
     }    
+
+    addAndMakeVisible(m_activePage.get());
+    resized();
 }
 
 void MainComponent::chooseInputChannelIndex()
