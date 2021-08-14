@@ -13,5 +13,4 @@
 
 class Event : public IPlayable {
 public:
-    virtual void play(const TimePoint& timepoint) override;
 };

@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    Page.h
-    Created: 13 Aug 2021 7:47:38am
+    FractalDevice.h
+    Created: 14 Aug 2021 9:48:31am
     Author:  gugli
 
   ==============================================================================
@@ -10,8 +10,11 @@
 
 #pragma once
 #include <JuceHeader.h>
+#include "MidiDevice.h"
 
-class Page : public juce::Component
+class FractalDevice : MidiDevice
 {
+public:
+    virtual void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
 
 };

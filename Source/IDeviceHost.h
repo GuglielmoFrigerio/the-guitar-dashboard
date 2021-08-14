@@ -1,17 +1,21 @@
 /*
   ==============================================================================
 
-    Page.h
-    Created: 13 Aug 2021 7:47:38am
+    IDeviceHost.h
+    Created: 14 Aug 2021 10:43:23am
     Author:  gugli
 
   ==============================================================================
 */
 
 #pragma once
+#include <memory>
 #include <JuceHeader.h>
 
-class Page : public juce::Component
-{
+class MidiDevice;
 
+class IDeviceHost
+{
+public:
+    virtual std::shared_ptr<MidiDevice> getMidiDevice(const juce::String& deviceName) = 0;
 };

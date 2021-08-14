@@ -1,19 +1,15 @@
 /*
   ==============================================================================
 
-    Song.h
-    Created: 13 Aug 2021 7:45:18am
+    FractalDevice.cpp
+    Created: 14 Aug 2021 9:48:31am
     Author:  gugli
 
   ==============================================================================
 */
 
-#pragma once
-#include <vector>
-#include "Track.h"
+#include "FractalDevice.h"
 
-class Song 
+void FractalDevice::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)
 {
-private:    // fields
-    std::vector<std::unique_ptr<Track>> m_tracks;
-};
+}

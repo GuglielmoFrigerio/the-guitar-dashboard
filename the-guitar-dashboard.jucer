@@ -5,6 +5,30 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="jOqZpX" name="VirtualBandPage.cpp" compile="1" resource="0"
+            file="Source/VirtualBandPage.cpp"/>
+      <FILE id="YTc6Lx" name="VirtualBandPage.h" compile="0" resource="0"
+            file="Source/VirtualBandPage.h"/>
+      <FILE id="iRpGYx" name="IDeviceHost.h" compile="0" resource="0" file="Source/IDeviceHost.h"/>
+      <FILE id="crCDwN" name="VirtualBand.cpp" compile="1" resource="0" file="Source/VirtualBand.cpp"/>
+      <FILE id="KhRtHe" name="VirtualBand.h" compile="0" resource="0" file="Source/VirtualBand.h"/>
+      <FILE id="wSIwtG" name="ProgramChangeEvent.cpp" compile="1" resource="0"
+            file="Source/ProgramChangeEvent.cpp"/>
+      <FILE id="HbmakC" name="ProgramChangeEvent.h" compile="0" resource="0"
+            file="Source/ProgramChangeEvent.h"/>
+      <FILE id="awQndQ" name="ProgramChange.cpp" compile="1" resource="0"
+            file="Source/ProgramChange.cpp"/>
+      <FILE id="Xjee4T" name="ProgramChange.h" compile="0" resource="0" file="Source/ProgramChange.h"/>
+      <FILE id="UKNvJu" name="MidiTrack.cpp" compile="1" resource="0" file="Source/MidiTrack.cpp"/>
+      <FILE id="TNMUMb" name="MidiTrack.h" compile="0" resource="0" file="Source/MidiTrack.h"/>
+      <FILE id="GhMffc" name="AxeFx3Device.cpp" compile="1" resource="0"
+            file="Source/AxeFx3Device.cpp"/>
+      <FILE id="yN4SwR" name="AxeFx3Device.h" compile="0" resource="0" file="Source/AxeFx3Device.h"/>
+      <FILE id="hjat89" name="FractalDevice.cpp" compile="1" resource="0"
+            file="Source/FractalDevice.cpp"/>
+      <FILE id="NnjTWO" name="FractalDevice.h" compile="0" resource="0" file="Source/FractalDevice.h"/>
+      <FILE id="dsLn6e" name="MidiDevice.cpp" compile="1" resource="0" file="Source/MidiDevice.cpp"/>
+      <FILE id="Tda0ys" name="MidiDevice.h" compile="0" resource="0" file="Source/MidiDevice.h"/>
       <FILE id="EE5fYj" name="IPlayable.h" compile="0" resource="0" file="Source/IPlayable.h"/>
       <FILE id="KwvFZ6" name="TimePoint.cpp" compile="1" resource="0" file="Source/TimePoint.cpp"/>
       <FILE id="xIb458" name="TimePoint.h" compile="0" resource="0" file="Source/TimePoint.h"/>

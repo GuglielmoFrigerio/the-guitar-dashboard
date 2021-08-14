@@ -1,19 +1,17 @@
 /*
   ==============================================================================
 
-    Song.h
-    Created: 13 Aug 2021 7:45:18am
+    AxeFx3Device.h
+    Created: 14 Aug 2021 9:48:43am
     Author:  gugli
 
   ==============================================================================
 */
 
 #pragma once
-#include <vector>
-#include "Track.h"
+#include "FractalDevice.h"
 
-class Song 
+class AxeFx3Device : FractalDevice
 {
-private:    // fields
-    std::vector<std::unique_ptr<Track>> m_tracks;
+
 };

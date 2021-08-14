@@ -424,6 +424,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\VirtualBandPage.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\VirtualBand.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProgramChangeEvent.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ProgramChange.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MidiTrack.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\AxeFx3Device.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FractalDevice.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MidiDevice.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\TimePoint.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2526,6 +2550,33 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\VirtualBandPage.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\IDeviceHost.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\VirtualBand.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProgramChangeEvent.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ProgramChange.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MidiTrack.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AxeFx3Device.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FractalDevice.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MidiDevice.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\IPlayable.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

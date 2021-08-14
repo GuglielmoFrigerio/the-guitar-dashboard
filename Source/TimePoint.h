@@ -10,6 +10,9 @@
 
 #pragma once
 
+// see juce::Time::getMillisecondCounterHiRes()
+
+
 class TimePoint {
 
 };

@@ -1,19 +1,21 @@
 /*
   ==============================================================================
 
-    Song.h
-    Created: 13 Aug 2021 7:45:18am
+    VirtualBandPage.h
+    Created: 14 Aug 2021 10:48:50am
     Author:  gugli
 
   ==============================================================================
 */
 
 #pragma once
-#include <vector>
-#include "Track.h"
+#include <memory>
+#include "Page.h"
+#include "VirtualBand.h"
 
-class Song 
+class VirtualBandPage : public Page
 {
 private:    // fields
-    std::vector<std::unique_ptr<Track>> m_tracks;
+    std::unique_ptr<VirtualBand> m_virtualBandPtr;
+
 };

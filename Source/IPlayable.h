@@ -11,7 +11,9 @@
 #pragma once
 #include "TimePoint.h"
 
+class Track;
+
 class IPlayable {
 public:
-    virtual void play(const TimePoint& timepoint) = 0;
+    virtual void play(const TimePoint& timepoint, Track& track) = 0;
 };

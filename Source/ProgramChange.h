@@ -1,19 +1,19 @@
 /*
   ==============================================================================
 
-    Song.h
-    Created: 13 Aug 2021 7:45:18am
+    ProgramChange.h
+    Created: 14 Aug 2021 9:54:12am
     Author:  gugli
 
   ==============================================================================
 */
 
 #pragma once
-#include <vector>
-#include "Track.h"
+#include <JuceHeader.h>
 
-class Song 
+struct ProgramChange 
 {
-private:    // fields
-    std::vector<std::unique_ptr<Track>> m_tracks;
+    juce::String    m_name;
+    int             m_programNumber;
+    int             m_sceneNumber;
 };

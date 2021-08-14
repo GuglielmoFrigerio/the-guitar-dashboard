@@ -1,19 +1,17 @@
 /*
   ==============================================================================
 
-    Song.h
-    Created: 13 Aug 2021 7:45:18am
+    ProgramChangeEvent.cpp
+    Created: 14 Aug 2021 10:06:59am
     Author:  gugli
 
   ==============================================================================
 */
 
-#pragma once
-#include <vector>
+#include "ProgramChangeEvent.h"
 #include "Track.h"
 
-class Song 
+void ProgramChangeEvent::play(const TimePoint& timepoint, Track& track)
 {
-private:    // fields
-    std::vector<std::unique_ptr<Track>> m_tracks;
-};
+    track.sendProgramChange(*this); 
+}

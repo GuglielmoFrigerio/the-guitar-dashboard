@@ -1,24 +1,22 @@
 /*
   ==============================================================================
 
-    EventList.h
-    Created: 13 Aug 2021 11:30:45am
+    ProgramChangeEvent.h
+    Created: 14 Aug 2021 10:06:59am
     Author:  gugli
 
   ==============================================================================
 */
 
 #pragma once
-#include <vector>
-#include <memory>
-#include "IPlayable.h"
 #include "Event.h"
+#include "ProgramChange.h"
 
-class EventList : public IPlayable
+class ProgramChangeEvent : Event
 {
-private:    // fields
-    std::vector<std::unique_ptr<Event>> m_events;
+public:
+    ProgramChange programChange;
 
-public:     // interface
     virtual void play(const TimePoint& timepoint, Track& track) override;
+
 };
