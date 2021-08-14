@@ -1,4 +1,5 @@
 **/Builds/VisualStudio2019/*
+**/Builds/MacOSX/*
 **/JuceLibraryCode
 **/.DS_Store
 !Builds/VisualStudio2019/the-guitar-dashboard.sln
