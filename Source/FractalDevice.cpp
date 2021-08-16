@@ -25,6 +25,9 @@ void FractalDevice::queryDevice()
 
 void FractalDevice::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)
 {
+    auto pData = message.getRawData();
+    auto dataLength = message.getRawDataSize();
+
 }
 
 std::uint8_t FractalDevice::computeChecksum(const uint8_t* pData, int dataLength)

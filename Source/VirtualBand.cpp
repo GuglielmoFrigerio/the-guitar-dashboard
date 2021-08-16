@@ -23,4 +23,18 @@ void VirtualBand::loadDevices()
 
 void VirtualBand::loadMidiPortInfo(juce::ComboBox& inputCombo, juce::ComboBox& outputCombo)
 {
+    const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
+    int index = 1;
+    for (auto& inputInfo : inputInfoArray)
+    {
+        auto item = inputInfo.name + " (" + inputInfo.identifier + ")";
+        inputCombo.addItem(item, index++);
+    }
+
+    const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
+    for (auto& outputInfo : outputInfoArray)
+    {
+        auto item = outputInfo.name + " (" + outputInfo.identifier + ")";
+        outputCombo.addItem(item, index++);
+    }
 }
