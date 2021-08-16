@@ -16,7 +16,7 @@ VirtualBandPage::VirtualBandPage()
     addAndMakeVisible(m_midiOutputList);
 
     m_virtualBandPtr = std::make_unique<VirtualBand>();
-    m_virtualBandPtr->loadMidiPortInfo(m_midiInputList, m_midiOutputList);
+    m_virtualBandPtr->loadDevices();
 }
 
 void VirtualBandPage::resized()

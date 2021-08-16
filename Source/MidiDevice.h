@@ -19,9 +19,11 @@ protected:  // fields
     std::unique_ptr<juce::MidiOutput> m_midiOutPortPtr;
     std::unique_ptr<juce::MidiInput> m_midiInPortPtr;
 
+private:    // implementation
 
-public:
+public:     // interface
     MidiDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
 
-    virtual void SendProgramChange(const ProgramChange& programChange) = 0;
+    void start();
+    virtual void SendProgramChange(const ProgramChange& programChange);
 };

@@ -16,3 +16,15 @@ int computeSamplesFromMidiNote(int midiNote, double sampleRate)
     return (int)std::round(sampleRate / minimumFrequency);
 }
 
+bool stringsAreSimilar(const juce::String& first, const juce::String& second, int comparisonLength, int minimumLength)
+{
+    auto max = std::min(std::min(comparisonLength, second.length()), first.length());
+    for (auto index = 0; index < max; ++index)
+    {
+        if (first[index] != second[index])
+            return false;
+
+    }
+    return max >= minimumLength;
+}
+
