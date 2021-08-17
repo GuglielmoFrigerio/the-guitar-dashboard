@@ -18,7 +18,9 @@ std::shared_ptr<MidiDevice> VirtualBand::getMidiDevice(const juce::String& devic
 
 void VirtualBand::loadDevices()
 {
-    FractalDevice::loadAvailableDevices();
+    juce::Thread::launch([]() {
+        FractalDevice::loadAvailableDevices();
+    });
 }
 
 void VirtualBand::loadMidiPortInfo(juce::ComboBox& inputCombo, juce::ComboBox& outputCombo)

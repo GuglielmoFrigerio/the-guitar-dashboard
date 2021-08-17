@@ -5,6 +5,8 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="s7UrTm" name="ThreadResponse.h" compile="0" resource="0"
+            file="Source/ThreadResponse.h"/>
       <FILE id="jOqZpX" name="VirtualBandPage.cpp" compile="1" resource="0"
             file="Source/VirtualBandPage.cpp"/>
       <FILE id="YTc6Lx" name="VirtualBandPage.h" compile="0" resource="0"

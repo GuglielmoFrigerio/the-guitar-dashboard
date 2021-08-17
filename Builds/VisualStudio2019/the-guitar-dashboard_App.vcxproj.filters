@@ -2550,6 +2550,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ThreadResponse.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\VirtualBandPage.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

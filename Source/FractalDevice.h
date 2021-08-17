@@ -11,16 +11,30 @@
 #pragma once
 #include <JuceHeader.h>
 #include "MidiDevice.h"
+#include "ThreadResponse.h"
+
+struct FirmwareInfo
+{
+    int major;
+    int minor;
+};
 
 class FractalDevice : MidiDevice
 {
+private:    // fields
+    void (FractalDevice::* m_incomingMessageHandler)(juce::MidiInput* source, const juce::MidiMessage& message);
+    ThreadResponse<FirmwareInfo> m_queryFirmwareVersionAnswer;
+
 public:     // interface
     FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
 
-    void queryDevice();
+    bool queryDevice();
     static void loadAvailableDevices();
 
 private:    // implementation
+    void standardInputMessageHandler(juce::MidiInput* source, const juce::MidiMessage& message);
+    void handleQueryFirmwareVersionResponse(juce::MidiInput* source, const juce::MidiMessage& message);
+
     virtual void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
     std::uint8_t computeChecksum(const uint8_t* pData, int dataLength);
     void sendSysexMessage(uint8_t* pData, int dataLength);

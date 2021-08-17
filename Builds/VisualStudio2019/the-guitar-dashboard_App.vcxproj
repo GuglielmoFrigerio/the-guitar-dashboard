@@ -2073,6 +2073,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ThreadResponse.h"/>
     <ClInclude Include="..\..\Source\VirtualBandPage.h"/>
     <ClInclude Include="..\..\Source\IDeviceHost.h"/>
     <ClInclude Include="..\..\Source\VirtualBand.h"/>
