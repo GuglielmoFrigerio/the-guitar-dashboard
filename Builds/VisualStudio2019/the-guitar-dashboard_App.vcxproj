@@ -139,6 +139,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\FractalDiscoverDevice.cpp"/>
     <ClCompile Include="..\..\Source\VirtualBandPage.cpp"/>
     <ClCompile Include="..\..\Source\VirtualBand.cpp"/>
     <ClCompile Include="..\..\Source\ProgramChangeEvent.cpp"/>
@@ -2073,6 +2074,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\FractalDiscoverDevice.h"/>
     <ClInclude Include="..\..\Source\ThreadResponse.h"/>
     <ClInclude Include="..\..\Source\VirtualBandPage.h"/>
     <ClInclude Include="..\..\Source\IDeviceHost.h"/>

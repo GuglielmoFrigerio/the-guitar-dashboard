@@ -16,4 +16,8 @@ class Track;
 class IPlayable {
 public:
     virtual void play(const TimePoint& timepoint, Track& track) = 0;
+
+    virtual ~IPlayable()
+    {
+    }
 };

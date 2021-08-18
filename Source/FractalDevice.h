@@ -9,9 +9,16 @@
 */
 
 #pragma once
+#include <vector>
 #include <JuceHeader.h>
 #include "MidiDevice.h"
 #include "ThreadResponse.h"
+
+enum FractalDeviceType 
+{
+    AxeFxII,
+    AxeFxIII
+};
 
 struct FirmwareInfo
 {
@@ -19,7 +26,7 @@ struct FirmwareInfo
     int minor;
 };
 
-class FractalDevice : MidiDevice
+class FractalDevice : public MidiDevice
 {
 private:    // fields
     void (FractalDevice::* m_incomingMessageHandler)(juce::MidiInput* source, const juce::MidiMessage& message);
@@ -28,8 +35,10 @@ private:    // fields
 public:     // interface
     FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
 
-    bool queryDevice();
-    static void loadAvailableDevices();
+    static std::vector<std::unique_ptr<FractalDevice>> loadAvailableDevices();
+
+protected:  // implementation
+    bool queryDevice(const std::uint8_t* queryFirmwareMessage, int msgLmessageLength);
 
 private:    // implementation
     void standardInputMessageHandler(juce::MidiInput* source, const juce::MidiMessage& message);

@@ -12,29 +12,34 @@
 #include "GuitarDashCommon.h"
 #include "FractalDevice.h"
 
+#define MAX_SYSEX_MSG_LEN   80
+
 FractalDevice::FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId)
     :   MidiDevice(inputMidiPortId, outputMidiPortId)
 {
     m_incomingMessageHandler = &FractalDevice::standardInputMessageHandler;
 }
 
-bool FractalDevice::queryDevice()
+bool FractalDevice::queryDevice(const std::uint8_t* queryFirmwareMessage, int msgLmessageLength)
 {
     m_queryFirmwareVersionAnswer.prepare();
     m_incomingMessageHandler = &FractalDevice::handleQueryFirmwareVersionResponse;
 
-    std::uint8_t sysexdata[] = { 0xf0, 0x00, 0x01, 0x74, 0x10, 0x08, 0xdd, 0xf7 };
-    sendSysexMessage(sysexdata, sizeof(sysexdata));
+    jassert(msgLmessageLength < MAX_SYSEX_MSG_LEN);
+    std::uint8_t sysexMessage[MAX_SYSEX_MSG_LEN];
+    std::memcpy(sysexMessage, queryFirmwareMessage, msgLmessageLength);
+
+    sendSysexMessage(sysexMessage, sizeof(msgLmessageLength));
     auto [result, reason] = m_queryFirmwareVersionAnswer.waitForAnswer(200);
     return result;
 }
 
-void FractalDevice::standardInputMessageHandler(juce::MidiInput* source, const juce::MidiMessage& message)
+void FractalDevice::standardInputMessageHandler(juce::MidiInput* , const juce::MidiMessage& message)
 {
     DBG("[FractalDevice::standardInputMessageHandler] unexpected message received. Raw size is: " << message.getRawDataSize());
 }
 
-void FractalDevice::handleQueryFirmwareVersionResponse(juce::MidiInput* source, const juce::MidiMessage& message)
+void FractalDevice::handleQueryFirmwareVersionResponse(juce::MidiInput* , const juce::MidiMessage& message)
 {
     auto pData = message.getRawData();
     auto dataLength = message.getRawDataSize();
@@ -71,12 +76,13 @@ void FractalDevice::sendSysexMessage(uint8_t* pSysexData, int dataLength)
     m_midiOutPortPtr->sendMessageNow(sysExMsg);
 }
 
-void FractalDevice::loadAvailableDevices()
+std::vector<std::unique_ptr<FractalDevice>> FractalDevice::loadAvailableDevices()
 {
+    std::vector<std::unique_ptr<FractalDevice>> returnCollection;
+
     const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
     const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
 
-    int index = 1;
     for (auto& inputInfo : inputInfoArray)
     {
         auto outputDeviceId = FractalDevice::findAssociatedOutput(inputInfo, outputInfoArray);
@@ -88,6 +94,8 @@ void FractalDevice::loadAvailableDevices()
             juce::Time::waitForMillisecondCounter(juce::Time::getMillisecondCounter() + 10000);
         }
     }
+
+    return returnCollection;
 }
 
 juce::String FractalDevice::findAssociatedOutput(const juce::MidiDeviceInfo& inputInfo, const juce::Array<juce::MidiDeviceInfo>& outputDeviceInfo)

@@ -4,6 +4,9 @@ class IModulationSource
 {
 public:
 	virtual float getNext() = 0;
+	virtual ~IModulationSource()
+	{
+	}
 };
 
 struct FixedModulation : public IModulationSource

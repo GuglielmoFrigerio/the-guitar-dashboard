@@ -18,4 +18,8 @@ class IDeviceHost
 {
 public:
     virtual std::shared_ptr<MidiDevice> getMidiDevice(const juce::String& deviceName) = 0;
+
+    virtual ~IDeviceHost()
+    {
+    }
 };
