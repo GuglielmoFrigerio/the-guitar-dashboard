@@ -23,6 +23,7 @@ private:    // implementation
 
 public:     // interface
     MidiDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
+    MidiDevice(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::unique_ptr<juce::MidiInput>& midiInPortPtr);
 
     void start();
     virtual void SendProgramChange(const ProgramChange& programChange);

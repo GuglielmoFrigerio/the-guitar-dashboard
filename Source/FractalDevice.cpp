@@ -11,6 +11,7 @@
 #include <cstdint>
 #include "GuitarDashCommon.h"
 #include "FractalDevice.h"
+#include "FractalDiscoverDevice.h"
 
 #define MAX_SYSEX_MSG_LEN   80
 
@@ -88,10 +89,10 @@ std::vector<std::unique_ptr<FractalDevice>> FractalDevice::loadAvailableDevices(
         auto outputDeviceId = FractalDevice::findAssociatedOutput(inputInfo, outputInfoArray);
         if (outputDeviceId.isNotEmpty())
         {
-            auto newMidiDevice = std::make_unique<FractalDevice>(inputInfo.identifier, outputDeviceId);
-            newMidiDevice->start();
-            newMidiDevice->queryDevice();
-            juce::Time::waitForMillisecondCounter(juce::Time::getMillisecondCounter() + 10000);
+            auto discoverDevice = std::make_unique<FractalDiscoverDevice>(inputInfo.identifier, outputDeviceId);
+            auto actualDevicePtr = discoverDevice->discover();
+            if (actualDevicePtr != nullptr)
+                returnCollection.push_back(std::move(actualDevicePtr));
         }
     }
 

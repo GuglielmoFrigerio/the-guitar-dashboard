@@ -139,6 +139,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\AxeFx2Device.cpp"/>
     <ClCompile Include="..\..\Source\FractalDiscoverDevice.cpp"/>
     <ClCompile Include="..\..\Source\VirtualBandPage.cpp"/>
     <ClCompile Include="..\..\Source\VirtualBand.cpp"/>
@@ -2074,6 +2075,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\AxeFx2Device.h"/>
     <ClInclude Include="..\..\Source\FractalDiscoverDevice.h"/>
     <ClInclude Include="..\..\Source\ThreadResponse.h"/>
     <ClInclude Include="..\..\Source\VirtualBandPage.h"/>

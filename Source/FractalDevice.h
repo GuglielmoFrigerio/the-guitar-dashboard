@@ -14,7 +14,7 @@
 #include "MidiDevice.h"
 #include "ThreadResponse.h"
 
-enum FractalDeviceType 
+enum class FractalDeviceType 
 {
     AxeFxII,
     AxeFxIII
@@ -34,6 +34,8 @@ private:    // fields
 
 public:     // interface
     FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
+    FractalDevice(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::unique_ptr<juce::MidiInput>& midiInPortPtr) : MidiDevice(midiOutPortPtr, midiInPortPtr) {}
+
 
     static std::vector<std::unique_ptr<FractalDevice>> loadAvailableDevices();
 

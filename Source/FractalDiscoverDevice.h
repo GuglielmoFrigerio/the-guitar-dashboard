@@ -15,12 +15,9 @@
 
 class FractalDiscoverDevice : public FractalDevice {
 private:
-    FractalDeviceType m_deviceType;
-
-private:
     std::unique_ptr<FractalDevice> tryDiscover(FractalDeviceType deviceType);
 
 public:
-    FractalDiscoverDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId, FractalDeviceType deviceType);
+    FractalDiscoverDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
     std::unique_ptr<FractalDevice> discover();
 };
