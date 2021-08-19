@@ -30,7 +30,7 @@ bool FractalDevice::queryDevice(const std::uint8_t* queryFirmwareMessage, int ms
     std::uint8_t sysexMessage[MAX_SYSEX_MSG_LEN];
     std::memcpy(sysexMessage, queryFirmwareMessage, msgLmessageLength);
 
-    sendSysexMessage(sysexMessage, sizeof(msgLmessageLength));
+    sendSysexMessage(sysexMessage, msgLmessageLength);
     auto [result, reason] = m_queryFirmwareVersionAnswer.waitForAnswer(200);
     return result;
 }
@@ -44,7 +44,7 @@ void FractalDevice::handleQueryFirmwareVersionResponse(juce::MidiInput* , const 
 {
     auto pData = message.getRawData();
     auto dataLength = message.getRawDataSize();
-    if (message.isSysEx() && dataLength == 15)  {
+    if (message.isSysEx() && dataLength > 13)  {
         auto& data = m_queryFirmwareVersionAnswer.getAnswerData();
         data.major = pData[6];
         data.minor = pData[7];

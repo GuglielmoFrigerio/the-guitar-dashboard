@@ -23,9 +23,16 @@ MidiDevice::MidiDevice(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::u
 {
 }
 
+MidiDevice::~MidiDevice()
+{
+    if (m_inputStarted)
+        m_midiInPortPtr->stop();
+}
+
 void MidiDevice::start()
 {
     m_midiInPortPtr->start();
+    m_inputStarted;
 }
 
 void MidiDevice::SendProgramChange(const ProgramChange& programChange)
