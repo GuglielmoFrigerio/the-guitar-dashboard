@@ -10,10 +10,17 @@
 
 #include "VirtualBandPage.h"
 
-VirtualBandPage::VirtualBandPage()
+void VirtualBandPage::handleProgramChange()
 {
-    addAndMakeVisible(m_midiInputList);
-    addAndMakeVisible(m_midiOutputList);
+    m_virtualBandPtr->teatProgramChange();
+}
+
+VirtualBandPage::VirtualBandPage()
+    :   m_sendProgramChangeButton("Program Change")
+{
+    addAndMakeVisible(m_sendProgramChangeButton);
+
+    m_sendProgramChangeButton.onClick = [this] { handleProgramChange(); };
 
     m_virtualBandPtr = std::make_unique<VirtualBand>();
     m_virtualBandPtr->loadDevices();
@@ -22,8 +29,5 @@ VirtualBandPage::VirtualBandPage()
 void VirtualBandPage::resized()
 {
     auto rect = getLocalBounds();
-
-    auto inputRect = rect.removeFromLeft(proportionOfWidth(0.5f));
-    m_midiInputList.setBounds(inputRect);
-    m_midiOutputList.setBounds(rect);
+    m_sendProgramChangeButton.setBounds(rect.removeFromTop(24));
 }

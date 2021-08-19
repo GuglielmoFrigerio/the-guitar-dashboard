@@ -9,7 +9,6 @@
 */
 
 #include "VirtualBand.h"
-#include "FractalDevice.h"
 
 std::shared_ptr<MidiDevice> VirtualBand::getMidiDevice(const juce::String& deviceName)
 {
@@ -18,25 +17,20 @@ std::shared_ptr<MidiDevice> VirtualBand::getMidiDevice(const juce::String& devic
 
 void VirtualBand::loadDevices()
 {
-    juce::Thread::launch([]() {
-        FractalDevice::loadAvailableDevices();
+    juce::Thread::launch([this]() {
+        m_fractalDevices = FractalDevice::loadAvailableDevices();
     });
 }
 
-void VirtualBand::loadMidiPortInfo(juce::ComboBox& inputCombo, juce::ComboBox& outputCombo)
+void VirtualBand::teatProgramChange()
 {
-    const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
-    int index = 1;
-    for (auto& inputInfo : inputInfoArray)
-    {
-        auto item = inputInfo.name + " (" + inputInfo.identifier + ")";
-        inputCombo.addItem(item, index++);
-    }
+    for (auto& devicePtr : m_fractalDevices) {
+        ProgramChange pc;
 
-    const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
-    for (auto& outputInfo : outputInfoArray)
-    {
-        auto item = outputInfo.name + " (" + outputInfo.identifier + ")";
-        outputCombo.addItem(item, index++);
+        pc.programNumber = 132;
+        pc.sceneNumber = 3;
+
+        devicePtr->SendProgramChange(pc, 1);
     }
 }
+

@@ -18,10 +18,12 @@ class VirtualBandPage : public Page
 {
 private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
-    juce::ComboBox m_midiInputList;
-    juce::ComboBox m_midiOutputList;
+    juce::TextButton m_sendProgramChangeButton;
 
-public:
+private:    // implementation
+    void handleProgramChange();
+
+public:     // interface
     VirtualBandPage();
 
     void resized() override;

@@ -27,7 +27,7 @@ MidiDevice::~MidiDevice()
 void MidiDevice::start()
 {
     m_midiInPortPtr->start();
-    m_inputStarted;
+    m_inputStarted = true;
 }
 
 void MidiDevice::SendProgramChange(const ProgramChange& programChange, int midiChannel)
