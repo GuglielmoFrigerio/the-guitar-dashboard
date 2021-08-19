@@ -9,8 +9,3 @@
 */
 
 #include "AxeFx3Device.h"
-
-AxeFx3Device::AxeFx3Device(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::unique_ptr<juce::MidiInput>& midiInPortPtr)
-    :   FractalDevice(midiOutPortPtr, midiInPortPtr)
-{
-}

@@ -13,7 +13,15 @@
 
 struct ProgramChange 
 {
-    juce::String    m_name;
-    int             m_programNumber;
-    int             m_sceneNumber;
+    juce::String    name;
+    int             programNumber;
+    int             sceneNumber;
+
+    int getBankNumber() const {
+        return programNumber / 128;
+    }
+
+    int getPatchNumber() const {
+        return programNumber % 128;
+    }
 };

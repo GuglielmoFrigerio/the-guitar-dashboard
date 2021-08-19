@@ -14,6 +14,6 @@
 class AxeFx2Device : public FractalDevice 
 {
 public:
-    AxeFx2Device(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::unique_ptr<juce::MidiInput>& midiInPortPtr) : FractalDevice(midiOutPortPtr, midiInPortPtr) {}
+    AxeFx2Device(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId) : FractalDevice(inputMidiPortId, outputMidiPortId) {}
 
 };

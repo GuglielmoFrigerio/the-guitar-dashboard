@@ -17,7 +17,8 @@
 enum class FractalDeviceType 
 {
     AxeFxII,
-    AxeFxIII
+    AxeFxIII,
+    Unknown
 };
 
 struct FirmwareInfo
@@ -34,10 +35,11 @@ private:    // fields
 
 public:     // interface
     FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
-    FractalDevice(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::unique_ptr<juce::MidiInput>& midiInPortPtr) : MidiDevice(midiOutPortPtr, midiInPortPtr) {}
 
 
     static std::vector<std::unique_ptr<FractalDevice>> loadAvailableDevices();
+    static FractalDeviceType discover(const juce::String inputDeviceId, const juce::String& outputDeviceId);
+    static std::unique_ptr<FractalDevice> createDevice(FractalDeviceType deviceType, const juce::String inputDeviceId, const juce::String& outputDeviceId);
 
 protected:  // implementation
     bool queryDevice(const std::uint8_t* queryFirmwareMessage, int msgLmessageLength);

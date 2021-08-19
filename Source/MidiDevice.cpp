@@ -18,11 +18,6 @@ MidiDevice::MidiDevice(const juce::String& inputMidiPortId, const juce::String& 
     m_midiInPortPtr = juce::MidiInput::openDevice(inputMidiPortId, this);
 }
 
-MidiDevice::MidiDevice(std::unique_ptr<juce::MidiOutput>& midiOutPortPtr, std::unique_ptr<juce::MidiInput>& midiInPortPtr)
-    :   m_midiOutPortPtr(std::move(midiOutPortPtr)), m_midiInPortPtr(std::move(midiInPortPtr))
-{
-}
-
 MidiDevice::~MidiDevice()
 {
     if (m_inputStarted)
@@ -35,6 +30,16 @@ void MidiDevice::start()
     m_inputStarted;
 }
 
-void MidiDevice::SendProgramChange(const ProgramChange& programChange)
+void MidiDevice::SendProgramChange(const ProgramChange& programChange, int midiChannel)
 {
+    auto bankNumber = programChange.getBankNumber();
+    auto patchNumber = programChange.getPatchNumber();
+    auto controlChangeMessage = juce::MidiMessage::controllerEvent(midiChannel, 0, bankNumber);
+    m_midiOutPortPtr->sendMessageNow(controlChangeMessage);
+
+    auto programChangeMsg = juce::MidiMessage::programChange(midiChannel, patchNumber);
+    m_midiOutPortPtr->sendMessageNow(programChangeMsg);
+
+    controlChangeMessage = juce::MidiMessage::controllerEvent(midiChannel, 34, programChange.sceneNumber - 1);
+    m_midiOutPortPtr->sendMessageNow(controlChangeMessage);
 }

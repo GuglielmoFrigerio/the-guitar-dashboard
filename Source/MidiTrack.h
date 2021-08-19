@@ -9,3 +9,11 @@
 */
 
 #pragma once
+#include "Track.h"
+
+class MidiTrack : public Track
+{
+private:
+    int     m_midiChannel = 1;
+
+};
