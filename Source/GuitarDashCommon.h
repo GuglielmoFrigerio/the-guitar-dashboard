@@ -20,3 +20,5 @@ int computeSamplesFromMidiNote(int midiNote, double sampleRate);
 
 bool stringsAreSimilar(const juce::String& first, const juce::String& second, int comparisonLength, int minimumLength);
 
+int getElementValueAsInt(const juce::XmlElement* pInputElement);
+

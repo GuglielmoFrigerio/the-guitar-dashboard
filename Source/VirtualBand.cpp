@@ -25,10 +25,7 @@ void VirtualBand::loadDevices()
 void VirtualBand::teatProgramChange()
 {
     for (auto& devicePtr : m_fractalDevices) {
-        ProgramChange pc;
-
-        pc.programNumber = 132;
-        pc.sceneNumber = 3;
+        ProgramChange pc(132, 3, "");
 
         devicePtr->SendProgramChange(pc, 1);
     }

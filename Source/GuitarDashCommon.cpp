@@ -28,3 +28,9 @@ bool stringsAreSimilar(const juce::String& first, const juce::String& second, in
     return max >= minimumLength;
 }
 
+int getElementValueAsInt(const juce::XmlElement* pInputElement)
+{
+    auto text = pInputElement->getAllSubText().trim();
+    return text.getIntValue();
+}
+

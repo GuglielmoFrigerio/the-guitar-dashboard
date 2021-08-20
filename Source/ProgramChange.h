@@ -9,10 +9,13 @@
 */
 
 #pragma once
+#include <memory>
 #include <JuceHeader.h>
 
 struct ProgramChange 
 {
+    ProgramChange(int programNumber, int sceneNumber, const juce::String& name);
+
     juce::String    name;
     int             programNumber;
     int             sceneNumber;
@@ -24,4 +27,6 @@ struct ProgramChange
     int getPatchNumber() const {
         return programNumber % 128;
     }
+
+    static ProgramChange parse(const juce::XmlElement* pPatchElement);
 };

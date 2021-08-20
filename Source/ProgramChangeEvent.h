@@ -15,8 +15,11 @@
 class ProgramChangeEvent : Event
 {
 public:
+    ProgramChangeEvent(const juce::XmlElement* pInputElement);
+
     ProgramChange programChange;
 
     virtual void play(const TimePoint& timepoint, Track& track) override;
 
+    static std::unique_ptr<ProgramChangeEvent> parse(juce::XmlElement* pPatchElement);
 };
