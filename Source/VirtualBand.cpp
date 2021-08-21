@@ -10,11 +10,6 @@
 
 #include "VirtualBand.h"
 
-std::shared_ptr<MidiDevice> VirtualBand::getMidiDevice(const juce::String& deviceName)
-{
-    return std::shared_ptr<MidiDevice>();
-}
-
 void VirtualBand::loadDevices()
 {
     juce::Thread::launch([this]() {
@@ -22,12 +17,17 @@ void VirtualBand::loadDevices()
     });
 }
 
-void VirtualBand::teatProgramChange()
+void VirtualBand::testProgramChange()
 {
     for (auto& devicePtr : m_fractalDevices) {
         ProgramChange pc(132, 3, "");
 
-        devicePtr->SendProgramChange(pc, 1);
+        devicePtr->sendProgramChange(pc, 1);
     }
+}
+
+MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
+{
+    return nullptr;
 }
 

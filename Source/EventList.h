@@ -20,5 +20,6 @@ private:    // fields
     std::vector<std::unique_ptr<Event>> m_events;
 
 public:     // interface
+    EventList(std::unique_ptr<Event>& firstEvent);
     virtual void play(const TimePoint& timepoint, Track& track) override;
 };

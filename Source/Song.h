@@ -16,4 +16,11 @@ class Song
 {
 private:    // fields
     std::vector<std::unique_ptr<Track>> m_tracks;
+    juce::String m_name;
+
+protected:  // interface
+    void    addTrack(std::unique_ptr<Track> newTrack);
+
+public:
+    Song(const juce::String& name);
 };

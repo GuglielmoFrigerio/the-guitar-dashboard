@@ -12,7 +12,7 @@
 
 void VirtualBandPage::handleProgramChange()
 {
-    m_virtualBandPtr->teatProgramChange();
+    m_virtualBandPtr->testProgramChange();
 }
 
 VirtualBandPage::VirtualBandPage()

@@ -12,7 +12,7 @@
 #include "Event.h"
 #include "ProgramChange.h"
 
-class ProgramChangeEvent : Event
+class ProgramChangeEvent : public Event
 {
 public:
     ProgramChangeEvent(const juce::XmlElement* pInputElement);
@@ -21,5 +21,5 @@ public:
 
     virtual void play(const TimePoint& timepoint, Track& track) override;
 
-    static std::unique_ptr<ProgramChangeEvent> parse(juce::XmlElement* pPatchElement);
+    static std::unique_ptr<Event> parse(juce::XmlElement* pPatchElement);
 };

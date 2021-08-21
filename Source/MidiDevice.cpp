@@ -30,7 +30,7 @@ void MidiDevice::start()
     m_inputStarted = true;
 }
 
-void MidiDevice::SendProgramChange(const ProgramChange& programChange, int midiChannel)
+void MidiDevice::sendProgramChange(const ProgramChange& programChange, int midiChannel)
 {
     auto bankNumber = programChange.getBankNumber();
     auto patchNumber = programChange.getPatchNumber();

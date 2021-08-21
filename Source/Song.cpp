@@ -9,3 +9,13 @@
 */
 
 #include "Song.h"
+
+void Song::addTrack(std::unique_ptr<Track> newTrack)
+{
+    m_tracks.emplace_back(std::move(newTrack));
+}
+
+Song::Song(const juce::String& name)
+    :   m_name(name)
+{
+}

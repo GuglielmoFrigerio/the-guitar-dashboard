@@ -23,7 +23,8 @@ private:
     std::vector<std::unique_ptr<FractalDevice>> m_fractalDevices;
 
 public:
-    virtual std::shared_ptr<MidiDevice> getMidiDevice(const juce::String& deviceName) override;
     void loadDevices();
-    void teatProgramChange();
+    void testProgramChange();
+
+    virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
 };

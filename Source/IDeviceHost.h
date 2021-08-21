@@ -13,11 +13,12 @@
 #include <JuceHeader.h>
 
 class MidiDevice;
+enum class FractalDeviceType;
 
 class IDeviceHost
 {
 public:
-    virtual std::shared_ptr<MidiDevice> getMidiDevice(const juce::String& deviceName) = 0;
+    virtual MidiDevice* getDevice(FractalDeviceType deviceType) const = 0;
 
     virtual ~IDeviceHost()
     {

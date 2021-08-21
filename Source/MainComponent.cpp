@@ -55,9 +55,9 @@ void MainComponent::prepareToPlay (int samplesPerBlockExpected, double sampleRat
 
     // For more details, see the help for AudioProcessor::prepareToPlay()
 
-    m_osc1Ptr = std::make_unique<Oscillator>(sampleRate, 440.0);
-    m_osc2Ptr = std::make_unique<Oscillator>(sampleRate, 660.0);
-    m_lfo = std::make_unique<Lfo>(sampleRate, 1.0);
+    m_osc1Ptr = std::make_unique<Oscillator>(sampleRate, 440.0f);
+    m_osc2Ptr = std::make_unique<Oscillator>(sampleRate, 660.0f);
+    m_lfo = std::make_unique<Lfo>(sampleRate, 1.0f);
     m_pitchDetector = std::make_unique<PitchDetector>(sampleRate, 0.001);
     chooseInputChannelIndex();
 }

@@ -14,10 +14,17 @@
 #include "EventList.h"
 #include "ProgramChangeEvent.h"
 
+class MidiDevice;
+
 class Track {
 private:    // fields
     std::list<std::unique_ptr<EventList>> m_eventList;
 
+protected:  // interface
+    void    addEvent(std::unique_ptr<Event>& newEvent);
+
 public:
-    virtual void sendProgramChange(const ProgramChangeEvent& programChangeEvent) = 0;
+    virtual ~Track() {}
+    virtual MidiDevice* getMidiDevice() const = 0;
+    virtual int getMidiChannel() const = 0;
 };

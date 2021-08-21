@@ -5,6 +5,9 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="H9ZThG" name="TheLambsSong.cpp" compile="1" resource="0"
+            file="Source/TheLambsSong.cpp"/>
+      <FILE id="jiPy13" name="TheLambsSong.h" compile="0" resource="0" file="Source/TheLambsSong.h"/>
       <FILE id="q5369r" name="MidiEvent.cpp" compile="1" resource="0" file="Source/MidiEvent.cpp"/>
       <FILE id="j7MEn9" name="MidiEvent.h" compile="0" resource="0" file="Source/MidiEvent.h"/>
       <FILE id="NIxgH5" name="AxeFx2Device.cpp" compile="1" resource="0"

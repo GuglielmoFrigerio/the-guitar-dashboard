@@ -27,5 +27,5 @@ public:     // interface
     ~MidiDevice();
 
     void start();
-    virtual void SendProgramChange(const ProgramChange& programChange, int midiChannel);
+    virtual void sendProgramChange(const ProgramChange& programChange, int midiChannel);
 };

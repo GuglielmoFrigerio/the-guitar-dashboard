@@ -11,9 +11,29 @@
 #pragma once
 #include "Track.h"
 
+class MidiDevice;
+
 class MidiTrack : public Track
 {
-private:
+private:    // fields
     int     m_midiChannel = 1;
+    MidiDevice* m_pMidiDevice;
 
+private:    // implementation
+    void    loadFromPatches(const juce::XmlElement* pPatchesElement);
+
+public:
+    MidiTrack(MidiDevice* pMidiDevice) : m_pMidiDevice(pMidiDevice) {}
+
+    virtual MidiDevice* getMidiDevice() const override
+    {
+        return m_pMidiDevice;
+    }
+
+    virtual int getMidiChannel() const override
+    {
+        return m_midiChannel;
+    }
+
+    static std::unique_ptr<Track> loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice);
 };

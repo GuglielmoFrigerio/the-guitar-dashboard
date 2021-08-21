@@ -9,3 +9,8 @@
 */
 
 #include "Track.h"
+
+void Track::addEvent(std::unique_ptr<Event>& newEvent)
+{
+    m_eventList.emplace_back(std::make_unique<EventList>(newEvent));
+}
