@@ -9,3 +9,21 @@
 */
 
 #include "SongCollection.h"
+#include "TheLambsSong.h"
+
+std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand)
+{
+    auto songColletionPtr = std::make_unique<SongCollection>();
+
+    for (auto* pPatchesElement : pLibraryElement->getChildWithTagNameIterator("Library")) {
+        std::unique_ptr<Song> newSongPtr = std::make_unique<TheLambsSong>(pPatchesElement, pVirtualBand);
+        songColletionPtr->addSong(newSongPtr);
+    }
+
+    return songColletionPtr;
+}
+
+void SongCollection::addSong(std::unique_ptr<Song>& newSong)
+{
+    m_songs.push_back(std::move(newSong));
+}

@@ -17,13 +17,8 @@ void VirtualBand::loadDevices()
     });
 }
 
-void VirtualBand::testProgramChange()
+void VirtualBand::loadSongLibrary()
 {
-    for (auto& devicePtr : m_fractalDevices) {
-        ProgramChange pc(132, 3, "");
-
-        devicePtr->sendProgramChange(pc, 1);
-    }
 }
 
 MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const

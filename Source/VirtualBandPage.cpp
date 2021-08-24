@@ -8,19 +8,35 @@
   ==============================================================================
 */
 
+#include <JuceHeader.h>
 #include "VirtualBandPage.h"
 
-void VirtualBandPage::handleProgramChange()
+void VirtualBandPage::loadSongLibrary()
 {
-    m_virtualBandPtr->testProgramChange();
+
+    m_chooserPtr = std::make_unique<juce::FileChooser>("Select a Wave file to play...",
+        juce::File{},
+        "*.wav");
+    auto chooserFlags = juce::FileBrowserComponent::openMode
+        | juce::FileBrowserComponent::canSelectFiles;
+
+    m_chooserPtr->launchAsync(chooserFlags, [this](const juce::FileChooser& fc)
+        {
+            auto file = fc.getResult();
+
+            if (file != juce::File{})
+            {
+                m_virtualBandPtr->loadSongLibrary();
+            }
+        });
 }
 
 VirtualBandPage::VirtualBandPage()
-    :   m_sendProgramChangeButton("Program Change")
+    :   m_loadSongLibraryButton("Load Songs Library")
 {
-    addAndMakeVisible(m_sendProgramChangeButton);
+    addAndMakeVisible(m_loadSongLibraryButton);
 
-    m_sendProgramChangeButton.onClick = [this] { handleProgramChange(); };
+    m_loadSongLibraryButton.onClick = [this] { loadSongLibrary(); };
 
     m_virtualBandPtr = std::make_unique<VirtualBand>();
     m_virtualBandPtr->loadDevices();
@@ -29,5 +45,5 @@ VirtualBandPage::VirtualBandPage()
 void VirtualBandPage::resized()
 {
     auto rect = getLocalBounds();
-    m_sendProgramChangeButton.setBounds(rect.removeFromTop(24));
+    m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
 }

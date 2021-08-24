@@ -18,10 +18,11 @@ class VirtualBandPage : public Page
 {
 private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
-    juce::TextButton m_sendProgramChangeButton;
+    juce::TextButton m_loadSongLibraryButton;
+    std::unique_ptr<juce::FileChooser> m_chooserPtr;
 
 private:    // implementation
-    void handleProgramChange();
+    void loadSongLibrary();
 
 public:     // interface
     VirtualBandPage();

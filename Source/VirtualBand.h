@@ -10,7 +10,7 @@
 
 #pragma once
 #include <memory>
-#include "SongLibrary.h"
+#include "SongCollection.h"
 #include "Song.h"
 #include "IDeviceHost.h"
 #include "FractalDevice.h"
@@ -18,13 +18,13 @@
 class VirtualBand : public IDeviceHost
 {
 private:
-    std::unique_ptr<SongLibrary> m_songLibraryPtr;
+    std::unique_ptr<SongCollection> m_songCollectionPtr;
     std::unique_ptr<Song> m_currentSongPtr;
     std::vector<std::unique_ptr<FractalDevice>> m_fractalDevices;
 
 public:
     void loadDevices();
-    void testProgramChange();
+    void loadSongLibrary();
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
 };
