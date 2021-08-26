@@ -10,6 +10,7 @@
 
 #include "VirtualBand.h"
 #include "GuitarDashCommon.h"
+#include "SongListComponent.h"
 
 void VirtualBand::loadDevices()
 {
@@ -26,11 +27,16 @@ void VirtualBand::loadSongLibrary(const juce::File& inputFile)
 
     auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", "Agosto 2021");
 
-    m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);
+    m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);    
 }
 
 MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
 {
     return nullptr;
+}
+
+void VirtualBand::updateSongList(SongListComponent* pSongListComponent)
+{
+    pSongListComponent->update(m_songCollectionPtr.get());
 }
 

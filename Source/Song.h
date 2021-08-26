@@ -26,4 +26,8 @@ public:
 
     virtual void nextMarker();
     virtual void previousMarker();
+
+    const juce::String& getName() const {
+        return m_name;
+    }
 };

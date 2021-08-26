@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 #include "Page.h"
 #include "VirtualBand.h"
+#include "SongListComponent.h"
 
 class VirtualBandPage : public Page
 {
@@ -20,6 +21,7 @@ private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
     juce::TextButton m_loadSongLibraryButton;
     std::unique_ptr<juce::FileChooser> m_chooserPtr;
+    SongListComponent m_songListComponent;
 
 private:    // implementation
     void loadSongLibrary();

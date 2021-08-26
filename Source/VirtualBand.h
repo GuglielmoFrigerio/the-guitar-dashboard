@@ -15,6 +15,8 @@
 #include "IDeviceHost.h"
 #include "FractalDevice.h"
 
+class SongListComponent;
+
 class VirtualBand : public IDeviceHost
 {
 private:
@@ -26,4 +28,5 @@ public:
     void loadSongLibrary(const juce::File& inputFile);
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
+    void updateSongList(SongListComponent* pSongListComponent);
 };

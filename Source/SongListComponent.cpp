@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "SongListComponent.h"
 #include "SongCollection.h"
+#include "Song.h"
 
 //==============================================================================
 SongListComponent::SongListComponent()
@@ -24,7 +25,7 @@ SongListComponent::~SongListComponent()
 {
 }
 
-void SongListComponent::paint (juce::Graphics& g)
+void SongListComponent::paint(juce::Graphics& g)
 {
     /* This demo code just fills the component's background and
        draws some placeholder text to get you started.
@@ -33,24 +34,34 @@ void SongListComponent::paint (juce::Graphics& g)
        drawing code..
     */
 
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+    g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));   // clear the background
 
-    g.setColour (juce::Colours::grey);
-    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+    g.setColour(juce::Colours::grey);
+    g.drawRect(getLocalBounds(), 1);   // draw an outline around the component
 
-    g.setColour (juce::Colours::white);
-    g.setFont (14.0f);
-    g.drawText ("SongListComponent", getLocalBounds(),
-                juce::Justification::centred, true);   // draw some placeholder text
+    g.setColour(juce::Colours::white);
+    g.setFont(14.0f);
+    g.drawText("SongListComponent", getLocalBounds(),
+        juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void SongListComponent::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    auto bounds = getLocalBounds();
+    auto buttonSize = bounds.getWidth() / 3;
 
+    for (int i = 0; i < m_songTiles.size(); ++i)
+    {
+        m_songTiles[i]->setBounds(buttonSize * (i % 3),
+            buttonSize * (i / 3) + bounds.getHeight() / 3,
+            buttonSize,
+            buttonSize);
+    }
 }
 
 void SongListComponent::update(const SongCollection* pSongCollection)
 {
+    pSongCollection->enumerateSongs([this](const Song* pSong) {
+        addAndMakeVisible(m_songTiles.add(new juce::TextButton(pSong->getName())));        
+    });
 }

@@ -28,6 +28,7 @@ void VirtualBandPage::loadSongLibrary()
             if (file != juce::File{})
             {
                 m_virtualBandPtr->loadSongLibrary(file);
+                m_virtualBandPtr->updateSongList(&m_songListComponent);
             }
         });
 }
@@ -36,6 +37,7 @@ VirtualBandPage::VirtualBandPage()
     :   m_loadSongLibraryButton("Load Songs Library")
 {
     addAndMakeVisible(m_loadSongLibraryButton);
+    addAndMakeVisible(m_songListComponent);
 
     m_loadSongLibraryButton.onClick = [this] { loadSongLibrary(); };
 
@@ -47,4 +49,5 @@ void VirtualBandPage::resized()
 {
     auto rect = getLocalBounds();
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
+    m_songListComponent.setBounds(rect);
 }
