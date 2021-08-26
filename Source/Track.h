@@ -9,7 +9,7 @@
 */
 
 #pragma once
-#include <list>
+#include <vector>
 #include <memory>
 #include "EventList.h"
 #include "ProgramChangeEvent.h"
@@ -18,7 +18,7 @@ class MidiDevice;
 
 class Track {
 private:    // fields
-    std::list<std::unique_ptr<EventList>> m_eventList;
+    std::vector<std::unique_ptr<EventList>> m_eventList;
 
 protected:  // interface
     void    addEvent(std::unique_ptr<Event>& newEvent);

@@ -23,4 +23,7 @@ protected:  // interface
 
 public:
     Song(const juce::String& name);
+
+    virtual void nextMarker();
+    virtual void previousMarker();
 };

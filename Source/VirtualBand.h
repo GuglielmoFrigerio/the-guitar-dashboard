@@ -19,7 +19,6 @@ class VirtualBand : public IDeviceHost
 {
 private:
     std::unique_ptr<SongCollection> m_songCollectionPtr;
-    std::unique_ptr<Song> m_currentSongPtr;
     std::vector<std::unique_ptr<FractalDevice>> m_fractalDevices;
 
 public:

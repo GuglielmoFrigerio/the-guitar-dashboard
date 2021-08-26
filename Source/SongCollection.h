@@ -23,4 +23,6 @@ private:    // fields
 public:
     static std::unique_ptr<SongCollection> loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand);
     void addSong(std::unique_ptr<Song>& newSong);
+
+    void enumerateSongs(std::function<void(const Song* pSong)> callback);
 };

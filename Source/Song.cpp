@@ -19,3 +19,11 @@ Song::Song(const juce::String& name)
     :   m_name(name)
 {
 }
+
+void Song::nextMarker()
+{
+}
+
+void Song::previousMarker()
+{
+}

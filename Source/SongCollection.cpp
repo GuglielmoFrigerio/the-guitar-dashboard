@@ -27,3 +27,11 @@ void SongCollection::addSong(std::unique_ptr<Song>& newSong)
 {
     m_songs.push_back(std::move(newSong));
 }
+
+void SongCollection::enumerateSongs(std::function<void(const Song* pSong)> callback)
+{
+    for (const auto& song : m_songs)
+    {
+        callback(song.get());
+    }
+}
