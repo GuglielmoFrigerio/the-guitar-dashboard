@@ -14,9 +14,10 @@
 void VirtualBandPage::loadSongLibrary()
 {
 
-    m_chooserPtr = std::make_unique<juce::FileChooser>("Select a Wave file to play...",
+    m_chooserPtr = std::make_unique<juce::FileChooser>("Select a configuration file",
         juce::File{},
-        "*.wav");
+        "*.xml");
+
     auto chooserFlags = juce::FileBrowserComponent::openMode
         | juce::FileBrowserComponent::canSelectFiles;
 
@@ -26,7 +27,7 @@ void VirtualBandPage::loadSongLibrary()
 
             if (file != juce::File{})
             {
-                m_virtualBandPtr->loadSongLibrary();
+                m_virtualBandPtr->loadSongLibrary(file);
             }
         });
 }

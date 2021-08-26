@@ -15,7 +15,7 @@ std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juc
 {
     auto songColletionPtr = std::make_unique<SongCollection>();
 
-    for (auto* pPatchesElement : pLibraryElement->getChildWithTagNameIterator("Library")) {
+    for (auto* pPatchesElement : pLibraryElement->getChildWithTagNameIterator("Patches")) {
         std::unique_ptr<Song> newSongPtr = std::make_unique<TheLambsSong>(pPatchesElement, pVirtualBand);
         songColletionPtr->addSong(newSongPtr);
     }

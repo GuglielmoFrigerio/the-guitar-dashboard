@@ -34,3 +34,15 @@ int getElementValueAsInt(const juce::XmlElement* pInputElement)
     return text.getIntValue();
 }
 
+juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, juce::StringRef attributeName, juce::StringRef attributeValue)
+{
+    for (auto* pChildElement : pInputElement->getChildIterator()) {
+        auto value = pChildElement->getStringAttribute(attributeName);
+        if (value == attributeValue)
+        {
+            return pChildElement;
+        }
+    }
+    return nullptr;
+}
+

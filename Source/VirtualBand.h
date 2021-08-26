@@ -24,7 +24,7 @@ private:
 
 public:
     void loadDevices();
-    void loadSongLibrary();
+    void loadSongLibrary(const juce::File& inputFile);
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
 };
