@@ -14,7 +14,7 @@
 
 class Song 
 {
-private:    // fields
+protected:    // fields
     std::vector<std::unique_ptr<Track>> m_tracks;
     juce::String m_name;
 
@@ -31,7 +31,7 @@ public:
         return m_name;
     }
 
-    void activate();
+    virtual void activate();
 
-    void deactivate();
+    virtual void deactivate();
 };

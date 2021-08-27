@@ -19,3 +19,10 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
     addTrack(MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice));
 }
+
+void TheLambsSong::activate()
+{
+    for (auto& track : m_tracks) {
+        track->playFirstEvent();
+    }
+}

@@ -9,6 +9,7 @@
 */
 
 #include "MidiTrack.h"
+#include "TimePoint.h"
 
 void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
 {
@@ -16,6 +17,14 @@ void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
         auto programChangeEvent = ProgramChangeEvent::parse(pPatchElement);
         addEvent(programChangeEvent);
     }
+}
+
+void MidiTrack::playFirstEvent()
+{
+    TimePoint tp;
+
+    if (m_eventList.size() > 0)
+        m_eventList[0]->play(tp, *this);
 }
 
 std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice)

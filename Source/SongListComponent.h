@@ -17,10 +17,13 @@ class SongCollection;
 //==============================================================================
 /*
 */
-class SongListComponent  : public juce::Component
+class SongListComponent  : public juce::Component, public juce::Button::Listener
 {
 private:    // fields
     juce::OwnedArray<juce::TextButton> m_songTiles;
+
+private:    // implementation
+    virtual void buttonClicked(juce::Button* pButton) override;
 
 public:
     SongListComponent();

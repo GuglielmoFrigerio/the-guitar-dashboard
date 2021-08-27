@@ -17,7 +17,7 @@
 class MidiDevice;
 
 class Track {
-private:    // fields
+protected:    // fields
     std::vector<std::unique_ptr<EventList>> m_eventList;
 
 protected:  // interface
@@ -27,4 +27,5 @@ public:
     virtual ~Track() {}
     virtual MidiDevice* getMidiDevice() const = 0;
     virtual int getMidiChannel() const = 0;
+    virtual void playFirstEvent() {}
 };

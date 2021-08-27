@@ -21,7 +21,8 @@ void ProgramChangeEvent::play(const TimePoint& , Track& track)
 {
     auto pMidiDevice = track.getMidiDevice();
     auto midiChannel = track.getMidiChannel();
-    pMidiDevice->sendProgramChange(programChange, midiChannel);
+    if (pMidiDevice != nullptr)
+        pMidiDevice->sendProgramChange(programChange, midiChannel);
 }
 
 std::unique_ptr<Event> ProgramChangeEvent::parse(juce::XmlElement* pPatchElement)

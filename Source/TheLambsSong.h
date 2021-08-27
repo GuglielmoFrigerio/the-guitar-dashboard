@@ -17,4 +17,6 @@ class TheLambsSong : public Song
 {
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
+
+    virtual void activate() override;
 };

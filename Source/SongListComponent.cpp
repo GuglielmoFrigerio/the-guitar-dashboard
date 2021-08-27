@@ -13,6 +13,15 @@
 #include "SongCollection.h"
 #include "Song.h"
 
+void SongListComponent::buttonClicked(juce::Button* pButton)
+{
+    auto idAsString = pButton->getComponentID();
+    auto index = idAsString.getIntValue();
+
+    if (onSongSelected != nullptr)
+        onSongSelected(index);
+}
+
 //==============================================================================
 SongListComponent::SongListComponent()
 {
@@ -61,7 +70,15 @@ void SongListComponent::resized()
 
 void SongListComponent::update(const SongCollection* pSongCollection)
 {
-    pSongCollection->enumerateSongs([this](const Song* pSong) {
-        addAndMakeVisible(m_songTiles.add(new juce::TextButton(pSong->getName())));        
+    pSongCollection->enumerateSongs([this](const Song* pSong, int index) {
+        auto pNewTextButton = new juce::TextButton(pSong->getName());
+        pNewTextButton->addListener(this);
+        pNewTextButton->setComponentID(juce::String(index));
+        addAndMakeVisible(m_songTiles.add(pNewTextButton));
     });
+
+    if (m_songTiles.size() > 0) {
+        if (onSongSelected != nullptr)
+            onSongSelected(0);
+    }
 }
