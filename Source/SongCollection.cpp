@@ -50,3 +50,13 @@ void SongCollection::activateSong(int songIndex)
         DBG("activateSong: index (" << songIndex << ")is out of bound. Size is " << m_songs.size());
     }
 }
+
+void SongCollection::selectProgramChange(int programChangeIndex)
+{
+    if (m_currentSongIndex >= -1 && m_currentSongIndex < m_songs.size()) {
+        m_songs[m_currentSongIndex]->selectProgramChange(programChangeIndex);
+    }
+    else {
+        DBG("[SongCollection::selectProgramChange] index is out bounds");
+    }
+}

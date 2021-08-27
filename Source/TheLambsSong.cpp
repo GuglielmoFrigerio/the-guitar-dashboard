@@ -17,12 +17,23 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
-    addTrack(MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice));
+    auto track = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
+    m_pMidiTrack = dynamic_cast<MidiTrack*>(track.get());
+    addTrack(std::move(track));
 }
 
 void TheLambsSong::activate()
 {
     for (auto& track : m_tracks) {
         track->playFirstEvent();
+    }
+}
+
+void TheLambsSong::selectProgramChange(int programChangeIndex)
+{
+    if (m_pMidiTrack != nullptr) {
+        m_pMidiTrack->play(programChangeIndex);
+    } else {
+        DBG("[TheLambsSong::selectProgramChange] Missing MidiTrack pointer");
     }
 }

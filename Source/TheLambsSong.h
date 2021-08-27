@@ -12,11 +12,17 @@
 #include "Song.h"
 
 class VirtualBand;
+class MidiTrack;
 
 class TheLambsSong : public Song
 {
+private:    // fields
+    MidiTrack* m_pMidiTrack = nullptr;
+
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
 
     virtual void activate() override;
+
+    virtual void selectProgramChange(int programChangeIndex) override;
 };

@@ -11,6 +11,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <functional>
 #include "IPlayable.h"
 #include "Event.h"
 
@@ -22,4 +23,7 @@ private:    // fields
 public:     // interface
     EventList(std::unique_ptr<Event>& firstEvent);
     virtual void play(const TimePoint& timepoint, Track& track) override;
+
+    void enumerateEvents(std::function<bool (const Event* pEvent, int index)> callback) const;
+
 };

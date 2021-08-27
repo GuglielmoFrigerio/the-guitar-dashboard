@@ -70,6 +70,11 @@ void SongListComponent::resized()
 
 void SongListComponent::update(const SongCollection* pSongCollection)
 {
+    for (auto index = 0; index < m_songTiles.size(); ++index) {
+        removeChildComponent(m_songTiles[index]);
+    }
+    m_songTiles.clear(true);
+
     pSongCollection->enumerateSongs([this](const Song* pSong, int index) {
         auto pNewTextButton = new juce::TextButton(pSong->getName());
         pNewTextButton->addListener(this);

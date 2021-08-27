@@ -38,9 +38,10 @@ VirtualBandPage::VirtualBandPage()
 {
     addAndMakeVisible(m_loadSongLibraryButton);
     addAndMakeVisible(m_songListComponent);
+    addAndMakeVisible(m_programChangesComponent);
 
     m_songListComponent.onSongSelected = [this](int songIndex) { m_virtualBandPtr->activateSong(songIndex); };
-
+    m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { m_virtualBandPtr->selectProgramChange(programChangeIndex); };
     m_loadSongLibraryButton.onClick = [this] { loadSongLibrary(); };
 
     m_virtualBandPtr = std::make_unique<VirtualBand>();
@@ -51,5 +52,6 @@ void VirtualBandPage::resized()
 {
     auto rect = getLocalBounds();
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
-    m_songListComponent.setBounds(rect);
+    m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
+    m_programChangesComponent.setBounds(rect);
 }

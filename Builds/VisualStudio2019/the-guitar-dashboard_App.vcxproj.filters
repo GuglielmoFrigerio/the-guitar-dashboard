@@ -439,6 +439,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\ProgramChangesComponent.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\SongListComponent.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2628,6 +2631,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\ProgramChangesComponent.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\SongListComponent.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

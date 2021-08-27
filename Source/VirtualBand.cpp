@@ -45,3 +45,8 @@ void VirtualBand::activateSong(int songIndex)
     m_songCollectionPtr->activateSong(songIndex);
 }
 
+void VirtualBand::selectProgramChange(int programChangeIndex)
+{
+    m_songCollectionPtr->selectProgramChange(programChangeIndex);
+}
+

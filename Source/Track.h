@@ -27,5 +27,9 @@ public:
     virtual ~Track() {}
     virtual MidiDevice* getMidiDevice() const = 0;
     virtual int getMidiChannel() const = 0;
+    virtual void play(int index);
     virtual void playFirstEvent() {}
+
+    void enumerateProgramChanges(std::function<void(const ProgramChangeEvent* pProgramChangeEvent, int index)> callback) const;
+
 };

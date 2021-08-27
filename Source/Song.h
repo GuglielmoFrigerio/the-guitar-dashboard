@@ -34,4 +34,6 @@ public:
     virtual void activate();
 
     virtual void deactivate();
+
+    virtual void selectProgramChange(int programChangeIndex) {}
 };

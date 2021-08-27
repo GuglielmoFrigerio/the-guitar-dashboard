@@ -5,6 +5,10 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="vn8eo8" name="ProgramChangesComponent.cpp" compile="1" resource="0"
+            file="Source/ProgramChangesComponent.cpp"/>
+      <FILE id="xyE5sm" name="ProgramChangesComponent.h" compile="0" resource="0"
+            file="Source/ProgramChangesComponent.h"/>
       <FILE id="SF6xdd" name="SongListComponent.cpp" compile="1" resource="0"
             file="Source/SongListComponent.cpp"/>
       <FILE id="ItUXhL" name="SongListComponent.h" compile="0" resource="0"
