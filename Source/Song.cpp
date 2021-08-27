@@ -27,3 +27,11 @@ void Song::nextMarker()
 void Song::previousMarker()
 {
 }
+
+void Song::activate()
+{
+}
+
+void Song::deactivate()
+{
+}

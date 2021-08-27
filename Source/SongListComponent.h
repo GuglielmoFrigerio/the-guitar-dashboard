@@ -9,7 +9,7 @@
 */
 
 #pragma once
-
+#include <functional>
 #include <JuceHeader.h>
 
 class SongCollection;
@@ -30,6 +30,8 @@ public:
     void resized() override;
 
     void update(const SongCollection* pSongCollection);
+
+    std::function<void(int)> onSongSelected;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SongListComponent)

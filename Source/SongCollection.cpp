@@ -35,3 +35,16 @@ void SongCollection::enumerateSongs(std::function<void(const Song* pSong)> callb
         callback(song.get());
     }
 }
+
+void SongCollection::activateSong(int songIndex)
+{
+    if (songIndex < m_songs.size()) {
+        if (m_currentSongIndex >= 0 && m_currentSongIndex < m_songs.size())
+            m_songs[m_currentSongIndex]->deactivate();
+        m_currentSongIndex = songIndex;
+        m_songs[m_currentSongIndex]->activate();
+    }
+    else {
+        DBG("activateSong: index (" << songIndex << ")is out of bound. Size is " << m_songs.size());
+    }
+}

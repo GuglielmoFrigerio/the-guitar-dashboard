@@ -30,4 +30,8 @@ public:
     const juce::String& getName() const {
         return m_name;
     }
+
+    void activate();
+
+    void deactivate();
 };

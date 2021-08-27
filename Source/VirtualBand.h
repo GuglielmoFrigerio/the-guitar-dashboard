@@ -29,4 +29,5 @@ public:
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
     void updateSongList(SongListComponent* pSongListComponent);
+    void activateSong(int songIndex);
 };

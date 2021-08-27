@@ -40,3 +40,8 @@ void VirtualBand::updateSongList(SongListComponent* pSongListComponent)
     pSongListComponent->update(m_songCollectionPtr.get());
 }
 
+void VirtualBand::activateSong(int songIndex)
+{
+    m_songCollectionPtr->activateSong(songIndex);
+}
+
