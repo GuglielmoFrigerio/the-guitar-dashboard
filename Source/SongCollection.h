@@ -15,6 +15,7 @@
 
 class Song;
 class VirtualBand;
+class ProgramChangesComponent;
 
 class SongCollection {
 private:    // fields
@@ -28,4 +29,5 @@ public:
     void enumerateSongs(std::function<void(const Song* pSong, int index)> callback) const;
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
+    void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
 };

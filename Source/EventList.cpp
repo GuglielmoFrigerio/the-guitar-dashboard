@@ -26,7 +26,7 @@ void EventList::play(const TimePoint& timepoint, Track& track)
 
 void EventList::enumerateEvents(std::function<bool(const Event* pEvent, int index)> callback) const
 {
-    for (auto index = 0; index = m_events.size(); index++)
+    for (auto index = 0; index < m_events.size(); index++)
     {
         auto& eventPtr = m_events[index];
         if (!callback(eventPtr.get(), index))

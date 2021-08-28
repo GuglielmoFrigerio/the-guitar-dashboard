@@ -40,7 +40,10 @@ VirtualBandPage::VirtualBandPage()
     addAndMakeVisible(m_songListComponent);
     addAndMakeVisible(m_programChangesComponent);
 
-    m_songListComponent.onSongSelected = [this](int songIndex) { m_virtualBandPtr->activateSong(songIndex); };
+    m_songListComponent.onSongSelected = [this](int songIndex) { 
+        m_virtualBandPtr->activateSong(songIndex);
+        m_virtualBandPtr->updateProgramChangesList(&m_programChangesComponent);
+    };
     m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { m_virtualBandPtr->selectProgramChange(programChangeIndex); };
     m_loadSongLibraryButton.onClick = [this] { loadSongLibrary(); };
 

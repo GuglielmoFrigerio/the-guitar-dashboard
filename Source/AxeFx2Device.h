@@ -16,4 +16,7 @@ class AxeFx2Device : public FractalDevice
 public:
     AxeFx2Device(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId) : FractalDevice(inputMidiPortId, outputMidiPortId) {}
 
+    virtual FractalDeviceType getDeviceType() override {
+        return FractalDeviceType::AxeFxII;
+    }
 };

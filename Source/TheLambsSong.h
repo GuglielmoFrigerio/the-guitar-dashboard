@@ -25,4 +25,5 @@ public:
     virtual void activate() override;
 
     virtual void selectProgramChange(int programChangeIndex) override;
+    virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;
 };

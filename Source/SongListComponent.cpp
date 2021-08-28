@@ -12,6 +12,7 @@
 #include "SongListComponent.h"
 #include "SongCollection.h"
 #include "Song.h"
+#include "GuitarDashCommon.h"
 
 void SongListComponent::buttonClicked(juce::Button* pButton)
 {
@@ -57,15 +58,9 @@ void SongListComponent::paint(juce::Graphics& g)
 void SongListComponent::resized()
 {
     auto bounds = getLocalBounds();
-    auto buttonSize = bounds.getWidth() / 3;
-
-    for (int i = 0; i < m_songTiles.size(); ++i)
-    {
-        m_songTiles[i]->setBounds(buttonSize * (i % 3),
-            buttonSize * (i / 3) + bounds.getHeight() / 3,
-            buttonSize,
-            buttonSize);
-    }
+    computeFlexBox(120, 60, bounds.getWidth(), m_songTiles.size(), [this](int index, int x, int y, int w, int h) {
+        m_songTiles[index]->setBounds(x, y, w, h);
+    });
 }
 
 void SongListComponent::update(const SongCollection* pSongCollection)
@@ -81,6 +76,8 @@ void SongListComponent::update(const SongCollection* pSongCollection)
         pNewTextButton->setComponentID(juce::String(index));
         addAndMakeVisible(m_songTiles.add(pNewTextButton));
     });
+
+    resized();
 
     if (m_songTiles.size() > 0) {
         if (onSongSelected != nullptr)

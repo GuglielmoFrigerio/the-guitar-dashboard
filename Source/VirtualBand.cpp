@@ -32,12 +32,23 @@ void VirtualBand::loadSongLibrary(const juce::File& inputFile)
 
 MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
 {
+    for (auto& fractalDevicePtr : m_fractalDevices)
+    {
+        auto dt = fractalDevicePtr->getDeviceType();
+        if (dt == deviceType)
+            return fractalDevicePtr.get();
+    }
     return nullptr;
 }
 
 void VirtualBand::updateSongList(SongListComponent* pSongListComponent)
 {
     pSongListComponent->update(m_songCollectionPtr.get());
+}
+
+void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
+{
+    m_songCollectionPtr->updateProgramChangesList(pProgramChangesComponent);
 }
 
 void VirtualBand::activateSong(int songIndex)

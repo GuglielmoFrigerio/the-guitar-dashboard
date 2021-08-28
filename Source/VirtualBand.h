@@ -14,6 +14,7 @@
 #include "Song.h"
 #include "IDeviceHost.h"
 #include "FractalDevice.h"
+#include "ProgramChangesComponent.h"
 
 class SongListComponent;
 
@@ -29,6 +30,7 @@ public:
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
     void updateSongList(SongListComponent* pSongListComponent);
+    void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
 };

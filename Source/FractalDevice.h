@@ -41,6 +41,8 @@ public:     // interface
     static FractalDeviceType discover(const juce::String inputDeviceId, const juce::String& outputDeviceId);
     static std::unique_ptr<FractalDevice> createDevice(FractalDeviceType deviceType, const juce::String inputDeviceId, const juce::String& outputDeviceId);
 
+    virtual FractalDeviceType getDeviceType() = 0;
+
 protected:  // implementation
     bool queryDevice(const std::uint8_t* queryFirmwareMessage, int msgLmessageLength);
 

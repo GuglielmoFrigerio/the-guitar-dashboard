@@ -20,4 +20,8 @@ private:
 public:
     FractalDiscoverDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
     FractalDeviceType discover();
+
+    virtual FractalDeviceType getDeviceType() override {
+        throw std::runtime_error("FractalDiscoverDevice does not support 'getDeviceType'");
+    }
 };

@@ -11,6 +11,7 @@
 #include <JuceHeader.h>
 #include "ProgramChangesComponent.h"
 #include "Track.h"
+#include "GuitarDashCommon.h"
 
 void ProgramChangesComponent::buttonClicked(juce::Button* pButton)
 {
@@ -56,16 +57,9 @@ void ProgramChangesComponent::paint (juce::Graphics& g)
 void ProgramChangesComponent::resized()
 {
     auto bounds = getLocalBounds();
-    auto buttonSize = bounds.getWidth() / 3;
-
-    for (int i = 0; i < m_programChanceTiles.size(); ++i)
-    {
-        m_programChanceTiles[i]->setBounds(buttonSize * (i % 3),
-            buttonSize * (i / 3) + bounds.getHeight() / 3,
-            buttonSize,
-            buttonSize);
-    }
-
+    computeFlexBox(120, 60, bounds.getWidth(), m_programChanceTiles.size(), [this](int index, int x, int y, int w, int h) {
+        m_programChanceTiles[index]->setBounds(x, y, w, h);
+    });
 }
 
 void ProgramChangesComponent::update(const Track* pTrack)
@@ -81,6 +75,8 @@ void ProgramChangesComponent::update(const Track* pTrack)
         pNewTextButton->setComponentID(juce::String(index));
         addAndMakeVisible(m_programChanceTiles.add(pNewTextButton));
     });
+
+    resized();
 
     if (m_programChanceTiles.size() > 0) {
         if (onProgramChangeSelected != nullptr)

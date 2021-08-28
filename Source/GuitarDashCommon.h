@@ -9,6 +9,7 @@
 */
 
 #pragma once
+#include <functional>
 #include <JuceHeader.h>
 
 #define M_PI       3.14159265358979323846   // pi
@@ -22,4 +23,6 @@ bool stringsAreSimilar(const juce::String& first, const juce::String& second, in
 int getElementValueAsInt(const juce::XmlElement* pInputElement);
 
 juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, juce::StringRef attributeName, juce::StringRef attributeValue);
+
+void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler);
 

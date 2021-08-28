@@ -10,6 +10,7 @@
 
 #include "SongCollection.h"
 #include "TheLambsSong.h"
+#include "ProgramChangesComponent.h"
 
 std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand)
 {
@@ -58,5 +59,12 @@ void SongCollection::selectProgramChange(int programChangeIndex)
     }
     else {
         DBG("[SongCollection::selectProgramChange] index is out bounds");
+    }
+}
+
+void SongCollection::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
+{
+    if (m_currentSongIndex != -1) {
+        m_songs[m_currentSongIndex]->updateProgramChangesList(pProgramChangesComponent);
     }
 }

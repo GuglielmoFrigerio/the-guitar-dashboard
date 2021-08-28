@@ -12,6 +12,8 @@
 #include <vector>
 #include "Track.h"
 
+class ProgramChangesComponent;
+
 class Song 
 {
 protected:    // fields
@@ -36,4 +38,5 @@ public:
     virtual void deactivate();
 
     virtual void selectProgramChange(int programChangeIndex) {}
+    virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) {}
 };

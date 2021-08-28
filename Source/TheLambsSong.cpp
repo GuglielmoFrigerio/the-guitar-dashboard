@@ -24,9 +24,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 
 void TheLambsSong::activate()
 {
-    for (auto& track : m_tracks) {
-        track->playFirstEvent();
-    }
+    selectProgramChange(0);
 }
 
 void TheLambsSong::selectProgramChange(int programChangeIndex)
@@ -36,4 +34,10 @@ void TheLambsSong::selectProgramChange(int programChangeIndex)
     } else {
         DBG("[TheLambsSong::selectProgramChange] Missing MidiTrack pointer");
     }
+}
+
+void TheLambsSong::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
+{
+    if (m_pMidiTrack != nullptr)
+        pProgramChangesComponent->update(m_pMidiTrack);
 }
