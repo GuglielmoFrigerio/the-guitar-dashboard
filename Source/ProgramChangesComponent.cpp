@@ -70,7 +70,8 @@ void ProgramChangesComponent::update(const Track* pTrack)
     m_programChanceTiles.clear(true);
 
     pTrack->enumerateProgramChanges([this](const ProgramChangeEvent* pProgramChangeEvent, int index) {
-        auto pNewTextButton = new juce::TextButton(pProgramChangeEvent->programChange.name);
+        auto tooltip = juce::String::formatted("%d.%d", pProgramChangeEvent->programChange.programNumber, pProgramChangeEvent->programChange.sceneNumber);
+        auto pNewTextButton = new juce::TextButton(pProgramChangeEvent->programChange.name, tooltip);
         pNewTextButton->addListener(this);
         pNewTextButton->setComponentID(juce::String(index));
         addAndMakeVisible(m_programChanceTiles.add(pNewTextButton));
