@@ -34,6 +34,5 @@ public:
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
 
-    void nextMarker();
-    void previousMarker();
+    Song* getActiveSong() const;
 };

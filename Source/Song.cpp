@@ -20,14 +20,6 @@ Song::Song(const juce::String& name)
 {
 }
 
-void Song::nextMarker()
-{
-}
-
-void Song::previousMarker()
-{
-}
-
 void Song::activate()
 {
 }

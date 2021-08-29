@@ -72,6 +72,8 @@ void SongListComponent::update(const SongCollection* pSongCollection)
 
     pSongCollection->enumerateSongs([this](const Song* pSong, int index) {
         auto pNewTextButton = new juce::TextButton(pSong->getName());
+        pNewTextButton->setClickingTogglesState(true);
+        pNewTextButton->setRadioGroupId(SongButtons);
         pNewTextButton->addListener(this);
         pNewTextButton->setComponentID(juce::String(index));
         addAndMakeVisible(m_songTiles.add(pNewTextButton));

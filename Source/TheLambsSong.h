@@ -9,6 +9,7 @@
 */
 
 #pragma once
+#include <tuple>
 #include "Song.h"
 
 class VirtualBand;
@@ -18,7 +19,7 @@ class TheLambsSong : public Song
 {
 private:    // fields
     MidiTrack* m_pMidiTrack = nullptr;
-    int m_currentProgramIndex = 0;
+    int m_selectedProgramIndex = 0;
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
@@ -27,6 +28,6 @@ public:
 
     virtual void selectProgramChange(int programChangeIndex) override;
     virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;
-    virtual void nextMarker() override;
-    virtual void previousMarker() override;
+
+    virtual std::tuple<int, int> getSelectedProgramInfo() const override ;
 };

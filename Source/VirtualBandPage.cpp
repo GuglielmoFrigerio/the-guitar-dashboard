@@ -38,15 +38,40 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
     auto keyCode = key.getKeyCode();
     switch (keyCode) {
     case 65:
-        m_virtualBandPtr->previousMarker();
+        previousMarker();
+        break;
+
+    case 66:
         break;
 
     case 67:
-        m_virtualBandPtr->nextMarker();
+        nextMarker();
         break;
 
     }
     return false;
+}
+
+void VirtualBandPage::nextMarker()
+{
+    auto pActiveSong = m_virtualBandPtr->getActiveSong();
+    if (pActiveSong != nullptr) {
+        auto [selected, count] = pActiveSong->getSelectedProgramInfo();
+        if (selected >= 0 && selected < count - 1) {
+            m_programChangesComponent.selectProgramChange(selected + 1);
+        }
+    }
+}
+
+void VirtualBandPage::previousMarker()
+{
+    auto pActiveSong = m_virtualBandPtr->getActiveSong();
+    if (pActiveSong != nullptr) {
+        auto [selected, count] = pActiveSong->getSelectedProgramInfo();
+        if (selected > 0) {
+            m_programChangesComponent.selectProgramChange(selected -1);
+        }
+    }
 }
 
 VirtualBandPage::VirtualBandPage()

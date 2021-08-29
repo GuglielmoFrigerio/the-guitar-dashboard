@@ -72,6 +72,8 @@ void ProgramChangesComponent::update(const Track* pTrack)
     pTrack->enumerateProgramChanges([this](const ProgramChangeEvent* pProgramChangeEvent, int index) {
         auto tooltip = juce::String::formatted("%d.%d", pProgramChangeEvent->programChange.programNumber, pProgramChangeEvent->programChange.sceneNumber);
         auto pNewTextButton = new juce::TextButton(pProgramChangeEvent->programChange.name, tooltip);
+        pNewTextButton->setClickingTogglesState(true);
+        pNewTextButton->setRadioGroupId(ProgramChangesButtons);
         pNewTextButton->addListener(this);
         pNewTextButton->setComponentID(juce::String(index));
         addAndMakeVisible(m_programChanceTiles.add(pNewTextButton));
@@ -82,5 +84,12 @@ void ProgramChangesComponent::update(const Track* pTrack)
     if (m_programChanceTiles.size() > 0) {
         if (onProgramChangeSelected != nullptr) 
             onProgramChangeSelected(0);
+    }
+}
+
+void ProgramChangesComponent::selectProgramChange(int programChangeIndex)
+{
+    if (programChangeIndex < m_programChanceTiles.size()) {
+        m_programChanceTiles[programChangeIndex]->setToggleState(true, juce::NotificationType::sendNotification);
     }
 }

@@ -16,6 +16,12 @@
 const float DoublePi = 2.0f * (float)M_PI;
 static const float ReferenceFrequency = 440.0;
 
+enum RadioButtonIds
+{
+    ProgramChangesButtons = 1001,
+    SongButtons = 1002
+};
+
 int computeSamplesFromMidiNote(int midiNote, double sampleRate);
 
 bool stringsAreSimilar(const juce::String& first, const juce::String& second, int comparisonLength, int minimumLength);

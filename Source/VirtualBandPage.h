@@ -28,6 +28,8 @@ private:    // fields
 private:    // implementation
     void loadSongLibrary();
     virtual bool keyPressed(const juce::KeyPress& key, Component* originatingComponent) override;
+    void nextMarker();
+    void previousMarker();
 
 public:     // interface
     VirtualBandPage();

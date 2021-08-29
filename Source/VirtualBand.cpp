@@ -61,21 +61,11 @@ void VirtualBand::selectProgramChange(int programChangeIndex)
     m_songCollectionPtr->selectProgramChange(programChangeIndex);
 }
 
-void VirtualBand::nextMarker()
+Song* VirtualBand::getActiveSong() const
 {
     if (m_songCollectionPtr != nullptr) {
-        auto pCurrentSong = m_songCollectionPtr->getCurrentSong();
-        if (pCurrentSong != nullptr)
-            pCurrentSong->nextMarker();
+        return m_songCollectionPtr->getActiveSong();
     }
-}
-
-void VirtualBand::previousMarker()
-{
-    if (m_songCollectionPtr != nullptr) {
-        auto pCurrentSong = m_songCollectionPtr->getCurrentSong();
-        if (pCurrentSong != nullptr)
-            pCurrentSong->previousMarker();
-    }
+    return nullptr;
 }
 

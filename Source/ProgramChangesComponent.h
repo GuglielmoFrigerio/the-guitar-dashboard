@@ -36,6 +36,8 @@ public:
 
     std::function<void(int)> onProgramChangeSelected;
 
+    void selectProgramChange(int programChangeIndex);
+
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProgramChangesComponent)
 };

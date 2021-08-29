@@ -10,6 +10,7 @@
 
 #pragma once
 #include <vector>
+#include <tuple>
 #include "Track.h"
 
 class ProgramChangesComponent;
@@ -26,8 +27,6 @@ protected:  // interface
 public:
     Song(const juce::String& name);
 
-    virtual void nextMarker();
-    virtual void previousMarker();
 
     const juce::String& getName() const {
         return m_name;
@@ -39,4 +38,5 @@ public:
 
     virtual void selectProgramChange(int programChangeIndex) {}
     virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) {}
+    virtual std::tuple<int, int> getSelectedProgramInfo() const = 0;
 };
