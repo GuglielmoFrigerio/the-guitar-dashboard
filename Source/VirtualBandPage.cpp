@@ -33,6 +33,22 @@ void VirtualBandPage::loadSongLibrary()
         });
 }
 
+bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originatingComponent)
+{
+    auto keyCode = key.getKeyCode();
+    switch (keyCode) {
+    case 65:
+        m_virtualBandPtr->previousMarker();
+        break;
+
+    case 67:
+        m_virtualBandPtr->nextMarker();
+        break;
+
+    }
+    return false;
+}
+
 VirtualBandPage::VirtualBandPage()
     :   m_loadSongLibraryButton("Load Songs Library")
 {
@@ -49,6 +65,12 @@ VirtualBandPage::VirtualBandPage()
 
     m_virtualBandPtr = std::make_unique<VirtualBand>();
     m_virtualBandPtr->loadDevices();
+    addKeyListener(this);
+}
+
+VirtualBandPage::~VirtualBandPage()
+{
+    removeKeyListener(this);
 }
 
 void VirtualBandPage::resized()

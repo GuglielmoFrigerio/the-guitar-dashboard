@@ -30,4 +30,11 @@ public:
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
+
+    Song* getCurrentSong() const {
+        if (m_currentSongIndex >= 0 && m_currentSongIndex < m_songs.size())
+            return m_songs[m_currentSongIndex].get();
+        DBG("SongCollection::getCurrentSong m_currentSongIndex is out of bounds");
+        return nullptr;
+    }
 };

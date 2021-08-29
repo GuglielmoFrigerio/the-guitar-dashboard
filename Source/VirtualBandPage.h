@@ -16,7 +16,7 @@
 #include "SongListComponent.h"
 #include "ProgramChangesComponent.h"
 
-class VirtualBandPage : public Page
+class VirtualBandPage : public Page, public juce::KeyListener
 {
 private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
@@ -27,9 +27,11 @@ private:    // fields
 
 private:    // implementation
     void loadSongLibrary();
+    virtual bool keyPressed(const juce::KeyPress& key, Component* originatingComponent) override;
 
 public:     // interface
     VirtualBandPage();
+    ~VirtualBandPage() override;
 
     void resized() override;
 

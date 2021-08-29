@@ -31,6 +31,7 @@ void TheLambsSong::selectProgramChange(int programChangeIndex)
 {
     if (m_pMidiTrack != nullptr) {
         m_pMidiTrack->play(programChangeIndex);
+        m_currentProgramIndex = programChangeIndex;
     } else {
         DBG("[TheLambsSong::selectProgramChange] Missing MidiTrack pointer");
     }
@@ -40,4 +41,25 @@ void TheLambsSong::updateProgramChangesList(ProgramChangesComponent* pProgramCha
 {
     if (m_pMidiTrack != nullptr)
         pProgramChangesComponent->update(m_pMidiTrack);
+}
+
+void TheLambsSong::nextMarker()
+{
+    if (m_pMidiTrack != nullptr) {
+        if (m_currentProgramIndex < (m_pMidiTrack->getEventCount() - 1)) {
+            m_currentProgramIndex++;
+            m_pMidiTrack->play(m_currentProgramIndex);
+        }
+    }
+}
+
+void TheLambsSong::previousMarker()
+{
+    if (m_pMidiTrack != nullptr)
+    {
+        if (m_currentProgramIndex > 0) {
+            m_currentProgramIndex--;
+            m_pMidiTrack->play(m_currentProgramIndex);
+        }
+    }
 }

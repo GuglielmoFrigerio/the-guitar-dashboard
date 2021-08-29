@@ -33,4 +33,7 @@ public:
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
+
+    void nextMarker();
+    void previousMarker();
 };
