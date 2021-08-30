@@ -24,7 +24,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 
 void TheLambsSong::activate()
 {
-    selectProgramChange(0);
+//    selectProgramChange(0);
 }
 
 void TheLambsSong::selectProgramChange(int programChangeIndex)

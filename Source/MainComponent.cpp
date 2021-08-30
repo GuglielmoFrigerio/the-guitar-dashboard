@@ -35,7 +35,12 @@ MainComponent::MainComponent()
     m_virtualBandButton.addListener(this);
     addKeyListener(this);
 
+    propInit();
+
     startTimer(50);
+
+    m_activePage = std::make_unique<VirtualBandPage>(m_properties);
+    addAndMakeVisible(m_activePage.get());
 }
 
 MainComponent::~MainComponent()
@@ -172,7 +177,7 @@ void MainComponent::buttonClicked(juce::Button* button)
     {
         m_activePage = std::make_unique<SetupPage>(deviceManager);
     } else {
-        m_activePage = std::make_unique<VirtualBandPage>();
+        m_activePage = std::make_unique<VirtualBandPage>(m_properties);
     }    
 
     addAndMakeVisible(m_activePage.get());
@@ -189,4 +194,16 @@ void MainComponent::chooseInputChannelIndex()
 bool MainComponent::keyPressed(const juce::KeyPress& key, juce::Component* originatingComponent)
 {
     return false;
+}
+
+void MainComponent::propInit()
+{
+    juce::PropertiesFile::Options options;
+    options.applicationName = ProjectInfo::projectName;
+    options.filenameSuffix = ".settings";
+    options.osxLibrarySubFolder = "Application Support";
+    options.folderName = juce::File::getSpecialLocation(juce::File::SpecialLocationType::userApplicationDataDirectory).getChildFile(ProjectInfo::projectName).getFullPathName();
+    options.storageFormat = juce::PropertiesFile::storeAsXML;
+
+    m_properties.setStorageParameters(options);
 }

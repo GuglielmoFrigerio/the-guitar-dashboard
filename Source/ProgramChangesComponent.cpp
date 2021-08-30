@@ -82,8 +82,7 @@ void ProgramChangesComponent::update(const Track* pTrack)
     resized();
 
     if (m_programChanceTiles.size() > 0) {
-        if (onProgramChangeSelected != nullptr) 
-            onProgramChangeSelected(0);
+        selectProgramChange(0);
     }
 }
 

@@ -24,15 +24,19 @@ private:    // fields
     std::unique_ptr<juce::FileChooser> m_chooserPtr;
     SongListComponent m_songListComponent;
     ProgramChangesComponent m_programChangesComponent;
+    juce::ApplicationProperties& m_properties;
+    bool m_firstResize = true;
 
 private:    // implementation
-    void loadSongLibrary();
+    void chooseSongLibrary();
     virtual bool keyPressed(const juce::KeyPress& key, Component* originatingComponent) override;
     void nextMarker();
     void previousMarker();
+    void loadSongLibrary(juce::File& file);
+    void onFirstResized();
 
 public:     // interface
-    VirtualBandPage();
+    VirtualBandPage(juce::ApplicationProperties& properties);
     ~VirtualBandPage() override;
 
     void resized() override;

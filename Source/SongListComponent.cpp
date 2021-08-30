@@ -82,7 +82,6 @@ void SongListComponent::update(const SongCollection* pSongCollection)
     resized();
 
     if (m_songTiles.size() > 0) {
-        if (onSongSelected != nullptr)
-            onSongSelected(0);
+        m_songTiles[0]->setToggleState(true, juce::NotificationType::sendNotification);
     }
 }

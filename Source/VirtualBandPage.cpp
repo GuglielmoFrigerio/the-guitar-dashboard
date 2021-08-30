@@ -11,7 +11,7 @@
 #include <JuceHeader.h>
 #include "VirtualBandPage.h"
 
-void VirtualBandPage::loadSongLibrary()
+void VirtualBandPage::chooseSongLibrary()
 {
 
     m_chooserPtr = std::make_unique<juce::FileChooser>("Select a configuration file",
@@ -27,8 +27,9 @@ void VirtualBandPage::loadSongLibrary()
 
             if (file != juce::File{})
             {
-                m_virtualBandPtr->loadSongLibrary(file);
-                m_virtualBandPtr->updateSongList(&m_songListComponent);
+                loadSongLibrary(file);
+                auto pPropertiesFile = m_properties.getUserSettings();
+                pPropertiesFile->setValue("AxeFx3ConfigurationFile", file.getFullPathName());
             }
         });
 }
@@ -74,8 +75,26 @@ void VirtualBandPage::previousMarker()
     }
 }
 
-VirtualBandPage::VirtualBandPage()
-    :   m_loadSongLibraryButton("Load Songs Library")
+void VirtualBandPage::loadSongLibrary(juce::File& file)
+{
+    m_virtualBandPtr->loadSongLibrary(file);
+    m_virtualBandPtr->updateSongList(&m_songListComponent);
+}
+
+void VirtualBandPage::onFirstResized()
+{
+    auto pPropertiesFile = m_properties.getUserSettings();
+    auto value = pPropertiesFile->getValue("AxeFx3ConfigurationFile");
+    if (value.length() > 0) {
+        auto file = juce::File(value);
+        loadSongLibrary(file);
+    }
+}
+
+
+VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
+    :   m_loadSongLibraryButton("Load Songs Library"),
+        m_properties(properties)
 {
     addAndMakeVisible(m_loadSongLibraryButton);
     addAndMakeVisible(m_songListComponent);
@@ -86,15 +105,17 @@ VirtualBandPage::VirtualBandPage()
         m_virtualBandPtr->updateProgramChangesList(&m_programChangesComponent);
     };
     m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { m_virtualBandPtr->selectProgramChange(programChangeIndex); };
-    m_loadSongLibraryButton.onClick = [this] { loadSongLibrary(); };
+    m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
     m_virtualBandPtr = std::make_unique<VirtualBand>();
     m_virtualBandPtr->loadDevices();
     addKeyListener(this);
+
 }
 
 VirtualBandPage::~VirtualBandPage()
 {
+
     removeKeyListener(this);
 }
 
@@ -104,4 +125,9 @@ void VirtualBandPage::resized()
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
     m_programChangesComponent.setBounds(rect);
+
+    if (m_firstResize) {
+        m_firstResize = false;
+        onFirstResized();
+    }
 }

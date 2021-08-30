@@ -39,6 +39,7 @@ private:    // implementation
     void buttonClicked(juce::Button* button) override;
     void chooseInputChannelIndex();
     bool keyPressed(const juce::KeyPress& key, juce::Component* originatingComponent) override;
+    void propInit();
 
 private:
     LimitFollower m_limitFollower;
@@ -49,6 +50,7 @@ private:
     juce::TextButton m_setupButton;
     juce::TextButton m_virtualBandButton;
     std::unique_ptr<Page> m_activePage;
+    juce::ApplicationProperties m_properties;
 
     float m_sum = 0.;
     int m_inputChannelIndex = -1;
