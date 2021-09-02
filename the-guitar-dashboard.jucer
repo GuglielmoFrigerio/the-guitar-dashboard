@@ -5,6 +5,10 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="QNeZZe" name="TilesLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/TilesLookAndFeel.cpp"/>
+      <FILE id="wYJOYy" name="TilesLookAndFeel.h" compile="0" resource="0"
+            file="Source/TilesLookAndFeel.h"/>
       <FILE id="vn8eo8" name="ProgramChangesComponent.cpp" compile="1" resource="0"
             file="Source/ProgramChangesComponent.cpp"/>
       <FILE id="xyE5sm" name="ProgramChangesComponent.h" compile="0" resource="0"

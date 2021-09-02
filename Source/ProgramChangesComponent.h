@@ -11,6 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "TilesLookAndFeel.h"
 
 class Track;
 
@@ -21,6 +22,7 @@ class ProgramChangesComponent  : public juce::Component, public juce::Button::Li
 {
 private:    // fields
     juce::OwnedArray<juce::TextButton> m_programChanceTiles;
+    TilesLookAndFeed    m_tilesLookAndFeel;
 
 private:    // implementation
     virtual void buttonClicked(juce::Button* pButton) override;

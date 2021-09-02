@@ -28,11 +28,13 @@ SongListComponent::SongListComponent()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
+    setLookAndFeel(&m_tilesLookAndFeel);
 
 }
 
 SongListComponent::~SongListComponent()
 {
+    setLookAndFeel(nullptr);
 }
 
 void SongListComponent::paint(juce::Graphics& g)
@@ -58,7 +60,7 @@ void SongListComponent::paint(juce::Graphics& g)
 void SongListComponent::resized()
 {
     auto bounds = getLocalBounds();
-    computeFlexBox(120, 60, bounds.getWidth(), m_songTiles.size(), [this](int index, int x, int y, int w, int h) {
+    computeFlexBox(180, 90, bounds.getWidth(), m_songTiles.size(), [this](int index, int x, int y, int w, int h) {
         m_songTiles[index]->setBounds(x, y, w, h);
     });
 }

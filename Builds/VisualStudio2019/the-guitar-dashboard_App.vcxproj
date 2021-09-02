@@ -139,6 +139,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TilesLookAndFeel.cpp"/>
     <ClCompile Include="..\..\Source\ProgramChangesComponent.cpp"/>
     <ClCompile Include="..\..\Source\SongListComponent.cpp"/>
     <ClCompile Include="..\..\Source\Marker.cpp"/>
@@ -2118,6 +2119,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TilesLookAndFeel.h"/>
     <ClInclude Include="..\..\Source\ProgramChangesComponent.h"/>
     <ClInclude Include="..\..\Source\SongListComponent.h"/>
     <ClInclude Include="..\..\Source\Marker.h"/>

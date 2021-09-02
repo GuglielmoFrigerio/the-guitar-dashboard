@@ -28,10 +28,12 @@ ProgramChangesComponent::ProgramChangesComponent()
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
 
+    setLookAndFeel(&m_tilesLookAndFeel);
 }
 
 ProgramChangesComponent::~ProgramChangesComponent()
 {
+    setLookAndFeel(nullptr);
 }
 
 void ProgramChangesComponent::paint (juce::Graphics& g)
@@ -57,7 +59,7 @@ void ProgramChangesComponent::paint (juce::Graphics& g)
 void ProgramChangesComponent::resized()
 {
     auto bounds = getLocalBounds();
-    computeFlexBox(120, 60, bounds.getWidth(), m_programChanceTiles.size(), [this](int index, int x, int y, int w, int h) {
+    computeFlexBox(180, 90, bounds.getWidth(), m_programChanceTiles.size(), [this](int index, int x, int y, int w, int h) {
         m_programChanceTiles[index]->setBounds(x, y, w, h);
     });
 }

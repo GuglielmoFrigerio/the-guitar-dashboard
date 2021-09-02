@@ -19,6 +19,8 @@ protected:  // fields
     std::unique_ptr<juce::MidiOutput> m_midiOutPortPtr;
     std::unique_ptr<juce::MidiInput> m_midiInPortPtr;
     bool m_inputStarted = false;
+    int m_currentProgramNumber = -1;
+    int m_currentSceneNumber = -1;
 
 private:    // implementation
 

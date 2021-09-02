@@ -32,14 +32,21 @@ void MidiDevice::start()
 
 void MidiDevice::sendProgramChange(const ProgramChange& programChange, int midiChannel)
 {
-    auto bankNumber = programChange.getBankNumber();
-    auto patchNumber = programChange.getPatchNumber();
-    auto controlChangeMessage = juce::MidiMessage::controllerEvent(midiChannel, 0, bankNumber);
-    m_midiOutPortPtr->sendMessageNow(controlChangeMessage);
+    if (programChange.programNumber != m_currentProgramNumber) {
+        auto bankNumber = programChange.getBankNumber();
+        auto patchNumber = programChange.getPatchNumber();
+        auto controlChangeMessage = juce::MidiMessage::controllerEvent(midiChannel, 0, bankNumber);
+        m_midiOutPortPtr->sendMessageNow(controlChangeMessage);
 
-    auto programChangeMsg = juce::MidiMessage::programChange(midiChannel, patchNumber);
-    m_midiOutPortPtr->sendMessageNow(programChangeMsg);
+        auto programChangeMsg = juce::MidiMessage::programChange(midiChannel, patchNumber);
+        m_midiOutPortPtr->sendMessageNow(programChangeMsg);
+        m_currentSceneNumber = -1;
+        m_currentProgramNumber = programChange.programNumber;
+    }
 
-    controlChangeMessage = juce::MidiMessage::controllerEvent(midiChannel, 34, programChange.sceneNumber - 1);
-    m_midiOutPortPtr->sendMessageNow(controlChangeMessage);
+    if (programChange.sceneNumber != m_currentSceneNumber) {
+        auto controlChangeMessage = juce::MidiMessage::controllerEvent(midiChannel, 34, programChange.sceneNumber - 1);
+        m_midiOutPortPtr->sendMessageNow(controlChangeMessage);
+        m_currentSceneNumber = programChange.sceneNumber;
+    }
 }
