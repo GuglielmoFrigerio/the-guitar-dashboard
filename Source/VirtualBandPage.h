@@ -15,6 +15,7 @@
 #include "VirtualBand.h"
 #include "SongListComponent.h"
 #include "ProgramChangesComponent.h"
+#include "PlayerComponent.h"
 
 class VirtualBandPage : public Page, public juce::KeyListener
 {
@@ -26,6 +27,7 @@ private:    // fields
     ProgramChangesComponent m_programChangesComponent;
     juce::ApplicationProperties& m_properties;
     bool m_firstResize = true;
+    PlayerComponent m_playerComponent;
 
 private:    // implementation
     void chooseSongLibrary();

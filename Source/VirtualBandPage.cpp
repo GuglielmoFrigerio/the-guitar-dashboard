@@ -99,6 +99,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_loadSongLibraryButton);
     addAndMakeVisible(m_songListComponent);
     addAndMakeVisible(m_programChangesComponent);
+    addAndMakeVisible(m_playerComponent);
 
     m_songListComponent.onSongSelected = [this](int songIndex) { 
         m_virtualBandPtr->activateSong(songIndex);
@@ -124,6 +125,7 @@ void VirtualBandPage::resized()
     auto rect = getLocalBounds();
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
+    m_playerComponent.setBounds(rect.removeFromBottom(60));
     m_programChangesComponent.setBounds(rect);
 
     if (m_firstResize) {

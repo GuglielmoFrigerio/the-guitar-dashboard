@@ -14,8 +14,10 @@
 class PlayerComponent : public juce::Component 
 {
 private:    // fields
+    juce::ImageButton   m_playButton;
 
 public:
+    PlayerComponent();
 
     void paint(juce::Graphics&) override;
     void resized() override;
