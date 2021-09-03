@@ -10,11 +10,15 @@
 
 #pragma once
 #include <JuceHeader.h>
+#include "PlayerButton.h"
 
 class PlayerComponent : public juce::Component 
 {
 private:    // fields
-    juce::ImageButton   m_playButton;
+    PlayerButton   m_previousButton;
+    PlayerButton   m_stopButton;
+    PlayerButton   m_playButton;
+    PlayerButton   m_nextButton;
 
 public:
     PlayerComponent();

@@ -5,6 +5,9 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="Jwzyia" name="PlayerButton.cpp" compile="1" resource="0"
+            file="Source/PlayerButton.cpp"/>
+      <FILE id="PwQoBN" name="PlayerButton.h" compile="0" resource="0" file="Source/PlayerButton.h"/>
       <FILE id="tvbxCk" name="PlayerComponent.cpp" compile="1" resource="0"
             file="Source/PlayerComponent.cpp"/>
       <FILE id="QXxDmZ" name="PlayerComponent.h" compile="0" resource="0"

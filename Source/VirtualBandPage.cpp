@@ -125,7 +125,7 @@ void VirtualBandPage::resized()
     auto rect = getLocalBounds();
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
-    m_playerComponent.setBounds(rect.removeFromBottom(60));
+    m_playerComponent.setBounds(rect.removeFromBottom(80));
     m_programChangesComponent.setBounds(rect);
 
     if (m_firstResize) {

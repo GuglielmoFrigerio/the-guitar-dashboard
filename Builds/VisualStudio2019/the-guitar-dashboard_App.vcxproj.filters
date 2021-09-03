@@ -439,6 +439,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\PlayerButton.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PlayerComponent.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2637,6 +2640,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\PlayerButton.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PlayerComponent.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

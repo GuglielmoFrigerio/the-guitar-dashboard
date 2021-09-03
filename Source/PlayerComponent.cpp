@@ -11,18 +11,15 @@
 #include "PlayerComponent.h"
 
 PlayerComponent::PlayerComponent()
+    :   m_playButton("play"),
+        m_previousButton("backward"),
+        m_nextButton("forward"),
+        m_stopButton("stop")
 {
-    auto currentDir = juce::File::getCurrentWorkingDirectory();
-    auto file = currentDir.getChildFile("../../Resources/Images/play-button.png");
-    auto playImage = juce::ImageCache::getFromFile(file);
-
     addAndMakeVisible(m_playButton);
-
-    m_playButton.setImages(false, true, true,
-        playImage, 1.0f, juce::Colour(0, 0, 0),
-        playImage, 1.0f, juce::Colour(0, 0, 0),
-        playImage, 1.0f, juce::Colour(0, 0, 0),
-        1.0f);
+    addAndMakeVisible(m_previousButton);
+    addAndMakeVisible(m_nextButton);
+    addAndMakeVisible(m_stopButton);
 }
 
 void PlayerComponent::paint(juce::Graphics& g)
@@ -31,15 +28,18 @@ void PlayerComponent::paint(juce::Graphics& g)
 
     g.setColour(juce::Colours::grey);
     g.drawRect(getLocalBounds(), 1);   // draw an outline around the component
-
-    g.setColour(juce::Colours::white);
-    g.setFont(14.0f);
-    g.drawText("PlayerComponent", getLocalBounds(),
-        juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void PlayerComponent::resized()
 {
     auto bounds = getLocalBounds();
-    m_playButton.setBounds(bounds);
+    auto margin = 20;
+
+    auto width = bounds.getWidth();
+    auto height = bounds.getHeight();
+
+    m_previousButton.setPosition(0, width, height, margin);
+    m_stopButton.setPosition(1, width, height, margin);
+    m_playButton.setPosition(2, width, height, margin);
+    m_nextButton.setPosition(3, width, height, margin);
 }
