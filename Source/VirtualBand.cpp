@@ -12,6 +12,11 @@
 #include "GuitarDashCommon.h"
 #include "SongListComponent.h"
 
+VirtualBand::VirtualBand()
+{
+    m_formatManager.registerBasicFormats();
+}
+
 void VirtualBand::loadDevices()
 {
     juce::Thread::launch([this]() {

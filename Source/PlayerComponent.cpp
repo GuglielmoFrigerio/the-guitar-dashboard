@@ -10,16 +10,41 @@
 
 #include "PlayerComponent.h"
 
+void PlayerComponent::onPlayClick()
+{
+    if (m_playerState != PlayerState::Play) {
+        setNewState(PlayerState::Play);
+    }
+}
+
+void PlayerComponent::onStopClick()
+{
+    if (m_playerState != PlayerState::Stop) {
+        setNewState(PlayerState::Stop);
+    }
+}
+
+void PlayerComponent::setNewState(PlayerState playerState)
+{
+    m_playerState = playerState;
+    if (onPlayerCommand != nullptr)
+        onPlayerCommand(m_playerState);
+}
+
 PlayerComponent::PlayerComponent()
     :   m_playButton("play"),
         m_previousButton("backward"),
         m_nextButton("forward"),
-        m_stopButton("stop")
+        m_stopButton("stop"),
+        m_playerState(PlayerState::Stop)
 {
     addAndMakeVisible(m_playButton);
     addAndMakeVisible(m_previousButton);
     addAndMakeVisible(m_nextButton);
     addAndMakeVisible(m_stopButton);
+
+    m_playButton.onClick = [this] { onPlayClick(); };
+    m_stopButton.onClick = [this] { onStopClick(); };
 }
 
 void PlayerComponent::paint(juce::Graphics& g)

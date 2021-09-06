@@ -23,8 +23,13 @@ class VirtualBand : public IDeviceHost
 private:
     std::unique_ptr<SongCollection> m_songCollectionPtr;
     std::vector<std::unique_ptr<FractalDevice>> m_fractalDevices;
+    juce::AudioFormatManager m_formatManager;
+    std::unique_ptr<juce::AudioFormatReaderSource> m_readerSource;
+    juce::AudioTransportSource m_transportSource;
 
 public:
+    VirtualBand();
+
     void loadDevices();
     void loadSongLibrary(const juce::File& inputFile);
 

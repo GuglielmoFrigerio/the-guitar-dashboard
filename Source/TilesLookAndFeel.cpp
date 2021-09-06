@@ -12,8 +12,30 @@
 
 void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown)
 {
-    auto color = m_colors[m_colourIndex];
-    m_colourIndex = ++m_colourIndex % m_colors.size();
+    DBG("[TilesLookAndFeed::drawButtonBackground] toggle: " << (int)button.getToggleState());
+
+    auto idAsString = button.getComponentID();
+    auto buttonIndex = idAsString.getIntValue();
+    auto colorIndex = buttonIndex % m_colors.size();
+    auto toggle = button.getToggleState();
+
+
+    auto color = m_colors[colorIndex];
+
+    float brighter = .0f;
+
+    if (toggle)
+        brighter += .3f;
+
+    if (shouldDrawButtonAsHighlighted)
+        brighter += .3f;
+
+    if (shouldDrawButtonAsDown)
+        brighter += .2f;
+
+    if (brighter > .0f)
+        color = color.brighter(brighter);
+
     LookAndFeel_V4::drawButtonBackground(g, button, color, shouldDrawButtonAsHighlighted, shouldDrawButtonAsDown);
 }
 

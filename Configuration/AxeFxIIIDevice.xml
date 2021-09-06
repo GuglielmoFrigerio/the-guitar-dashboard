@@ -120,7 +120,7 @@
     <Patches name="The Chamber of 32 Doors" >
       <Track name="The Chamber of 32 Doors - Genesis.mp3">
       </Track>
-      <Patch scene="6" name="Into">486</Patch>
+      <Patch scene="6" name="Into (Si)">486</Patch>
       <Patch scene="1" name="Strumming">099</Patch>
       <Patch scene="6" name="Into">486</Patch>
       <Patch scene="1" name="Strumming">099</Patch>
@@ -144,13 +144,14 @@
         <Marker>00:03:04</Marker>
         <Marker>00:05:47</Marker>
       </Track>
+      <Patch scene="1" name="base crescendo">460</Patch>
+      <Patch scene="2" name="solo">460</Patch>
+      <Patch scene="1" name="base">460</Patch>
+      <Patch name="envelope (Sol# - Fa)">462</Patch>
       <Patch scene="1" name="base">460</Patch>
       <Patch scene="2" name="solo">460</Patch>
       <Patch scene="1" name="base">460</Patch>
       <Patch name="envelope">462</Patch>
-      <Patch scene="1" name="base">460</Patch>
-      <Patch scene="2" name="solo">460</Patch>
-      <Patch scene="1" name="base">460</Patch>
     </Patches>
   </Library>
 
