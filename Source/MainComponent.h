@@ -7,17 +7,17 @@
 #include "PitchDetector.h"
 #include "SetupPage.h"
 
+class VirtualBandPage;
+
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
 class MainComponent  : 
-    public juce::AudioAppComponent,
-    public juce::ChangeListener,
+    public juce::Component,
     public juce::Button::Listener,
-    private juce::Timer,
-    private juce::KeyListener
+    private juce::Timer
 {
 public:
     //==============================================================================
@@ -25,31 +25,19 @@ public:
     ~MainComponent() override;
 
     //==============================================================================
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
-    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
-    void releaseResources() override;
-
-    //==============================================================================
     void paint (juce::Graphics& g) override;
     void resized() override;
 
 private:    // implementation
     void timerCallback() override;
-    void changeListenerCallback(juce::ChangeBroadcaster*) override;
     void buttonClicked(juce::Button* button) override;
-    void chooseInputChannelIndex();
-    bool keyPressed(const juce::KeyPress& key, juce::Component* originatingComponent) override;
     void propInit();
 
 private:
-    LimitFollower m_limitFollower;
-    std::unique_ptr<Oscillator> m_osc1Ptr;
-    std::unique_ptr<Oscillator> m_osc2Ptr;
-    std::unique_ptr<Lfo> m_lfo;
-    std::unique_ptr<PitchDetector> m_pitchDetector;
+    std::unique_ptr<VirtualBandPage> m_virtualBandPagePtr;
     juce::TextButton m_setupButton;
     juce::TextButton m_virtualBandButton;
-    std::unique_ptr<Page> m_activePage;
+    std::unique_ptr<juce::Component> m_activePage;
     juce::ApplicationProperties m_properties;
 
     float m_sum = 0.;

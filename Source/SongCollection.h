@@ -27,7 +27,7 @@ public:
     void addSong(std::unique_ptr<Song>& newSong);
 
     void enumerateSongs(std::function<void(const Song* pSong, int index)> callback) const;
-    void activateSong(int songIndex);
+    void activateSong(int songIndex, juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource);
     void selectProgramChange(int programChangeIndex);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
 

@@ -12,9 +12,14 @@
 #include "GuitarDashCommon.h"
 #include "SongListComponent.h"
 
+void VirtualBand::changeListenerCallback(juce::ChangeBroadcaster* source)
+{
+}
+
 VirtualBand::VirtualBand()
 {
     m_formatManager.registerBasicFormats();
+    m_transportSource.addChangeListener(this);   // [2]
 }
 
 void VirtualBand::loadDevices()
@@ -58,12 +63,22 @@ void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChan
 
 void VirtualBand::activateSong(int songIndex)
 {
-    m_songCollectionPtr->activateSong(songIndex);
+    m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource);
 }
 
 void VirtualBand::selectProgramChange(int programChangeIndex)
 {
     m_songCollectionPtr->selectProgramChange(programChangeIndex);
+}
+
+void VirtualBand::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+    m_transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
+}
+
+void VirtualBand::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+    m_transportSource.getNextAudioBlock(bufferToFill);
 }
 
 Song* VirtualBand::getActiveSong() const
@@ -72,5 +87,10 @@ Song* VirtualBand::getActiveSong() const
         return m_songCollectionPtr->getActiveSong();
     }
     return nullptr;
+}
+
+void VirtualBand::play()
+{
+    m_transportSource.start();
 }
 

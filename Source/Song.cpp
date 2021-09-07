@@ -20,7 +20,7 @@ Song::Song(const juce::String& name)
 {
 }
 
-void Song::activate()
+void Song::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource)
 {
 }
 

@@ -32,7 +32,7 @@ public:
         return m_name;
     }
 
-    virtual void activate();
+    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource);
 
     virtual void deactivate();
 

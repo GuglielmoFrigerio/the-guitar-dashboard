@@ -11,13 +11,15 @@
 #pragma once
 #include <memory>
 #include <JuceHeader.h>
-#include "Page.h"
 #include "VirtualBand.h"
 #include "SongListComponent.h"
 #include "ProgramChangesComponent.h"
 #include "PlayerComponent.h"
 
-class VirtualBandPage : public Page, public juce::KeyListener
+class VirtualBandPage : 
+    public juce::AudioAppComponent, 
+    public juce::KeyListener,
+    public juce::ChangeListener
 {
 private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
@@ -36,12 +38,17 @@ private:    // implementation
     void previousMarker();
     void loadSongLibrary(juce::File& file);
     void onFirstResized();
+    void releaseResources() override;
 
 public:     // interface
     VirtualBandPage(juce::ApplicationProperties& properties);
     ~VirtualBandPage() override;
 
     void resized() override;
+
+    void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
+    void changeListenerCallback(juce::ChangeBroadcaster*) override;
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(VirtualBandPage)

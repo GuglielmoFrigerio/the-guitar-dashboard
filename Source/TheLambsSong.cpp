@@ -22,9 +22,21 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     addTrack(std::move(track));
 }
 
-void TheLambsSong::activate()
+void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource)
 {
-//    selectProgramChange(0);
+    auto currentDir = juce::File::getCurrentWorkingDirectory();
+    auto file = currentDir.getChildFile("../../Resources/Tracks/Hairless Heart - Genesis.mp3");
+    if (file != juce::File{})
+    {
+        auto* pReader = pAudioFormatManager->createReaderFor(file);
+
+        if (pReader != nullptr)
+        {
+            auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
+            pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
+            m_readerSourcePtr.reset(newSourcePtr.release());
+        }
+    }
 }
 
 void TheLambsSong::selectProgramChange(int programChangeIndex)

@@ -71,8 +71,6 @@
       <FILE id="p6npFq" name="EventList.h" compile="0" resource="0" file="Source/EventList.h"/>
       <FILE id="Mva4wP" name="Event.cpp" compile="1" resource="0" file="Source/Event.cpp"/>
       <FILE id="AiWFAp" name="Event.h" compile="0" resource="0" file="Source/Event.h"/>
-      <FILE id="cfzrGM" name="Page.cpp" compile="1" resource="0" file="Source/Page.cpp"/>
-      <FILE id="XGLrnZ" name="Page.h" compile="0" resource="0" file="Source/Page.h"/>
       <FILE id="Qx8QqY" name="SongLibrary.cpp" compile="1" resource="0" file="Source/SongLibrary.cpp"/>
       <FILE id="pNG9NK" name="SongLibrary.h" compile="0" resource="0" file="Source/SongLibrary.h"/>
       <FILE id="UEgx4a" name="SongCollection.cpp" compile="1" resource="0"

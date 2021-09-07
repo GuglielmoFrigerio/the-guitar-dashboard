@@ -18,16 +18,18 @@
 
 class SongListComponent;
 
-class VirtualBand : public IDeviceHost
+class VirtualBand : public IDeviceHost, public juce::ChangeListener
 {
-private:
+private:    // fields
     std::unique_ptr<SongCollection> m_songCollectionPtr;
     std::vector<std::unique_ptr<FractalDevice>> m_fractalDevices;
     juce::AudioFormatManager m_formatManager;
-    std::unique_ptr<juce::AudioFormatReaderSource> m_readerSource;
     juce::AudioTransportSource m_transportSource;
 
-public:
+private:    // implementation
+    void changeListenerCallback(juce::ChangeBroadcaster* source) override;
+
+public: // interface
     VirtualBand();
 
     void loadDevices();
@@ -39,5 +41,10 @@ public:
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
 
+    void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
+    void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
+
     Song* getActiveSong() const;
+
+    void play();
 };

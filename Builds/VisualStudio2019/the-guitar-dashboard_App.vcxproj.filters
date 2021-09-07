@@ -502,9 +502,6 @@
     <ClCompile Include="..\..\Source\Event.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Page.cpp">
-      <Filter>the-guitar-dashboard\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\SongLibrary.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2710,9 +2707,6 @@
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Event.h">
-      <Filter>the-guitar-dashboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Page.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SongLibrary.h">

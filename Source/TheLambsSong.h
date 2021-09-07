@@ -20,11 +20,12 @@ class TheLambsSong : public Song
 private:    // fields
     MidiTrack* m_pMidiTrack = nullptr;
     int m_selectedProgramIndex = 0;
+    std::unique_ptr<juce::AudioFormatReaderSource> m_readerSourcePtr;
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
 
-    virtual void activate() override;
+    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource) override;
 
     virtual void selectProgramChange(int programChangeIndex) override;
     virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;

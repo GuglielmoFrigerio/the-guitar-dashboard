@@ -91,6 +91,10 @@ void VirtualBandPage::onFirstResized()
     }
 }
 
+void VirtualBandPage::releaseResources()
+{
+}
+
 
 VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     :   m_loadSongLibraryButton("Load Songs Library"),
@@ -101,6 +105,24 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
 
+    m_virtualBandPtr = std::make_unique<VirtualBand>();
+    m_virtualBandPtr->loadDevices();
+
+    // Some platforms require permissions to open input channels so request that here
+    if (juce::RuntimePermissions::isRequired(juce::RuntimePermissions::recordAudio)
+        && !juce::RuntimePermissions::isGranted(juce::RuntimePermissions::recordAudio))
+    {
+        juce::RuntimePermissions::request(juce::RuntimePermissions::recordAudio,
+            [&](bool granted) { setAudioChannels(granted ? 6 : 0, 6); });
+    }
+    else
+    {
+        // Specify the number of input and output channels that we want to open
+        setAudioChannels(6, 6);
+    }
+
+    deviceManager.addChangeListener(this);
+
     m_songListComponent.onSongSelected = [this](int songIndex) { 
         m_virtualBandPtr->activateSong(songIndex);
         m_virtualBandPtr->updateProgramChangesList(&m_programChangesComponent);
@@ -108,16 +130,19 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { m_virtualBandPtr->selectProgramChange(programChangeIndex); };
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
-    m_virtualBandPtr = std::make_unique<VirtualBand>();
-    m_virtualBandPtr->loadDevices();
     addKeyListener(this);
 
+    m_playerComponent.onPlayerCommand = [this](PlayerState playerState) {
+        if (playerState == PlayerState::Play)
+            m_virtualBandPtr->play();
+
+    };
 }
 
 VirtualBandPage::~VirtualBandPage()
 {
-
     removeKeyListener(this);
+    shutdownAudio();
 }
 
 void VirtualBandPage::resized()
@@ -132,4 +157,18 @@ void VirtualBandPage::resized()
         m_firstResize = false;
         onFirstResized();
     }
+}
+
+void VirtualBandPage::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+    m_virtualBandPtr->prepareToPlay(samplesPerBlockExpected, sampleRate);
+}
+
+void VirtualBandPage::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+    m_virtualBandPtr->getNextAudioBlock(bufferToFill);
+}
+
+void VirtualBandPage::changeListenerCallback(juce::ChangeBroadcaster*)
+{
 }
