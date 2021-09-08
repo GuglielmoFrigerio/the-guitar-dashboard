@@ -10,6 +10,7 @@
 
 #pragma once
 #include <memory>
+#include <atomic>
 #include "SongCollection.h"
 #include "Song.h"
 #include "IDeviceHost.h"
@@ -28,19 +29,24 @@ private:    // fields
     juce::AudioFormatManager m_formatManager;
     juce::AudioTransportSource m_transportSource;
     PlayerComponent* m_pPlayerComponent;
+    SongListComponent* m_pSongListComponent;
+    std::atomic<bool> m_devicesLoaded;
+    std::atomic<bool> m_songLibraryFileReady;
+    juce::File m_inputFile;
+    Song* m_pActiveSong;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
     void onPlayerStateUpdated(PlayerState newPlayerState);
+    void loadSongCollection(juce::StringRef collectionName);
 
 public: // interface
-    VirtualBand(PlayerComponent * pPlayerComponent);
+    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent);
 
     void loadDevices();
     void loadSongLibrary(const juce::File& inputFile);
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
-    void updateSongList(SongListComponent* pSongListComponent);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
     void activateSong(int songIndex);
     void selectProgramChange(int programChangeIndex);
@@ -48,7 +54,11 @@ public: // interface
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 
-    Song* getActiveSong() const;
+    Song* getActiveSong() const {
+        return m_pActiveSong;
+    }
 
     void play();
+
+    void timerCallback();
 };

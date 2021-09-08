@@ -28,6 +28,7 @@ PlayerComponent::PlayerComponent()
     addAndMakeVisible(m_previousButton);
     addAndMakeVisible(m_nextButton);
     addAndMakeVisible(m_stopButton);
+    addAndMakeVisible(m_trackPositionSlider);
 
     m_playButton.onClick = [this] { changeState(PlayerState::Starting); };
     m_stopButton.onClick = [this] { changeState(PlayerState::Stopping); };
@@ -44,6 +45,11 @@ void PlayerComponent::paint(juce::Graphics& g)
 void PlayerComponent::resized()
 {
     auto bounds = getLocalBounds();
+
+    auto sliderBounds = bounds.removeFromTop(50);
+    sliderBounds.reduce(30, 0);
+    m_trackPositionSlider.setBounds(sliderBounds);
+
     auto margin = 20;
 
     auto width = bounds.getWidth();
@@ -80,4 +86,14 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
             sendStateUpdate();
         }
     }
+}
+
+void PlayerComponent::setTrackDuration(float trackDuration)
+{
+    m_trackPositionSlider.setRange(.0, trackDuration);
+}
+
+void PlayerComponent::updateTrackPosition(float position)
+{
+    m_trackPositionSlider.setValue(position);
 }

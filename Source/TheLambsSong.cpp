@@ -11,6 +11,7 @@
 #include "TheLambsSong.h"
 #include "MidiTrack.h"
 #include "VirtualBand.h"
+#include "PlayerComponent.h"
 
 
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
@@ -27,7 +28,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     }
 }
 
-void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource)
+void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     if (!m_trackName.isEmpty()) {
         auto currentDir = juce::File::getCurrentWorkingDirectory();
@@ -40,6 +41,8 @@ void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce:
                 auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
                 pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
                 m_readerSourcePtr.reset(newSourcePtr.release());
+                auto duration = pAudioTransportSource->getLengthInSeconds();
+                pPlayerComponent->setTrackDuration((float)duration);
             }
         }
     }

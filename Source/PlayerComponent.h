@@ -28,6 +28,7 @@ private:    // fields
     PlayerButton    m_playButton;
     PlayerButton    m_nextButton;
     PlayerState     m_playerState;
+    juce::Slider    m_trackPositionSlider;
 
 private:    // implementation
     void sendStateUpdate();
@@ -41,4 +42,7 @@ public:
     std::function<void(PlayerState)> onPlayerCommand;
 
     void changeState(PlayerState newPlayerState);
+
+    void setTrackDuration(float trackDuration);
+    void updateTrackPosition(float position);
 };

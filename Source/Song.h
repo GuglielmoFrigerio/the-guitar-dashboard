@@ -14,6 +14,7 @@
 #include "Track.h"
 
 class ProgramChangesComponent;
+class PlayerComponent;
 
 class Song 
 {
@@ -32,7 +33,7 @@ public:
         return m_name;
     }
 
-    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource);
+    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* m_pPlayerComponent);
 
     virtual void deactivate();
 

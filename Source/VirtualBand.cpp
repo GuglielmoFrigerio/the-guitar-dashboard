@@ -33,8 +33,21 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState)
         m_transportSource.stop();
 }
 
-VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent)
-    : m_pPlayerComponent(pPlayerComponent)
+void VirtualBand::loadSongCollection(juce::StringRef collectionName)
+{
+    juce::XmlDocument configDocument(m_inputFile);
+
+    auto rootElementPtr = configDocument.getDocumentElement();
+    auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", collectionName);
+    m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);
+    m_pSongListComponent->update(m_songCollectionPtr.get());
+}
+
+VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent)
+    :   m_pPlayerComponent(pPlayerComponent),
+        m_pSongListComponent(pSongListComponent),
+        m_songLibraryFileReady(false),
+        m_devicesLoaded(false)
 {
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
@@ -45,18 +58,14 @@ void VirtualBand::loadDevices()
 {
     juce::Thread::launch([this]() {
         m_fractalDevices = FractalDevice::loadAvailableDevices();
+        m_devicesLoaded = true;
     });
 }
 
 void VirtualBand::loadSongLibrary(const juce::File& inputFile)
 {
-    juce::XmlDocument configDocument(inputFile);
-
-    auto rootElementPtr = configDocument.getDocumentElement();
-
-    auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", "Agosto 2021");
-
-    m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);    
+    m_inputFile = inputFile;
+    m_songLibraryFileReady = true;
 }
 
 MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
@@ -70,11 +79,6 @@ MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
     return nullptr;
 }
 
-void VirtualBand::updateSongList(SongListComponent* pSongListComponent)
-{
-    pSongListComponent->update(m_songCollectionPtr.get());
-}
-
 void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
 {
     m_songCollectionPtr->updateProgramChangesList(pProgramChangesComponent);
@@ -82,7 +86,7 @@ void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChan
 
 void VirtualBand::activateSong(int songIndex)
 {
-    m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource);
+    m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent);
 }
 
 void VirtualBand::selectProgramChange(int programChangeIndex)
@@ -100,16 +104,21 @@ void VirtualBand::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
     m_transportSource.getNextAudioBlock(bufferToFill);
 }
 
-Song* VirtualBand::getActiveSong() const
-{
-    if (m_songCollectionPtr != nullptr) {
-        return m_songCollectionPtr->getActiveSong();
-    }
-    return nullptr;
-}
-
 void VirtualBand::play()
 {
     m_transportSource.start();
+}
+
+void VirtualBand::timerCallback()
+{
+    if (m_devicesLoaded && m_songLibraryFileReady) {
+        loadSongCollection("Agosto 2021");
+        m_songLibraryFileReady = false;
+    }
+
+    if (m_pActiveSong != nullptr) {
+        auto position = m_transportSource.getCurrentPosition();
+        m_pPlayerComponent->updateTrackPosition(position);
+    }
 }
 

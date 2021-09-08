@@ -16,8 +16,7 @@ class VirtualBandPage;
 */
 class MainComponent  : 
     public juce::Component,
-    public juce::Button::Listener,
-    private juce::Timer
+    public juce::Button::Listener
 {
 public:
     //==============================================================================
@@ -29,7 +28,6 @@ public:
     void resized() override;
 
 private:    // implementation
-    void timerCallback() override;
     void buttonClicked(juce::Button* button) override;
     void propInit();
 

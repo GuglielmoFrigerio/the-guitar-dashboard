@@ -39,16 +39,23 @@ void SongCollection::enumerateSongs(std::function<void(const Song* pSong, int in
     }
 }
 
-void SongCollection::activateSong(int songIndex, juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource)
+Song* SongCollection::activateSong(
+    int songIndex, 
+    juce::AudioFormatManager* pAudioFormatManager, 
+    juce::AudioTransportSource* pAudioTransportSource, 
+    PlayerComponent* m_pPlayerComponent)
 {
     if (songIndex < m_songs.size()) {
         if (m_currentSongIndex >= 0 && m_currentSongIndex < m_songs.size())
             m_songs[m_currentSongIndex]->deactivate();
         m_currentSongIndex = songIndex;
-        m_songs[m_currentSongIndex]->activate(pAudioFormatManager, pAudioTransportSource);
+        auto& songPtr = m_songs[m_currentSongIndex];
+        songPtr->activate(pAudioFormatManager, pAudioTransportSource, m_pPlayerComponent);
+        return songPtr.get();
     }
     else {
         DBG("activateSong: index (" << songIndex << ")is out of bound. Size is " << m_songs.size());
+        return nullptr;
     }
 }
 

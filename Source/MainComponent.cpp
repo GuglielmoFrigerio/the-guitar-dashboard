@@ -24,10 +24,6 @@ MainComponent::MainComponent()
 
     m_setupButton.addListener(this);
     m_virtualBandButton.addListener(this);
-
-
-    startTimer(50);
-
 }
 
 MainComponent::~MainComponent()
@@ -62,11 +58,6 @@ void MainComponent::resized()
     }
 
 }
-
-void MainComponent::timerCallback()
-{
-}
-
 
 void MainComponent::buttonClicked(juce::Button* button)
 {

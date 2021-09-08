@@ -14,6 +14,7 @@
 
 class VirtualBand;
 class MidiTrack;
+class PlayerComponent;
 
 class TheLambsSong : public Song
 {
@@ -26,7 +27,7 @@ private:    // fields
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
 
-    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource) override;
+    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent) override;
 
     virtual void selectProgramChange(int programChangeIndex) override;
     virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;

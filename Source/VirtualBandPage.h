@@ -19,7 +19,8 @@
 class VirtualBandPage : 
     public juce::AudioAppComponent, 
     public juce::KeyListener,
-    public juce::ChangeListener
+    public juce::ChangeListener,
+    private juce::Timer
 {
 private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
@@ -39,6 +40,7 @@ private:    // implementation
     void loadSongLibrary(juce::File& file);
     void onFirstResized();
     void releaseResources() override;
+    void timerCallback() override;
 
 public:     // interface
     VirtualBandPage(juce::ApplicationProperties& properties);

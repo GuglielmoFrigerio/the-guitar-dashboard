@@ -16,25 +16,25 @@
 class Song;
 class VirtualBand;
 class ProgramChangesComponent;
+class PlayerComponent;
 
 class SongCollection {
 private:    // fields
     std::vector<std::unique_ptr<Song>>   m_songs;
     int m_currentSongIndex = -1;
+    Song* m_pCurrentSong = nullptr;
 
 public:
     static std::unique_ptr<SongCollection> loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand);
     void addSong(std::unique_ptr<Song>& newSong);
 
     void enumerateSongs(std::function<void(const Song* pSong, int index)> callback) const;
-    void activateSong(int songIndex, juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource);
+    Song* activateSong(
+        int songIndex, 
+        juce::AudioFormatManager* pAudioFormatManager, 
+        juce::AudioTransportSource* pAudioTransportSource,
+        PlayerComponent* m_pPlayerComponent);
+
     void selectProgramChange(int programChangeIndex);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
-
-    Song* getActiveSong() const {
-        if (m_currentSongIndex >= 0 && m_currentSongIndex < m_songs.size())
-            return m_songs[m_currentSongIndex].get();
-        DBG("SongCollection::getActiveSong m_currentSongIndex is out of bounds");
-        return nullptr;
-    }
 };

@@ -78,7 +78,6 @@ void VirtualBandPage::previousMarker()
 void VirtualBandPage::loadSongLibrary(juce::File& file)
 {
     m_virtualBandPtr->loadSongLibrary(file);
-    m_virtualBandPtr->updateSongList(&m_songListComponent);
 }
 
 void VirtualBandPage::onFirstResized()
@@ -95,6 +94,11 @@ void VirtualBandPage::releaseResources()
 {
 }
 
+void VirtualBandPage::timerCallback()
+{
+    m_virtualBandPtr->timerCallback();
+}
+
 
 VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     :   m_loadSongLibraryButton("Load Songs Library"),
@@ -105,7 +109,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
 
-    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent);
+    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent);
     m_virtualBandPtr->loadDevices();
 
     // Some platforms require permissions to open input channels so request that here
@@ -131,6 +135,8 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
     addKeyListener(this);
+
+    startTimer(50);
 }
 
 VirtualBandPage::~VirtualBandPage()
@@ -145,7 +151,7 @@ void VirtualBandPage::resized()
     auto rect = getLocalBounds();
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
-    m_playerComponent.setBounds(rect.removeFromBottom(80));
+    m_playerComponent.setBounds(rect.removeFromBottom(160));
     m_programChangesComponent.setBounds(rect);
 
     if (m_firstResize) {
