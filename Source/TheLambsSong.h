@@ -21,6 +21,7 @@ private:    // fields
     MidiTrack* m_pMidiTrack = nullptr;
     int m_selectedProgramIndex = 0;
     std::unique_ptr<juce::AudioFormatReaderSource> m_readerSourcePtr;
+    juce::String m_trackName;
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);

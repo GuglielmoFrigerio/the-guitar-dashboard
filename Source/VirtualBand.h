@@ -17,6 +17,8 @@
 #include "ProgramChangesComponent.h"
 
 class SongListComponent;
+class PlayerComponent;
+enum class PlayerState;
 
 class VirtualBand : public IDeviceHost, public juce::ChangeListener
 {
@@ -25,12 +27,14 @@ private:    // fields
     std::vector<std::unique_ptr<FractalDevice>> m_fractalDevices;
     juce::AudioFormatManager m_formatManager;
     juce::AudioTransportSource m_transportSource;
+    PlayerComponent* m_pPlayerComponent;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
+    void onPlayerStateUpdated(PlayerState newPlayerState);
 
 public: // interface
-    VirtualBand();
+    VirtualBand(PlayerComponent * pPlayerComponent);
 
     void loadDevices();
     void loadSongLibrary(const juce::File& inputFile);

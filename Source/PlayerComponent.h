@@ -14,8 +14,10 @@
 #include "PlayerButton.h"
 
 enum class PlayerState {
-    Stop,
-    Play
+    Stopped,
+    Starting,
+    Playing,
+    Stopping
 };
 
 class PlayerComponent : public juce::Component 
@@ -28,9 +30,7 @@ private:    // fields
     PlayerState     m_playerState;
 
 private:    // implementation
-    void onPlayClick();
-    void onStopClick();
-    void setNewState(PlayerState playerState);
+    void sendStateUpdate();
 
 public:
     PlayerComponent();
@@ -39,4 +39,6 @@ public:
     void resized() override;
 
     std::function<void(PlayerState)> onPlayerCommand;
+
+    void changeState(PlayerState newPlayerState);
 };

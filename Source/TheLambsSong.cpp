@@ -20,21 +20,27 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     auto track = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
     m_pMidiTrack = dynamic_cast<MidiTrack*>(track.get());
     addTrack(std::move(track));
+
+    auto pTrackElement = pPatchesElement->getChildByName("Track");
+    if (pTrackElement != nullptr) {
+        m_trackName = pTrackElement->getStringAttribute("name");
+    }
 }
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource)
 {
-    auto currentDir = juce::File::getCurrentWorkingDirectory();
-    auto file = currentDir.getChildFile("../../Resources/Tracks/Hairless Heart - Genesis.mp3");
-    if (file != juce::File{})
-    {
-        auto* pReader = pAudioFormatManager->createReaderFor(file);
+    if (!m_trackName.isEmpty()) {
+        auto currentDir = juce::File::getCurrentWorkingDirectory();
+        auto trackPath = "../../Resources/Tracks/" + m_trackName;
+        auto file = currentDir.getChildFile(trackPath);
+        if (file != juce::File{}) {
+            auto* pReader = pAudioFormatManager->createReaderFor(file);
 
-        if (pReader != nullptr)
-        {
-            auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
-            pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
-            m_readerSourcePtr.reset(newSourcePtr.release());
+            if (pReader != nullptr) {
+                auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
+                pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
+                m_readerSourcePtr.reset(newSourcePtr.release());
+            }
         }
     }
 }

@@ -10,23 +10,9 @@
 
 #include "PlayerComponent.h"
 
-void PlayerComponent::onPlayClick()
-{
-    if (m_playerState != PlayerState::Play) {
-        setNewState(PlayerState::Play);
-    }
-}
 
-void PlayerComponent::onStopClick()
+void PlayerComponent::sendStateUpdate()
 {
-    if (m_playerState != PlayerState::Stop) {
-        setNewState(PlayerState::Stop);
-    }
-}
-
-void PlayerComponent::setNewState(PlayerState playerState)
-{
-    m_playerState = playerState;
     if (onPlayerCommand != nullptr)
         onPlayerCommand(m_playerState);
 }
@@ -36,15 +22,15 @@ PlayerComponent::PlayerComponent()
         m_previousButton("backward"),
         m_nextButton("forward"),
         m_stopButton("stop"),
-        m_playerState(PlayerState::Stop)
+        m_playerState(PlayerState::Stopped)
 {
     addAndMakeVisible(m_playButton);
     addAndMakeVisible(m_previousButton);
     addAndMakeVisible(m_nextButton);
     addAndMakeVisible(m_stopButton);
 
-    m_playButton.onClick = [this] { onPlayClick(); };
-    m_stopButton.onClick = [this] { onStopClick(); };
+    m_playButton.onClick = [this] { changeState(PlayerState::Starting); };
+    m_stopButton.onClick = [this] { changeState(PlayerState::Stopping); };
 }
 
 void PlayerComponent::paint(juce::Graphics& g)
@@ -67,4 +53,31 @@ void PlayerComponent::resized()
     m_stopButton.setPosition(1, width, height, margin);
     m_playButton.setPosition(2, width, height, margin);
     m_nextButton.setPosition(3, width, height, margin);
+}
+
+void PlayerComponent::changeState(PlayerState newPlayerState)
+{
+    if (newPlayerState != m_playerState) {
+        m_playerState = newPlayerState;
+
+        switch (newPlayerState)
+        {
+        case PlayerState::Stopped:
+            m_stopButton.setEnabled(true);
+            m_playButton.setEnabled(true);
+            break;
+
+        case PlayerState::Starting:
+            m_playButton.setEnabled(false);
+            sendStateUpdate();
+            break;
+
+        case PlayerState::Playing:
+            m_playButton.setEnabled(true);
+            break;
+
+        case PlayerState::Stopping:
+            sendStateUpdate();
+        }
+    }
 }

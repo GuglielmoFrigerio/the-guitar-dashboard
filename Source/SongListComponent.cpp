@@ -16,11 +16,13 @@
 
 void SongListComponent::buttonClicked(juce::Button* pButton)
 {
-    auto idAsString = pButton->getComponentID();
-    auto index = idAsString.getIntValue();
+    if (pButton->getToggleState()) {
+        auto idAsString = pButton->getComponentID();
+        auto index = idAsString.getIntValue();
 
-    if (onSongSelected != nullptr)
-        onSongSelected(index);
+        if (onSongSelected != nullptr)
+            onSongSelected(index);
+    }
 }
 
 //==============================================================================

@@ -11,15 +11,34 @@
 #include "VirtualBand.h"
 #include "GuitarDashCommon.h"
 #include "SongListComponent.h"
+#include "PlayerComponent.h"
 
 void VirtualBand::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
+    if (source == &m_transportSource)
+    {
+        if (m_transportSource.isPlaying())
+            m_pPlayerComponent->changeState(PlayerState::Playing);
+        else
+            m_pPlayerComponent->changeState(PlayerState::Stopped);
+    }
 }
 
-VirtualBand::VirtualBand()
+void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState)
+{
+    if (newPlayerState == PlayerState::Starting)
+        m_transportSource.start();
+
+    else if (newPlayerState == PlayerState::Stopping)
+        m_transportSource.stop();
+}
+
+VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent)
+    : m_pPlayerComponent(pPlayerComponent)
 {
     m_formatManager.registerBasicFormats();
-    m_transportSource.addChangeListener(this);   // [2]
+    m_transportSource.addChangeListener(this);
+    m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState) { onPlayerStateUpdated(playerState); };
 }
 
 void VirtualBand::loadDevices()

@@ -15,11 +15,13 @@
 
 void ProgramChangesComponent::buttonClicked(juce::Button* pButton)
 {
-    auto idAsString = pButton->getComponentID();
-    auto index = idAsString.getIntValue();
+    if (pButton->getToggleState()) {
+        auto idAsString = pButton->getComponentID();
+        auto index = idAsString.getIntValue();
 
-    if (onProgramChangeSelected != nullptr)
-        onProgramChangeSelected(index);
+        if (onProgramChangeSelected != nullptr)
+            onProgramChangeSelected(index);
+    }
 }
 
 //==============================================================================

@@ -105,7 +105,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
 
-    m_virtualBandPtr = std::make_unique<VirtualBand>();
+    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent);
     m_virtualBandPtr->loadDevices();
 
     // Some platforms require permissions to open input channels so request that here
@@ -131,16 +131,11 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
     addKeyListener(this);
-
-    m_playerComponent.onPlayerCommand = [this](PlayerState playerState) {
-        if (playerState == PlayerState::Play)
-            m_virtualBandPtr->play();
-
-    };
 }
 
 VirtualBandPage::~VirtualBandPage()
 {
+    m_virtualBandPtr = nullptr;
     removeKeyListener(this);
     shutdownAudio();
 }
