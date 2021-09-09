@@ -17,6 +17,15 @@ void PlayerComponent::sendStateUpdate()
         onPlayerCommand(m_playerState);
 }
 
+void PlayerComponent::disable()
+{
+    m_previousButton.setEnabled(false);
+    m_stopButton.setEnabled(false);
+    m_playButton.setEnabled(false);
+    m_nextButton.setEnabled(false);
+
+}
+
 PlayerComponent::PlayerComponent()
     :   m_playButton("play"),
         m_previousButton("backward"),
@@ -32,6 +41,8 @@ PlayerComponent::PlayerComponent()
 
     m_playButton.onClick = [this] { changeState(PlayerState::Starting); };
     m_stopButton.onClick = [this] { changeState(PlayerState::Stopping); };
+
+    disable();
 }
 
 void PlayerComponent::paint(juce::Graphics& g)
@@ -55,10 +66,10 @@ void PlayerComponent::resized()
     auto width = bounds.getWidth();
     auto height = bounds.getHeight();
 
-    m_previousButton.setPosition(0, width, height, margin);
-    m_stopButton.setPosition(1, width, height, margin);
-    m_playButton.setPosition(2, width, height, margin);
-    m_nextButton.setPosition(3, width, height, margin);
+    m_previousButton.setPosition(0, bounds, margin);
+    m_stopButton.setPosition(1, bounds, margin);
+    m_playButton.setPosition(2, bounds, margin);
+    m_nextButton.setPosition(3, bounds, margin);
 }
 
 void PlayerComponent::changeState(PlayerState newPlayerState)
@@ -74,16 +85,17 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
             break;
 
         case PlayerState::Starting:
-            m_playButton.setEnabled(false);
             sendStateUpdate();
             break;
 
         case PlayerState::Playing:
-            m_playButton.setEnabled(true);
+            m_playButton.setEnabled(false);
+            m_stopButton.setEnabled(true);
             break;
 
         case PlayerState::Stopping:
             sendStateUpdate();
+            break;
         }
     }
 }
@@ -91,6 +103,7 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
 void PlayerComponent::setTrackDuration(float trackDuration)
 {
     m_trackPositionSlider.setRange(.0, trackDuration);
+    m_playButton.setEnabled(true);
 }
 
 void PlayerComponent::updateTrackPosition(float position)

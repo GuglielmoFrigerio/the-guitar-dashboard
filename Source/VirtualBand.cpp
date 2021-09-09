@@ -52,6 +52,7 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
     m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState) { onPlayerStateUpdated(playerState); };
+    m_pPlayerComponent->onChangePosition = [this](float newPosition) { m_transportSource.setPosition(newPosition); };
 }
 
 void VirtualBand::loadDevices()
