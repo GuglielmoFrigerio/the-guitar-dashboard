@@ -25,9 +25,9 @@ PlayerButton::PlayerButton(juce::StringRef imageName)
         0.0f);
 }
 
-void PlayerButton::setPosition(int positionIndex, int width, int height, int margin)
+void PlayerButton::setPosition(int positionIndex, juce::Rectangle<int>& rect, int margin)
 {
-    auto startX = width / 2 - (m_imageWidth * 2 + margin * 1.5f);
+    auto startX = rect.getWidth() / 2 - (m_imageWidth * 2 + margin * 1.5f) + rect.getX();
     auto deltaX = m_imageWidth + margin;
-    setBounds(startX + deltaX * positionIndex, (height - m_imageHeight) / 2, m_imageWidth, m_imageHeight);
+    setBounds(startX + deltaX * positionIndex, ((rect.getHeight() - m_imageHeight) / 2) + rect.getY(), m_imageWidth, m_imageHeight);
 }

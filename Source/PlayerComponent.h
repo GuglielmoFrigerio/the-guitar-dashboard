@@ -32,6 +32,7 @@ private:    // fields
 
 private:    // implementation
     void sendStateUpdate();
+    void disable();
 
 public:
     PlayerComponent();
@@ -40,6 +41,7 @@ public:
     void resized() override;
 
     std::function<void(PlayerState)> onPlayerCommand;
+    std::function<void(float)> onChangePosition;
 
     void changeState(PlayerState newPlayerState);
 
