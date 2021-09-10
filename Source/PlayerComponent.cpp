@@ -11,10 +11,10 @@
 #include "PlayerComponent.h"
 
 
-void PlayerComponent::sendStateUpdate()
+void PlayerComponent::sendStateUpdate(PlayerState playerState)
 {
     if (onPlayerCommand != nullptr)
-        onPlayerCommand(m_playerState);
+        onPlayerCommand(playerState);
 }
 
 void PlayerComponent::disable()
@@ -23,7 +23,6 @@ void PlayerComponent::disable()
     m_stopButton.setEnabled(false);
     m_playButton.setEnabled(false);
     m_nextButton.setEnabled(false);
-
 }
 
 PlayerComponent::PlayerComponent()
@@ -39,8 +38,11 @@ PlayerComponent::PlayerComponent()
     addAndMakeVisible(m_stopButton);
     addAndMakeVisible(m_trackPositionSlider);
 
-    m_playButton.onClick = [this] { changeState(PlayerState::Starting); };
-    m_stopButton.onClick = [this] { changeState(PlayerState::Stopping); };
+    m_playButton.onClick = [this] { startStateChange(PlayerState::Starting); };
+    m_stopButton.onClick = [this] { startStateChange(PlayerState::Stopping); };
+
+    m_trackPositionSlider.addListener(this);
+    m_trackPositionSlider.setSliderStyle(juce::Slider::SliderStyle::LinearBar);
 
     disable();
 }
@@ -72,6 +74,37 @@ void PlayerComponent::resized()
     m_nextButton.setPosition(3, bounds, margin);
 }
 
+void PlayerComponent::startStateChange(PlayerState newPlayerState)
+{
+    if (newPlayerState == PlayerState::Stopping && m_playerState == PlayerState::Stopped) {
+        if (onChangePosition != nullptr)
+            onChangePosition(.0f);
+    }
+    else {
+        m_stopButton.setEnabled(false);
+        m_playButton.setEnabled(false);
+        sendStateUpdate(newPlayerState);
+    }
+}
+
+void PlayerComponent::sliderValueChanged(juce::Slider* slider)
+{
+}
+
+void PlayerComponent::sliderDragStarted(juce::Slider*)
+{
+    m_draggingPosition = true;
+}
+
+void PlayerComponent::sliderDragEnded(juce::Slider*)
+{
+    m_draggingPosition = false;
+    if (onChangePosition != nullptr) {
+        auto value = m_trackPositionSlider.getValue();
+        onChangePosition((float)value);
+    }
+}
+
 void PlayerComponent::changeState(PlayerState newPlayerState)
 {
     if (newPlayerState != m_playerState) {
@@ -84,17 +117,9 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
             m_playButton.setEnabled(true);
             break;
 
-        case PlayerState::Starting:
-            sendStateUpdate();
-            break;
-
         case PlayerState::Playing:
             m_playButton.setEnabled(false);
             m_stopButton.setEnabled(true);
-            break;
-
-        case PlayerState::Stopping:
-            sendStateUpdate();
             break;
         }
     }
@@ -102,11 +127,13 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
 
 void PlayerComponent::setTrackDuration(float trackDuration)
 {
+    m_playerState = PlayerState::Stopped;
     m_trackPositionSlider.setRange(.0, trackDuration);
     m_playButton.setEnabled(true);
 }
 
 void PlayerComponent::updateTrackPosition(float position)
 {
-    m_trackPositionSlider.setValue(position);
+    if (!m_draggingPosition)
+        m_trackPositionSlider.setValue(position);
 }

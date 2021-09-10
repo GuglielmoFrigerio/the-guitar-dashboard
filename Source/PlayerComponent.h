@@ -20,7 +20,7 @@ enum class PlayerState {
     Stopping
 };
 
-class PlayerComponent : public juce::Component 
+class PlayerComponent : public juce::Component, private juce::Slider::Listener 
 {
 private:    // fields
     PlayerButton    m_previousButton;
@@ -29,10 +29,17 @@ private:    // fields
     PlayerButton    m_nextButton;
     PlayerState     m_playerState;
     juce::Slider    m_trackPositionSlider;
+    bool            m_draggingPosition = false;
 
 private:    // implementation
-    void sendStateUpdate();
+    void sendStateUpdate(PlayerState playerState);
     void disable();
+    void startStateChange(PlayerState newPlayerState);
+
+private:
+    void sliderValueChanged(juce::Slider* slider) override;
+    void sliderDragStarted(juce::Slider*) override;
+    void sliderDragEnded(juce::Slider*) override;
 
 public:
     PlayerComponent();
