@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="the-guitar-dashboard\Source\Components">
+      <UniqueIdentifier>{9EB66492-E521-E5CD-68E2-E868701F3F61}</UniqueIdentifier>
+    </Filter>
     <Filter Include="the-guitar-dashboard\Source">
       <UniqueIdentifier>{28BC6529-9995-A647-CAB3-76BBC42F2450}</UniqueIdentifier>
     </Filter>
@@ -439,19 +442,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\PlayerButton.cpp">
+    <ClCompile Include="..\..\Source\ValueAnimator.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\PlayerComponent.cpp">
-      <Filter>the-guitar-dashboard\Source</Filter>
+    <ClCompile Include="..\..\Source\MainComponent.cpp">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TilesLookAndFeel.cpp">
-      <Filter>the-guitar-dashboard\Source</Filter>
+    <ClCompile Include="..\..\Source\TimeSlider.cpp">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ProgramChangesComponent.cpp">
-      <Filter>the-guitar-dashboard\Source</Filter>
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\SongListComponent.cpp">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PlayerComponent.cpp">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PlayerButton.cpp">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TilesLookAndFeel.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Marker.cpp">
@@ -545,9 +557,6 @@
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
-      <Filter>the-guitar-dashboard\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.cpp">
@@ -2637,19 +2646,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\PlayerButton.h">
+    <ClInclude Include="..\..\Source\ValueAnimator.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\PlayerComponent.h">
-      <Filter>the-guitar-dashboard\Source</Filter>
+    <ClInclude Include="..\..\Source\MainComponent.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TilesLookAndFeel.h">
-      <Filter>the-guitar-dashboard\Source</Filter>
+    <ClInclude Include="..\..\Source\TimeSlider.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ProgramChangesComponent.h">
-      <Filter>the-guitar-dashboard\Source</Filter>
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\SongListComponent.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PlayerComponent.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PlayerButton.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TilesLookAndFeel.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Marker.h">
@@ -2752,9 +2770,6 @@
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PitchDetector.h">
-      <Filter>the-guitar-dashboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_basics\audio_play_head\juce_AudioPlayHead.h">

@@ -12,6 +12,7 @@
 #include <functional>
 #include <JuceHeader.h>
 #include "PlayerButton.h"
+#include "TimeSlider.h"
 
 enum class PlayerState {
     Stopped,
@@ -28,7 +29,7 @@ private:    // fields
     PlayerButton    m_playButton;
     PlayerButton    m_nextButton;
     PlayerState     m_playerState;
-    juce::Slider    m_trackPositionSlider;
+    TimeSlider    m_trackPositionSlider;
     bool            m_draggingPosition = false;
 
 private:    // implementation

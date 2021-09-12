@@ -13,6 +13,9 @@
 #include "Track.h"
 #include "GuitarDashCommon.h"
 
+const int TileWidth = 270;
+const int TileHeight = 135;
+
 void ProgramChangesComponent::buttonClicked(juce::Button* pButton)
 {
     if (pButton->getToggleState()) {
@@ -22,6 +25,26 @@ void ProgramChangesComponent::buttonClicked(juce::Button* pButton)
         if (onProgramChangeSelected != nullptr)
             onProgramChangeSelected(index);
     }
+}
+
+void ProgramChangesComponent::timerCallback()
+{
+    if (!m_valueAnimatorPtr->timerCallback()) {
+        m_valueAnimatorPtr = nullptr;
+        stopTimer();
+    }
+}
+
+void ProgramChangesComponent::startTileAnimation(int endValue)
+{
+    auto timerMustStart = m_valueAnimatorPtr == nullptr;
+    m_valueAnimatorPtr = std::make_unique<ValueAnimator>(m_horizontalOffset, endValue, 30);
+    m_valueAnimatorPtr->onNewValue = [this](int newValue) {
+        m_horizontalOffset = newValue;
+        resized();
+    };
+    if (timerMustStart)
+        startTimer(17);
 }
 
 //==============================================================================
@@ -61,9 +84,12 @@ void ProgramChangesComponent::paint (juce::Graphics& g)
 void ProgramChangesComponent::resized()
 {
     auto bounds = getLocalBounds();
-    computeFlexBox(180, 90, bounds.getWidth(), m_programChanceTiles.size(), [this](int index, int x, int y, int w, int h) {
-        m_programChanceTiles[index]->setBounds(x, y, w, h);
-    });
+    auto x = -m_horizontalOffset;
+    auto y = bounds.getHeight() / 2 - (TileHeight / 2);
+    for (auto pTile : m_programChanceTiles) {
+        pTile->setBounds(x, y, TileWidth, TileHeight);
+        x += TileWidth;
+    }
 }
 
 void ProgramChangesComponent::update(const Track* pTrack)
@@ -94,5 +120,18 @@ void ProgramChangesComponent::selectProgramChange(int programChangeIndex)
 {
     if (programChangeIndex < m_programChanceTiles.size()) {
         m_programChanceTiles[programChangeIndex]->setToggleState(true, juce::NotificationType::sendNotification);
+        auto bounds = getLocalBounds();
+        auto tileCenter = programChangeIndex * TileWidth + TileWidth / 2;
+        auto xCenter = bounds.getWidth() / 2;
+        auto horizontalOffset = 0;
+        if (tileCenter > xCenter) {
+            horizontalOffset = tileCenter - xCenter;
+            auto xLeft = m_programChanceTiles.size() * TileWidth - tileCenter;
+            if (xLeft < xCenter)
+                horizontalOffset -= (xCenter - xLeft);
+        }
+        if (horizontalOffset != m_horizontalOffset) {
+            startTileAnimation(horizontalOffset);
+        }
     }
 }

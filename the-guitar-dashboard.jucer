@@ -5,25 +5,35 @@
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
-      <FILE id="Jwzyia" name="PlayerButton.cpp" compile="1" resource="0"
-            file="Source/PlayerButton.cpp"/>
-      <FILE id="PwQoBN" name="PlayerButton.h" compile="0" resource="0" file="Source/PlayerButton.h"/>
-      <FILE id="tvbxCk" name="PlayerComponent.cpp" compile="1" resource="0"
-            file="Source/PlayerComponent.cpp"/>
-      <FILE id="QXxDmZ" name="PlayerComponent.h" compile="0" resource="0"
-            file="Source/PlayerComponent.h"/>
+      <FILE id="uSWpUn" name="ValueAnimator.cpp" compile="1" resource="0"
+            file="Source/ValueAnimator.cpp"/>
+      <FILE id="KLMWOZ" name="ValueAnimator.h" compile="0" resource="0" file="Source/ValueAnimator.h"/>
+      <GROUP id="{CDE15E17-6795-C384-F22B-7C250F451DB6}" name="Components">
+        <FILE id="STehB8" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+        <FILE id="tGi0iV" name="MainComponent.cpp" compile="1" resource="0"
+              file="Source/MainComponent.cpp"/>
+        <FILE id="Sdokqh" name="TimeSlider.cpp" compile="1" resource="0" file="Source/TimeSlider.cpp"/>
+        <FILE id="zbPjq9" name="TimeSlider.h" compile="0" resource="0" file="Source/TimeSlider.h"/>
+        <FILE id="vn8eo8" name="ProgramChangesComponent.cpp" compile="1" resource="0"
+              file="Source/ProgramChangesComponent.cpp"/>
+        <FILE id="xyE5sm" name="ProgramChangesComponent.h" compile="0" resource="0"
+              file="Source/ProgramChangesComponent.h"/>
+        <FILE id="SF6xdd" name="SongListComponent.cpp" compile="1" resource="0"
+              file="Source/SongListComponent.cpp"/>
+        <FILE id="ItUXhL" name="SongListComponent.h" compile="0" resource="0"
+              file="Source/SongListComponent.h"/>
+        <FILE id="tvbxCk" name="PlayerComponent.cpp" compile="1" resource="0"
+              file="Source/PlayerComponent.cpp"/>
+        <FILE id="QXxDmZ" name="PlayerComponent.h" compile="0" resource="0"
+              file="Source/PlayerComponent.h"/>
+        <FILE id="Jwzyia" name="PlayerButton.cpp" compile="1" resource="0"
+              file="Source/PlayerButton.cpp"/>
+        <FILE id="PwQoBN" name="PlayerButton.h" compile="0" resource="0" file="Source/PlayerButton.h"/>
+      </GROUP>
       <FILE id="QNeZZe" name="TilesLookAndFeel.cpp" compile="1" resource="0"
             file="Source/TilesLookAndFeel.cpp"/>
       <FILE id="wYJOYy" name="TilesLookAndFeel.h" compile="0" resource="0"
             file="Source/TilesLookAndFeel.h"/>
-      <FILE id="vn8eo8" name="ProgramChangesComponent.cpp" compile="1" resource="0"
-            file="Source/ProgramChangesComponent.cpp"/>
-      <FILE id="xyE5sm" name="ProgramChangesComponent.h" compile="0" resource="0"
-            file="Source/ProgramChangesComponent.h"/>
-      <FILE id="SF6xdd" name="SongListComponent.cpp" compile="1" resource="0"
-            file="Source/SongListComponent.cpp"/>
-      <FILE id="ItUXhL" name="SongListComponent.h" compile="0" resource="0"
-            file="Source/SongListComponent.h"/>
       <FILE id="id327N" name="Marker.cpp" compile="1" resource="0" file="Source/Marker.cpp"/>
       <FILE id="jnn6fa" name="Marker.h" compile="0" resource="0" file="Source/Marker.h"/>
       <FILE id="H9ZThG" name="TheLambsSong.cpp" compile="1" resource="0"
@@ -114,9 +124,6 @@
             file="Source/PitchDetector.cpp"/>
       <FILE id="DUPNeo" name="PitchDetector.h" compile="0" resource="0" file="Source/PitchDetector.h"/>
       <FILE id="m8s2gA" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
-      <FILE id="STehB8" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="tGi0iV" name="MainComponent.cpp" compile="1" resource="0"
-            file="Source/MainComponent.cpp"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1"/>

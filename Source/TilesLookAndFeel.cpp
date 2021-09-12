@@ -12,8 +12,6 @@
 
 void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown)
 {
-    DBG("[TilesLookAndFeed::drawButtonBackground] toggle: " << (int)button.getToggleState());
-
     auto idAsString = button.getComponentID();
     auto buttonIndex = idAsString.getIntValue();
     auto colorIndex = buttonIndex % m_colors.size();
