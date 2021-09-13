@@ -137,3 +137,24 @@ void PlayerComponent::updateTrackPosition(float position)
     if (!m_draggingPosition)
         m_trackPositionSlider.setValue(position);
 }
+
+void PlayerComponent::toggleStartStop()
+{
+    if (m_playerState == PlayerState::Stopped)
+        startStateChange(PlayerState::Starting);
+    else if (m_playerState == PlayerState::Playing)
+        startStateChange(PlayerState::Stopping);
+}
+
+void PlayerComponent::stopAndRewind()
+{
+    if (m_playerState == PlayerState::Playing) {
+        if (onChangePosition != nullptr)
+            onChangePosition(.0f);
+        startStateChange(PlayerState::Stopping);
+    }
+    else if (m_playerState == PlayerState::Stopped) {
+        if (onChangePosition != nullptr)
+            onChangePosition(.0f);
+    }
+}

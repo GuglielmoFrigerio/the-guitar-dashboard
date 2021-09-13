@@ -37,12 +37,12 @@ void VirtualBandPage::chooseSongLibrary()
 bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originatingComponent)
 {
     auto keyCode = key.getKeyCode();
+
+    m_trackPlayerKeyManager.keyPressed(keyCode);
+
     switch (keyCode) {
     case 65:
         previousMarker();
-        break;
-
-    case 66:
         break;
 
     case 67:
@@ -50,6 +50,12 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
         break;
 
     }
+    return false;
+}
+
+bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* originatingComponent)
+{
+    m_trackPlayerKeyManager.keyStateChanged(isKeyDown);
     return false;
 }
 
@@ -102,7 +108,8 @@ void VirtualBandPage::timerCallback()
 
 VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     :   m_loadSongLibraryButton("Load Songs Library"),
-        m_properties(properties)
+        m_properties(properties),
+        m_trackPlayerKeyManager(66, 32)
 {
     addAndMakeVisible(m_loadSongLibraryButton);
     addAndMakeVisible(m_songListComponent);
@@ -135,6 +142,12 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
     addKeyListener(this);
+
+    m_trackPlayerKeyManager.onKeyPressed = [this](bool holding) {
+        if (holding)
+            m_virtualBandPtr->stopAndRewind();
+        else m_virtualBandPtr->toggleStartStop();
+    };
 
     startTimer(50);
 }

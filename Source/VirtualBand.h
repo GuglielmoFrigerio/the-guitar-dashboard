@@ -58,7 +58,8 @@ public: // interface
         return m_pActiveSong;
     }
 
-    void play();
-
     void timerCallback();
+
+    void toggleStartStop();
+    void stopAndRewind();
 };

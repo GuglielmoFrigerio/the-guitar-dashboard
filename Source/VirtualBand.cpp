@@ -105,11 +105,6 @@ void VirtualBand::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
     m_transportSource.getNextAudioBlock(bufferToFill);
 }
 
-void VirtualBand::play()
-{
-    m_transportSource.start();
-}
-
 void VirtualBand::timerCallback()
 {
     if (m_devicesLoaded && m_songLibraryFileReady) {
@@ -121,5 +116,15 @@ void VirtualBand::timerCallback()
         auto position = m_transportSource.getCurrentPosition();
         m_pPlayerComponent->updateTrackPosition(position);
     }
+}
+
+void VirtualBand::toggleStartStop()
+{
+    m_pPlayerComponent->toggleStartStop();
+}
+
+void VirtualBand::stopAndRewind()
+{
+    m_pPlayerComponent->stopAndRewind();
 }
 

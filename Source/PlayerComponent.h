@@ -29,7 +29,7 @@ private:    // fields
     PlayerButton    m_playButton;
     PlayerButton    m_nextButton;
     PlayerState     m_playerState;
-    TimeSlider    m_trackPositionSlider;
+    TimeSlider      m_trackPositionSlider;
     bool            m_draggingPosition = false;
 
 private:    // implementation
@@ -55,4 +55,6 @@ public:
 
     void setTrackDuration(float trackDuration);
     void updateTrackPosition(float position);
+    void toggleStartStop();
+    void stopAndRewind();
 };

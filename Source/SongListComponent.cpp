@@ -14,6 +14,10 @@
 #include "Song.h"
 #include "GuitarDashCommon.h"
 
+const int TileWidth = 270;
+const int TileHeight = 135;
+
+
 void SongListComponent::buttonClicked(juce::Button* pButton)
 {
     if (pButton->getToggleState()) {
@@ -62,7 +66,7 @@ void SongListComponent::paint(juce::Graphics& g)
 void SongListComponent::resized()
 {
     auto bounds = getLocalBounds();
-    computeFlexBox(180, 90, bounds.getWidth(), m_songTiles.size(), [this](int index, int x, int y, int w, int h) {
+    computeFlexBox(TileWidth, TileHeight, bounds.getWidth(), m_songTiles.size(), [this](int index, int x, int y, int w, int h) {
         m_songTiles[index]->setBounds(x, y, w, h);
     });
 }

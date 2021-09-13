@@ -139,6 +139,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\KeyManager.cpp"/>
     <ClCompile Include="..\..\Source\ValueAnimator.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\TimeSlider.cpp"/>
@@ -2122,6 +2123,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\KeyManager.h"/>
     <ClInclude Include="..\..\Source\ValueAnimator.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\TimeSlider.h"/>

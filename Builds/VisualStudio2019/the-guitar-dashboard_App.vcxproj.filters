@@ -442,6 +442,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\KeyManager.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ValueAnimator.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -2646,6 +2649,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\KeyManager.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\ValueAnimator.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
