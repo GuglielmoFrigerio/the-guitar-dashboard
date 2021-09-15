@@ -62,4 +62,5 @@ public: // interface
 
     void toggleStartStop();
     void stopAndRewind();
+    void changeSongPositionBy(double amount);
 };

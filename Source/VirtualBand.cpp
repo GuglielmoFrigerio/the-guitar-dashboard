@@ -128,3 +128,19 @@ void VirtualBand::stopAndRewind()
     m_pPlayerComponent->stopAndRewind();
 }
 
+void VirtualBand::changeSongPositionBy(double amount)
+{
+    if (m_pPlayerComponent->isPlaying()) {
+        auto position = m_transportSource.getCurrentPosition();
+        auto trackLength = m_transportSource.getLengthInSeconds();
+        auto nextPosition = position + amount;
+
+        if (nextPosition < 0.0)
+            nextPosition = 0.0;
+
+        if (nextPosition < trackLength) {
+            m_transportSource.setPosition(nextPosition);
+        }
+    }
+}
+

@@ -33,6 +33,7 @@ private:    // fields
     bool m_firstResize = true;
     PlayerComponent m_playerComponent;
     KeyManager m_trackPlayerKeyManager;
+    std::unordered_map<int, std::function<void(const juce::KeyPress& key, Component* originatingComponent)>> m_keyHandlerMap;
 
 private:    // implementation
     void chooseSongLibrary();
@@ -42,6 +43,7 @@ private:    // implementation
     void onFirstResized();
     void releaseResources() override;
     void timerCallback() override;
+    void setupKeyHandlers();
 
 private:    // KeyListener
     bool keyPressed(const juce::KeyPress& key, Component* originatingComponent) override;

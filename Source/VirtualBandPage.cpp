@@ -37,19 +37,14 @@ void VirtualBandPage::chooseSongLibrary()
 bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originatingComponent)
 {
     auto keyCode = key.getKeyCode();
+    const int bla = 3;
 
     m_trackPlayerKeyManager.keyPressed(keyCode);
 
-    switch (keyCode) {
-    case 65:
-        previousMarker();
-        break;
+    auto it = m_keyHandlerMap.find(keyCode);
+    if (it != m_keyHandlerMap.end())
+        it->second(key, originatingComponent);
 
-    case 67:
-        nextMarker();
-        break;
-
-    }
     return false;
 }
 
@@ -105,6 +100,27 @@ void VirtualBandPage::timerCallback()
     m_virtualBandPtr->timerCallback();
 }
 
+void VirtualBandPage::setupKeyHandlers()
+{
+    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& key, Component* originatingComponent) {
+        previousMarker();
+    });
+
+    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& key, Component* originatingComponent) {
+        nextMarker();
+    });
+
+    m_keyHandlerMap.emplace(juce::KeyPress::rightKey, [this](const juce::KeyPress& key, Component* originatingComponent) {
+        auto amount = (key.getModifiers().isShiftDown()) ? 5.0 : 10.0;
+        m_virtualBandPtr->changeSongPositionBy(amount);
+    });
+
+    m_keyHandlerMap.emplace(juce::KeyPress::leftKey, [this](const juce::KeyPress& key, Component* originatingComponent) {
+        auto amount = (key.getModifiers().isShiftDown()) ? -5.0 : -10.0;
+        m_virtualBandPtr->changeSongPositionBy(amount);
+    });
+}
+
 
 VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     :   m_loadSongLibraryButton("Load Songs Library"),
@@ -115,6 +131,8 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_songListComponent);
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
+
+    setupKeyHandlers();
 
     m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent);
     m_virtualBandPtr->loadDevices();

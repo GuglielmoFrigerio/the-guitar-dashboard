@@ -57,4 +57,7 @@ public:
     void updateTrackPosition(float position);
     void toggleStartStop();
     void stopAndRewind();
+    bool isPlaying() const {
+        return m_playerState == PlayerState::Playing;
+    }
 };
