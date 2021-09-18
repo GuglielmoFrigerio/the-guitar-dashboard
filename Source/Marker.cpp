@@ -9,3 +9,13 @@
 */
 
 #include "Marker.h"
+
+Marker::Marker(double position)
+    :   m_position(position)
+{
+}
+
+void Marker::activate(juce::AudioTransportSource* pAudioTransportSource)
+{
+    pAudioTransportSource->setPosition(m_position);
+}

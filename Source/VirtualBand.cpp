@@ -53,6 +53,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_transportSource.addChangeListener(this);
     m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState) { onPlayerStateUpdated(playerState); };
     m_pPlayerComponent->onChangePosition = [this](float newPosition) { m_transportSource.setPosition(newPosition); };
+    m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
+    m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
 }
 
 void VirtualBand::loadDevices()
@@ -115,6 +117,7 @@ void VirtualBand::timerCallback()
     if (m_pActiveSong != nullptr) {
         auto position = m_transportSource.getCurrentPosition();
         m_pPlayerComponent->updateTrackPosition(position);
+        m_pActiveSong->updateMarkers(position, m_pPlayerComponent);
     }
 }
 
@@ -142,5 +145,17 @@ void VirtualBand::changeSongPositionBy(double amount)
             m_transportSource.setPosition(nextPosition);
         }
     }
+}
+
+void VirtualBand::nextMarker()
+{
+    if (m_pActiveSong != nullptr)
+        m_pActiveSong->nextMarker(&m_transportSource);
+}
+
+void VirtualBand::previousMarker()
+{
+    if (m_pActiveSong != nullptr)
+        m_pActiveSong->previousMarker(&m_transportSource);
 }
 

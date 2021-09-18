@@ -16,9 +16,11 @@ class TilesLookAndFeed : public juce::LookAndFeel_V4
 {
 private:    // fields
     std::vector<juce::Colour> m_colors;
+    juce::Font m_tileFont;
 
 private:    // implementation
-    virtual void drawButtonBackground (juce::Graphics& g, juce::Button& button , const juce::Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override;
+    void drawButtonBackground (juce::Graphics& g, juce::Button& button , const juce::Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override;
+    juce::Font getTextButtonFont(juce::TextButton& button, int buttonHeight) override;
 
 public:
     TilesLookAndFeed();

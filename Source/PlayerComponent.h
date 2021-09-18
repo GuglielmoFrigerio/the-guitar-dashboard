@@ -31,6 +31,8 @@ private:    // fields
     PlayerState     m_playerState;
     TimeSlider      m_trackPositionSlider;
     bool            m_draggingPosition = false;
+    bool            m_previousEnabled = false;
+    bool            m_nextEnabled = false;
 
 private:    // implementation
     void sendStateUpdate(PlayerState playerState);
@@ -50,14 +52,18 @@ public:
 
     std::function<void(PlayerState)> onPlayerCommand;
     std::function<void(float)> onChangePosition;
+    std::function<void()> onNextMarker;
+    std::function<void()> onPreviousMarker;
 
     void changeState(PlayerState newPlayerState);
 
-    void setTrackDuration(float trackDuration);
+    void setSongInfo(float trackDuration, bool hasMarkers);
     void updateTrackPosition(float position);
     void toggleStartStop();
     void stopAndRewind();
     bool isPlaying() const {
         return m_playerState == PlayerState::Playing;
     }
+
+    void updateMakerButtons(bool previousEnabled, bool nextEnabled);
 };

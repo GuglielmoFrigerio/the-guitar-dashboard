@@ -37,17 +37,29 @@ void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& but
     LookAndFeel_V4::drawButtonBackground(g, button, color, shouldDrawButtonAsHighlighted, shouldDrawButtonAsDown);
 }
 
-TilesLookAndFeed::TilesLookAndFeed()
+juce::Font TilesLookAndFeed::getTextButtonFont(juce::TextButton& button, int buttonHeight)
 {
-    m_colors.push_back(juce::Colour(43, 15, 13));
-    m_colors.push_back(juce::Colour(43, 36, 13));
-    m_colors.push_back(juce::Colour(26, 43, 13));
-    m_colors.push_back(juce::Colour(13, 43, 22));
+    auto font = LookAndFeel_V4::getTextButtonFont(button, buttonHeight);
+    auto typefaceName = font.getTypefaceName();
+    auto size = font.getHeight();
+
+    return m_tileFont;
+}
+
+
+
+TilesLookAndFeed::TilesLookAndFeed()
+    :   m_tileFont("<Sans-Serif>", 24, juce::Font::plain)
+{
+    m_colors.push_back(juce::Colour(92, 32, 28));
+    m_colors.push_back(juce::Colour(87, 73, 27));
+    m_colors.push_back(juce::Colour(55, 92, 28));
+    m_colors.push_back(juce::Colour(30, 97, 50));
     m_colors.push_back(juce::Colour(13, 39, 43));
-    m_colors.push_back(juce::Colour(13, 25, 43));
-    m_colors.push_back(juce::Colour(16, 13, 43));
-    m_colors.push_back(juce::Colour(27, 13, 43));
-    m_colors.push_back(juce::Colour(42, 13, 43));
-    m_colors.push_back(juce::Colour(43, 13, 27));
-    m_colors.push_back(juce::Colour(43, 13, 13));
+    m_colors.push_back(juce::Colour(34, 104, 115));
+    m_colors.push_back(juce::Colour(43, 36, 115));
+    m_colors.push_back(juce::Colour(63, 31, 99));
+    m_colors.push_back(juce::Colour(87, 27, 89));
+    m_colors.push_back(juce::Colour(97, 29, 61));
+    m_colors.push_back(juce::Colour(110, 33, 33));
 }

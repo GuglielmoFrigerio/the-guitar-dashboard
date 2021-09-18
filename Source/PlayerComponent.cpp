@@ -41,6 +41,16 @@ PlayerComponent::PlayerComponent()
     m_playButton.onClick = [this] { startStateChange(PlayerState::Starting); };
     m_stopButton.onClick = [this] { startStateChange(PlayerState::Stopping); };
 
+    m_previousButton.onClick = [this] {
+        if (onPreviousMarker != nullptr)
+            onPreviousMarker();
+    };
+
+    m_nextButton.onClick = [this] {
+        if (onNextMarker != nullptr)
+            onNextMarker();
+    };
+
     m_trackPositionSlider.addListener(this);
     m_trackPositionSlider.setSliderStyle(juce::Slider::SliderStyle::LinearBar);
 
@@ -61,7 +71,7 @@ void PlayerComponent::resized()
 
     auto sliderBounds = bounds.removeFromTop(50);
     sliderBounds.reduce(30, 0);
-    m_trackPositionSlider.setBounds(sliderBounds);
+    m_trackPositionSlider.setNewBounds(sliderBounds);
 
     auto margin = 20;
 
@@ -125,11 +135,13 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
     }
 }
 
-void PlayerComponent::setTrackDuration(float trackDuration)
+void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers)
 {
     m_playerState = PlayerState::Stopped;
-    m_trackPositionSlider.setRange(.0, trackDuration);
+    m_trackPositionSlider.setTrackDuration(trackDuration);
     m_playButton.setEnabled(true);
+
+    updateMakerButtons(hasMarkers, hasMarkers);
 }
 
 void PlayerComponent::updateTrackPosition(float position)
@@ -156,5 +168,17 @@ void PlayerComponent::stopAndRewind()
     else if (m_playerState == PlayerState::Stopped) {
         if (onChangePosition != nullptr)
             onChangePosition(.0f);
+    }
+}
+
+void PlayerComponent::updateMakerButtons(bool previousEnabled, bool nextEnabled)
+{
+    if (previousEnabled != m_previousEnabled) {
+        m_previousEnabled = previousEnabled;
+        m_previousButton.setEnabled(m_previousEnabled);
+    }
+    if (nextEnabled != m_nextEnabled) {
+        m_nextEnabled = nextEnabled;
+        m_nextButton.setEnabled(m_nextEnabled);
     }
 }

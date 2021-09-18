@@ -40,4 +40,9 @@ public:
     virtual void selectProgramChange(int programChangeIndex) {}
     virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) {}
     virtual std::tuple<int, int> getSelectedProgramInfo() const = 0;
+
+    virtual void nextMarker(juce::AudioTransportSource*) {}
+    virtual void previousMarker(juce::AudioTransportSource*) {}
+
+    virtual void updateMarkers(double position, PlayerComponent* pPlayerComponent) {}
 };

@@ -54,7 +54,7 @@ bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* originatingComp
     return false;
 }
 
-void VirtualBandPage::nextMarker()
+void VirtualBandPage::nextProgramChange()
 {
     auto pActiveSong = m_virtualBandPtr->getActiveSong();
     if (pActiveSong != nullptr) {
@@ -65,7 +65,7 @@ void VirtualBandPage::nextMarker()
     }
 }
 
-void VirtualBandPage::previousMarker()
+void VirtualBandPage::previousProgramChange()
 {
     auto pActiveSong = m_virtualBandPtr->getActiveSong();
     if (pActiveSong != nullptr) {
@@ -74,6 +74,16 @@ void VirtualBandPage::previousMarker()
             m_programChangesComponent.selectProgramChange(selected -1);
         }
     }
+}
+
+void VirtualBandPage::nextMarker()
+{
+    m_virtualBandPtr->nextMarker();
+}
+
+void VirtualBandPage::previousMarker()
+{
+    m_virtualBandPtr->previousMarker();
 }
 
 void VirtualBandPage::loadSongLibrary(juce::File& file)
@@ -103,11 +113,19 @@ void VirtualBandPage::timerCallback()
 void VirtualBandPage::setupKeyHandlers()
 {
     m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& key, Component* originatingComponent) {
-        previousMarker();
+        previousProgramChange();
     });
 
     m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& key, Component* originatingComponent) {
+        nextProgramChange();
+    });
+
+    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& key, Component* originatingComponent) {
         nextMarker();
+    });
+
+    m_keyHandlerMap.emplace(80, [this](const juce::KeyPress& key, Component* originatingComponent) {
+        previousMarker();
     });
 
     m_keyHandlerMap.emplace(juce::KeyPress::rightKey, [this](const juce::KeyPress& key, Component* originatingComponent) {

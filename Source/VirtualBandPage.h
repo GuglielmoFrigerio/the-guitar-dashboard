@@ -37,13 +37,17 @@ private:    // fields
 
 private:    // implementation
     void chooseSongLibrary();
-    void nextMarker();
-    void previousMarker();
     void loadSongLibrary(juce::File& file);
     void onFirstResized();
     void releaseResources() override;
     void timerCallback() override;
     void setupKeyHandlers();
+
+private:    // keyboard
+    void nextProgramChange();
+    void previousProgramChange();
+    void nextMarker();
+    void previousMarker();
 
 private:    // KeyListener
     bool keyPressed(const juce::KeyPress& key, Component* originatingComponent) override;
