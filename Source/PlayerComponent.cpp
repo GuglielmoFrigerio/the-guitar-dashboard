@@ -135,11 +135,13 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
     }
 }
 
-void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers)
+void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers, std::vector<double>& markers)
 {
     m_playerState = PlayerState::Stopped;
     m_trackPositionSlider.setTrackDuration(trackDuration);
     m_playButton.setEnabled(true);
+
+    m_trackPositionSlider.setupMarkers(markers);
 
     updateMakerButtons(hasMarkers, hasMarkers);
 }

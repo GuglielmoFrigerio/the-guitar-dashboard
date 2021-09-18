@@ -13,15 +13,24 @@
 void TimeSlider::paint(juce::Graphics& g)
 {
     juce::Slider::paint(g);
-    drawMarker(60.0, g);
+    if (m_trackDuration > 0.0f) {
+        g.setColour(m_markerColor);
+        for (auto marker : m_markers)
+            drawMarker(marker, g);
+    }
 }
 
 void TimeSlider::drawMarker(float position, juce::Graphics& g)
 {
-    if (m_trackDuration > 0.0f) {
-        auto xPotion = int((position / m_trackDuration) * m_width);
-        g.drawLine(xPotion, 0, xPotion, 20, 2.0f);
-    }
+    auto xPotion = int((position / m_trackDuration) * m_width);
+    g.drawLine(xPotion - m_markerTriBase, m_heigth, xPotion, m_heigth - m_markerTriHeigth, m_makerLinehickness);
+    g.drawLine(xPotion, m_heigth - m_markerTriHeigth, xPotion + m_markerTriBase, m_heigth, m_makerLinehickness);
+    g.drawLine(xPotion + m_markerTriBase, m_heigth, xPotion - m_markerTriBase, m_heigth, m_makerLinehickness);
+}
+
+TimeSlider::TimeSlider()
+    :   m_markerColor(juce::Colours::yellow)
+{
 }
 
 juce::String TimeSlider::getTextFromValue(double value)
@@ -37,6 +46,7 @@ juce::String TimeSlider::getTextFromValue(double value)
 void TimeSlider::setNewBounds(juce::Rectangle<int> r)
 {
     m_width = r.getWidth();
+    m_heigth = r.getHeight();
     setBounds(r);
 }
 
@@ -44,4 +54,11 @@ void TimeSlider::setTrackDuration(float trackDuration)
 {
     m_trackDuration = trackDuration;
     setRange(.0f, trackDuration);
+}
+
+void TimeSlider::setupMarkers(std::vector<double>& markers)
+{
+    m_markers.clear();
+    for (auto marker : markers)
+        m_markers.push_back(marker);
 }

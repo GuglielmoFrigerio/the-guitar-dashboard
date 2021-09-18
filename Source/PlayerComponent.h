@@ -57,7 +57,7 @@ public:
 
     void changeState(PlayerState newPlayerState);
 
-    void setSongInfo(float trackDuration, bool hasMarkers);
+    void setSongInfo(float trackDuration, bool hasMarkers, std::vector<double>& markers);
     void updateTrackPosition(float position);
     void toggleStartStop();
     void stopAndRewind();

@@ -103,7 +103,12 @@ void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce:
                 pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
                 m_readerSourcePtr.reset(newSourcePtr.release());
                 auto duration = pAudioTransportSource->getLengthInSeconds();
-                pPlayerComponent->setSongInfo((float)duration, !m_markers.empty());
+
+                std::vector<double> markers;
+                for (auto& markerObj : m_markers)
+                    markers.push_back(markerObj.getPosition());
+
+                pPlayerComponent->setSongInfo((float)duration, !m_markers.empty(), markers);
             }
         }
     }
