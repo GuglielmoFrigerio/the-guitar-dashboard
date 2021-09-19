@@ -39,10 +39,10 @@ FractalDeviceType FractalDiscoverDevice::discover()
 {
     start();
 
-    if (tryDiscover(FractalDeviceType::AxeFxII))
-        return FractalDeviceType::AxeFxII;
+    if (tryDiscover(FractalDeviceType::AxeFxIII))
+        return FractalDeviceType::AxeFxIII;
 
-    return (tryDiscover(FractalDeviceType::AxeFxIII)) ? FractalDeviceType::AxeFxIII : FractalDeviceType::Unknown;
+    return (tryDiscover(FractalDeviceType::AxeFxII)) ? FractalDeviceType::AxeFxII : FractalDeviceType::Unknown;
 }
 
 

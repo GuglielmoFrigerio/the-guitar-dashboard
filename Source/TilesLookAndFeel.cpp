@@ -23,7 +23,7 @@ void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& but
     float brighter = .0f;
 
     if (toggle)
-        brighter += .3f;
+        brighter += .5f;
 
     if (shouldDrawButtonAsHighlighted)
         brighter += .3f;
@@ -35,6 +35,12 @@ void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& but
         color = color.brighter(brighter);
 
     LookAndFeel_V4::drawButtonBackground(g, button, color, shouldDrawButtonAsHighlighted, shouldDrawButtonAsDown);
+
+    if (toggle) {
+        auto bounds = button.getLocalBounds().toFloat().reduced(0.5f, 0.5f);
+        g.setColour(m_selectedOutlineColor);
+        g.drawRoundedRectangle(bounds, 6.0f, 3.0f);
+    }
 }
 
 juce::Font TilesLookAndFeed::getTextButtonFont(juce::TextButton& button, int buttonHeight)
@@ -49,7 +55,8 @@ juce::Font TilesLookAndFeed::getTextButtonFont(juce::TextButton& button, int but
 
 
 TilesLookAndFeed::TilesLookAndFeed()
-    :   m_tileFont("<Sans-Serif>", 24, juce::Font::plain)
+    :   m_tileFont("<Sans-Serif>", 24, juce::Font::plain),
+        m_selectedOutlineColor(juce::Colours::white)
 {
     m_colors.push_back(juce::Colour(92, 32, 28));
     m_colors.push_back(juce::Colour(87, 73, 27));
