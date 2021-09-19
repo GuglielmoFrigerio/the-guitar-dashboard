@@ -1,4 +1,4 @@
-﻿<AxeFxII>
+<AxeFxII>
   <Library name="Nursery Cryme">
     <Patches name="The Musical Box">
       <Track name="01 - The Musical Box.flac">
@@ -149,7 +149,7 @@
       <Patch scene="1" name="base crescendo">460</Patch>
       <Patch scene="2" name="solo">460</Patch>
       <Patch scene="1" name="base">460</Patch>
-      <Patch name="envelope (Sol# - Fa)">462</Patch>
+      <Patch name="envelope (Sol# - Fa)">462</Patch>ppppnnnnnppnpnpnpnpnpn
       <Patch scene="1" name="base">460</Patch>
       <Patch scene="2" name="solo">460</Patch>
       <Patch scene="1" name="base">460</Patch>
@@ -160,9 +160,9 @@
         <Marker>00:01:14</Marker>
         <Marker>00:01:57</Marker>
         <Marker>00:02:28</Marker>
-        <Marker>00:05:06</Marker>
+        <Marker>00:05:10</Marker>
       </Track>
-      <Patch name="Intro">456</Patch>
+      <Patch scene="1" name="Intro">456</Patch>
       <Patch scene="1" name="Tapping">457</Patch>
       <Patch scene="2" name="Pitch 24">457</Patch>
       <Patch scene="3" name="Pitch 12">457</Patch>

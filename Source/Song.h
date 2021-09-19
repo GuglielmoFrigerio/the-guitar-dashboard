@@ -27,6 +27,7 @@ protected:  // interface
 
 public:
     Song(const juce::String& name);
+    virtual ~Song() {}
 
 
     const juce::String& getName() const {

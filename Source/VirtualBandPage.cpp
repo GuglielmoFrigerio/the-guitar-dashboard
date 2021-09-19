@@ -190,9 +190,9 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
 
 VirtualBandPage::~VirtualBandPage()
 {
+    shutdownAudio();
     m_virtualBandPtr = nullptr;
     removeKeyListener(this);
-    shutdownAudio();
 }
 
 void VirtualBandPage::resized()
