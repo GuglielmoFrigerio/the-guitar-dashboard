@@ -138,7 +138,7 @@
       <Track name="Genesis - Cuckoo Cocoon.mp3">
       </Track>
       <Patch name="Intro cupo">497</Patch>
-      <Patch name="Cuckoon">492</Patch>
+      <Patch scene="2" name="Cuckoon">492</Patch>
     </Patches>
     <Patches name="Watcher Of The Skies">
       <Track name="Watcher Of The Skies.mp3">
@@ -149,7 +149,7 @@
       <Patch scene="1" name="base crescendo">460</Patch>
       <Patch scene="2" name="solo">460</Patch>
       <Patch scene="1" name="base">460</Patch>
-      <Patch name="envelope (Sol# - Fa)">462</Patch>ppppnnnnnppnpnpnpnpnpn
+      <Patch name="envelope (Sol# - Fa)">462</Patch>
       <Patch scene="1" name="base">460</Patch>
       <Patch scene="2" name="solo">460</Patch>
       <Patch scene="1" name="base">460</Patch>
@@ -161,6 +161,36 @@
         <Marker>00:01:57</Marker>
         <Marker>00:02:28</Marker>
         <Marker>00:05:10</Marker>
+      </Track>
+      <Patch scene="1" name="Intro">456</Patch>
+      <Patch scene="1" name="Tapping">457</Patch>
+      <Patch scene="2" name="Pitch 24">457</Patch>
+      <Patch scene="3" name="Pitch 12">457</Patch>
+      <Patch scene="4">457</Patch>
+      <Patch scene="5">457</Patch>
+      <Patch scene="1">459</Patch>
+      <Patch>456</Patch>
+      <Patch name="" >458</Patch>
+    </Patches>
+    <Patches name="Dancing 110" >
+      <Track name="Dancing 110.mp3">
+        <Marker>00:02:47</Marker>
+        <Marker>00:05:35</Marker>
+      </Track>
+      <Patch scene="1" name="Intro">456</Patch>
+      <Patch scene="1" name="Tapping">457</Patch>
+      <Patch scene="2" name="Pitch 24">457</Patch>
+      <Patch scene="3" name="Pitch 12">457</Patch>
+      <Patch scene="4">457</Patch>
+      <Patch scene="5">457</Patch>
+      <Patch scene="1">459</Patch>
+      <Patch>456</Patch>
+      <Patch name="" >458</Patch>
+    </Patches>
+    <Patches name="Dancing 100" >
+      <Track name="Dancing 100.mp3">
+        <Marker>00:03:04</Marker>
+        <Marker>00:06:08</Marker>
       </Track>
       <Patch scene="1" name="Intro">456</Patch>
       <Patch scene="1" name="Tapping">457</Patch>
