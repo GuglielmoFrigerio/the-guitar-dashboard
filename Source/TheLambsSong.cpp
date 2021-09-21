@@ -76,7 +76,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     if (pTrackElement != nullptr) {
         m_trackName = pTrackElement->getStringAttribute("name");
         for (auto* pMarkerElement : pTrackElement->getChildWithTagNameIterator("Marker")) {
-            auto& markerText = pMarkerElement->getAllSubText().trim();
+            const auto& markerText = pMarkerElement->getAllSubText().trim();
 
             juce::StringArray tokens;
             tokens.addTokens(markerText, ":", "");
