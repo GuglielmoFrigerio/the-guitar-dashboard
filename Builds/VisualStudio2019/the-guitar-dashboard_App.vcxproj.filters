@@ -2,6 +2,12 @@
 
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="the-guitar-dashboard\Resources\Images">
+      <UniqueIdentifier>{FB7C86A1-90D8-8AF3-AA93-EAC4BB33D963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="the-guitar-dashboard\Resources">
+      <UniqueIdentifier>{DF56F213-0D12-7D73-D3C3-703B2C31500B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="the-guitar-dashboard\Source\Components">
       <UniqueIdentifier>{9EB66492-E521-E5CD-68E2-E868701F3F61}</UniqueIdentifier>
     </Filter>
@@ -2614,6 +2620,9 @@
     <ClCompile Include="..\..\..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.mm">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -5139,11 +5148,32 @@
     <ClInclude Include="..\..\..\..\..\..\..\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Resources\Images\backward.png">
+      <Filter>the-guitar-dashboard\Resources\Images</Filter>
+    </None>
+    <None Include="..\..\Resources\Images\component-background-example.png">
+      <Filter>the-guitar-dashboard\Resources\Images</Filter>
+    </None>
+    <None Include="..\..\Resources\Images\forward.png">
+      <Filter>the-guitar-dashboard\Resources\Images</Filter>
+    </None>
+    <None Include="..\..\Resources\Images\pause.png">
+      <Filter>the-guitar-dashboard\Resources\Images</Filter>
+    </None>
+    <None Include="..\..\Resources\Images\play.png">
+      <Filter>the-guitar-dashboard\Resources\Images</Filter>
+    </None>
+    <None Include="..\..\Resources\Images\stop.png">
+      <Filter>the-guitar-dashboard\Resources\Images</Filter>
+    </None>
     <None Include="..\..\..\..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\CMakeLists.txt">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe</Filter>
     </None>

@@ -4,8 +4,20 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1" cppLanguageStandard="17">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
+    <GROUP id="{07B5428B-B9D6-8BD7-3654-5B21780B1B06}" name="Resources">
+      <GROUP id="{B9F8893E-ABE5-BD3A-5A77-9B8E7278D8DE}" name="Images">
+        <FILE id="rtxop6" name="backward.png" compile="0" resource="1" file="Resources/Images/backward.png"/>
+        <FILE id="E1ZZ7p" name="component-background-example.png" compile="0"
+              resource="1" file="Resources/Images/component-background-example.png"/>
+        <FILE id="qp2VCd" name="forward.png" compile="0" resource="1" file="Resources/Images/forward.png"/>
+        <FILE id="bfRZoC" name="pause.png" compile="0" resource="1" file="Resources/Images/pause.png"/>
+        <FILE id="BES6Az" name="play.png" compile="0" resource="1" file="Resources/Images/play.png"/>
+        <FILE id="WrnKL9" name="stop.png" compile="0" resource="1" file="Resources/Images/stop.png"/>
+      </GROUP>
+    </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
-      <FILE id="PzQlT3" name="KeyManager.cpp" compile="1" resource="0" file="Source/KeyManager.cpp"/>
+      <FILE id="PzQlT3" name="KeyManager.cpp" compile="1" resource="0" file="Source/KeyManager.cpp"
+            xcodeResource="0"/>
       <FILE id="zqTEnQ" name="KeyManager.h" compile="0" resource="0" file="Source/KeyManager.h"/>
       <FILE id="uSWpUn" name="ValueAnimator.cpp" compile="1" resource="0"
             file="Source/ValueAnimator.cpp"/>
