@@ -92,8 +92,6 @@ std::vector<std::unique_ptr<FractalDevice>> FractalDevice::loadAvailableDevices(
 {
     std::vector<std::unique_ptr<FractalDevice>> returnCollection;
 
-    g_inputInfoArray = juce::MidiInput::getAvailableDevices();
-
     //const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
     //const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
 

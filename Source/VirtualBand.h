@@ -33,7 +33,7 @@ private:    // fields
     std::atomic<bool> m_devicesLoaded;
     std::atomic<bool> m_songLibraryFileReady;
     juce::File m_inputFile;
-    Song* m_pActiveSong;
+    Song* m_pActiveSong = nullptr;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
