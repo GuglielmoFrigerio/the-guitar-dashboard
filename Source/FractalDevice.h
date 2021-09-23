@@ -33,10 +33,14 @@ private:    // fields
     void (FractalDevice::* m_incomingMessageHandler)(juce::MidiInput* source, const juce::MidiMessage& message);
     ThreadResponse<FirmwareInfo> m_queryFirmwareVersionAnswer;
 
+    static juce::Array<juce::MidiDeviceInfo> g_inputInfoArray;
+    static juce::Array<juce::MidiDeviceInfo> g_outputInfoArray;
+
 public:     // interface
     FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
 
 
+    static void loadDevicesInfo();
     static std::vector<std::unique_ptr<FractalDevice>> loadAvailableDevices();
     static FractalDeviceType discover(const juce::String inputDeviceId, const juce::String& outputDeviceId);
     static std::unique_ptr<FractalDevice> createDevice(FractalDeviceType deviceType, const juce::String inputDeviceId, const juce::String& outputDeviceId);

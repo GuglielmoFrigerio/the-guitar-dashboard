@@ -17,6 +17,9 @@
 
 #define MAX_SYSEX_MSG_LEN   80
 
+juce::Array<juce::MidiDeviceInfo> FractalDevice::g_inputInfoArray;
+juce::Array<juce::MidiDeviceInfo> FractalDevice::g_outputInfoArray;
+
 FractalDevice::FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId)
     :   MidiDevice(inputMidiPortId, outputMidiPortId)
 {
@@ -79,16 +82,24 @@ void FractalDevice::sendSysexMessage(uint8_t* pSysexData, int dataLength)
     m_midiOutPortPtr->sendMessageNow(sysExMsg);
 }
 
+void FractalDevice::loadDevicesInfo()
+{
+    g_inputInfoArray = juce::MidiInput::getAvailableDevices();
+    g_outputInfoArray = juce::MidiOutput::getAvailableDevices();
+}
+
 std::vector<std::unique_ptr<FractalDevice>> FractalDevice::loadAvailableDevices()
 {
     std::vector<std::unique_ptr<FractalDevice>> returnCollection;
 
-    const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
-    const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
+    g_inputInfoArray = juce::MidiInput::getAvailableDevices();
 
-    for (auto& inputInfo : inputInfoArray)
+    //const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
+    //const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
+
+    for (auto& inputInfo : g_inputInfoArray)
     {
-        auto outputDeviceId = FractalDevice::findAssociatedOutput(inputInfo, outputInfoArray);
+        auto outputDeviceId = FractalDevice::findAssociatedOutput(inputInfo, g_outputInfoArray);
         if (outputDeviceId.isNotEmpty())
         {
             auto deviceFound = discover(inputInfo.identifier, outputDeviceId);

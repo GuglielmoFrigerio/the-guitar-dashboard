@@ -59,6 +59,7 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
 
 void VirtualBand::loadDevices()
 {
+    FractalDevice::loadDevicesInfo();
     juce::Thread::launch([this]() {
         m_fractalDevices = FractalDevice::loadAvailableDevices();
         m_devicesLoaded = true;
