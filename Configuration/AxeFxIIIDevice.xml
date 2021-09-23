@@ -166,7 +166,7 @@
       <Patch scene="1" name="Tapping">457</Patch>
       <Patch scene="2" name="Pitch 24">457</Patch>
       <Patch scene="3" name="Pitch 12">457</Patch>
-      <Patch scene="4">457</Patch>
+      <Patch scene="4" name="Envelope">457</Patch>
       <Patch scene="5">457</Patch>
       <Patch scene="1">459</Patch>
       <Patch>456</Patch>
@@ -181,7 +181,7 @@
       <Patch scene="1" name="Tapping">457</Patch>
       <Patch scene="2" name="Pitch 24">457</Patch>
       <Patch scene="3" name="Pitch 12">457</Patch>
-      <Patch scene="4">457</Patch>
+      <Patch scene="4" name="Envelope">457</Patch>
       <Patch scene="5">457</Patch>
       <Patch scene="1">459</Patch>
       <Patch>456</Patch>
@@ -196,7 +196,7 @@
       <Patch scene="1" name="Tapping">457</Patch>
       <Patch scene="2" name="Pitch 24">457</Patch>
       <Patch scene="3" name="Pitch 12">457</Patch>
-      <Patch scene="4">457</Patch>
+      <Patch scene="4" name="Envelope">457</Patch>
       <Patch scene="5">457</Patch>
       <Patch scene="1">459</Patch>
       <Patch>456</Patch>
@@ -222,6 +222,11 @@
       <Patch>467</Patch>
       <Patch>468</Patch>
       <Patch>465</Patch>
+    </Patches>
+    <Patches name="The Return of the Gian Hogweed">
+      <Track name="03 - The Return Of The Giant Hogweed">
+      </Track>
+      <Patch>467</Patch>
     </Patches>
   </Library>
 
