@@ -47,7 +47,6 @@ juce::Font TilesLookAndFeed::getTextButtonFont(juce::TextButton& button, int but
 {
     auto font = LookAndFeel_V4::getTextButtonFont(button, buttonHeight);
     auto typefaceName = font.getTypefaceName();
-    auto size = font.getHeight();
 
     return m_tileFont;
 }

@@ -25,6 +25,19 @@ PlayerButton::PlayerButton(juce::StringRef imageName)
         0.0f);
 }
 
+PlayerButton::PlayerButton(const char* imageData, int imageDataLength)
+{
+    auto playerImage = juce::ImageCache::getFromMemory(imageData, imageDataLength);
+    m_imageWidth = playerImage.getWidth();
+    m_imageHeight = playerImage.getHeight();
+
+    setImages(false, true, true,
+        playerImage, 1.0f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
+        playerImage, 0.8f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
+        playerImage, 0.6f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
+        0.0f);    
+}
+
 void PlayerButton::setPosition(int positionIndex, juce::Rectangle<int>& rect, int margin)
 {
     auto startX = rect.getWidth() / 2 - (m_imageWidth * 2 + margin * 1.5f) + rect.getX();

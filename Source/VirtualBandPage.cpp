@@ -37,7 +37,6 @@ void VirtualBandPage::chooseSongLibrary()
 bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originatingComponent)
 {
     auto keyCode = key.getKeyCode();
-    const int bla = 3;
 
     m_trackPlayerKeyManager.keyPressed(keyCode);
 

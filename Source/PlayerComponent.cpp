@@ -9,6 +9,7 @@
 */
 
 #include "PlayerComponent.h"
+#include <BinaryData.h>
 
 
 void PlayerComponent::sendStateUpdate(PlayerState playerState)
@@ -26,10 +27,10 @@ void PlayerComponent::disable()
 }
 
 PlayerComponent::PlayerComponent()
-    :   m_playButton("play"),
-        m_previousButton("backward"),
-        m_nextButton("forward"),
-        m_stopButton("stop"),
+    :   m_playButton(BinaryData::play_png, BinaryData::play_pngSize),
+        m_previousButton(BinaryData::backward_png, BinaryData::backward_pngSize),
+        m_nextButton(BinaryData::forward_png, BinaryData::forward_pngSize),
+        m_stopButton(BinaryData::stop_png, BinaryData::stop_pngSize),
         m_playerState(PlayerState::Stopped)
 {
     addAndMakeVisible(m_playButton);
@@ -74,9 +75,6 @@ void PlayerComponent::resized()
     m_trackPositionSlider.setNewBounds(sliderBounds);
 
     auto margin = 20;
-
-    auto width = bounds.getWidth();
-    auto height = bounds.getHeight();
 
     m_previousButton.setPosition(0, bounds, margin);
     m_stopButton.setPosition(1, bounds, margin);
@@ -130,6 +128,9 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
         case PlayerState::Playing:
             m_playButton.setEnabled(false);
             m_stopButton.setEnabled(true);
+            break;
+                
+        default:
             break;
         }
     }

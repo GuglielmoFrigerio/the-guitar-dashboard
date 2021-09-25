@@ -33,7 +33,7 @@ public:
     void enumerateProgramChanges(std::function<void(const ProgramChangeEvent* pProgramChangeEvent, int index)> callback) const;
 
     int getEventCount() const {
-        return m_eventList.size();
+        return (int)m_eventList.size();
     }
 
 };

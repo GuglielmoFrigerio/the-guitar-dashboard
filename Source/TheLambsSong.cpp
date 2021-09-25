@@ -50,7 +50,6 @@ void TheLambsSong::updateMarkers(double position, PlayerComponent* pPlayerCompon
 
         auto positionForPrevious = position - m_previousGuardTime;
 
-        Marker* pCandidateMarker = nullptr;
         for (auto& marker : m_markers) {
             auto markerPosition = marker.getPosition();
             if (markerPosition > position)
@@ -92,9 +91,9 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     if (!m_trackName.isEmpty()) {
-        auto currentDir = juce::File::getCurrentWorkingDirectory();
-        auto trackPath = "../../Resources/Tracks/" + m_trackName;
-        auto file = currentDir.getChildFile(trackPath);
+        auto documentFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+        auto trackPath = "../../../../../Resources/Tracks/" + m_trackName;
+        auto file = documentFolder.getChildFile(trackPath);
         if (file != juce::File{}) {
             auto* pReader = pAudioFormatManager->createReaderFor(file);
 

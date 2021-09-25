@@ -19,6 +19,7 @@ private:
 
 public:
     PlayerButton(juce::StringRef imageName);
+    PlayerButton(const char* imageData, int imageDataLength);
 
     void setPosition(int positionIndex, juce::Rectangle<int>& rect, int margin);
 
