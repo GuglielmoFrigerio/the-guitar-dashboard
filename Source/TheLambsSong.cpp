@@ -91,9 +91,14 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     if (!m_trackName.isEmpty()) {
-        auto documentFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-        auto trackPath = "../../../../../Resources/Tracks/" + m_trackName;
-        auto file = documentFolder.getChildFile(trackPath);
+        // for MscOSX
+        // auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+        // auto trackPath = "../../../../../Resources/Tracks/" + m_trackName;
+        // 
+        // for Windows
+        auto applicationFolder = juce::File::getCurrentWorkingDirectory();
+        auto trackPath = "../../Resources/Tracks/" + m_trackName;
+        auto file = applicationFolder.getChildFile(trackPath);
         if (file != juce::File{}) {
             auto* pReader = pAudioFormatManager->createReaderFor(file);
 
