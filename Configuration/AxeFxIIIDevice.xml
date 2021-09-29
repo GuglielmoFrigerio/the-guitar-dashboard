@@ -224,9 +224,12 @@
       <Patch>465</Patch>
     </Patches>
     <Patches name="The Return of the Gian Hogweed">
-      <Track name="03 - The Return Of The Giant Hogweed">
+      <Track name="The Return Of The Giant Hogweed.flac">
       </Track>
-      <Patch>467</Patch>
+      <Patch name="intro" scene="1">508</Patch>
+      <Patch name="-12" scene="2">508</Patch>
+      <Patch name="+12" scene="3">508</Patch>
+      <Patch name="stacco" scene="4">508</Patch>
     </Patches>
   </Library>
 
