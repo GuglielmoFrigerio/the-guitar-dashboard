@@ -23,13 +23,23 @@ void TimeSlider::paint(juce::Graphics& g)
 void TimeSlider::drawMarker(float position, juce::Graphics& g)
 {
     auto xPotion = int((position / m_trackDuration) * m_width);
-    g.drawLine(xPotion - m_markerTriBase, m_heigth, xPotion, m_heigth - m_markerTriHeigth, m_makerLinehickness);
-    g.drawLine(xPotion, m_heigth - m_markerTriHeigth, xPotion + m_markerTriBase, m_heigth, m_makerLinehickness);
-    g.drawLine(xPotion + m_markerTriBase, m_heigth, xPotion - m_markerTriBase, m_heigth, m_makerLinehickness);
+
+    // lower trinagle
+    juce::Path lowerTrinagle;
+    lowerTrinagle.addTriangle(xPotion - m_markerTriBase, m_heigth, xPotion, m_heigth - m_markerTriHeigth, xPotion + m_markerTriBase, m_heigth);
+    g.fillPath(lowerTrinagle);
+
+    // central vertical line
+    g.drawLine(xPotion, 0, xPotion, m_heigth, m_makerLinehickness);
+
+    // upper triangle
+    juce::Path upperTriangle;
+    upperTriangle.addTriangle(xPotion - m_markerTriBase, 0, xPotion, m_markerTriHeigth, xPotion + m_markerTriBase, 0);
+    g.fillPath(upperTriangle);
 }
 
 TimeSlider::TimeSlider()
-    :   m_markerColor(juce::Colours::yellow)
+    :   m_markerColor(110, 129, 250)
 {
 }
 

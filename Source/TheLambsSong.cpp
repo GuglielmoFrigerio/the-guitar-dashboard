@@ -63,6 +63,18 @@ void TheLambsSong::updateMarkers(double position, PlayerComponent* pPlayerCompon
 
 }
 
+juce::String TheLambsSong::getTrackPath()
+{
+    auto osType = juce::SystemStats::getOperatingSystemType();
+    if ((osType && juce::SystemStats::Windows) != 0) {
+        auto applicationFolder = juce::File::getCurrentWorkingDirectory();
+        return "../../Resources/Tracks/" + m_trackName;
+
+    }
+     auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+     return "../../../../../Resources/Tracks/" + m_trackName;
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
@@ -84,20 +96,14 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
                 m_markers.emplace_back((double)markerPositionInSeconds);
             }
         }
-
     }
 }
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     if (!m_trackName.isEmpty()) {
-        // for MscOSX
-        // auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-        // auto trackPath = "../../../../../Resources/Tracks/" + m_trackName;
-        // 
-        // for Windows
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
-        auto trackPath = "../../Resources/Tracks/" + m_trackName;
+        auto trackPath = getTrackPath();
         auto file = applicationFolder.getChildFile(trackPath);
         if (file != juce::File{}) {
             auto* pReader = pAudioFormatManager->createReaderFor(file);

@@ -32,6 +32,7 @@ private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;
     void previousMarker(juce::AudioTransportSource* pAudioTransportSource) override;
     void updateMarkers(double position, PlayerComponent* pPlayerComponent) override;
+    juce::String getTrackPath();
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
