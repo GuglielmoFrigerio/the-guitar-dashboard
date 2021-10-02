@@ -49,12 +49,13 @@ public:     // interface
 
 protected:  // implementation
     bool queryDevice(const std::uint8_t* queryFirmwareMessage, int msgLmessageLength);
-
-private:    // implementation
+    
+private:    // incoming midi message handers
+    virtual void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
     void standardInputMessageHandler(juce::MidiInput* source, const juce::MidiMessage& message);
     void handleQueryFirmwareVersionResponse(juce::MidiInput* source, const juce::MidiMessage& message);
 
-    virtual void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
+private:    // implementation
     std::uint8_t computeChecksum(const uint8_t* pData, int dataLength);
     void sendSysexMessage(uint8_t* pData, int dataLength);
     static juce::String findAssociatedOutput(const juce::MidiDeviceInfo& inputInfo, const juce::Array<juce::MidiDeviceInfo>& outputDeviceInfo);

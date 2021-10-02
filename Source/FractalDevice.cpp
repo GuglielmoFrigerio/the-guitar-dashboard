@@ -36,7 +36,7 @@ bool FractalDevice::queryDevice(const std::uint8_t* queryFirmwareMessage, int ms
     std::memcpy(sysexMessage, queryFirmwareMessage, msgLmessageLength);
 
     sendSysexMessage(sysexMessage, msgLmessageLength);
-    auto [result, reason] = m_queryFirmwareVersionAnswer.waitForAnswer(200);
+    auto [result, reason] = m_queryFirmwareVersionAnswer.waitForAnswer(2000);
     return result;
 }
 
@@ -57,6 +57,7 @@ void FractalDevice::handleQueryFirmwareVersionResponse(juce::MidiInput* , const 
     } else {
         m_queryFirmwareVersionAnswer.failOperation("Invalid MidiMessage received.");
     }
+    m_incomingMessageHandler = &FractalDevice::standardInputMessageHandler;
 }
 
 void FractalDevice::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)

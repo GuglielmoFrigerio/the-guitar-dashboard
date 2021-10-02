@@ -66,13 +66,13 @@ void TheLambsSong::updateMarkers(double position, PlayerComponent* pPlayerCompon
 juce::String TheLambsSong::getTrackPath()
 {
     auto osType = juce::SystemStats::getOperatingSystemType();
-    if ((osType && juce::SystemStats::Windows) != 0) {
+    if ((osType & juce::SystemStats::Windows) != 0) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
         return "../../Resources/Tracks/" + m_trackName;
-
     }
-     auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-     return "../../../../../Resources/Tracks/" + m_trackName;
+    auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+    auto path = applicationFolder.getFullPathName();
+    return path + "/../../../../../Resources/Tracks/" + m_trackName;
 }
 
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
