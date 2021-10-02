@@ -44,7 +44,7 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
     if (it != m_keyHandlerMap.end())
         it->second(key, originatingComponent);
 
-    return false;
+    return true;
 }
 
 bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* originatingComponent)
