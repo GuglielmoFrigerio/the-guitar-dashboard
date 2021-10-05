@@ -229,7 +229,8 @@
       <Patch name="intro" scene="1">508</Patch>
       <Patch name="-12" scene="2">508</Patch>
       <Patch name="+12" scene="3">508</Patch>
-      <Patch name="stacco" scene="4">508</Patch>
+      <Patch name="Stacco" scene="4">508</Patch>
+      <Patch name="Clean" scene="5">508</Patch>
     </Patches>
   </Library>
 
