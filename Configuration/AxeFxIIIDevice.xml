@@ -70,7 +70,7 @@
       </Track>
       <Patch scene="1" name="Intro">507</Patch>
       <Patch scene="2" name="Intro Diatonic 1">507</Patch>
-      <Patch scene="1" name="Intro Diatonic 2">507</Patch>
+      <Patch scene="3" name="Intro Diatonic 2">507</Patch>
       <Patch scene="5" name="La-Re-Mi">000</Patch>
       <!--<Patch scene="2" name="Arpeggio1">099</Patch>-->
       <Patch scene="1" name="Arpeggio1">389</Patch>
@@ -241,10 +241,12 @@
       <Patch name="Clean" scene="5">508</Patch>
       <Patch name="Solo con Flauto" scene="8">450</Patch>
       <Patch name="+12" scene="3">508</Patch>
+      <Patch name="Dist" scene="4">508</Patch>
       <Patch name="Clean" scene="5">508</Patch>
       <Patch name="SoloReverb" scene="1">451</Patch>
       <Patch name="SoloReverbDiat" scene="2">451</Patch>
       <Patch name="TapPicking" scene="3">451</Patch>
+      <Patch name="2nd" scene="4">451</Patch>
     </Patches>
   </Library>
 
