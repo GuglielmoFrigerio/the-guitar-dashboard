@@ -7,7 +7,7 @@
 
   ==============================================================================
 */
-
+#include <cmath>
 #include "VirtualBand.h"
 #include "GuitarDashCommon.h"
 #include "SongListComponent.h"
@@ -17,6 +17,11 @@ void VirtualBand::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
     if (source == &m_transportSource)
     {
+        auto currentPos = m_transportSource.getCurrentPosition();
+        auto length = m_transportSource.getLengthInSeconds();
+        if (std::fabs(currentPos - length) < 0.05)
+            m_transportSource.setPosition(0.0);
+
         if (m_transportSource.isPlaying())
             m_pPlayerComponent->changeState(PlayerState::Playing);
         else
@@ -53,6 +58,7 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_transportSource.addChangeListener(this);
     m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState) { onPlayerStateUpdated(playerState); };
     m_pPlayerComponent->onChangePosition = [this](float newPosition) { m_transportSource.setPosition(newPosition); };
+    m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
 }
@@ -134,17 +140,15 @@ void VirtualBand::stopAndRewind()
 
 void VirtualBand::changeSongPositionBy(double amount)
 {
-    if (m_pPlayerComponent->isPlaying()) {
-        auto position = m_transportSource.getCurrentPosition();
-        auto trackLength = m_transportSource.getLengthInSeconds();
-        auto nextPosition = position + amount;
+    auto position = m_transportSource.getCurrentPosition();
+    auto trackLength = m_transportSource.getLengthInSeconds();
+    auto nextPosition = position + amount;
 
-        if (nextPosition < 0.0)
-            nextPosition = 0.0;
+    if (nextPosition < 0.0)
+        nextPosition = 0.0;
 
-        if (nextPosition < trackLength) {
-            m_transportSource.setPosition(nextPosition);
-        }
+    if (nextPosition < trackLength) {
+        m_transportSource.setPosition(nextPosition);
     }
 }
 

@@ -454,6 +454,9 @@
     <ClCompile Include="..\..\Source\ValueAnimator.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\DecibelSlider.cpp">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClCompile>
@@ -2663,6 +2666,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\ValueAnimator.h">
       <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DecibelSlider.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>the-guitar-dashboard\Source\Components</Filter>

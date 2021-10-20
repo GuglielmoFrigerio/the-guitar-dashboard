@@ -38,6 +38,8 @@ PlayerComponent::PlayerComponent()
     addAndMakeVisible(m_nextButton);
     addAndMakeVisible(m_stopButton);
     addAndMakeVisible(m_trackPositionSlider);
+    addAndMakeVisible(m_volumeSlider);
+    addAndMakeVisible(m_decibelLabel);
 
     m_playButton.onClick = [this] { startStateChange(PlayerState::Starting); };
     m_stopButton.onClick = [this] { startStateChange(PlayerState::Stopping); };
@@ -54,6 +56,16 @@ PlayerComponent::PlayerComponent()
 
     m_trackPositionSlider.addListener(this);
     m_trackPositionSlider.setSliderStyle(juce::Slider::SliderStyle::LinearBar);
+
+    m_volumeSlider.setRange(-60, 0);
+    m_volumeSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
+    m_volumeSlider.onValueChange = [this] {  
+        auto newGain = juce::Decibels::decibelsToGain((float)m_volumeSlider.getValue()); 
+        if (onChangedGain != nullptr)
+            onChangedGain(newGain);
+    };
+    m_volumeSlider.setValue(juce::Decibels::gainToDecibels(1));
+    m_decibelLabel.setText("Level dB", juce::dontSendNotification);
 
     disable();
 }
@@ -73,6 +85,9 @@ void PlayerComponent::resized()
     auto sliderBounds = bounds.removeFromTop(50);
     sliderBounds.reduce(30, 0);
     m_trackPositionSlider.setNewBounds(sliderBounds);
+
+    auto volumeRect = bounds.removeFromRight(500);
+    m_volumeSlider.setBounds(volumeRect);
 
     auto margin = 20;
 

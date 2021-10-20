@@ -24,6 +24,8 @@ void ProgramChangesComponent::buttonClicked(juce::Button* pButton)
 
         if (onProgramChangeSelected != nullptr)
             onProgramChangeSelected(index);
+
+        slideTiles(index);
     }
 }
 
@@ -45,6 +47,23 @@ void ProgramChangesComponent::startTileAnimation(int endValue)
     };
     if (timerMustStart)
         startTimer(17);
+}
+
+void ProgramChangesComponent::slideTiles(int selectedIndex)
+{
+    auto bounds = getLocalBounds();
+    auto tileCenter = selectedIndex * TileWidth + TileWidth / 2;
+    auto xCenter = bounds.getWidth() / 2;
+    auto horizontalOffset = 0;
+    if (tileCenter > xCenter) {
+        horizontalOffset = tileCenter - xCenter;
+        auto xLeft = m_programChanceTiles.size() * TileWidth - tileCenter;
+        if (xLeft < xCenter)
+            horizontalOffset -= (xCenter - xLeft);
+    }
+    if (horizontalOffset != m_horizontalOffset) {
+        startTileAnimation(horizontalOffset);
+    }
 }
 
 //==============================================================================
@@ -112,19 +131,6 @@ void ProgramChangesComponent::update(const Track* pTrack)
 void ProgramChangesComponent::selectProgramChange(int programChangeIndex)
 {
     if (programChangeIndex < m_programChanceTiles.size()) {
-        m_programChanceTiles[programChangeIndex]->setToggleState(true, juce::NotificationType::sendNotification);
-        auto bounds = getLocalBounds();
-        auto tileCenter = programChangeIndex * TileWidth + TileWidth / 2;
-        auto xCenter = bounds.getWidth() / 2;
-        auto horizontalOffset = 0;
-        if (tileCenter > xCenter) {
-            horizontalOffset = tileCenter - xCenter;
-            auto xLeft = m_programChanceTiles.size() * TileWidth - tileCenter;
-            if (xLeft < xCenter)
-                horizontalOffset -= (xCenter - xLeft);
-        }
-        if (horizontalOffset != m_horizontalOffset) {
-            startTileAnimation(horizontalOffset);
-        }
+        m_programChanceTiles[programChangeIndex]->triggerClick();
     }
 }

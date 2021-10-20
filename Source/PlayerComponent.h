@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 #include "PlayerButton.h"
 #include "TimeSlider.h"
+#include "DecibelSlider.h"
 
 enum class PlayerState {
     Stopped,
@@ -33,6 +34,9 @@ private:    // fields
     bool            m_draggingPosition = false;
     bool            m_previousEnabled = false;
     bool            m_nextEnabled = false;
+    DecibelSlider   m_volumeSlider;
+    juce::Label     m_decibelLabel;
+
 
 private:    // implementation
     void sendStateUpdate(PlayerState playerState);
@@ -54,6 +58,7 @@ public:
     std::function<void(float)> onChangePosition;
     std::function<void()> onNextMarker;
     std::function<void()> onPreviousMarker;
+    std::function<void(float)> onChangedGain;
 
     void changeState(PlayerState newPlayerState);
 

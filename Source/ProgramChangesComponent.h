@@ -33,6 +33,7 @@ private:    // implementation
 
     void timerCallback() override;
     void startTileAnimation(int endValue);
+    void slideTiles(int selectedIndex);
 
 public:
     ProgramChangesComponent();
