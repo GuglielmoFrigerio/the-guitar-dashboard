@@ -208,8 +208,8 @@
         <Marker>00:05:08</Marker>
         <Marker>00:05:40</Marker>
       </Track>
-      <Patch name="Intro">469</Patch>
-      <Patch name="Acoustic">470</Patch>
+      <Patch scene="8" name="Intro">469</Patch>
+      <Patch scene="8" name="Acoustic">470</Patch>
       <Patch name="Reprise">469</Patch>
       <Patch name="Slide">471</Patch>
       <Patch name="Trillo">469</Patch>
