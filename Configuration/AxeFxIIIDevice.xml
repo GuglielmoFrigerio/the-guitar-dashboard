@@ -44,13 +44,13 @@
         <Marker>00:05:08</Marker>
         <Marker>00:05:40</Marker>
       </Track>
-      <Patch name="Intro">469</Patch>
+      <Patch name="Intro">509</Patch>
       <Patch name="Acoustic">470</Patch>
-      <Patch name="Reprise">469</Patch>
+      <Patch name="Reprise">509</Patch>
       <Patch name="Slide">471</Patch>
-      <Patch name="Trillo">469</Patch>
+      <Patch name="Trillo">509</Patch>
       <Patch name="Solo">472</Patch>
-      <Patch name="Finale">469</Patch>
+      <Patch name="Finale">509</Patch>
     </Patches>
   </Library>
   <Library name="The Lamb Lies Down">
@@ -80,7 +80,8 @@
       <Patch scene="1" name="La">409</Patch>
       <Patch scene="1" name="Arpeggio1">389</Patch>
       <Patch scene="4" name="Crescendo">454</Patch>
-      <Patch scene="1" name="Solo">401</Patch>
+      <!-- <Patch scene="1" name="Solo">401</Patch> -->
+      <Patch scene="4" name="Solo">194</Patch>
       <Patch scene="1" name="NotineSilenziose">003</Patch>
       <Patch scene="2" name="FadeBridgeIn">002</Patch>
       <Patch scene="1" name="NotineSilenziose">003</Patch>
@@ -208,13 +209,15 @@
         <Marker>00:05:08</Marker>
         <Marker>00:05:40</Marker>
       </Track>
-      <Patch name="Intro">469</Patch>
-      <Patch name="Acoustic">470</Patch>
-      <Patch name="Reprise">469</Patch>
-      <Patch name="Slide">471</Patch>
-      <Patch name="Trillo">469</Patch>
+      <Patch scene="1" name="Intro">509</Patch>
+      <Patch scene="8" name="Acoustic">470</Patch>
+      <Patch scene="2" name="Reprise">509</Patch>
+      <Patch scene="8" name="Acoustic">470</Patch>
+      <Patch scene="1" name="Intro">509</Patch>
+      <Patch scene="1" name="Slide">471</Patch>
+      <Patch name="Trillo">509</Patch>
       <Patch name="Solo">472</Patch>
-      <Patch name="Finale">469</Patch>
+      <Patch name="Finale">509</Patch>
     </Patches>
     <Patches name="The Musical Box">
       <Track name="01 - The Musical Box.flac">
@@ -226,7 +229,7 @@
     <Patches name="The Return of the Gian Hogweed">
       <Track name="The Return Of The Giant Hogweed.flac">
       </Track>
-      <Patch name="intro" scene="1">508</Patch>
+      <Patch name="intro" scene="1">475</Patch>
       <Patch name="-12" scene="2">508</Patch>
       <Patch name="+12" scene="3">508</Patch>
       <Patch name="Stacco" scene="4">508</Patch>
