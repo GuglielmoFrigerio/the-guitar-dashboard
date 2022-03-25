@@ -68,7 +68,8 @@ juce::String TheLambsSong::getTrackPath()
     auto osType = juce::SystemStats::getOperatingSystemType();
     if ((osType & juce::SystemStats::Windows) != 0) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
-        return "../../Resources/Tracks/" + m_trackName;
+        return "./Tracks/" + m_trackName;
+        //return "../../Resources/Tracks/" + m_trackName;
     }
     auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
     auto path = applicationFolder.getFullPathName();

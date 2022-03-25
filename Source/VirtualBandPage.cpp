@@ -27,9 +27,9 @@ void VirtualBandPage::chooseSongLibrary()
 
             if (file != juce::File{})
             {
-                loadSongLibrary(file);
                 auto pPropertiesFile = m_properties.getUserSettings();
                 pPropertiesFile->setValue("AxeFx3ConfigurationFile", file.getFullPathName());
+                //loadSongLibrary(file);
             }
         });
 }

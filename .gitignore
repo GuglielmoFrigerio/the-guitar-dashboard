@@ -6,3 +6,5 @@
 !Builds/VisualStudio2019/the-guitar-dashboard_App.vcxproj
 !Builds/VisualStudio2019/the-guitar-dashboard_App.vcxproj.filters
 /Resources/Tracks
+/Builds/VisualStudio2022/.vs
+/Builds/VisualStudio2022/x64
