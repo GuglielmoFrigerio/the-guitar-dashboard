@@ -148,6 +148,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_songListComponent);
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
+    addAndMakeVisible(m_notificationComponent);
 
     setupKeyHandlers();
 
@@ -200,6 +201,7 @@ void VirtualBandPage::resized()
     m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
     m_playerComponent.setBounds(rect.removeFromBottom(160));
+    m_notificationComponent.setBounds(rect.removeFromBottom(40));
     m_programChangesComponent.setBounds(rect);
 
     if (m_firstResize) {

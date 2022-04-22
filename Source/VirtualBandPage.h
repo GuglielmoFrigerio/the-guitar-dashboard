@@ -16,6 +16,7 @@
 #include "ProgramChangesComponent.h"
 #include "PlayerComponent.h"
 #include "KeyManager.h"
+#include "NotificationComponent.h"
 
 class VirtualBandPage : 
     public juce::AudioAppComponent, 
@@ -33,6 +34,7 @@ private:    // fields
     bool m_firstResize = true;
     PlayerComponent m_playerComponent;
     KeyManager m_trackPlayerKeyManager;
+    NotificationComponent m_notificationComponent;
     std::unordered_map<int, std::function<void(const juce::KeyPress& key, Component* originatingComponent)>> m_keyHandlerMap;
 
 private:    // implementation

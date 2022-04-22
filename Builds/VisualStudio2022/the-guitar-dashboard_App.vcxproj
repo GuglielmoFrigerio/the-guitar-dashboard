@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Source\KeyManager.cpp"/>
     <ClCompile Include="..\..\Source\ValueAnimator.cpp"/>
+    <ClCompile Include="..\..\Source\NotificationComponent.cpp"/>
     <ClCompile Include="..\..\Source\DecibelSlider.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\TimeSlider.cpp"/>
@@ -2139,6 +2140,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Source\KeyManager.h"/>
     <ClInclude Include="..\..\Source\ValueAnimator.h"/>
+    <ClInclude Include="..\..\Source\NotificationComponent.h"/>
     <ClInclude Include="..\..\Source\DecibelSlider.h"/>
     <ClInclude Include="..\..\Source\MainComponent.h"/>
     <ClInclude Include="..\..\Source\TimeSlider.h"/>

@@ -23,6 +23,10 @@
             file="Source/ValueAnimator.cpp"/>
       <FILE id="KLMWOZ" name="ValueAnimator.h" compile="0" resource="0" file="Source/ValueAnimator.h"/>
       <GROUP id="{CDE15E17-6795-C384-F22B-7C250F451DB6}" name="Components">
+        <FILE id="qDloV1" name="NotificationComponent.cpp" compile="1" resource="0"
+              file="Source/NotificationComponent.cpp"/>
+        <FILE id="pHkmbc" name="NotificationComponent.h" compile="0" resource="0"
+              file="Source/NotificationComponent.h"/>
         <FILE id="BeO460" name="DecibelSlider.cpp" compile="1" resource="0"
               file="Source/DecibelSlider.cpp"/>
         <FILE id="fBnDLY" name="DecibelSlider.h" compile="0" resource="0" file="Source/DecibelSlider.h"/>

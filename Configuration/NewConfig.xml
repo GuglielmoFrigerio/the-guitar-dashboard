@@ -2,7 +2,7 @@
 <AxeFxIII>
   <Library name="Agosto 2021">
     <Song name="Get'em Out By Friday">
-      <Track name="Get 'Em Out By Friday.mp3" />
+      <Track name="Get 'Em Out By Friday.mp3" messsage="Pedale Sx al Minimo!" />
       <Patch name="Intro" scene="1">507</Patch>
       <Patch name="Intro Diatonic 1" scene="2">507</Patch>
       <Patch name="Intro Diatonic 2" scene="3">507</Patch>
@@ -165,6 +165,19 @@
       <Patch name="Dist" scene="3">480</Patch>
       <Patch name="Envelope" scene="6">479</Patch>
       <Patch name="Dist" scene="3">480</Patch>
+    </Song>
+    <Song name="Here Comes the Supernatural Anaesthetist">
+      <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
+      <Patch name="Clean Intro" scene="1">439</Patch>
+      <Patch name="Solo" scene="8">222</Patch>
+    </Song>
+    <Song name="Lilywhite Lilith">
+      <Track name="Lilywhite Lilith - Genesis.mp3"></Track>
+      <Patch name="Intro" scene="8">370</Patch>
+      <Patch name="Rito" scene="1">370</Patch>
+      <Patch name="Solo" scene="8">370</Patch>
+      <Patch name="Rito" scene="1">370</Patch>
+      <Patch name="Solo" scene="8">370</Patch>
     </Song>
   </Library>
 </AxeFxIII>
