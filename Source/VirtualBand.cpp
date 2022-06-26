@@ -43,9 +43,11 @@ void VirtualBand::loadSongCollection(juce::StringRef collectionName)
     juce::XmlDocument configDocument(m_inputFile);
 
     auto rootElementPtr = configDocument.getDocumentElement();
-    auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", collectionName);
-    m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);
-    m_pSongListComponent->update(m_songCollectionPtr.get());
+    if (rootElementPtr != nullptr) {
+        auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", collectionName);
+        m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);
+        m_pSongListComponent->update(m_songCollectionPtr.get());
+    }
 }
 
 VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent)
