@@ -29,7 +29,7 @@ void VirtualBandPage::chooseSongLibrary()
             {
                 auto pPropertiesFile = m_properties.getUserSettings();
                 pPropertiesFile->setValue("AxeFx3ConfigurationFile", file.getFullPathName());
-                //loadSongLibrary(file);
+                loadSongLibrary(file);
             }
         });
 }

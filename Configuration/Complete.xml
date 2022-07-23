@@ -128,7 +128,10 @@
       <Patch name="Finale" scene="1">509</Patch>
     </Song>
     <Song name="The Return of the Gian Hogweed">
-      <Track name="The Return Of The Giant Hogweed.mp3" />
+      <Track name="The Return Of The Giant Hogweed.mp3">
+        <Marker>00:04:06</Marker>
+        <Marker>00:05:15</Marker>
+      </Track>
       <Patch name="intro" scene="1">475</Patch>
       <Patch name="-12" scene="2">508</Patch>
       <Patch name="+12" scene="3">508</Patch>
@@ -193,6 +196,21 @@
       <Track name="09-Afterglow.mp3">        
       </Track>
       <Patch name="Guitar" scene="1">391</Patch>
+    </Song>
+    <Song name="Blood On The Rooftops">
+      <Track name="06-Blood-on-the-Rooftops.mp3">        
+      </Track>
+      <Patch name="Intro" scene="1">456</Patch>
+    </Song>
+    <Song name="The Lamb Lies Down On Broadway">
+      <Track name="The Lamb Lies Down on Broadway - Genesis.mp3">        
+      </Track>
+      <Patch name="Intro" scene="1">456</Patch>
+    </Song>
+    <Song name="The Battle Of Epping Forest">
+      <Track name="05-The-Battle-of-Epping-Forest.mp3">        
+      </Track>
+      <Patch name="Intro" scene="1">90</Patch>
     </Song>
   </Library>
 </AxeFxIII>
