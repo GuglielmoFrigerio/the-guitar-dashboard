@@ -201,6 +201,7 @@
       <Track name="06-Blood-on-the-Rooftops.mp3">        
       </Track>
       <Patch name="Intro" scene="1">456</Patch>
+      <!--Try 125. -->
     </Song>
     <Song name="The Lamb Lies Down On Broadway">
       <Track name="The Lamb Lies Down on Broadway - Genesis.mp3">        
@@ -210,7 +211,8 @@
     <Song name="The Battle Of Epping Forest">
       <Track name="05-The-Battle-of-Epping-Forest.mp3">        
       </Track>
-      <Patch name="Intro" scene="1">90</Patch>
+      <Patch name="Intro" scene="1">92</Patch>
+      <Patch name="Prima parte" scene="3">449</Patch>
     </Song>
   </Library>
 </AxeFxIII>
