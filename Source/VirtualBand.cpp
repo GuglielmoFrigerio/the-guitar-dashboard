@@ -63,6 +63,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
+
+    m_playbackEngine.start();
 }
 
 void VirtualBand::loadDevices()

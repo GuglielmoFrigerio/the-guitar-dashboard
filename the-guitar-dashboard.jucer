@@ -16,6 +16,12 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="YZ1l5s" name="AverageComputer.h" compile="0" resource="0"
+            file="Source/AverageComputer.h"/>
+      <FILE id="LZwmjz" name="PlaybackEngine.cpp" compile="1" resource="0"
+            file="Source/PlaybackEngine.cpp"/>
+      <FILE id="JVSIpr" name="PlaybackEngine.h" compile="0" resource="0"
+            file="Source/PlaybackEngine.h"/>
       <FILE id="PzQlT3" name="KeyManager.cpp" compile="1" resource="0" file="Source/KeyManager.cpp"
             xcodeResource="0"/>
       <FILE id="zqTEnQ" name="KeyManager.h" compile="0" resource="0" file="Source/KeyManager.h"/>
