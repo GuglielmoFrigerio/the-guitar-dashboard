@@ -9,24 +9,26 @@
 */
 
 #pragma once
+#include <atomic>
 #include "AverageComputer.h"
 
 class PlaybackEngine : public juce::HighResolutionTimer {
 
 private:    // fields
-    float           m_nsPerTick = 0.0f;
-    std::int64_t    m_startTicks = 0;
-    std::int64_t    m_lastTicks = 0;
-    int             m_timespan = 2;
-
-    AverageComputer<float> m_averageTimespan;
+    double                  m_ticksPerSecond = 0.0;
+    std::int64_t            m_startTicks = 0;
+    int                     m_timespan = 2;
+    double                  m_beatsPerMinute = 120.0;
+    double                  m_clicksPerBeat = 128.0;
+    std::atomic<double>     m_ticksVsClicks = 0.0;
 
 private:    // implementation
     void hiResTimerCallback() override;
 
 public:
-    PlaybackEngine();
+    PlaybackEngine(int beatsPerMinute = 120, int clicksPerBeat = 128);
 
     void start();
     void stop();
+    void setBeatsPerMinute(int beatsPerSecond);
 };

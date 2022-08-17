@@ -14,32 +14,30 @@
 void PlaybackEngine::hiResTimerCallback()
 {
     auto nowTicks = juce::Time::getHighResolutionTicks();
-    auto deltaTicks = nowTicks - m_lastTicks;
-    auto nsTimepoint = deltaTicks * m_nsPerTick;
-
-    if (!m_averageTimespan.add(nsTimepoint)) {
-        float average = m_averageTimespan.getAverage();
-        DBG("Average timespan in nS: " << average);
-    }
-
-    m_lastTicks = nowTicks;
+    auto offsetTicks = nowTicks - m_startTicks;
+    auto currentCick = (double)offsetTicks / m_ticksVsClicks.load();
 }
 
-PlaybackEngine::PlaybackEngine()
-    : m_averageTimespan(1000)
+PlaybackEngine::PlaybackEngine(int beatsPerMinute, int clicksPerBeat)
 {
-    float ticksPerSecond = juce::Time::getHighResolutionTicksPerSecond();
-    m_nsPerTick = 1000000000.0 / ticksPerSecond;
+    m_clicksPerBeat = (double)clicksPerBeat;
+    m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();
+    setBeatsPerMinute(beatsPerMinute);
 }
 
 void PlaybackEngine::start()
 {
     m_startTicks = juce::Time::getHighResolutionTicks();
-    m_lastTicks = juce::Time::getHighResolutionTicks();
     startTimer(m_timespan);
 }
 
 void PlaybackEngine::stop()
 {
     stopTimer();
+}
+
+void PlaybackEngine::setBeatsPerMinute(int beatsPerMinute)
+{
+    m_beatsPerMinute = beatsPerMinute;
+    m_ticksVsClicks.store((m_ticksPerSecond * 60.0) / (m_beatsPerMinute * m_clicksPerBeat));
 }
