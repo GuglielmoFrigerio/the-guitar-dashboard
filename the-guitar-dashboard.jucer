@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="NxdLG6" name="the-guitar-dashboard" projectType="guiapp"
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
-              jucerFormatVersion="1" cppLanguageStandard="17">
+              jucerFormatVersion="1" cppLanguageStandard="20">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{07B5428B-B9D6-8BD7-3654-5B21780B1B06}" name="Resources">
       <GROUP id="{B9F8893E-ABE5-BD3A-5A77-9B8E7278D8DE}" name="Images">
