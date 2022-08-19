@@ -66,3 +66,19 @@ void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCo
     }
 }
 
+std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename)
+{
+    auto inputFile = juce::File::getCurrentWorkingDirectory().getChildFile(inputFilename);
+
+    if (inputFile.exists()) {
+        juce::FileInputStream inputStream(inputFile);
+        auto midiFilePtr = std::make_shared<juce::MidiFile>();
+        if (midiFilePtr->readFrom(inputStream)) {
+            return midiFilePtr;
+        }
+    }
+    auto message = juce::String::formatted("loadMidiFile: unable to load midi file from %s", inputFilename);
+    throw std::runtime_error(message.toUTF8());
+
+}
+

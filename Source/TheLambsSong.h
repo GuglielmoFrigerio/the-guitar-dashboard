@@ -33,6 +33,7 @@ private:
     void previousMarker(juce::AudioTransportSource* pAudioTransportSource) override;
     void updateMarkers(double position, PlayerComponent* pPlayerComponent) override;
     juce::String getTrackPath();
+    void loadMidiTracks();
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);

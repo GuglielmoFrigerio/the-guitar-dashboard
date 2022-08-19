@@ -12,6 +12,7 @@
 #include "MidiTrack.h"
 #include "VirtualBand.h"
 #include "PlayerComponent.h"
+#include "GuitarDashCommon.h"
 
 
 void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
@@ -76,6 +77,16 @@ juce::String TheLambsSong::getTrackPath()
     return path + "/../../../../../Resources/Tracks/" + m_trackName;
 }
 
+void TheLambsSong::loadMidiTracks()
+{
+    std::string inputFilename = "../../Resources/sample.mid";
+    auto midiFilePtr = loadMidiFile(inputFilename);
+    auto trackCount = midiFilePtr->getNumTracks();
+    for (auto index = 0; index < trackCount; index++) {
+        auto trackPtr = MidiTrack::loadFromMidiFile(midiFilePtr, index);
+    }
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
@@ -102,6 +113,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
+    loadMidiTracks();
     if (!m_trackName.isEmpty()) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
         auto trackPath = getTrackPath();

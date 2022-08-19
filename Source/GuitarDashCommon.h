@@ -10,6 +10,7 @@
 
 #pragma once
 #include <functional>
+#include <memory>
 #include <JuceHeader.h>
 
 #define M_PI       3.14159265358979323846   // pi
@@ -32,3 +33,4 @@ juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, j
 
 void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler);
 
+std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename);

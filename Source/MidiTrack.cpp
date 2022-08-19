@@ -33,3 +33,17 @@ std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement*
     newMidiTrack->loadFromPatches(pPatchesElement);
     return newMidiTrack;
 }
+
+std::unique_ptr<Track> MidiTrack::loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex)
+{
+    auto pMessageSequence = midiFilePtr->getTrack(trackIndex);
+    auto eventCount = pMessageSequence->getNumEvents();
+    for (auto index = 0; index < eventCount; ++index) {
+        auto pMidiEventHolder = pMessageSequence->getEventPointer(index);
+        auto timestamp = pMidiEventHolder->message.getTimeStamp();
+        auto description = pMidiEventHolder->message.getDescription();
+        DBG("Timestamp: " << timestamp << " description: " << description);
+    }
+
+    return std::unique_ptr<Track>();
+}
