@@ -19,7 +19,8 @@ public:
 
     ProgramChange programChange;
 
-    virtual void play(const TimePoint& timepoint, Track& track) override;
+    void play(const TimePoint& timepoint, Track& track) override;
+    std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track) override;
 
     static std::unique_ptr<Event> parse(juce::XmlElement* pPatchElement);
 };

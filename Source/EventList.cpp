@@ -24,6 +24,11 @@ void EventList::play(const TimePoint& timepoint, Track& track)
     }
 }
 
+std::int64_t EventList::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+{
+    return std::int64_t();
+}
+
 void EventList::enumerateEvents(std::function<bool(const Event* pEvent, int index)> callback) const
 {
     for (auto index = 0; index < m_events.size(); index++)

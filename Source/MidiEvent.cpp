@@ -9,3 +9,13 @@
 */
 
 #include "MidiEvent.h"
+
+std::int64_t MidiEvent::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+{
+    return std::int64_t();
+}
+
+MidiEvent::MidiEvent(const juce::MidiMessage& midiMessage)
+    : m_midiMessage(midiMessage)
+{
+}

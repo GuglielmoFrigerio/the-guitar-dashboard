@@ -25,6 +25,11 @@ void ProgramChangeEvent::play(const TimePoint& , Track& track)
         pMidiDevice->sendProgramChange(programChange, midiChannel);
 }
 
+std::int64_t ProgramChangeEvent::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+{
+    return std::int64_t();
+}
+
 std::unique_ptr<Event> ProgramChangeEvent::parse(juce::XmlElement* pPatchElement)
 {
     return std::make_unique<ProgramChangeEvent>(pPatchElement);
