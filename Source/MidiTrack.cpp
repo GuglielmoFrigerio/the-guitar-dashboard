@@ -64,7 +64,6 @@ std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement*
 
 std::unique_ptr<Track> MidiTrack::loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice)
 {
-
     auto pMessageSequence = midiFilePtr->getTrack(trackIndex);
     return std::make_unique<MidiTrack>(pMidiDevice, pMessageSequence);
 }

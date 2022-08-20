@@ -17,16 +17,16 @@ class PlaybackEngine : public juce::HighResolutionTimer {
 private:    // fields
     double                  m_ticksPerSecond = 0.0;
     std::int64_t            m_startTicks = 0;
-    int                     m_timespan = 2;
+    int                     m_timespan = 1;
     double                  m_beatsPerMinute = 120.0;
-    double                  m_clicksPerBeat = 128.0;
+    double                  m_clicksPerBeat = 480.0;
     std::atomic<double>     m_ticksVsClicks = 0.0;
 
 private:    // implementation
     void hiResTimerCallback() override;
 
 public:
-    PlaybackEngine(int beatsPerMinute = 120, int clicksPerBeat = 128);
+    PlaybackEngine(int beatsPerMinute = 120, int clicksPerBeat = 480);
 
     void start();
     void stop();
