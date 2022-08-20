@@ -19,6 +19,7 @@ private:    // fields
 
 private:    // overriden
     std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track) override;
+    void play(const TimePoint& timepoint, Track& track) override;
 
 public:     // interface
     MidiEvent(const juce::MidiMessage& midiMessage);

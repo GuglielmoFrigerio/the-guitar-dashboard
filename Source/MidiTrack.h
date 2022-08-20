@@ -24,6 +24,7 @@ private:    // implementation
 
 public:
     MidiTrack(MidiDevice* pMidiDevice) : m_pMidiDevice(pMidiDevice) {}
+    MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence);
 
     virtual MidiDevice* getMidiDevice() const override
     {
@@ -38,5 +39,5 @@ public:
     virtual void playFirstEvent() override;
 
     static std::unique_ptr<Track> loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice);
-    static std::unique_ptr<Track> loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex);
+    static std::unique_ptr<Track> loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice);
 };

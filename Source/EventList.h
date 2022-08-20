@@ -19,10 +19,13 @@ class EventList : public IPlayable
 {
 private:    // fields
     std::vector<std::unique_ptr<Event>> m_events;
-    std::uint64_t m_clicktimepoint;
+    std::uint64_t m_clicktimepoint = 0;
 
 public:     // interface
     EventList(std::unique_ptr<Event>& firstEvent);
+    EventList(std::uint64_t clicktimepoint);
+
+    void addEvent(std::unique_ptr<Event>& eventPtr);
     virtual void play(const TimePoint& timepoint, Track& track) override;
     std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track);
 

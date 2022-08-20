@@ -15,6 +15,16 @@ EventList::EventList(std::unique_ptr<Event>& firstEvent)
     m_events.emplace_back(std::move(firstEvent));
 }
 
+EventList::EventList(std::uint64_t clicktimepoint)
+    :   m_clicktimepoint(clicktimepoint)
+{
+}
+
+void EventList::addEvent(std::unique_ptr<Event>& eventPtr)
+{
+    m_events.emplace_back(std::move(eventPtr));
+}
+
 void EventList::play(const TimePoint& timepoint, Track& track)
 {
     for (auto it = m_events.begin(); it != m_events.end(); ++it)

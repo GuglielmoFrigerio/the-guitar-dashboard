@@ -83,7 +83,7 @@ void TheLambsSong::loadMidiTracks()
     auto midiFilePtr = loadMidiFile(inputFilename);
     auto trackCount = midiFilePtr->getNumTracks();
     for (auto index = 0; index < trackCount; index++) {
-        auto trackPtr = MidiTrack::loadFromMidiFile(midiFilePtr, index);
+        auto trackPtr = MidiTrack::loadFromMidiFile(midiFilePtr, index, nullptr);
     }
 }
 

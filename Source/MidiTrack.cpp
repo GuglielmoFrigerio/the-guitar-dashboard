@@ -8,8 +8,10 @@
   ==============================================================================
 */
 
+#include <map>
 #include "MidiTrack.h"
 #include "TimePoint.h"
+#include "MidiEvent.h"
 
 void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
 {
@@ -17,6 +19,32 @@ void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
         auto programChangeEvent = ProgramChangeEvent::parse(pPatchElement);
         addEvent(programChangeEvent);
     }
+}
+
+MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence)
+    : m_pMidiDevice(pMidiDevice)
+{
+    std::map<std::uint64_t, std::unique_ptr<EventList>> eventListMap;
+
+    auto eventCount = pMidiMessageSequence->getNumEvents();
+    for (auto index = 0; index < eventCount; ++index) {
+
+        auto pMidiEventHolder = pMidiMessageSequence->getEventPointer(index);
+        auto clickTimepoint = (std::uint64_t)pMidiEventHolder->message.getTimeStamp();
+        auto it = eventListMap.find(clickTimepoint);
+
+        if (it == eventListMap.end()) {
+            auto result = eventListMap.emplace(std::make_pair(clickTimepoint, std::make_unique<EventList>(clickTimepoint)));
+            it = result.first;
+        }
+        std::unique_ptr<Event> midiEventPtr = std::make_unique<MidiEvent>(pMidiEventHolder->message);
+        it->second->addEvent(midiEventPtr);
+    }
+
+    for (auto it = eventListMap.begin(); it != eventListMap.end(); ++it) {
+        m_eventList.emplace_back(std::move(it->second));
+    }
+
 }
 
 void MidiTrack::playFirstEvent()
@@ -34,16 +62,9 @@ std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement*
     return newMidiTrack;
 }
 
-std::unique_ptr<Track> MidiTrack::loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex)
+std::unique_ptr<Track> MidiTrack::loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice)
 {
-    auto pMessageSequence = midiFilePtr->getTrack(trackIndex);
-    auto eventCount = pMessageSequence->getNumEvents();
-    for (auto index = 0; index < eventCount; ++index) {
-        auto pMidiEventHolder = pMessageSequence->getEventPointer(index);
-        auto timestamp = pMidiEventHolder->message.getTimeStamp();
-        auto description = pMidiEventHolder->message.getDescription();
-        DBG("Timestamp: " << timestamp << " description: " << description);
-    }
 
-    return std::unique_ptr<Track>();
+    auto pMessageSequence = midiFilePtr->getTrack(trackIndex);
+    return std::make_unique<MidiTrack>(pMidiDevice, pMessageSequence);
 }

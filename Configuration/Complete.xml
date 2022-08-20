@@ -206,7 +206,8 @@
     <Song name="The Lamb Lies Down On Broadway">
       <Track name="The Lamb Lies Down on Broadway - Genesis.mp3">        
       </Track>
-      <Patch name="Intro" scene="1">456</Patch>
+      <Patch name="Intro" scene="1">236</Patch>
+      <Patch name="Envelope" scene="5">237</Patch>
     </Song>
     <Song name="The Battle Of Epping Forest">
       <Track name="05-The-Battle-of-Epping-Forest.mp3">        
