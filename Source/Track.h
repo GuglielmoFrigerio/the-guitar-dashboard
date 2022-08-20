@@ -13,12 +13,14 @@
 #include <memory>
 #include "EventList.h"
 #include "ProgramChangeEvent.h"
+#include "IPlaybackTarget.h"
 
 class MidiDevice;
 
-class Track {
+class Track : public IPlaybackTarget {
 protected:    // fields
     std::vector<std::unique_ptr<EventList>> m_eventList;
+    int m_currentIndex = 0;
 
 protected:  // interface
     void    addEvent(std::unique_ptr<Event>& newEvent);
@@ -35,5 +37,6 @@ public:
     int getEventCount() const {
         return (int)m_eventList.size();
     }
+    std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) override;
 
 };

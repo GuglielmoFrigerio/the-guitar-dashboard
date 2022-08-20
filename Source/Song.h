@@ -12,11 +12,12 @@
 #include <vector>
 #include <tuple>
 #include "Track.h"
+#include "IPlaybackTarget.h"
 
 class ProgramChangesComponent;
 class PlayerComponent;
 
-class Song 
+class Song : public IPlaybackTarget
 {
 protected:    // fields
     std::vector<std::unique_ptr<Track>> m_tracks;
@@ -24,6 +25,8 @@ protected:    // fields
 
 protected:  // interface
     void    addTrack(std::unique_ptr<Track> newTrack);
+
+    std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) override;
 
 public:
     Song(const juce::String& name);

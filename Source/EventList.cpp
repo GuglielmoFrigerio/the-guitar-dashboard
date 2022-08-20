@@ -16,7 +16,7 @@ EventList::EventList(std::unique_ptr<Event>& firstEvent)
 }
 
 EventList::EventList(std::uint64_t clicktimepoint)
-    :   m_clicktimepoint(clicktimepoint)
+    :   m_clickTimepoint(clicktimepoint)
 {
 }
 
