@@ -141,6 +141,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\MidiEventList.cpp"/>
     <ClCompile Include="..\..\Source\PlaybackEngine.cpp"/>
     <ClCompile Include="..\..\Source\KeyManager.cpp"/>
     <ClCompile Include="..\..\Source\ValueAnimator.cpp"/>
@@ -2322,6 +2323,8 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\IMidiOutput.h"/>
+    <ClInclude Include="..\..\Source\MidiEventList.h"/>
     <ClInclude Include="..\..\Source\IPlaybackTarget.h"/>
     <ClInclude Include="..\..\Source\AverageComputer.h"/>
     <ClInclude Include="..\..\Source\PlaybackEngine.h"/>

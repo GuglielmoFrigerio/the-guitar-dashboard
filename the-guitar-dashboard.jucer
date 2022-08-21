@@ -16,6 +16,10 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="n0WTnf" name="IMidiOutput.h" compile="0" resource="0" file="Source/IMidiOutput.h"/>
+      <FILE id="PPzeTg" name="MidiEventList.cpp" compile="1" resource="0"
+            file="Source/MidiEventList.cpp"/>
+      <FILE id="g8BbMG" name="MidiEventList.h" compile="0" resource="0" file="Source/MidiEventList.h"/>
       <FILE id="LexPKH" name="IPlaybackTarget.h" compile="0" resource="0"
             file="Source/IPlaybackTarget.h"/>
       <FILE id="YZ1l5s" name="AverageComputer.h" compile="0" resource="0"
