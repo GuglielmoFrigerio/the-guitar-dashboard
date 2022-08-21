@@ -214,6 +214,7 @@
       </Track>
       <Patch name="Intro" scene="1">92</Patch>
       <Patch name="Prima parte" scene="3">449</Patch>
+      <Patch name="Delay" scene="3">234</Patch>
     </Song>
   </Library>
 </AxeFxIII>

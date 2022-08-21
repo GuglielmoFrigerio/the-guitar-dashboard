@@ -15,10 +15,13 @@ void PlaybackEngine::hiResTimerCallback()
 {
     auto nowTicks = juce::Time::getHighResolutionTicks();
     auto offsetTicks = nowTicks - m_startTicks;
-    auto currentCick = (double)offsetTicks / m_ticksVsClicks.load();
+    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
+    std::uint64_t currentClick = (std::uint64_t)round(currentClickDbl);
+    m_pPlaybackTarget->play(currentClick, m_previousClick);
+    m_previousClick = currentClick;
 }
 
-PlaybackEngine::PlaybackEngine(int beatsPerMinute, int clicksPerBeat)
+PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
 {
     m_clicksPerBeat = (double)clicksPerBeat;
     m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();

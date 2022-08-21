@@ -63,8 +63,6 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
-
-    m_playbackEngine.start();
 }
 
 void VirtualBand::loadDevices()
@@ -101,6 +99,8 @@ void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChan
 void VirtualBand::activateSong(int songIndex)
 {
     m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent);
+    m_playbackEnginePtr = std::make_unique<PlaybackEngine>(m_pActiveSong);
+    m_playbackEnginePtr->start();
 }
 
 void VirtualBand::selectProgramChange(int programChangeIndex)

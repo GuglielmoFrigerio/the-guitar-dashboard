@@ -12,5 +12,6 @@
 #include <cstdint>
 
 class IPlaybackTarget {
+public:
     virtual std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) = 0;
 };
