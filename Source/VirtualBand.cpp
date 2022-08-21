@@ -100,7 +100,7 @@ void VirtualBand::activateSong(int songIndex)
 {
     m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent);
     m_playbackEnginePtr = std::make_unique<PlaybackEngine>(m_pActiveSong);
-    m_playbackEnginePtr->start();
+    //m_playbackEnginePtr->start();
 }
 
 void VirtualBand::selectProgramChange(int programChangeIndex)
