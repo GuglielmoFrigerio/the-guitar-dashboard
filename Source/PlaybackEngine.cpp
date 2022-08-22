@@ -22,6 +22,7 @@ void PlaybackEngine::hiResTimerCallback()
 }
 
 PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
+    : m_pPlaybackTarget(pPlaybackTarget)
 {
     m_clicksPerBeat = (double)clicksPerBeat;
     m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();

@@ -83,7 +83,8 @@ void TheLambsSong::loadMidiTracks()
     auto midiFilePtr = loadMidiFile(inputFilename);
     auto trackCount = midiFilePtr->getNumTracks();
     for (auto index = 0; index < trackCount; index++) {
-        auto trackPtr = MidiTrack::loadFromMidiFile(midiFilePtr, index, nullptr, nullptr);
+        auto trackPtr = MidiTrack::loadFromMidiFile(midiFilePtr, index, nullptr, &m_midiOutput);
+        addTrack(trackPtr);
     }
 }
 
@@ -91,9 +92,9 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
-    auto track = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
-    m_pMidiTrack = dynamic_cast<MidiTrack*>(track.get());
-    addTrack(std::move(track));
+    auto trackPtr = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
+    m_pMidiTrack = dynamic_cast<MidiTrack*>(trackPtr.get());
+    addTrack(trackPtr);
 
     auto pTrackElement = pPatchesElement->getChildByName("Track");
     if (pTrackElement != nullptr) {

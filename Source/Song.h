@@ -13,6 +13,7 @@
 #include <tuple>
 #include "Track.h"
 #include "IPlaybackTarget.h"
+#include "MidiOutput.h"
 
 class ProgramChangesComponent;
 class PlayerComponent;
@@ -22,9 +23,10 @@ class Song : public IPlaybackTarget
 protected:    // fields
     std::vector<std::unique_ptr<Track>> m_tracks;
     juce::String m_name;
+    MidiOutput m_midiOutput;
 
 protected:  // interface
-    void    addTrack(std::unique_ptr<Track> newTrack);
+    void    addTrack(std::unique_ptr<Track>& newTrack);
 
     std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) override;
 

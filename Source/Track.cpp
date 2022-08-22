@@ -27,14 +27,14 @@ void Track::play(int index)
 
 std::int64_t Track::play(std::uint64_t currentTick, std::uint64_t previousTick)
 {
-    auto& eventListPtr = m_eventList[m_currentIndex];
+    auto eventListPtr = m_eventList[m_currentIndex].get();
     auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
     while (eventListClickTimepoint < currentTick && eventListClickTimepoint >= previousTick) {
         eventListPtr->play(currentTick, previousTick, *this);
         if (m_currentIndex < (m_eventList.size() - 1)) {
             ++m_currentIndex;
-            auto& eventListPtr = m_eventList[m_currentIndex];
-            auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
+            eventListPtr = m_eventList[m_currentIndex].get();
+            eventListClickTimepoint = eventListPtr->getClickTimepoint();
         }
         else break;
     }
