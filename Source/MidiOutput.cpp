@@ -23,18 +23,20 @@ MidiOutput::MidiOutput()
 
 void MidiOutput::setupBuffer()
 {
+    m_midiBuffer.clear();
     DBG("MidiOutput::setupBuffer");
 }
 
 void MidiOutput::addMessage(const juce::MidiMessage& midiMessage)
 {
+    m_midiBuffer.addEvent(midiMessage, 0);
     DBG("MidiOutput::addMessage: " << midiMessage.getDescription());
-    if (m_outputPtr != nullptr) {
-        m_outputPtr->sendMessageNow(midiMessage);
-    }
 }
 
 void MidiOutput::send()
 {
+    if (m_outputPtr != nullptr) {
+        m_outputPtr->sendBlockOfMessagesNow(m_midiBuffer);
+    }
     DBG("MidiOutput::send");
 }

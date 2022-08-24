@@ -14,6 +14,7 @@
 class MidiOutput : public IMidiOutput {
 private:    // fields
     std::unique_ptr<juce::MidiOutput> m_outputPtr;
+    juce::MidiBuffer m_midiBuffer;
 
 public:
     MidiOutput();
