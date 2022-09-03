@@ -184,8 +184,7 @@
       <Patch name="Solo" scene="8">370</Patch>
     </Song>
     <Song name="In the Cage">
-      <Track name="In the Cage - Genesis.mp3">
-      </Track>
+      <Track name="In the Cage - Genesis.mp3"></Track>
       <Patch name="Intro" scene="8">501</Patch>
       <Patch name="Power Chords" scene="1">383</Patch>
       <Patch name="Si b" scene="1">496</Patch>
@@ -193,27 +192,27 @@
       <Patch name="Power Chords" scene="1">383</Patch>
     </Song>
     <Song name="Aftergow">
-      <Track name="09-Afterglow.mp3">        
-      </Track>
+      <Track name="09-Afterglow.mp3"></Track>
       <Patch name="Guitar" scene="1">391</Patch>
     </Song>
     <Song name="Blood On The Rooftops">
-      <Track name="06-Blood-on-the-Rooftops.mp3">        
-      </Track>
+      <Track name="06-Blood-on-the-Rooftops.mp3"></Track>
       <Patch name="Intro" scene="1">456</Patch>
       <!--Try 125. -->
     </Song>
     <Song name="The Lamb Lies Down On Broadway">
-      <Track name="The Lamb Lies Down on Broadway - Genesis.mp3">        
-      </Track>
+      <Track name="The Lamb Lies Down on Broadway - Genesis.mp3"></Track>
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Envelope" scene="5">237</Patch>
+      <Patch name="Strumming" scene="1">236</Patch>
     </Song>
     <Song name="The Battle Of Epping Forest">
-      <Track name="05-The-Battle-of-Epping-Forest.mp3">        
-      </Track>
+      <Track name="05-The-Battle-of-Epping-Forest.mp3"></Track>
       <Patch name="Intro" scene="1">92</Patch>
       <Patch name="Prima parte" scene="3">449</Patch>
+      <Patch name="Seconda parte" scene="4">449</Patch>
+      <Patch name="Wah" scene="5">449</Patch>
+      <Patch name="Envelope" scene="3">451</Patch>
       <Patch name="Delay" scene="3">234</Patch>
     </Song>
   </Library>
