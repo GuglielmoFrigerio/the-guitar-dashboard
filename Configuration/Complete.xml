@@ -212,7 +212,8 @@
       <Patch name="Prima parte" scene="3">449</Patch>
       <Patch name="Seconda parte" scene="4">449</Patch>
       <Patch name="Wah" scene="5">449</Patch>
-      <Patch name="Envelope" scene="3">451</Patch>
+      <Patch name="Envelope" scene="3">238</Patch>
+      <Patch name="Mini Solo" scene="4">238</Patch>
       <Patch name="Delay" scene="3">234</Patch>
     </Song>
   </Library>
