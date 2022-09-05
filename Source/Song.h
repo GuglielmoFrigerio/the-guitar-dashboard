@@ -14,6 +14,7 @@
 #include "Track.h"
 #include "IPlaybackTarget.h"
 #include "MidiOutput.h"
+#include "MarkerTrack.h"
 
 class ProgramChangesComponent;
 class PlayerComponent;
@@ -24,6 +25,7 @@ protected:    // fields
     std::vector<std::unique_ptr<Track>> m_tracks;
     juce::String m_name;
     MidiOutput m_midiOutput;
+    std::unique_ptr<MarkerTrack> m_markerTrackPtr;
 
 protected:  // interface
     void    addTrack(std::unique_ptr<Track>& newTrack);
