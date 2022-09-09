@@ -13,6 +13,62 @@
 
 void PlaybackEngine::hiResTimerCallback()
 {
+    auto state = m_currentState.load();
+    auto statePtr = m_stateHandlers[(int)state];
+    (this->*statePtr)();
+}
+
+PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
+    : m_pPlaybackTarget(pPlaybackTarget), m_stopOffsetTicks(0), m_currentState(State::Stopped)
+{
+    m_clicksPerBeat = (double)clicksPerBeat;
+    m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();
+    setBeatsPerMinute(beatsPerMinute);
+    startTimer(m_timespan);
+    m_stateHandlers[(int)State::Stopped] = &PlaybackEngine::stoppedHandler;
+    m_stateHandlers[(int)State::Starting] = &PlaybackEngine::startingHandler;
+    m_stateHandlers[(int)State::Started] = &PlaybackEngine::startedHandler;
+    m_stateHandlers[(int)State::Stopping] = &PlaybackEngine::stoppingHandler;
+}
+
+PlaybackEngine::~PlaybackEngine()
+{
+    stopTimer();
+}
+
+void PlaybackEngine::start()
+{
+    if (m_currentState == State::Stopped) {
+        m_currentState.store(State::Starting);
+    }
+}
+
+void PlaybackEngine::stop()
+{
+    if (m_currentState == State::Started) {
+        m_currentState.store(State::Stopping);
+    }
+}
+
+void PlaybackEngine::setBeatsPerMinute(int beatsPerMinute)
+{
+    m_beatsPerMinute = beatsPerMinute;
+    m_ticksVsClicks.store((m_ticksPerSecond * 60.0) / (m_beatsPerMinute * m_clicksPerBeat));
+}
+
+void PlaybackEngine::stoppedHandler()
+{
+
+}
+
+void PlaybackEngine::startingHandler()
+{
+    m_startTicks = juce::Time::getHighResolutionTicks() - m_stopOffsetTicks;
+    m_currentState.store(State::Started);
+}
+
+void PlaybackEngine::startedHandler()
+{
     auto nowTicks = juce::Time::getHighResolutionTicks();
     auto offsetTicks = nowTicks - m_startTicks;
     auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
@@ -21,27 +77,9 @@ void PlaybackEngine::hiResTimerCallback()
     m_previousClick = currentClick;
 }
 
-PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
-    : m_pPlaybackTarget(pPlaybackTarget)
+void PlaybackEngine::stoppingHandler()
 {
-    m_clicksPerBeat = (double)clicksPerBeat;
-    m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();
-    setBeatsPerMinute(beatsPerMinute);
-}
-
-void PlaybackEngine::start()
-{
-    m_startTicks = juce::Time::getHighResolutionTicks();
-    startTimer(m_timespan);
-}
-
-void PlaybackEngine::stop()
-{
-    stopTimer();
-}
-
-void PlaybackEngine::setBeatsPerMinute(int beatsPerMinute)
-{
-    m_beatsPerMinute = beatsPerMinute;
-    m_ticksVsClicks.store((m_ticksPerSecond * 60.0) / (m_beatsPerMinute * m_clicksPerBeat));
+    auto nowTicks = juce::Time::getHighResolutionTicks();
+    m_stopOffsetTicks = nowTicks - m_startTicks;
+    m_currentState.store(State::Stopped);
 }

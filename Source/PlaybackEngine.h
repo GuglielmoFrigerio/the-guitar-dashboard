@@ -13,7 +13,10 @@
 #include "AverageComputer.h"
 #include "IPlaybackTarget.h"
 
+
 class PlaybackEngine : public juce::HighResolutionTimer {
+private:    //types
+    using StateHandler = void (PlaybackEngine::*)();
 
 private:    // fields
     double                  m_ticksPerSecond = 0.0;
@@ -24,12 +27,21 @@ private:    // fields
     std::atomic<double>     m_ticksVsClicks = 0.0;
     IPlaybackTarget*        m_pPlaybackTarget = nullptr;
     std::uint64_t           m_previousClick = 0;
+    std::int64_t            m_stopOffsetTicks;
+    enum class State { Stopped = 0, Starting = 1, Started = 2, Stopping = 3};
+    std::atomic<State>      m_currentState = State::Stopped;
+    StateHandler            m_stateHandlers[4];
 
 private:    // implementation
     void hiResTimerCallback() override;
+    void stoppedHandler();
+    void startingHandler();
+    void startedHandler();
+    void stoppingHandler();
 
 public:
     PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute = 120, int clicksPerBeat = 480);
+    ~PlaybackEngine();
 
     void start();
     void stop();
