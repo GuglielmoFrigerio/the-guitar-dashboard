@@ -56,6 +56,12 @@ void PlaybackEngine::setBeatsPerMinute(int beatsPerMinute)
     m_ticksVsClicks.store((m_ticksPerSecond * 60.0) / (m_beatsPerMinute * m_clicksPerBeat));
 }
 
+void PlaybackEngine::seek(std::uint64_t clickPosition)
+{
+    double tickOffset = clickPosition * m_ticksVsClicks.load();
+    m_startTicks = juce::Time::getHighResolutionTicks() - (std::uint64_t)round(tickOffset);
+}
+
 void PlaybackEngine::stoppedHandler()
 {
 

@@ -34,13 +34,13 @@ void EventList::play(const TimePoint& timepoint, Track& track)
     }
 }
 
-std::int64_t EventList::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+std::int64_t EventList::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
     beforePlaying();
     for (auto it = m_events.begin(); it != m_events.end(); ++it)
     {
         auto& eventPtr = *it;
-        eventPtr->play(currentTick, previousTick, track);
+        eventPtr->play(currentClick, previousClick, track);
     }
     afterPlaying();
     return std::int64_t();

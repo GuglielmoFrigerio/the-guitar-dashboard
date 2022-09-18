@@ -46,4 +46,5 @@ public:
     void start();
     void stop();
     void setBeatsPerMinute(int beatsPerSecond);
+    void seek(std::uint64_t clickPosition);
 };

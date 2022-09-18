@@ -25,12 +25,12 @@ void Track::play(int index)
     }
 }
 
-std::int64_t Track::play(std::uint64_t currentTick, std::uint64_t previousTick)
+std::int64_t Track::play(std::uint64_t currentClick, std::uint64_t previousClick)
 {
     auto eventListPtr = m_eventList[m_currentIndex].get();
     auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
-    while (eventListClickTimepoint < currentTick && eventListClickTimepoint >= previousTick) {
-        eventListPtr->play(currentTick, previousTick, *this);
+    while (eventListClickTimepoint < currentClick && eventListClickTimepoint >= previousClick) {
+        eventListPtr->play(currentClick, previousClick, *this);
         if (m_currentIndex < (m_eventList.size() - 1)) {
             ++m_currentIndex;
             eventListPtr = m_eventList[m_currentIndex].get();

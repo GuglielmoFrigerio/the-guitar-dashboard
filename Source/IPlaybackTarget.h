@@ -13,5 +13,5 @@
 
 class IPlaybackTarget {
 public:
-    virtual std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) = 0;
+    virtual std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick) = 0;
 };

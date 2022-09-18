@@ -25,7 +25,7 @@ void ProgramChangeEvent::play(const TimePoint& , Track& track)
         pMidiDevice->sendProgramChange(programChange, midiChannel);
 }
 
-std::int64_t ProgramChangeEvent::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+std::int64_t ProgramChangeEvent::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
     return std::int64_t();
 }
