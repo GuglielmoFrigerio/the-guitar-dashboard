@@ -58,8 +58,16 @@ void PlaybackEngine::setBeatsPerMinute(int beatsPerMinute)
 
 void PlaybackEngine::seek(std::uint64_t clickPosition)
 {
-    double tickOffset = clickPosition * m_ticksVsClicks.load();
-    m_startTicks = juce::Time::getHighResolutionTicks() - (std::uint64_t)round(tickOffset);
+    auto offsetTicks = (std::uint64_t)round(clickPosition * m_ticksVsClicks.load());
+    auto currentState = m_currentState.load();
+    if (currentState == State::Stopped) {
+        m_stopOffsetTicks = offsetTicks;
+        play(offsetTicks);
+        return;
+    }
+    else if (currentState == State::Started) {
+        m_startTicks.store(juce::Time::getHighResolutionTicks() - offsetTicks);
+    }
 }
 
 void PlaybackEngine::stoppedHandler()
@@ -69,23 +77,28 @@ void PlaybackEngine::stoppedHandler()
 
 void PlaybackEngine::startingHandler()
 {
-    m_startTicks = juce::Time::getHighResolutionTicks() - m_stopOffsetTicks;
+    m_startTicks.store(juce::Time::getHighResolutionTicks() - m_stopOffsetTicks);
     m_currentState.store(State::Started);
 }
 
 void PlaybackEngine::startedHandler()
 {
     auto nowTicks = juce::Time::getHighResolutionTicks();
-    auto offsetTicks = nowTicks - m_startTicks;
-    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
-    std::uint64_t currentClick = (std::uint64_t)round(currentClickDbl);
-    m_pPlaybackTarget->play(currentClick, m_previousClick);
-    m_previousClick = currentClick;
+    auto offsetTicks = nowTicks - m_startTicks.load();
+    play(offsetTicks);
 }
 
 void PlaybackEngine::stoppingHandler()
 {
     auto nowTicks = juce::Time::getHighResolutionTicks();
-    m_stopOffsetTicks = nowTicks - m_startTicks;
+    m_stopOffsetTicks = nowTicks - m_startTicks.load();
     m_currentState.store(State::Stopped);
+}
+
+void PlaybackEngine::play(std::uint64_t offsetTicks)
+{
+    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
+    std::uint64_t currentClick = (std::uint64_t)round(currentClickDbl);
+    m_pPlaybackTarget->play(currentClick, m_previousClick);
+    m_previousClick = currentClick;
 }

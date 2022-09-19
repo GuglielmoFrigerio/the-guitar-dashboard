@@ -20,7 +20,7 @@ private:    //types
 
 private:    // fields
     double                  m_ticksPerSecond = 0.0;
-    std::int64_t            m_startTicks = 0;
+    std::atomic<std::int64_t>  m_startTicks = 0;
     int                     m_timespan = 1;
     double                  m_beatsPerMinute = 120.0;
     double                  m_clicksPerBeat = 480.0;
@@ -38,6 +38,7 @@ private:    // implementation
     void startingHandler();
     void startedHandler();
     void stoppingHandler();
+    void play(std::uint64_t offsetTicks);
 
 public:
     PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute = 120, int clicksPerBeat = 480);
