@@ -1,21 +1,21 @@
 /*
   ==============================================================================
 
-    Marker.cpp
+    BackingTrackMarker.cpp
     Created: 26 Aug 2021 2:41:12pm
     Author:  gugli
 
   ==============================================================================
 */
 
-#include "Marker.h"
+#include "BackingTrackMarker.h"
 
-Marker::Marker(double position)
+BackingTrackMarker::BackingTrackMarker(double position)
     :   m_position(position)
 {
 }
 
-void Marker::activate(juce::AudioTransportSource* pAudioTransportSource)
+void BackingTrackMarker::activate(juce::AudioTransportSource* pAudioTransportSource)
 {
     pAudioTransportSource->setPosition(m_position);
 }

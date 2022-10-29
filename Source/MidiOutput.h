@@ -13,11 +13,12 @@
 
 class MidiOutput : public IMidiOutput {
 private:    // fields
-    std::unique_ptr<juce::MidiOutput> m_outputPtr;
+    std::shared_ptr<juce::MidiOutput> m_outputPtr;
     juce::MidiBuffer m_midiBuffer;
 
 public:
     MidiOutput();
+    MidiOutput(std::shared_ptr<juce::MidiOutput> midiOutputPtr);
 
 private:    // IMidiOutput interface implementation
     void setupBuffer() override;

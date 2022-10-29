@@ -12,7 +12,9 @@
 #include <vector>
 #include <tuple>
 #include "Song.h"
-#include "Marker.h"
+#include "BackingTrackMarker.h"
+#include "PlaybackEngine.h"
+
 
 class VirtualBand;
 class MidiTrack;
@@ -25,8 +27,9 @@ private:    // fields
     int m_selectedProgramIndex = 0;
     std::unique_ptr<juce::AudioFormatReaderSource> m_readerSourcePtr;
     juce::String m_trackName;
-    std::vector<Marker> m_markers;
+    std::vector<BackingTrackMarker> m_backingTrackMarkers;
     const int m_previousGuardTime = 1.0;
+    std::unique_ptr<PlaybackEngine> m_playbackEnginePtr;
 
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;
@@ -41,6 +44,7 @@ public:
     }
 
     void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent) override;
+    void deactivate() override;
 
     void selectProgramChange(int programChangeIndex) override;
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;

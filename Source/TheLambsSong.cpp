@@ -17,9 +17,9 @@
 
 void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
 {
-    if (!m_markers.empty()) {
+    if (!m_backingTrackMarkers.empty()) {
         auto songPosition = pAudioTransportSource->getCurrentPosition();
-        for (auto& marker : m_markers) {
+        for (auto& marker : m_backingTrackMarkers) {
             if (marker.getPosition() > songPosition) {
                 marker.activate(pAudioTransportSource);
                 break;
@@ -30,10 +30,10 @@ void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
 
 void TheLambsSong::previousMarker(juce::AudioTransportSource* pAudioTransportSource)
 {
-    if (!m_markers.empty()) {
+    if (!m_backingTrackMarkers.empty()) {
         auto songPosition = pAudioTransportSource->getCurrentPosition() - m_previousGuardTime;
-        Marker* pCandidateMarker = nullptr;
-        for (auto& marker : m_markers) {
+        BackingTrackMarker* pCandidateMarker = nullptr;
+        for (auto& marker : m_backingTrackMarkers) {
             if (marker.getPosition() < songPosition)
                 pCandidateMarker = &marker;
             else break;
@@ -45,13 +45,13 @@ void TheLambsSong::previousMarker(juce::AudioTransportSource* pAudioTransportSou
 
 void TheLambsSong::updateMarkers(double position, PlayerComponent* pPlayerComponent)
 {
-    if (!m_markers.empty()) {
+    if (!m_backingTrackMarkers.empty()) {
         auto previousEnabled = false;
         auto nextEnabled = false;
 
         auto positionForPrevious = position - m_previousGuardTime;
 
-        for (auto& marker : m_markers) {
+        for (auto& marker : m_backingTrackMarkers) {
             auto markerPosition = marker.getPosition();
             if (markerPosition > position)
                 nextEnabled = true;
@@ -106,7 +106,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
             tokens.addTokens(markerText, ":", "");
             if (tokens.size() == 3) {
                 auto markerPositionInSeconds = tokens[0].getIntValue() * 3600 + tokens[1].getIntValue() * 60 + tokens[2].getIntValue();
-                m_markers.emplace_back((double)markerPositionInSeconds);
+                m_backingTrackMarkers.emplace_back((double)markerPositionInSeconds);
             }
         }
     }
@@ -114,6 +114,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
+    m_playbackEnginePtr = std::make_unique<PlaybackEngine>(this);
+    m_playbackEnginePtr->start();
     loadMidiTracks();
     if (!m_trackName.isEmpty()) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
@@ -129,13 +131,18 @@ void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce:
                 auto duration = pAudioTransportSource->getLengthInSeconds();
 
                 std::vector<double> markers;
-                for (auto& markerObj : m_markers)
+                for (auto& markerObj : m_backingTrackMarkers)
                     markers.push_back(markerObj.getPosition());
 
-                pPlayerComponent->setSongInfo((float)duration, !m_markers.empty(), markers);
+                pPlayerComponent->setSongInfo((float)duration, !m_backingTrackMarkers.empty(), markers);
             }
         }
     }
+}
+
+void TheLambsSong::deactivate()
+{
+    m_playbackEnginePtr = nullptr;
 }
 
 void TheLambsSong::selectProgramChange(int programChangeIndex)

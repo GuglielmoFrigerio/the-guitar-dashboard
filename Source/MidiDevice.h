@@ -12,12 +12,14 @@
 #include <memory>
 #include <JuceHeader.h>
 #include "ProgramChange.h"
+#include "MidiOutput.h"
 
 class MidiDevice : public juce::MidiInputCallback
 {
 protected:  // fields
-    std::unique_ptr<juce::MidiOutput> m_midiOutPortPtr;
+    std::shared_ptr<juce::MidiOutput> m_midiOutPortPtr;
     std::unique_ptr<juce::MidiInput> m_midiInPortPtr;
+    std::unique_ptr<MidiOutput> m_midiOutputPtr;
     bool m_inputStarted = false;
     int m_currentProgramNumber = -1;
     int m_currentSceneNumber = -1;
@@ -30,4 +32,9 @@ public:     // interface
 
     void start();
     virtual void sendProgramChange(const ProgramChange& programChange, int midiChannel);
+    void loadProgramChange(const ProgramChange& programChange, int midiChannel);
+
+    IMidiOutput* getMidiOutput() const {
+        return m_midiOutputPtr.get();
+    }
 };

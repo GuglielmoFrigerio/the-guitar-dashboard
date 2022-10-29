@@ -10,6 +10,8 @@
 
 #include "MidiEventList.h"
 #include "MidiEvent.h"
+#include "ProgramChange.h"
+
 
 void MidiEventList::beforePlaying()
 {
@@ -30,4 +32,12 @@ void MidiEventList::addMidiEvent(const juce::MidiMessage& midiMessage)
 {
     std::unique_ptr<Event> midiEventPtr = std::make_unique<MidiEvent>(midiMessage, m_pMidiOutput);
     addEvent(midiEventPtr);
+}
+
+std::unique_ptr<MidiEventList> MidiEventList::parse(juce::XmlElement* pPatchElement, int midiChannel, uint64_t clickTimepoint, IMidiOutput* pMidiOutput)
+{
+    auto programChangePtr = ProgramChange::parse(pPatchElement, clickTimepoint);
+    auto eventListPtr = std::make_unique<MidiEventList>(programChangePtr.clickTimepoint, pMidiOutput);
+    programChangePtr.addMidiEvents(eventListPtr.get(), midiChannel);
+    return eventListPtr;
 }

@@ -16,6 +16,7 @@ MidiDevice::MidiDevice(const juce::String& inputMidiPortId, const juce::String& 
 {
     m_midiOutPortPtr = juce::MidiOutput::openDevice(outputMidiPortId);
     m_midiInPortPtr = juce::MidiInput::openDevice(inputMidiPortId, this);
+    m_midiOutputPtr = std::make_unique<MidiOutput>(m_midiOutPortPtr);
 }
 
 MidiDevice::~MidiDevice()

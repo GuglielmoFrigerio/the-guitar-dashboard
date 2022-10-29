@@ -156,7 +156,7 @@
     <ClCompile Include="..\..\Source\PlayerComponent.cpp"/>
     <ClCompile Include="..\..\Source\PlayerButton.cpp"/>
     <ClCompile Include="..\..\Source\TilesLookAndFeel.cpp"/>
-    <ClCompile Include="..\..\Source\Marker.cpp"/>
+    <ClCompile Include="..\..\Source\BackingTrackMarker.cpp"/>
     <ClCompile Include="..\..\Source\TheLambsSong.cpp"/>
     <ClCompile Include="..\..\Source\MidiEvent.cpp"/>
     <ClCompile Include="..\..\Source\AxeFx2Device.cpp"/>
@@ -2343,7 +2343,7 @@
     <ClInclude Include="..\..\Source\PlayerComponent.h"/>
     <ClInclude Include="..\..\Source\PlayerButton.h"/>
     <ClInclude Include="..\..\Source\TilesLookAndFeel.h"/>
-    <ClInclude Include="..\..\Source\Marker.h"/>
+    <ClInclude Include="..\..\Source\BackingTrackMarker.h"/>
     <ClInclude Include="..\..\Source\TheLambsSong.h"/>
     <ClInclude Include="..\..\Source\MidiEvent.h"/>
     <ClInclude Include="..\..\Source\AxeFx2Device.h"/>

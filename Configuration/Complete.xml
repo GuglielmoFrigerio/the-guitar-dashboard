@@ -2,7 +2,7 @@
 <AxeFxIII>
   <Library name="Agosto 2021">
     <Song name="Get'em Out By Friday">
-      <Track name="Get 'Em Out By Friday.mp3" messsage="Pedale Sx al Minimo!" />
+      <Track name="Get 'Em Out By Friday.mp3" message="Pedale Sx al Minimo!" />
       <Patch name="Intro" scene="1">507</Patch>
       <Patch name="Intro Diatonic 1" scene="2">507</Patch>
       <Patch name="Intro Diatonic 2" scene="3">507</Patch>

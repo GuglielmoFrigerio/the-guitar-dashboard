@@ -21,6 +21,11 @@ MidiOutput::MidiOutput()
     }
 }
 
+MidiOutput::MidiOutput(std::shared_ptr<juce::MidiOutput> midiOutputPtr)
+    : m_outputPtr(midiOutputPtr)
+{
+}
+
 void MidiOutput::setupBuffer()
 {
     m_midiBuffer.clear();

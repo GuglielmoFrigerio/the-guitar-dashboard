@@ -622,7 +622,7 @@
     <ClCompile Include="..\..\Source\TilesLookAndFeel.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Marker.cpp">
+    <ClCompile Include="..\..\Source\BackingTrackMarker.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TheLambsSong.cpp">
@@ -3054,7 +3054,7 @@
     <ClInclude Include="..\..\Source\TilesLookAndFeel.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Marker.h">
+    <ClInclude Include="..\..\Source\BackingTrackMarker.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\TheLambsSong.h">

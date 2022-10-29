@@ -16,7 +16,6 @@
 #include "IDeviceHost.h"
 #include "FractalDevice.h"
 #include "ProgramChangesComponent.h"
-#include "PlaybackEngine.h"
 
 class SongListComponent;
 class PlayerComponent;
@@ -35,7 +34,6 @@ private:    // fields
     std::atomic<bool> m_songLibraryFileReady;
     juce::File m_inputFile;
     Song* m_pActiveSong = nullptr;
-    std::unique_ptr<PlaybackEngine> m_playbackEnginePtr;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;

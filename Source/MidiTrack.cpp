@@ -13,12 +13,17 @@
 #include "TimePoint.h"
 #include "MidiEvent.h"
 #include "MidiEventList.h"
+#include "MidiDevice.h"
+
+const uint64_t DefaultClicksPerBeat = 480ull;
 
 void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
 {
+    int64_t currentClickTimepoint = 0;
     for (auto* pPatchElement : pPatchesElement->getChildWithTagNameIterator("Patch")) {
-        auto programChangeEvent = ProgramChangeEvent::parse(pPatchElement);
-        addEvent(programChangeEvent);
+        std::unique_ptr<EventList> programChangeEventsPtr = MidiEventList::parse(pPatchElement, m_midiChannel, currentClickTimepoint, m_pMidiDevice->getMidiOutput());
+        currentClickTimepoint = programChangeEventsPtr->getClickTimepoint() + DefaultClicksPerBeat;
+        m_eventList.emplace_back(std::move(programChangeEventsPtr));
     }
 }
 

@@ -13,7 +13,7 @@
 #include "MidiDevice.h"
 
 ProgramChangeEvent::ProgramChangeEvent(const juce::XmlElement* pInputElement)
-    :   programChange(ProgramChange::parse(pInputElement))
+    :   programChange(ProgramChange::parse(pInputElement, 0ull))
 {
 }
 
