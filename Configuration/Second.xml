@@ -1,62 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxeFxIII>
     <Library name="Agosto 2021">
-        <Song name="The Return of the Gian Hogweed">
-            <Track name="The Return Of The Giant Hogweed.mp3">
-                <Marker>00:04:06</Marker>
-                <Marker>00:05:15</Marker>
-            </Track>
-            <Patch name="intro" scene="1">475</Patch>
-            <Patch name="-12" scene="2">508</Patch>
-            <Patch name="+12" scene="3">508</Patch>
-            <Patch name="Stacco" scene="4">508</Patch>
-            <Patch name="Clean" scene="5">508</Patch>
-            <Patch name="Dist" scene="4">508</Patch>
-            <Patch name="Clean" scene="5">508</Patch>
-            <Patch name="-12" scene="2">508</Patch>
-            <Patch name="+12" scene="3">508</Patch>
-            <Patch name="Stacco" scene="4">508</Patch>
-            <Patch name="Clean" scene="5">508</Patch>
-            <Patch name="Dist" scene="4">508</Patch>
-            <Patch name="Clean" scene="5">508</Patch>
-            <Patch name="Solo con Flauto" scene="8">450</Patch>
-            <Patch name="+12" scene="3">508</Patch>
-            <Patch name="Dist" scene="4">508</Patch>
-            <Patch name="Clean" scene="5">508</Patch>
-            <Patch name="SoloReverb" scene="1">451</Patch>
-            <Patch name="SoloReverbDiat" scene="2">451</Patch>
-            <Patch name="TapPicking" scene="3">451</Patch>
-            <Patch name="2nd" scene="4">451</Patch>
-            <Patch name="Finale" scene="1">395</Patch>
-        </Song>
-        <Song name="Time Table">
-            <Track name="Time Table.mp3">
-                <Marker>00:00:15</Marker>
-            </Track>
-            <Patch scene="1">467</Patch>
-        </Song>
-        <Song name="Hairless Heart">
-            <Track name="Hairless Heart - Genesis.mp3"></Track>
-            <Patch name="Clean Intro" scene="2">478</Patch>
-            <Patch name="Envelope" scene="6">479</Patch>
-            <Patch name="Dist" scene="3">480</Patch>
-            <Patch name="Envelope" scene="6">479</Patch>
-            <Patch name="Dist" scene="3">480</Patch>
-        </Song>
-        <Song name="Here Comes the Supernatural Anaesthetist">
-            <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
-            <Patch name="Clean Intro" scene="1">439</Patch>
-            <Patch name="Solo" scene="8">222</Patch>
-            <Patch name="Solo Finale" scene="1">31</Patch>
-        </Song>
-        <Song name="Lilywhite Lilith">
-            <Track name="Lilywhite Lilith - Genesis.mp3"></Track>
-            <Patch name="Intro" scene="8">370</Patch>
-            <Patch name="Rito" scene="1">370</Patch>
-            <Patch name="Solo" scene="8">370</Patch>
-            <Patch name="Rito" scene="1">370</Patch>
-            <Patch name="Solo" scene="8">370</Patch>
-        </Song>
         <Song name="In the Cage">
             <Track name="In the Cage - Genesis.mp3"></Track>
             <Patch name="Intro" scene="8">501</Patch>
@@ -90,6 +34,13 @@
             <Patch name="No Envelope" scene="4">238</Patch>
             <Patch name="Delay" scene="3">234</Patch>
             <Patch name="Si" scene="1">262</Patch>
+            <Patch name="12" scene="1">491</Patch>
+            <Patch name="Seconda parte" scene="4">449</Patch>
+            <Patch name="Wah" scene="5">449</Patch>
+            <Patch name="Envelope" scene="3">238</Patch>
+            <Patch name="No Envelope" scene="4">238</Patch>
+            <Patch name="No Delay" scene="4">234</Patch>
+            <Patch name="Solo" scene="8">318</Patch>
         </Song>
     </Library>
 </AxeFxIII>

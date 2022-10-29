@@ -197,7 +197,8 @@
     </Song>
     <Song name="Blood On The Rooftops">
       <Track name="06-Blood-on-the-Rooftops.mp3"></Track>
-      <Patch name="Intro" scene="1">456</Patch>
+      <!-- <Patch name="Intro" scene="1">456</Patch> -->
+      <Patch name="Intro" scene="2">443</Patch>
       <!--Try 125. -->
     </Song>
     <Song name="The Lamb Lies Down On Broadway">
@@ -216,6 +217,13 @@
       <Patch name="No Envelope" scene="4">238</Patch>
       <Patch name="Delay" scene="3">234</Patch>
       <Patch name="Si" scene="1">262</Patch>
+      <Patch name="12" scene="1">491</Patch>
+      <Patch name="Seconda parte" scene="4">449</Patch>
+      <Patch name="Wah" scene="5">449</Patch>
+      <Patch name="Envelope" scene="3">238</Patch>
+      <Patch name="No Envelope" scene="4">238</Patch>
+      <Patch name="No Delay" scene="4">234</Patch>
+      <Patch name="Solo" scene="8">318</Patch>
     </Song>
   </Library>
 </AxeFxIII>
