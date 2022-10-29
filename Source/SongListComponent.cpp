@@ -15,7 +15,7 @@
 #include "GuitarDashCommon.h"
 
 const int TileWidth = 270;
-const int TileHeight = 135;
+const int TileHeight = 100;
 
 
 void SongListComponent::buttonClicked(juce::Button* pButton)
