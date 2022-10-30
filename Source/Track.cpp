@@ -8,6 +8,7 @@
   ==============================================================================
 */
 
+#include <JuceHeader.h>
 #include "Track.h"
 
 void Track::addEvent(std::unique_ptr<Event>& newEvent)
@@ -25,11 +26,11 @@ void Track::play(int index)
     }
 }
 
-std::int64_t Track::play(std::uint64_t currentClick, std::uint64_t previousClick)
+std::int64_t Track::play(std::int64_t currentClick, std::int64_t previousClick)
 {
     auto eventListPtr = m_eventList[m_currentIndex].get();
     auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
-    while (eventListClickTimepoint < currentClick && eventListClickTimepoint >= previousClick) {
+    while (eventListClickTimepoint <= currentClick && eventListClickTimepoint > previousClick) {
         eventListPtr->play(currentClick, previousClick, *this);
         if (m_currentIndex < (m_eventList.size() - 1)) {
             ++m_currentIndex;
@@ -39,20 +40,4 @@ std::int64_t Track::play(std::uint64_t currentClick, std::uint64_t previousClick
         else break;
     }
     return 0;
-}
-
-void Track::enumerateProgramChanges(std::function<void(const ProgramChangeEvent* pProgramChangeEvent, int index)> callback) const
-{
-    for (auto index = 0; index < m_eventList.size(); index++)
-    {
-        auto& eventList = m_eventList[index];
-        eventList->enumerateEvents([this, index, callback](const Event* pEvent, int eventIndex) {
-            const auto pProgramChangeEvent = dynamic_cast<const ProgramChangeEvent*>(pEvent);
-            if (pProgramChangeEvent != nullptr) {
-                callback(pProgramChangeEvent, index);
-                return false;
-            }
-            return true;
-        });
-    }
 }

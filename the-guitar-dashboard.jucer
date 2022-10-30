@@ -16,6 +16,8 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="COe3qV" name="Marker.h" compile="0" resource="0" file="Source/Marker.h"/>
+      <FILE id="y0qbZz" name="Marker.cpp" compile="1" resource="0" file="Source/Marker.cpp"/>
       <FILE id="D5mGPn" name="MarkerTrack.cpp" compile="1" resource="0" file="Source/MarkerTrack.cpp"/>
       <FILE id="RHidDU" name="MarkerTrack.h" compile="0" resource="0" file="Source/MarkerTrack.h"/>
       <FILE id="CVv2BF" name="MidiOutput.cpp" compile="1" resource="0" file="Source/MidiOutput.cpp"/>
@@ -71,8 +73,10 @@
             file="Source/TilesLookAndFeel.cpp"/>
       <FILE id="wYJOYy" name="TilesLookAndFeel.h" compile="0" resource="0"
             file="Source/TilesLookAndFeel.h"/>
-      <FILE id="id327N" name="Marker.cpp" compile="1" resource="0" file="Source/Marker.cpp"/>
-      <FILE id="jnn6fa" name="Marker.h" compile="0" resource="0" file="Source/Marker.h"/>
+      <FILE id="id327N" name="BackingTrackMarker.cpp" compile="1" resource="0"
+            file="Source/BackingTrackMarker.cpp"/>
+      <FILE id="jnn6fa" name="BackingTrackMarker.h" compile="0" resource="0"
+            file="Source/BackingTrackMarker.h"/>
       <FILE id="H9ZThG" name="TheLambsSong.cpp" compile="1" resource="0"
             file="Source/TheLambsSong.cpp"/>
       <FILE id="jiPy13" name="TheLambsSong.h" compile="0" resource="0" file="Source/TheLambsSong.h"/>
@@ -94,13 +98,8 @@
       <FILE id="iRpGYx" name="IDeviceHost.h" compile="0" resource="0" file="Source/IDeviceHost.h"/>
       <FILE id="crCDwN" name="VirtualBand.cpp" compile="1" resource="0" file="Source/VirtualBand.cpp"/>
       <FILE id="KhRtHe" name="VirtualBand.h" compile="0" resource="0" file="Source/VirtualBand.h"/>
-      <FILE id="wSIwtG" name="ProgramChangeEvent.cpp" compile="1" resource="0"
-            file="Source/ProgramChangeEvent.cpp"/>
-      <FILE id="HbmakC" name="ProgramChangeEvent.h" compile="0" resource="0"
-            file="Source/ProgramChangeEvent.h"/>
-      <FILE id="awQndQ" name="ProgramChange.cpp" compile="1" resource="0"
-            file="Source/ProgramChange.cpp"/>
-      <FILE id="Xjee4T" name="ProgramChange.h" compile="0" resource="0" file="Source/ProgramChange.h"/>
+      <FILE id="awQndQ" name="DevicePatch.cpp" compile="1" resource="0" file="Source/DevicePatch.cpp"/>
+      <FILE id="Xjee4T" name="DevicePatch.h" compile="0" resource="0" file="Source/DevicePatch.h"/>
       <FILE id="UKNvJu" name="MidiTrack.cpp" compile="1" resource="0" file="Source/MidiTrack.cpp"/>
       <FILE id="TNMUMb" name="MidiTrack.h" compile="0" resource="0" file="Source/MidiTrack.h"/>
       <FILE id="GhMffc" name="AxeFx3Device.cpp" compile="1" resource="0"

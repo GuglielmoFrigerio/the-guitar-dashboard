@@ -19,9 +19,9 @@ PlayerButton::PlayerButton(juce::StringRef imageName)
     m_imageHeight = playerImage.getHeight();
 
     setImages(false, true, true,
-        playerImage, 1.0f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
-        playerImage, 0.8f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
-        playerImage, 0.6f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
+        playerImage, 1.0f, juce::Colour::fromRGBA(0, 0, 0, 0.0),
+        playerImage, 0.8f, juce::Colour::fromRGBA(0, 0, 0, 0.0),
+        playerImage, 0.6f, juce::Colour::fromRGBA(0, 0, 0, 0.0),
         0.0f);
 }
 
@@ -32,9 +32,9 @@ PlayerButton::PlayerButton(const char* imageData, int imageDataLength)
     m_imageHeight = playerImage.getHeight();
 
     setImages(false, true, true,
-        playerImage, 1.0f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
-        playerImage, 0.8f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
-        playerImage, 0.6f, juce::Colour::fromRGBA(0, 0, 0, 0.0f),
+        playerImage, 1.0f, juce::Colour::fromRGBA(0, 0, 0, 0.0),
+        playerImage, 0.8f, juce::Colour::fromRGBA(0, 0, 0, 0.0),
+        playerImage, 0.6f, juce::Colour::fromRGBA(0, 0, 0, 0.0),
         0.0f);    
 }
 

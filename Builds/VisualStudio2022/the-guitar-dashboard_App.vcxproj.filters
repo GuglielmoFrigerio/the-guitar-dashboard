@@ -577,6 +577,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Marker.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MarkerTrack.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -643,10 +646,7 @@
     <ClCompile Include="..\..\Source\VirtualBand.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ProgramChangeEvent.cpp">
-      <Filter>the-guitar-dashboard\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ProgramChange.cpp">
+    <ClCompile Include="..\..\Source\DevicePatch.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MidiTrack.cpp">
@@ -3000,6 +3000,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Marker.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\MarkerTrack.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
@@ -3081,10 +3084,7 @@
     <ClInclude Include="..\..\Source\VirtualBand.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\ProgramChangeEvent.h">
-      <Filter>the-guitar-dashboard\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\ProgramChange.h">
+    <ClInclude Include="..\..\Source\DevicePatch.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MidiTrack.h">

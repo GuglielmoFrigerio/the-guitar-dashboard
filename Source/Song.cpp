@@ -15,13 +15,10 @@ void Song::addTrack(std::unique_ptr<Track>& newTrack)
     m_tracks.emplace_back(std::move(newTrack));
 }
 
-std::int64_t Song::play(std::uint64_t currentClick, std::uint64_t previousClick) {
-    if (m_tracks.size() > 2) {
-        m_tracks[2]->play(currentClick, previousClick);
+std::int64_t Song::play(std::int64_t currentClick, std::int64_t previousClick) {
+    for (auto it = m_tracks.begin(); it != m_tracks.end(); ++it) {
+        (*it)->play(currentClick, previousClick);
     }
-    //for (auto it = m_tracks.begin(); it != m_tracks.end(); ++it) {
-    //    (*it)->play(currentClick, previousClick);
-    //}
     return 0;
 }
 

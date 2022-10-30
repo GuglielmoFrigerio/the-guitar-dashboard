@@ -98,7 +98,7 @@ void PlaybackEngine::stoppingHandler()
 void PlaybackEngine::play(std::uint64_t offsetTicks)
 {
     auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
-    std::uint64_t currentClick = (std::uint64_t)round(currentClickDbl);
+    std::int64_t currentClick = (std::int64_t)round(currentClickDbl);
     m_pPlaybackTarget->play(currentClick, m_previousClick);
     m_previousClick = currentClick;
 }

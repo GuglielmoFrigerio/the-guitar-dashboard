@@ -15,7 +15,7 @@
 #include "TilesLookAndFeel.h"
 #include "ValueAnimator.h"
 
-class Track;
+class MarkerTrack;
 
 //==============================================================================
 /*
@@ -42,7 +42,7 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
-    void update(const Track* pTrack);
+    void update(const MarkerTrack* pMarkerTrack);
 
     std::function<void(int)> onProgramChangeSelected;
 

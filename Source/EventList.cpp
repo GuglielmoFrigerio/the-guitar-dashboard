@@ -15,7 +15,7 @@ EventList::EventList(std::unique_ptr<Event>& firstEvent)
     m_events.emplace_back(std::move(firstEvent));
 }
 
-EventList::EventList(std::uint64_t clicktimepoint)
+EventList::EventList(std::int64_t clicktimepoint)
     :   m_clickTimepoint(clicktimepoint)
 {
 }

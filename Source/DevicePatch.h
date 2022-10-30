@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    ProgramChange.h
+    DevicePatch.h
     Created: 14 Aug 2021 9:54:12am
     Author:  gugli
 
@@ -14,9 +14,9 @@
 #include "MidiEventList.h"
 
 
-struct ProgramChange 
+struct DevicePatch 
 {
-    ProgramChange(int programNumber, int sceneNumber, const juce::String& name, int clickTimepoint);
+    DevicePatch(int programNumber, int sceneNumber, const juce::String& name, int clickTimepoint);
 
     juce::String    name;
     int             programNumber;
@@ -33,5 +33,5 @@ struct ProgramChange
 
     void addMidiEvents(MidiEventList* pMidiEventListPtr, int midiChannel);
 
-    static ProgramChange parse(const juce::XmlElement* pPatchElement, uint64_t clickTimepoint);
+    static DevicePatch parse(const juce::XmlElement* pPatchElement, uint64_t clickTimepoint);
 };

@@ -30,7 +30,7 @@ protected:    // fields
 protected:  // interface
     void    addTrack(std::unique_ptr<Track>& newTrack);
 
-    std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick) override;
+    std::int64_t play(std::int64_t currentClick, std::int64_t previousClick) override;
 
 public:
     Song(const juce::String& name);
@@ -45,12 +45,12 @@ public:
 
     virtual void deactivate();
 
-    virtual void selectProgramChange(int programChangeIndex) {}
-    virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) {}
+    virtual void selectProgramChange(int) {}
+    virtual void updateProgramChangesList(ProgramChangesComponent*) {}
     virtual std::tuple<int, int> getSelectedProgramInfo() const = 0;
 
     virtual void nextMarker(juce::AudioTransportSource*) {}
     virtual void previousMarker(juce::AudioTransportSource*) {}
 
-    virtual void updateMarkers(double position, PlayerComponent* pPlayerComponent) {}
+    virtual void updateMarkers(double position, PlayerComponent*) {}
 };

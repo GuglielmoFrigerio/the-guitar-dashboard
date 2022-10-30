@@ -12,6 +12,7 @@
 #include "ProgramChangesComponent.h"
 #include "Track.h"
 #include "GuitarDashCommon.h"
+#include "MarkerTrack.h"
 
 const int TileWidth = 270;
 const int TileHeight = 135;
@@ -104,16 +105,16 @@ void ProgramChangesComponent::resized()
     }
 }
 
-void ProgramChangesComponent::update(const Track* pTrack)
+void ProgramChangesComponent::update(const MarkerTrack* pMarkerTrack)
 {
     for (auto index = 0; index < m_programChanceTiles.size(); ++index) {
         removeChildComponent(m_programChanceTiles[index]);
     }
     m_programChanceTiles.clear(true);
 
-    pTrack->enumerateProgramChanges([this](const ProgramChangeEvent* pProgramChangeEvent, int index) {
-        auto tooltip = juce::String::formatted("%d.%d", pProgramChangeEvent->programChange.programNumber, pProgramChangeEvent->programChange.sceneNumber);
-        auto pNewTextButton = new juce::TextButton(pProgramChangeEvent->programChange.name, tooltip);
+    pMarkerTrack->enumerateDevicePatches([this](const DevicePatch* pDevicePatch, int index) {
+        auto tooltip = juce::String::formatted("%d.%d", pDevicePatch->programNumber, pDevicePatch->sceneNumber);
+        auto pNewTextButton = new juce::TextButton(pDevicePatch->name, tooltip);
         pNewTextButton->setClickingTogglesState(true);
         pNewTextButton->setRadioGroupId(ProgramChangesButtons);
         pNewTextButton->addListener(this);

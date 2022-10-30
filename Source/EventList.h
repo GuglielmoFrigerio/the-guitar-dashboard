@@ -19,7 +19,7 @@ class EventList : public IPlayable
 {
 private:    // fields
     std::vector<std::unique_ptr<Event>> m_events;
-    std::uint64_t m_clickTimepoint = 0;
+    std::int64_t m_clickTimepoint = 0;
 
 protected: // interface
     virtual void beforePlaying() {}
@@ -27,7 +27,7 @@ protected: // interface
 
 public:     // interface
     EventList(std::unique_ptr<Event>& firstEvent);
-    EventList(std::uint64_t clicktimepoint);
+    EventList(std::int64_t clicktimepoint);
 
     void addEvent(std::unique_ptr<Event>& eventPtr);
     virtual void play(const TimePoint& timepoint, Track& track) override;
@@ -35,7 +35,7 @@ public:     // interface
 
     void enumerateEvents(std::function<bool (const Event* pEvent, int index)> callback) const;
 
-    std::uint64_t getClickTimepoint() const {
+    std::int64_t getClickTimepoint() const {
         return m_clickTimepoint;
     }
 

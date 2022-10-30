@@ -96,6 +96,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
     m_pMidiTrack = dynamic_cast<MidiTrack*>(trackPtr.get());
     addTrack(trackPtr);
 
+    m_markerTrackPtr = std::make_unique<MarkerTrack>(pPatchesElement);
+
     auto pTrackElement = pPatchesElement->getChildByName("Track");
     if (pTrackElement != nullptr) {
         m_trackName = pTrackElement->getStringAttribute("name");
@@ -115,8 +117,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     m_playbackEnginePtr = std::make_unique<PlaybackEngine>(this);
-    m_playbackEnginePtr->start();
-    loadMidiTracks();
+    //loadMidiTracks();
     if (!m_trackName.isEmpty()) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
         auto trackPath = getTrackPath();
@@ -138,6 +139,8 @@ void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce:
             }
         }
     }
+
+    m_playbackEnginePtr->seek(0ull);
 }
 
 void TheLambsSong::deactivate()
@@ -157,8 +160,8 @@ void TheLambsSong::selectProgramChange(int programChangeIndex)
 
 void TheLambsSong::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
 {
-    if (m_pMidiTrack != nullptr)
-        pProgramChangesComponent->update(m_pMidiTrack);
+    if (m_markerTrackPtr != nullptr)
+        pProgramChangesComponent->update(m_markerTrackPtr.get());
 }
 
 std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const

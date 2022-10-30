@@ -31,7 +31,7 @@ void MidiDevice::start()
     m_inputStarted = true;
 }
 
-void MidiDevice::sendProgramChange(const ProgramChange& programChange, int midiChannel)
+void MidiDevice::sendProgramChange(const DevicePatch& programChange, int midiChannel)
 {
     if (programChange.programNumber != m_currentProgramNumber) {
         auto bankNumber = programChange.getBankNumber();

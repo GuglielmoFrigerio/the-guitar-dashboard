@@ -14,7 +14,7 @@
 #include "Song.h"
 #include "BackingTrackMarker.h"
 #include "PlaybackEngine.h"
-
+#include "MarkerTrack.h"
 
 class VirtualBand;
 class MidiTrack;
@@ -30,6 +30,7 @@ private:    // fields
     std::vector<BackingTrackMarker> m_backingTrackMarkers;
     const int m_previousGuardTime = 1.0;
     std::unique_ptr<PlaybackEngine> m_playbackEnginePtr;
+    std::unique_ptr<MarkerTrack> m_markerTrackPtr;
 
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;

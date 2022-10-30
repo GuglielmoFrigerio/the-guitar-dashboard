@@ -11,7 +11,7 @@
 #pragma once
 #include <memory>
 #include <JuceHeader.h>
-#include "ProgramChange.h"
+#include "DevicePatch.h"
 #include "MidiOutput.h"
 
 class MidiDevice : public juce::MidiInputCallback
@@ -31,8 +31,8 @@ public:     // interface
     ~MidiDevice();
 
     void start();
-    virtual void sendProgramChange(const ProgramChange& programChange, int midiChannel);
-    void loadProgramChange(const ProgramChange& programChange, int midiChannel);
+    virtual void sendProgramChange(const DevicePatch& programChange, int midiChannel);
+    void loadProgramChange(const DevicePatch& programChange, int midiChannel);
 
     IMidiOutput* getMidiOutput() const {
         return m_midiOutputPtr.get();

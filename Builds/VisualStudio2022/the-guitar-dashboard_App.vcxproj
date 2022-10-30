@@ -141,6 +141,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Marker.cpp"/>
     <ClCompile Include="..\..\Source\MarkerTrack.cpp"/>
     <ClCompile Include="..\..\Source\MidiOutput.cpp"/>
     <ClCompile Include="..\..\Source\MidiEventList.cpp"/>
@@ -163,8 +164,7 @@
     <ClCompile Include="..\..\Source\FractalDiscoverDevice.cpp"/>
     <ClCompile Include="..\..\Source\VirtualBandPage.cpp"/>
     <ClCompile Include="..\..\Source\VirtualBand.cpp"/>
-    <ClCompile Include="..\..\Source\ProgramChangeEvent.cpp"/>
-    <ClCompile Include="..\..\Source\ProgramChange.cpp"/>
+    <ClCompile Include="..\..\Source\DevicePatch.cpp"/>
     <ClCompile Include="..\..\Source\MidiTrack.cpp"/>
     <ClCompile Include="..\..\Source\AxeFx3Device.cpp"/>
     <ClCompile Include="..\..\Source\FractalDevice.cpp"/>
@@ -2325,6 +2325,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Marker.h"/>
     <ClInclude Include="..\..\Source\MarkerTrack.h"/>
     <ClInclude Include="..\..\Source\MidiOutput.h"/>
     <ClInclude Include="..\..\Source\IMidiOutput.h"/>
@@ -2352,8 +2353,7 @@
     <ClInclude Include="..\..\Source\VirtualBandPage.h"/>
     <ClInclude Include="..\..\Source\IDeviceHost.h"/>
     <ClInclude Include="..\..\Source\VirtualBand.h"/>
-    <ClInclude Include="..\..\Source\ProgramChangeEvent.h"/>
-    <ClInclude Include="..\..\Source\ProgramChange.h"/>
+    <ClInclude Include="..\..\Source\DevicePatch.h"/>
     <ClInclude Include="..\..\Source\MidiTrack.h"/>
     <ClInclude Include="..\..\Source\AxeFx3Device.h"/>
     <ClInclude Include="..\..\Source\FractalDevice.h"/>

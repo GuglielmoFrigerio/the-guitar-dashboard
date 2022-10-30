@@ -12,7 +12,6 @@
 #include <vector>
 #include <memory>
 #include "EventList.h"
-#include "ProgramChangeEvent.h"
 #include "IPlaybackTarget.h"
 
 class MidiDevice;
@@ -32,11 +31,9 @@ public:
     virtual void play(int index);
     virtual void playFirstEvent() {}
 
-    void enumerateProgramChanges(std::function<void(const ProgramChangeEvent* pProgramChangeEvent, int index)> callback) const;
-
     int getEventCount() const {
         return (int)m_eventList.size();
     }
-    std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick) override;
+    std::int64_t play(std::int64_t currentClick, std::int64_t previousClick) override;
 
 };
