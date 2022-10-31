@@ -16,10 +16,6 @@ std::int64_t MidiEvent::play(std::uint64_t currentClick, std::uint64_t previousC
     return std::int64_t();
 }
 
-void MidiEvent::play(const TimePoint& timepoint, Track& track)
-{
-}
-
 MidiEvent::MidiEvent(const juce::MidiMessage& midiMessage, IMidiOutput* pMidiOutput)
     : m_midiMessage(midiMessage), m_pMidiOutput(pMidiOutput)
 {

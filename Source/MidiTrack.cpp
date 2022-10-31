@@ -52,14 +52,6 @@ MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* p
 
 }
 
-void MidiTrack::playFirstEvent()
-{
-    TimePoint tp;
-
-    if (m_eventList.size() > 0)
-        m_eventList[0]->play(tp, *this);
-}
-
 std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice)
 {
     auto newMidiTrack = std::make_unique<MidiTrack>(pMidiDevice);

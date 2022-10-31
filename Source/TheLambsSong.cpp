@@ -150,8 +150,9 @@ void TheLambsSong::deactivate()
 
 void TheLambsSong::selectProgramChange(int programChangeIndex)
 {
-    if (m_pMidiTrack != nullptr) {
-        m_pMidiTrack->play(programChangeIndex);
+    if (m_markerTrackPtr != nullptr) {
+        auto clickTimepoint = m_markerTrackPtr->getClickTimepoint(programChangeIndex);
+        m_playbackEnginePtr->seek(clickTimepoint);
         m_selectedProgramIndex = programChangeIndex;
     } else {
         DBG("[TheLambsSong::selectProgramChange] Missing MidiTrack pointer");
@@ -166,6 +167,6 @@ void TheLambsSong::updateProgramChangesList(ProgramChangesComponent* pProgramCha
 
 std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 {
-    auto eventCount = (m_pMidiTrack != nullptr) ? m_pMidiTrack->getEventCount() : 0;
+    auto eventCount = (m_markerTrackPtr != nullptr) ? m_markerTrackPtr->getEventCount() : 0;
     return std::make_tuple(m_selectedProgramIndex, eventCount);
 }

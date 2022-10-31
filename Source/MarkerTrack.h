@@ -20,6 +20,9 @@ private:
 
 public:
     MarkerTrack(const juce::XmlElement* pPatchesElement);
-    void enumerateDevicePatches(std::function<void(const DevicePatch* pProgramChangeEvent, int index)> callback) const;
-
+    void enumerateDevicePatches(std::function<void(const DevicePatch* pDevicePatch, int index)> callback) const;
+    uint64_t getClickTimepoint(int markerIndex);
+    int getEventCount() const {
+        return m_markers.size();
+    }
 };

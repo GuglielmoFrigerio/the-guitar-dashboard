@@ -23,12 +23,12 @@ protected:    // fields
 
 protected:  // interface
     void    addEvent(std::unique_ptr<Event>& newEvent);
+    std::int64_t findCurrentIndex(std::int64_t currentClick);
 
 public:
     virtual ~Track() {}
     virtual MidiDevice* getMidiDevice() const = 0;
     virtual int getMidiChannel() const = 0;
-    virtual void play(int index);
     virtual void playFirstEvent() {}
 
     int getEventCount() const {

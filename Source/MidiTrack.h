@@ -37,8 +37,6 @@ public:
         return m_midiChannel;
     }
 
-    virtual void playFirstEvent() override;
-
     static std::unique_ptr<Track> loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice);
     static std::unique_ptr<Track> loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice, IMidiOutput* pMidiOutput);
 };

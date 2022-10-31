@@ -31,3 +31,12 @@ void MarkerTrack::enumerateDevicePatches(std::function<void(const DevicePatch* p
         callback(pDevicePatch, index);
     }
 }
+
+uint64_t MarkerTrack::getClickTimepoint(int markerIndex)
+{
+    if (markerIndex < m_markers.size()) {
+        return m_markers[markerIndex]->getClickTimepoint();
+    }
+    DBG("[MarkerTrack::getClickTimepoint] invelid markerIndex: " << markerIndex);
+    return 0ull;
+}

@@ -25,15 +25,6 @@ void EventList::addEvent(std::unique_ptr<Event>& eventPtr)
     m_events.emplace_back(std::move(eventPtr));
 }
 
-void EventList::play(const TimePoint& timepoint, Track& track)
-{
-    for (auto it = m_events.begin(); it != m_events.end(); ++it)
-    {
-        auto& eventPtr = * it;
-        eventPtr->play(timepoint, track);
-    }
-}
-
 std::int64_t EventList::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
     beforePlaying();
