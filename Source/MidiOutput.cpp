@@ -34,8 +34,10 @@ void MidiOutput::setupBuffer()
 
 void MidiOutput::addMessage(const juce::MidiMessage& midiMessage)
 {
-    m_midiBuffer.addEvent(midiMessage, 0);
-    DBG("MidiOutput::addMessage: " << midiMessage.getDescription());
+    if (m_midiMessageFilter.canSendMessage(midiMessage)) {
+        m_midiBuffer.addEvent(midiMessage, 0);
+        DBG("MidiOutput::addMessage: " << midiMessage.getDescription());
+    }
 }
 
 void MidiOutput::send()

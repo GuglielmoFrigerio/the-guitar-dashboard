@@ -141,6 +141,8 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SampleEvent.cpp"/>
+    <ClCompile Include="..\..\Source\MidiMessageFilter.cpp"/>
     <ClCompile Include="..\..\Source\Marker.cpp"/>
     <ClCompile Include="..\..\Source\MarkerTrack.cpp"/>
     <ClCompile Include="..\..\Source\MidiOutput.cpp"/>
@@ -2325,6 +2327,8 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SampleEvent.h"/>
+    <ClInclude Include="..\..\Source\MidiMessageFilter.h"/>
     <ClInclude Include="..\..\Source\Marker.h"/>
     <ClInclude Include="..\..\Source\MarkerTrack.h"/>
     <ClInclude Include="..\..\Source\MidiOutput.h"/>

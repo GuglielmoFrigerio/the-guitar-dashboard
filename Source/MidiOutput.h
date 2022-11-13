@@ -10,11 +10,13 @@
 
 #pragma once
 #include "IMidiOutput.h"
+#include "MidiMessageFilter.h"
 
 class MidiOutput : public IMidiOutput {
 private:    // fields
     std::shared_ptr<juce::MidiOutput> m_outputPtr;
     juce::MidiBuffer m_midiBuffer;
+    MidiMessageFilter m_midiMessageFilter;
 
 public:
     MidiOutput();

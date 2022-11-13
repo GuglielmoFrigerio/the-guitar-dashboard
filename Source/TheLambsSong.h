@@ -31,6 +31,7 @@ private:    // fields
     const int m_previousGuardTime = 1.0;
     std::unique_ptr<PlaybackEngine> m_playbackEnginePtr;
     std::unique_ptr<MarkerTrack> m_markerTrackPtr;
+    juce::String m_resourcesPath;
 
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;

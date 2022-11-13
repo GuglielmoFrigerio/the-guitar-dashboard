@@ -66,15 +66,7 @@ void TheLambsSong::updateMarkers(double position, PlayerComponent* pPlayerCompon
 
 juce::String TheLambsSong::getTrackPath()
 {
-    auto osType = juce::SystemStats::getOperatingSystemType();
-    if ((osType & juce::SystemStats::Windows) != 0) {
-        auto applicationFolder = juce::File::getCurrentWorkingDirectory();
-        //return "./Tracks/" + m_trackName;
-        return "../../Resources/Tracks/" + m_trackName;
-    }
-    auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-    auto path = applicationFolder.getFullPathName();
-    return path + "/../../../../../Resources/Tracks/" + m_trackName;
+    return m_resourcesPath + juce::String("Tracks/") + m_trackName;
 }
 
 void TheLambsSong::loadMidiTracks()
@@ -91,6 +83,7 @@ void TheLambsSong::loadMidiTracks()
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
+    m_resourcesPath = pVirtualBand->getResourcePath();
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
     auto trackPtr = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
     m_pMidiTrack = dynamic_cast<MidiTrack*>(trackPtr.get());
@@ -117,7 +110,6 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     m_playbackEnginePtr = std::make_unique<PlaybackEngine>(this);
-    //loadMidiTracks();
     if (!m_trackName.isEmpty()) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
         auto trackPath = getTrackPath();

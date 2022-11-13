@@ -16,6 +16,12 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="Hp822a" name="SampleEvent.cpp" compile="1" resource="0" file="Source/SampleEvent.cpp"/>
+      <FILE id="mbC9XX" name="SampleEvent.h" compile="0" resource="0" file="Source/SampleEvent.h"/>
+      <FILE id="sK0r7r" name="MidiMessageFilter.cpp" compile="1" resource="0"
+            file="Source/MidiMessageFilter.cpp"/>
+      <FILE id="huDJV2" name="MidiMessageFilter.h" compile="0" resource="0"
+            file="Source/MidiMessageFilter.h"/>
       <FILE id="COe3qV" name="Marker.h" compile="0" resource="0" file="Source/Marker.h"/>
       <FILE id="y0qbZz" name="Marker.cpp" compile="1" resource="0" file="Source/Marker.cpp"/>
       <FILE id="D5mGPn" name="MarkerTrack.cpp" compile="1" resource="0" file="Source/MarkerTrack.cpp"/>

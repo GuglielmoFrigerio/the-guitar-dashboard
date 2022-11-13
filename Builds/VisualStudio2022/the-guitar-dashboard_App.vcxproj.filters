@@ -577,6 +577,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SampleEvent.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MidiMessageFilter.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Marker.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -3000,6 +3006,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SampleEvent.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MidiMessageFilter.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Marker.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

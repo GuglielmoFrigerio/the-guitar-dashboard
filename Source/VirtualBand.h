@@ -34,6 +34,7 @@ private:    // fields
     std::atomic<bool> m_songLibraryFileReady;
     juce::File m_inputFile;
     Song* m_pActiveSong = nullptr;
+    juce::String m_resourcesPath;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
@@ -66,4 +67,8 @@ public: // interface
 
     void nextMarker();
     void previousMarker();
+
+    const juce::String& getResourcePath() const {
+        return m_resourcesPath;
+    }
 };

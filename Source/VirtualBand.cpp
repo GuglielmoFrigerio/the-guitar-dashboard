@@ -63,6 +63,15 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
+
+    auto osType = juce::SystemStats::getOperatingSystemType();
+    if ((osType & juce::SystemStats::Windows) != 0) {
+        m_resourcesPath = "../../Resources/";
+    } else{
+        auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+        auto path = applicationFolder.getFullPathName();
+        m_resourcesPath = path + "/../../../../../Resources/Tracks/";
+    }
 }
 
 void VirtualBand::loadDevices()
