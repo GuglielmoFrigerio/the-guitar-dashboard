@@ -77,7 +77,7 @@ std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename)
             return midiFilePtr;
         }
     }
-    auto message = juce::String::formatted("loadMidiFile: unable to load midi file from %s", inputFilename);
+    auto message = juce::String::formatted("loadMidiFile: unable to load midi file from %s", inputFilename.c_str());
     throw std::runtime_error(message.toUTF8());
 
 }

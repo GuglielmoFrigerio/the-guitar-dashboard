@@ -79,12 +79,14 @@ juce::String TheLambsSong::getTrackPath()
 
 void TheLambsSong::loadMidiTracks()
 {
+    /*
     std::string inputFilename = "../../Resources/sample.mid";
     auto midiFilePtr = loadMidiFile(inputFilename);
     auto trackCount = midiFilePtr->getNumTracks();
     for (auto index = 0; index < trackCount; index++) {
         auto trackPtr = MidiTrack::loadFromMidiFile(midiFilePtr, index, nullptr);
     }
+     */
 }
 
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
