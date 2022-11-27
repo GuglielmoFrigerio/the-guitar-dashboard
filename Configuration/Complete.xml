@@ -92,7 +92,7 @@
       <Patch name="base" scene="1">460</Patch>
       <Patch name="solo" scene="2">460</Patch>
       <Patch name="base" scene="1">460</Patch>
-      <Patch name="envelope" scene="8">462</Patch>
+      <Patch name="envelope" scene="1">394</Patch>
     </Song>
     <Song name="Dancing with the Moonlit Knight">
       <Track name="Dancing With The Moonlight Knight (2008 - Remaster).mp3">
@@ -224,7 +224,7 @@
       <Patch name="Envelope" scene="3">238</Patch>
       <Patch name="No Envelope" scene="4">238</Patch>
       <Patch name="No Delay" scene="4">234</Patch>
-      <Patch name="Solo" scene="8">318</Patch>
+      <Patch name="Solo" scene="8">317</Patch>
     </Song>
   </Library>
 </AxeFxIII>
