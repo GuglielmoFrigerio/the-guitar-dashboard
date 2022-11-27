@@ -80,6 +80,11 @@ void TheLambsSong::loadMidiTracks()
     }
 }
 
+void TheLambsSong::loadSamplesTrack(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
+{
+    auto pSamplesElement = pPatchesElement->getChildByName("Samples");
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
@@ -105,6 +110,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const Virtua
             }
         }
     }
+
+    loadSamplesTrack(pPatchesElement, pVirtualBand);
 }
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)

@@ -225,6 +225,9 @@
       <Patch name="No Envelope" scene="4">238</Patch>
       <Patch name="No Delay" scene="4">234</Patch>
       <Patch name="Solo" scene="8">317</Patch>
+      <Samples>
+        <Sample name="EppingTapping.wav" tick="2" offset="0" />
+      </Samples>
     </Song>
   </Library>
 </AxeFxIII>

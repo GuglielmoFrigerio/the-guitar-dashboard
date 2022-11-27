@@ -39,6 +39,7 @@ private:
     void updateMarkers(double position, PlayerComponent* pPlayerComponent) override;
     juce::String getTrackPath();
     void loadMidiTracks();
+    void loadSamplesTrack(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
