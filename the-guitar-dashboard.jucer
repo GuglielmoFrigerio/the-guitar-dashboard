@@ -16,6 +16,9 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="JJhTAL" name="SampleEngine.cpp" compile="1" resource="0"
+            file="Source/SampleEngine.cpp"/>
+      <FILE id="G1JeU1" name="SampleEngine.h" compile="0" resource="0" file="Source/SampleEngine.h"/>
       <FILE id="Hp822a" name="SampleEvent.cpp" compile="1" resource="0" file="Source/SampleEvent.cpp"/>
       <FILE id="mbC9XX" name="SampleEvent.h" compile="0" resource="0" file="Source/SampleEvent.h"/>
       <FILE id="sK0r7r" name="MidiMessageFilter.cpp" compile="1" resource="0"

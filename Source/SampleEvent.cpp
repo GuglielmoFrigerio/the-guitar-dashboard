@@ -11,7 +11,13 @@
 #include <memory>
 #include "SampleEvent.h"
 
-SampleEvent::SampleEvent(juce::AudioFormatManager* pAudioFormatManager, const juce::String& sampleFilename, const juce::String& resourcePath)
+std::int64_t SampleEvent::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+{
+    return std::int64_t();
+}
+
+SampleEvent::SampleEvent(SampleEngine* pSampleEngine, juce::AudioFormatManager* pAudioFormatManager, const juce::String& sampleFilename, const juce::String& resourcePath, std::uint64_t id)
+    : m_pSampleEngine(pSampleEngine), m_id(id)
 {
     auto filename = resourcePath + juce::String("Samples/") + sampleFilename;
     juce::File file(filename);
@@ -20,4 +26,9 @@ SampleEvent::SampleEvent(juce::AudioFormatManager* pAudioFormatManager, const ju
         m_sampleBuffer.setSize((int)readerPtr->numChannels, (int)readerPtr->lengthInSamples);
         readerPtr->read(&m_sampleBuffer, 0, (int)readerPtr->lengthInSamples, 0, true, true);
     }
+}
+
+bool SampleEvent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
+{
+    return false;
 }

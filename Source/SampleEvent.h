@@ -11,11 +11,22 @@
 #pragma once
 #include <string>
 #include <JuceHeader.h>
+#include "SampleEngine.h"
+#include "Event.h"
 
-class SampleEvent {
-private:
+class SampleEvent : public Event {
+private:    // fields
     juce::AudioSampleBuffer m_sampleBuffer;
+    std::uint64_t m_id;
+    SampleEngine* m_pSampleEngine;
 
-public:
-    SampleEvent(juce::AudioFormatManager* pAudioFormatManager, const juce::String& sampleFilename, const juce::String& resourcePath);
+private:    // implementation
+    std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+
+public:     // public interface
+    SampleEvent(SampleEngine* pSampleEngine, juce::AudioFormatManager* pAudioFormatManager, const juce::String& sampleFilename, const juce::String& resourcePath, std::uint64_t id);
+    bool getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
+    std::uint64_t getId() const {
+        return m_id;
+    }
 };

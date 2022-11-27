@@ -123,6 +123,7 @@ void VirtualBand::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 void VirtualBand::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
     m_transportSource.getNextAudioBlock(bufferToFill);
+    m_sampleEngine.getNextAudioBlock(bufferToFill);
 }
 
 void VirtualBand::timerCallback()

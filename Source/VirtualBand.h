@@ -16,6 +16,7 @@
 #include "IDeviceHost.h"
 #include "FractalDevice.h"
 #include "ProgramChangesComponent.h"
+#include "SampleEngine.h"
 
 class SongListComponent;
 class PlayerComponent;
@@ -35,6 +36,7 @@ private:    // fields
     juce::File m_inputFile;
     Song* m_pActiveSong = nullptr;
     juce::String m_resourcesPath;
+    SampleEngine m_sampleEngine;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
