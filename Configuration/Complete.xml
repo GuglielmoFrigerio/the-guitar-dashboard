@@ -102,12 +102,14 @@
         <Marker>00:05:10</Marker>
       </Track>
       <Patch name="Intro" scene="1">456</Patch>
-      <Patch name="Tapping" scene="1">457</Patch>
-      <Patch name="Pitch 24" scene="2">457</Patch>
-      <Patch name="Pitch 12" scene="3">457</Patch>
-      <Patch name="Envelope" scene="4">457</Patch>
-      <Patch name="Env Clean" scene="5">457</Patch>
-      <Patch name="Reprise" scene="1">459</Patch>
+      <Patch name="Tapping" scene="1">282</Patch>
+      <Patch name="Pitch 24" scene="2">282</Patch>
+      <Patch name="Pitch 12" scene="3">282</Patch>
+      <Patch name="Envelope" scene="4">282</Patch>
+      <Patch name="Env Clean" scene="5">282</Patch>
+      <Patch name="Arpeggio" scene="6">282</Patch>
+      <Patch name="Solo" scene="1">282</Patch>
+      <Patch name="Reprise" scene="7">282</Patch>
       <Patch name="Clean Mid Pickup" scene="1">456</Patch>
       <Patch scene="8">458</Patch>
     </Song>
