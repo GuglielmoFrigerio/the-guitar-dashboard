@@ -12,10 +12,8 @@
 #include "SampleEvent.h"
 #include "GuitarDashCommon.h"
 
-std::unique_ptr<Track> SamplesTrack::loadFromSamplesElement(const juce::XmlElement* pSamplesElement, VirtualBand* pVirtualBand, const juce::String& resourcesPath)
+SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand* pVirtualBand, const juce::String& resourcesPath)
 {
-    auto samplesTrackPtr = std::unique_ptr<SamplesTrack>();
-
     auto pSampleEngine = pVirtualBand->getSampleEngine();
     auto pAudioFormatManager = pVirtualBand->getAudioFormatManager();
     std::unique_ptr<EventList> currentEventListPtr = nullptr;
@@ -26,15 +24,18 @@ std::unique_ptr<Track> SamplesTrack::loadFromSamplesElement(const juce::XmlEleme
         auto offset = pSampleElement->getIntAttribute("offset");
 
         std::int64_t clickTimepoint = tick * DefaultClicksPerBeat + offset;
-        auto sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, pAudioFormatManager, sampleName, resourcesPath, 0);
+        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, pAudioFormatManager, sampleName, resourcesPath, 0);
 
         if (currentEventListPtr == nullptr)
             currentEventListPtr = std::make_unique<EventList>(clickTimepoint);
 
         if (clickTimepoint > currentEventListPtr->getClickTimepoint()) {
-            m_eventList.emplace_back(std::move(programChangeEventsPtr));
+            m_eventList.emplace_back(std::move(currentEventListPtr));
+            currentEventListPtr = std::make_unique<EventList>(clickTimepoint);
         }
+        currentEventListPtr->addEvent(sampleEventPtr);
     }
-
-    return samplesTrackPtr;
+    if ((currentEventListPtr != nullptr) && (currentEventListPtr->getEventCount() > 0)) {
+        m_eventList.emplace_back(std::move(currentEventListPtr));
+    }
 }

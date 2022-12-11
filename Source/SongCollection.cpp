@@ -12,7 +12,7 @@
 #include "TheLambsSong.h"
 #include "ProgramChangesComponent.h"
 
-std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand)
+std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juce::XmlElement* pLibraryElement, VirtualBand* pVirtualBand)
 {
     auto songColletionPtr = std::make_unique<SongCollection>();
 

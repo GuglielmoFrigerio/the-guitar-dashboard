@@ -52,5 +52,5 @@ public:
     virtual void nextMarker(juce::AudioTransportSource*) {}
     virtual void previousMarker(juce::AudioTransportSource*) {}
 
-    virtual void updateMarkers(double position, PlayerComponent*) {}
+    virtual void updateMarkers(double , PlayerComponent*) {}
 };

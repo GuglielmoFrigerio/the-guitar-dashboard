@@ -15,9 +15,5 @@
 
 class SamplesTrack : public Track {
 public:
-    static std::unique_ptr<Track> loadFromSamplesElement(const juce::XmlElement* pSamplesElement, VirtualBand* pVirtualBand, const juce::String& resourcesPath);
-
-private:
-    addSampleEvent();
-
+    SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand* pVirtualBand, const juce::String& resourcesPath);
 };

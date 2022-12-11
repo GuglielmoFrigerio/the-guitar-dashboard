@@ -22,7 +22,7 @@ public:
     MarkerTrack(const juce::XmlElement* pPatchesElement);
     void enumerateDevicePatches(std::function<void(const DevicePatch* pDevicePatch, int index)> callback) const;
     uint64_t getClickTimepoint(int markerIndex);
-    int getEventCount() const {
+    std::size_t getEventCount() const {
         return m_markers.size();
     }
 };

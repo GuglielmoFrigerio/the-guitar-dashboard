@@ -27,8 +27,6 @@ protected:  // interface
 
 public:
     virtual ~Track() {}
-    virtual MidiDevice* getMidiDevice() const = 0;
-    virtual int getMidiChannel() const = 0;
     virtual void playFirstEvent() {}
 
     int getEventCount() const {

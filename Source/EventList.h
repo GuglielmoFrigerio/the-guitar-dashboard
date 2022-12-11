@@ -38,4 +38,7 @@ public:     // interface
         return m_clickTimepoint;
     }
 
+    std::size_t getEventCount() const {
+        return m_events.size();
+    }
 };

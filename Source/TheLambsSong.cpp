@@ -88,14 +88,9 @@ std::unique_ptr<Track> TheLambsSong::loadSamplesTrack(const juce::XmlElement* pP
     auto samplesTrackPtr = std::unique_ptr<SamplesTrack>();
     auto pSamplesElement = pPatchesElement->getChildByName("Samples");
     if (pSamplesElement != nullptr) {
-        for (auto* pSampleElement : pSamplesElement->getChildWithTagNameIterator("Sample")) {
-            auto sampleName = pSampleElement->getStringAttribute("name");
-            auto tick = pSampleElement->getIntAttribute("tick");
-            auto offset = pSampleElement->getIntAttribute("offset");
-            auto sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, pAudioFormatManager, sampleName, m_resourcesPath, 0);
-            samplesTrackPtr->
+        auto bla = std::make_unique<SamplesTrack>(pSamplesElement, pVirtualBand, m_resourcesPath);
 
-        }
+
     }
     return samplesTrackPtr;
 }
@@ -181,5 +176,5 @@ void TheLambsSong::updateProgramChangesList(ProgramChangesComponent* pProgramCha
 std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 {
     auto eventCount = (m_markerTrackPtr != nullptr) ? m_markerTrackPtr->getEventCount() : 0;
-    return std::make_tuple(m_selectedProgramIndex, eventCount);
+    return std::make_tuple(m_selectedProgramIndex, static_cast<int>(eventCount));
 }

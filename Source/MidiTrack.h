@@ -27,16 +27,6 @@ public:
     MidiTrack(MidiDevice* pMidiDevice) : m_pMidiDevice(pMidiDevice) {}
     MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence, IMidiOutput* pMidiOutput);
 
-    virtual MidiDevice* getMidiDevice() const override
-    {
-        return m_pMidiDevice;
-    }
-
-    virtual int getMidiChannel() const override
-    {
-        return m_midiChannel;
-    }
-
     static std::unique_ptr<Track> loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice);
     static std::unique_ptr<Track> loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice, IMidiOutput* pMidiOutput);
 };

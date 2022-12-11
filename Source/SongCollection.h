@@ -25,7 +25,7 @@ private:    // fields
     Song* m_pCurrentSong = nullptr;
 
 public:
-    static std::unique_ptr<SongCollection> loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand);
+    static std::unique_ptr<SongCollection> loadFromLibraryElement(const juce::XmlElement* pLibraryElement, VirtualBand* pVirtualBand);
     void addSong(std::unique_ptr<Song>& newSong);
 
     void enumerateSongs(std::function<void(const Song* pSong, int index)> callback) const;
