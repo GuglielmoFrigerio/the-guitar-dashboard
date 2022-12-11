@@ -13,25 +13,32 @@
 
 SampleEngine::SampleEngine()
 {
-    m_samples.store(std::make_shared<SampleEntryVector>());
+    m_pSamples.store(new SampleEntryVector());
+}
+
+SampleEngine::~SampleEngine()
+{
+    auto pSamples = m_pSamples.load();
+    delete pSamples;
 }
 
 void SampleEngine::addSampleEvent(SampleEvent* pSampleEvent)
 {
-    std::shared_ptr<SampleEntryVector> newSampleEntryVectorPtr = std::make_shared<SampleEntryVector>();
-    std::shared_ptr<SampleEntryVector> oldSampleEntryVectorPtr = m_samples.load();
-    for (auto& entry : *oldSampleEntryVectorPtr) {
+    auto pNewSampleEntryVector =  new SampleEntryVector();
+    auto pOldSampleEntryVector = m_pSamples.load();
+    for (auto& entry : *pOldSampleEntryVector) {
         if (entry.m_active) {
-            newSampleEntryVectorPtr->emplace_back(entry.m_pSampleEvent);
+            pNewSampleEntryVector->emplace_back(entry.m_pSampleEvent);
         }
     }
-    newSampleEntryVectorPtr->emplace_back(pSampleEvent);
-    m_samples.store(newSampleEntryVectorPtr);
+    pNewSampleEntryVector->emplace_back(pSampleEvent);
+    m_pSamples.store(pNewSampleEntryVector);
+    delete pOldSampleEntryVector;
 }
 
 void SampleEngine::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
-    auto sampleEntryVectorPtr = m_samples.load();
+    auto sampleEntryVectorPtr = m_pSamples.load();
     for (auto& sampleEntry : *sampleEntryVectorPtr) {
         if (sampleEntry.m_active) {
             sampleEntry.m_active = sampleEntry.m_pSampleEvent->getNextAudioBlock(bufferToFill);            

@@ -12,6 +12,7 @@
 #include <atomic>
 #include "AverageComputer.h"
 #include "IPlaybackTarget.h"
+#include "GuitarDashCommon.h"
 
 
 class PlaybackEngine : public juce::HighResolutionTimer {
@@ -23,7 +24,7 @@ private:    // fields
     std::atomic<std::int64_t>  m_startTicks = 0;
     int                     m_timespan = 1;
     double                  m_beatsPerMinute = 120.0;
-    double                  m_clicksPerBeat = 480.0;
+    double                  m_clicksPerBeat = (double)DefaultClicksPerBeat;
     std::atomic<double>     m_ticksVsClicks = 0.0;
     IPlaybackTarget*        m_pPlaybackTarget = nullptr;
     std::int64_t            m_previousClick = -1;

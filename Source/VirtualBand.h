@@ -73,4 +73,12 @@ public: // interface
     const juce::String& getResourcePath() const {
         return m_resourcesPath;
     }
+
+    SampleEngine* getSampleEngine() {
+        return &m_sampleEngine;
+    }
+
+    juce::AudioFormatManager* getAudioFormatManager() {
+        return &m_formatManager;
+    }
 };

@@ -26,10 +26,11 @@ private:
     };
 
     using SampleEntryVector = std::vector<SampleEntry>;
-    std::atomic<std::shared_ptr<SampleEntryVector>> m_samples;
+    std::atomic<SampleEntryVector*> m_pSamples;
 
 public:
     SampleEngine();
+    ~SampleEngine();
     void addSampleEvent(SampleEvent* pSampleEvent);
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 };

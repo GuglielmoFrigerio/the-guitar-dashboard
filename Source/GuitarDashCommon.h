@@ -12,6 +12,9 @@
 #include <functional>
 #include <memory>
 #include <JuceHeader.h>
+#include <numeric>
+
+const std::uint64_t DefaultClicksPerBeat = 480ull;
 
 #define M_PI       3.14159265358979323846   // pi
 const float DoublePi = 2.0f * (float)M_PI;

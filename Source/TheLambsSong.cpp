@@ -13,6 +13,7 @@
 #include "VirtualBand.h"
 #include "PlayerComponent.h"
 #include "GuitarDashCommon.h"
+#include "SamplesTrack.h"
 
 
 void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
@@ -80,18 +81,31 @@ void TheLambsSong::loadMidiTracks()
     }
 }
 
-void TheLambsSong::loadSamplesTrack(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
+std::unique_ptr<Track> TheLambsSong::loadSamplesTrack(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
 {
+    auto pSampleEngine = pVirtualBand->getSampleEngine();
+    auto pAudioFormatManager = pVirtualBand->getAudioFormatManager();
+    auto samplesTrackPtr = std::unique_ptr<SamplesTrack>();
     auto pSamplesElement = pPatchesElement->getChildByName("Samples");
+    if (pSamplesElement != nullptr) {
+        for (auto* pSampleElement : pSamplesElement->getChildWithTagNameIterator("Sample")) {
+            auto sampleName = pSampleElement->getStringAttribute("name");
+            auto tick = pSampleElement->getIntAttribute("tick");
+            auto offset = pSampleElement->getIntAttribute("offset");
+            auto sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, pAudioFormatManager, sampleName, m_resourcesPath, 0);
+            samplesTrackPtr->
+
+        }
+    }
+    return samplesTrackPtr;
 }
 
-TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand)
+TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
     m_resourcesPath = pVirtualBand->getResourcePath();
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
     auto trackPtr = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
-    m_pMidiTrack = dynamic_cast<MidiTrack*>(trackPtr.get());
     addTrack(trackPtr);
 
     m_markerTrackPtr = std::make_unique<MarkerTrack>(pPatchesElement);

@@ -26,6 +26,10 @@ private:
             m_lastValue = newValueAsInt;
             return returnValue;
         }
+
+        void reset() {
+            m_lastValue = -1;
+        }
     };
 
     class ControllerFilter
@@ -37,6 +41,7 @@ private:
         ControllerFilter();
 
         bool canSend(const juce::uint8* pRawData);
+        void reset();
     };
    
     std::vector<ParameterFiter> m_programChangeFilter;
@@ -57,8 +62,10 @@ public:
         auto rawData = midiMessage.getRawData();
         auto channelZeroBased = midiMessage.getChannel() - 1;
         if (isProgramChange(*rawData)) {
-            return m_programChangeFilter[channelZeroBased].canSend(rawData[1]);
-
+            auto result = m_programChangeFilter[channelZeroBased].canSend(rawData[1]);
+            if (result)
+                m_controllerFilters[channelZeroBased].reset();
+            return result;
         }
         else if (isControlChange(*rawData)) {
             return m_controllerFilters[channelZeroBased].canSend(rawData);

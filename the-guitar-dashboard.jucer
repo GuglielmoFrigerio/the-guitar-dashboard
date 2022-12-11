@@ -16,6 +16,9 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="sJH8uA" name="SamplesTrack.cpp" compile="1" resource="0"
+            file="Source/SamplesTrack.cpp"/>
+      <FILE id="KjL8sg" name="SamplesTrack.h" compile="0" resource="0" file="Source/SamplesTrack.h"/>
       <FILE id="JJhTAL" name="SampleEngine.cpp" compile="1" resource="0"
             file="Source/SampleEngine.cpp"/>
       <FILE id="G1JeU1" name="SampleEngine.h" compile="0" resource="0" file="Source/SampleEngine.h"/>

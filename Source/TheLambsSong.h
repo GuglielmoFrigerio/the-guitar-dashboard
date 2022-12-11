@@ -23,7 +23,6 @@ class PlayerComponent;
 class TheLambsSong : public Song
 {
 private:    // fields
-    MidiTrack* m_pMidiTrack = nullptr;
     int m_selectedProgramIndex = 0;
     std::unique_ptr<juce::AudioFormatReaderSource> m_readerSourcePtr;
     juce::String m_trackName;
@@ -39,10 +38,10 @@ private:
     void updateMarkers(double position, PlayerComponent* pPlayerComponent) override;
     juce::String getTrackPath();
     void loadMidiTracks();
-    void loadSamplesTrack(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
+    std::unique_ptr<Track> loadSamplesTrack(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
 
 public:
-    TheLambsSong(const juce::XmlElement* pPatchesElement, const VirtualBand* pVirtualBand);
+    TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
     ~TheLambsSong() override {
     }
 

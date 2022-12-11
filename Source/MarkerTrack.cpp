@@ -9,8 +9,7 @@
 */
 
 #include "MarkerTrack.h"
-
-const uint64_t DefaultClicksPerBeat = 480ull;
+#include "GuitarDashCommon.h"
 
 MarkerTrack::MarkerTrack(const juce::XmlElement* pPatchesElement)
 {

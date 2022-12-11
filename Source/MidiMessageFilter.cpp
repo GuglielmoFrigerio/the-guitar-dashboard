@@ -26,3 +26,9 @@ bool MidiMessageFilter::ControllerFilter::canSend(const juce::uint8* pRawData)
     juce::uint8 controllerIndex = pRawData[1];
     return m_controllerFilters[controllerIndex].canSend(pRawData[2]);
 }
+
+void MidiMessageFilter::ControllerFilter::reset()
+{
+    for (auto& parameterFilter : m_controllerFilters)
+        parameterFilter.reset();
+}

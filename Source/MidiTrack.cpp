@@ -14,8 +14,7 @@
 #include "MidiEvent.h"
 #include "MidiEventList.h"
 #include "MidiDevice.h"
-
-const uint64_t DefaultClicksPerBeat = 480ull;
+#include "GuitarDashCommon.h"
 
 void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
 {
