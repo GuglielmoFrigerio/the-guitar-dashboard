@@ -24,6 +24,7 @@ std::unique_ptr<Track> SamplesTrack::loadFromSamplesElement(const juce::XmlEleme
         auto sampleName = pSampleElement->getStringAttribute("name");
         auto tick = pSampleElement->getIntAttribute("tick");
         auto offset = pSampleElement->getIntAttribute("offset");
+
         std::int64_t clickTimepoint = tick * DefaultClicksPerBeat + offset;
         auto sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, pAudioFormatManager, sampleName, resourcesPath, 0);
 
