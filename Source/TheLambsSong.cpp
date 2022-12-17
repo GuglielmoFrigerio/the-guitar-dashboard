@@ -85,14 +85,11 @@ std::unique_ptr<Track> TheLambsSong::loadSamplesTrack(const juce::XmlElement* pP
 {
     auto pSampleEngine = pVirtualBand->getSampleEngine();
     auto pAudioFormatManager = pVirtualBand->getAudioFormatManager();
-    auto samplesTrackPtr = std::unique_ptr<SamplesTrack>();
     auto pSamplesElement = pPatchesElement->getChildByName("Samples");
     if (pSamplesElement != nullptr) {
-        auto bla = std::make_unique<SamplesTrack>(pSamplesElement, pVirtualBand, m_resourcesPath);
-
-
+        return std::make_unique<SamplesTrack>(pSamplesElement, pVirtualBand, m_resourcesPath);
     }
-    return samplesTrackPtr;
+    return nullptr;
 }
 
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
@@ -120,7 +117,10 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
         }
     }
 
-    loadSamplesTrack(pPatchesElement, pVirtualBand);
+    auto sampleTrackPtr = loadSamplesTrack(pPatchesElement, pVirtualBand);
+    if (sampleTrackPtr != nullptr) {
+        addTrack(sampleTrackPtr);
+    }
 }
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)

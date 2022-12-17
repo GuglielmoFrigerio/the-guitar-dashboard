@@ -19,6 +19,7 @@ private:    // fields
     juce::AudioSampleBuffer m_sampleBuffer;
     std::uint64_t m_id;
     SampleEngine* m_pSampleEngine;
+    int m_position = 0;
 
 private:    // implementation
     std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
