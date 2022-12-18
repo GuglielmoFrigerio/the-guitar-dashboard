@@ -14,6 +14,7 @@
 #include "PlayerButton.h"
 #include "TimeSlider.h"
 #include "DecibelSlider.h"
+#include "PlayerModeComponent.h"
 
 enum class PlayerState {
     Stopped,
@@ -36,7 +37,7 @@ private:    // fields
     bool            m_nextEnabled = false;
     DecibelSlider   m_volumeSlider;
     juce::Label     m_decibelLabel;
-
+    PlayerModeComponent m_playerModeComponent;
 
 private:    // implementation
     void sendStateUpdate(PlayerState playerState);
@@ -54,7 +55,7 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
-    std::function<void(PlayerState)> onPlayerCommand;
+    std::function<void(PlayerState, PlayerMode)> onPlayerCommand;
     std::function<void(float)> onChangePosition;
     std::function<void()> onNextMarker;
     std::function<void()> onPreviousMarker;

@@ -27,10 +27,11 @@ private:    // fields
     std::unique_ptr<juce::AudioFormatReaderSource> m_readerSourcePtr;
     juce::String m_trackName;
     std::vector<BackingTrackMarker> m_backingTrackMarkers;
-    const int m_previousGuardTime = 1.0;
+    const double m_previousGuardTime = 1.0;
     std::unique_ptr<PlaybackEngine> m_playbackEnginePtr;
     std::unique_ptr<MarkerTrack> m_markerTrackPtr;
     juce::String m_resourcesPath;
+    int m_initialBpm = 0;
 
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;
@@ -39,6 +40,7 @@ private:
     juce::String getTrackPath();
     void loadMidiTracks();
     std::unique_ptr<Track> loadSamplesTrack(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
+    void onPlayerStateUpdated(PlayerState  newPlayerState) override;
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);

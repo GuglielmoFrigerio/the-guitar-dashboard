@@ -83,13 +83,26 @@ void TheLambsSong::loadMidiTracks()
 
 std::unique_ptr<Track> TheLambsSong::loadSamplesTrack(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
 {
-    auto pSampleEngine = pVirtualBand->getSampleEngine();
-    auto pAudioFormatManager = pVirtualBand->getAudioFormatManager();
     auto pSamplesElement = pPatchesElement->getChildByName("Samples");
     if (pSamplesElement != nullptr) {
         return std::make_unique<SamplesTrack>(pSamplesElement, pVirtualBand, m_resourcesPath);
     }
     return nullptr;
+}
+
+void TheLambsSong::onPlayerStateUpdated(PlayerState newPlayerState)
+{
+    if (m_playbackEnginePtr != nullptr) {
+        switch (newPlayerState) {
+        case PlayerState::Starting:
+            m_playbackEnginePtr->start();
+            break;
+
+        case PlayerState::Stopping:
+            m_playbackEnginePtr->stop();
+            break;
+        }
+    }
 }
 
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
@@ -105,6 +118,7 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
     auto pTrackElement = pPatchesElement->getChildByName("Track");
     if (pTrackElement != nullptr) {
         m_trackName = pTrackElement->getStringAttribute("name");
+
         for (auto* pMarkerElement : pTrackElement->getChildWithTagNameIterator("Marker")) {
             const auto& markerText = pMarkerElement->getAllSubText().trim();
 
@@ -121,11 +135,16 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
     if (sampleTrackPtr != nullptr) {
         addTrack(sampleTrackPtr);
     }
+
+    m_initialBpm = pPatchesElement->getIntAttribute("initialBpm");
 }
 
 void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
 {
     m_playbackEnginePtr = std::make_unique<PlaybackEngine>(this);
+    if (m_initialBpm > 0) {
+        m_playbackEnginePtr->setBeatsPerMinute(m_initialBpm);
+    }
     if (!m_trackName.isEmpty()) {
         auto applicationFolder = juce::File::getCurrentWorkingDirectory();
         auto trackPath = getTrackPath();

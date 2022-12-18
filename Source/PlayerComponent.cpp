@@ -15,7 +15,7 @@
 void PlayerComponent::sendStateUpdate(PlayerState playerState)
 {
     if (onPlayerCommand != nullptr)
-        onPlayerCommand(playerState);
+        onPlayerCommand(playerState, m_playerModeComponent.Mode);
 }
 
 void PlayerComponent::disable()
@@ -40,6 +40,7 @@ PlayerComponent::PlayerComponent()
     addAndMakeVisible(m_trackPositionSlider);
     addAndMakeVisible(m_volumeSlider);
     addAndMakeVisible(m_decibelLabel);
+    addAndMakeVisible(m_playerModeComponent);
 
     m_playButton.onClick = [this] { startStateChange(PlayerState::Starting); };
     m_stopButton.onClick = [this] { startStateChange(PlayerState::Stopping); };
@@ -88,6 +89,9 @@ void PlayerComponent::resized()
 
     auto volumeRect = bounds.removeFromRight(500);
     m_volumeSlider.setBounds(volumeRect);
+
+    auto modeRect = bounds.removeFromLeft(200);
+    m_playerModeComponent.setBounds(modeRect);
 
     auto margin = 20;
 

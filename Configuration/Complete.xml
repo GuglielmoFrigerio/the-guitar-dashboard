@@ -40,7 +40,7 @@
       <Patch name="Envelope" scene="1">398</Patch>
       <Patch name="Finale" scene="2">398</Patch>
     </Song>
-    <Song name="The Lamia">
+    <Song name="The Lamia" initialBpm="64" preCount="On">
       <Track name="The Lamia - Genesis.mp3" />
       <Patch name="Arpeggio 1" scene="1">95</Patch>
       <Patch name="Arpeggio 2" scene="2">464</Patch>

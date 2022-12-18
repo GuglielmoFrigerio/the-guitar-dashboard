@@ -21,6 +21,7 @@
 class SongListComponent;
 class PlayerComponent;
 enum class PlayerState;
+enum class PlayerMode;
 
 class VirtualBand : public IDeviceHost, public juce::ChangeListener
 {
@@ -40,7 +41,7 @@ private:    // fields
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
-    void onPlayerStateUpdated(PlayerState newPlayerState);
+    void onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mode);
     void loadSongCollection(juce::StringRef collectionName);
 
 public: // interface

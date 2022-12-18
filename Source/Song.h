@@ -18,6 +18,7 @@
 
 class ProgramChangesComponent;
 class PlayerComponent;
+enum class PlayerState;
 
 class Song : public IPlaybackTarget
 {
@@ -53,4 +54,6 @@ public:
     virtual void previousMarker(juce::AudioTransportSource*) {}
 
     virtual void updateMarkers(double , PlayerComponent*) {}
+
+    virtual void onPlayerStateUpdated(PlayerState) {}
 };

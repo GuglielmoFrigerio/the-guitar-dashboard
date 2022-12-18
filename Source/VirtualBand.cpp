@@ -29,13 +29,18 @@ void VirtualBand::changeListenerCallback(juce::ChangeBroadcaster* source)
     }
 }
 
-void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState)
+void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mode)
 {
-    if (newPlayerState == PlayerState::Starting)
-        m_transportSource.start();
+    if (mode == PlayerMode::BackingTrack) {
+        if (newPlayerState == PlayerState::Starting)
+            m_transportSource.start();
 
-    else if (newPlayerState == PlayerState::Stopping)
-        m_transportSource.stop();
+        else if (newPlayerState == PlayerState::Stopping)
+            m_transportSource.stop();
+    }
+    else if (m_pActiveSong != nullptr) {
+        m_pActiveSong->onPlayerStateUpdated(newPlayerState);
+    }
 }
 
 void VirtualBand::loadSongCollection(juce::StringRef collectionName)
@@ -58,7 +63,7 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
 {
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
-    m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState) { onPlayerStateUpdated(playerState); };
+    m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState, PlayerMode mode) { onPlayerStateUpdated(playerState, mode); };
     m_pPlayerComponent->onChangePosition = [this](float newPosition) { m_transportSource.setPosition(newPosition); };
     m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };

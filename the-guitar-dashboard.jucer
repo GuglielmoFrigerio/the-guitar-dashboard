@@ -16,6 +16,10 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="eBmSfw" name="AutomationTrack.cpp" compile="1" resource="0"
+            file="Source/AutomationTrack.cpp"/>
+      <FILE id="FEglvg" name="AutomationTrack.h" compile="0" resource="0"
+            file="Source/AutomationTrack.h"/>
       <FILE id="sJH8uA" name="SamplesTrack.cpp" compile="1" resource="0"
             file="Source/SamplesTrack.cpp"/>
       <FILE id="KjL8sg" name="SamplesTrack.h" compile="0" resource="0" file="Source/SamplesTrack.h"/>
@@ -53,6 +57,10 @@
             file="Source/ValueAnimator.cpp"/>
       <FILE id="KLMWOZ" name="ValueAnimator.h" compile="0" resource="0" file="Source/ValueAnimator.h"/>
       <GROUP id="{CDE15E17-6795-C384-F22B-7C250F451DB6}" name="Components">
+        <FILE id="fl1JrA" name="PlayerModeComponent.cpp" compile="1" resource="0"
+              file="Source/PlayerModeComponent.cpp"/>
+        <FILE id="iBitC2" name="PlayerModeComponent.h" compile="0" resource="0"
+              file="Source/PlayerModeComponent.h"/>
         <FILE id="qDloV1" name="NotificationComponent.cpp" compile="1" resource="0"
               file="Source/NotificationComponent.cpp"/>
         <FILE id="pHkmbc" name="NotificationComponent.h" compile="0" resource="0"
