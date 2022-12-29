@@ -577,6 +577,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\MetronomeTrack.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\AutomationTrack.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -3021,6 +3024,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\MetronomeTrack.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\AutomationTrack.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

@@ -16,13 +16,13 @@ void TimeSlider::paint(juce::Graphics& g)
     if (m_trackDuration > 0.0f) {
         g.setColour(m_markerColor);
         for (auto marker : m_markers)
-            drawMarker(marker, g);
+            drawMarker(static_cast<float>(marker), g);
     }
 }
 
 void TimeSlider::drawMarker(float position, juce::Graphics& g)
 {
-    auto xPotion = int((position / m_trackDuration) * m_width);
+    float xPotion = (position / m_trackDuration) * m_width;
 
     // lower trinagle
     juce::Path lowerTrinagle;
@@ -55,8 +55,8 @@ juce::String TimeSlider::getTextFromValue(double value)
 
 void TimeSlider::setNewBounds(juce::Rectangle<int> r)
 {
-    m_width = r.getWidth();
-    m_heigth = r.getHeight();
+    m_width = static_cast<float>(r.getWidth());
+    m_heigth = static_cast<float>(r.getHeight());
     setBounds(r);
 }
 

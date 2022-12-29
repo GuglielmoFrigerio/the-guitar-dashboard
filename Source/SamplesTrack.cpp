@@ -12,10 +12,9 @@
 #include "SampleEvent.h"
 #include "GuitarDashCommon.h"
 
-SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand* pVirtualBand, const juce::String& resourcesPath)
+SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand* pVirtualBand)
 {
     auto pSampleEngine = pVirtualBand->getSampleEngine();
-    auto pAudioFormatManager = pVirtualBand->getAudioFormatManager();
     std::unique_ptr<EventList> currentEventListPtr = nullptr;
 
     for (auto* pSampleElement : pSamplesElement->getChildWithTagNameIterator("Sample")) {
@@ -24,7 +23,7 @@ SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand*
         auto offset = pSampleElement->getIntAttribute("offset");
 
         std::int64_t clickTimepoint = tick * DefaultClicksPerBeat + offset;
-        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, pAudioFormatManager, sampleName, resourcesPath, 0);
+        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName, 0);
 
         if (currentEventListPtr == nullptr)
             currentEventListPtr = std::make_unique<EventList>(clickTimepoint);

@@ -47,7 +47,7 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
     return true;
 }
 
-bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* originatingComponent)
+bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* )
 {
     m_trackPlayerKeyManager.keyStateChanged(isKeyDown);
     return false;
@@ -111,15 +111,15 @@ void VirtualBandPage::timerCallback()
 
 void VirtualBandPage::setupKeyHandlers()
 {
-    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& key, Component* ) {
         previousProgramChange();
     });
 
-    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& key, Component* ) {
         nextProgramChange();
     });
 
-    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& key, Component* ) {
         nextMarker();
     });
 
@@ -127,12 +127,12 @@ void VirtualBandPage::setupKeyHandlers()
         previousMarker();
     });
 
-    m_keyHandlerMap.emplace(juce::KeyPress::rightKey, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(juce::KeyPress::rightKey, [this](const juce::KeyPress& key, Component* ) {
         auto amount = (key.getModifiers().isShiftDown()) ? 5.0 : 10.0;
         m_virtualBandPtr->changeSongPositionBy(amount);
     });
 
-    m_keyHandlerMap.emplace(juce::KeyPress::leftKey, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(juce::KeyPress::leftKey, [this](const juce::KeyPress& key, Component* ) {
         auto amount = (key.getModifiers().isShiftDown()) ? -5.0 : -10.0;
         m_virtualBandPtr->changeSongPositionBy(amount);
     });

@@ -11,8 +11,10 @@
 #include "SampleEngine.h"
 #include "SampleEvent.h"
 
-SampleEngine::SampleEngine()
+SampleEngine::SampleEngine(const juce::String& resourcePath)
+    : m_resourcePath(resourcePath)
 {
+    m_formatManager.registerBasicFormats();
     m_pSamples.store(new SampleEntryVector());
 }
 
@@ -44,4 +46,24 @@ void SampleEngine::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferT
             sampleEntry.m_active = sampleEntry.m_pSampleEvent->getNextAudioBlock(bufferToFill);            
         }
     }
+}
+
+juce::AudioSampleBuffer* SampleEngine::getSampleBuffer(const juce::String& sampleName)
+{
+    auto it = m_sampleBufferMap.find(sampleName);
+    if (it == m_sampleBufferMap.end()) {
+        auto filename = m_resourcePath + juce::String("Samples/") + sampleName;
+        auto fullPathname = juce::File::getCurrentWorkingDirectory().getChildFile(filename);
+        juce::File file(fullPathname);
+        std::unique_ptr<juce::AudioFormatReader> readerPtr(m_formatManager.createReaderFor(file));
+        if (readerPtr == nullptr) {
+            return nullptr;
+        }
+        auto sampleBufferPtr = std::make_unique<juce::AudioSampleBuffer>();
+        sampleBufferPtr->setSize((int)readerPtr->numChannels, (int)readerPtr->lengthInSamples);
+        readerPtr->read(sampleBufferPtr.get(), 0, (int)readerPtr->lengthInSamples, 0, true, true);
+        auto result = m_sampleBufferMap.insert({ sampleName, std::move(sampleBufferPtr)});
+        it = result.first;
+    }
+    return it->second.get();
 }

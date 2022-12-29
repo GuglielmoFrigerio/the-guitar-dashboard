@@ -10,7 +10,7 @@
 
 #include "MidiEvent.h"
 
-std::int64_t MidiEvent::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+std::int64_t MidiEvent::play(std::uint64_t , std::uint64_t , Track& )
 {
     m_pMidiOutput->addMessage(m_midiMessage);
     return std::int64_t();

@@ -141,6 +141,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\MetronomeTrack.cpp"/>
     <ClCompile Include="..\..\Source\AutomationTrack.cpp"/>
     <ClCompile Include="..\..\Source\SamplesTrack.cpp"/>
     <ClCompile Include="..\..\Source\SampleEngine.cpp"/>
@@ -2334,6 +2335,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\MetronomeTrack.h"/>
     <ClInclude Include="..\..\Source\AutomationTrack.h"/>
     <ClInclude Include="..\..\Source\SamplesTrack.h"/>
     <ClInclude Include="..\..\Source\SampleEngine.h"/>

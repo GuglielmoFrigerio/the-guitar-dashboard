@@ -15,14 +15,14 @@
 class TimeSlider : public juce::Slider 
 {
 private:    // fields
-    int m_width = 0;
-    int m_heigth = 0;
+    float m_width = 0;
+    float m_heigth = 0;
     float m_trackDuration = .0f;
     std::vector<double> m_markers;
-    const int m_markerTriHeigth = 10;
+    const float m_markerTriHeigth = 10.0;
     const int m_markerTriBase = 6;
     juce::Colour m_markerColor;
-    const double m_makerLinehickness = 2.0;
+    const float m_makerLinehickness = 2.0;
 
 private:
     void paint(juce::Graphics& g) override;

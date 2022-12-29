@@ -44,6 +44,8 @@ private:    // implementation
     void onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mode);
     void loadSongCollection(juce::StringRef collectionName);
 
+    static juce::String makeResourcePath();
+
 public: // interface
     VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent);
 

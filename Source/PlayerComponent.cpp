@@ -114,7 +114,7 @@ void PlayerComponent::startStateChange(PlayerState newPlayerState)
     }
 }
 
-void PlayerComponent::sliderValueChanged(juce::Slider* slider)
+void PlayerComponent::sliderValueChanged(juce::Slider* )
 {
 }
 

@@ -16,6 +16,10 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="T1dQub" name="MetronomeTrack.cpp" compile="1" resource="0"
+            file="Source/MetronomeTrack.cpp"/>
+      <FILE id="gp5PsK" name="MetronomeTrack.h" compile="0" resource="0"
+            file="Source/MetronomeTrack.h"/>
       <FILE id="eBmSfw" name="AutomationTrack.cpp" compile="1" resource="0"
             file="Source/AutomationTrack.cpp"/>
       <FILE id="FEglvg" name="AutomationTrack.h" compile="0" resource="0"

@@ -14,6 +14,7 @@
 #include "PlayerComponent.h"
 #include "GuitarDashCommon.h"
 #include "SamplesTrack.h"
+#include "MetronomeTrack.h"
 
 
 void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
@@ -85,7 +86,7 @@ std::unique_ptr<Track> TheLambsSong::loadSamplesTrack(const juce::XmlElement* pP
 {
     auto pSamplesElement = pPatchesElement->getChildByName("Samples");
     if (pSamplesElement != nullptr) {
-        return std::make_unique<SamplesTrack>(pSamplesElement, pVirtualBand, m_resourcesPath);
+        return std::make_unique<SamplesTrack>(pSamplesElement, pVirtualBand);
     }
     return nullptr;
 }
@@ -135,6 +136,9 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
     if (sampleTrackPtr != nullptr) {
         addTrack(sampleTrackPtr);
     }
+
+    std::unique_ptr<Track> metronomeTrack = std::make_unique<MetronomeTrack>(pVirtualBand);
+    addTrack(metronomeTrack);
 
     m_initialBpm = pPatchesElement->getIntAttribute("initialBpm");
 }

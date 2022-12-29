@@ -55,11 +55,26 @@ void VirtualBand::loadSongCollection(juce::StringRef collectionName)
     }
 }
 
+juce::String VirtualBand::makeResourcePath()
+{
+    auto osType = juce::SystemStats::getOperatingSystemType();
+    if ((osType & juce::SystemStats::Windows) != 0) {
+        return "../../Resources/";
+    }
+    else {
+        auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
+        auto path = applicationFolder.getFullPathName();
+        return path + "/../../../../../Resources/Tracks/";
+    }
+}
+
 VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent)
     :   m_pPlayerComponent(pPlayerComponent),
         m_pSongListComponent(pSongListComponent),
         m_songLibraryFileReady(false),
-        m_devicesLoaded(false)
+        m_devicesLoaded(false),
+        m_sampleEngine(makeResourcePath()),
+        m_resourcesPath(makeResourcePath())
 {
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
@@ -68,15 +83,6 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
-
-    auto osType = juce::SystemStats::getOperatingSystemType();
-    if ((osType & juce::SystemStats::Windows) != 0) {
-        m_resourcesPath = "../../Resources/";
-    } else{
-        auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-        auto path = applicationFolder.getFullPathName();
-        m_resourcesPath = path + "/../../../../../Resources/Tracks/";
-    }
 }
 
 void VirtualBand::loadDevices()
