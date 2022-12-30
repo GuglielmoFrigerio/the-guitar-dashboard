@@ -17,6 +17,8 @@
 class Marker {
 private:
     DevicePatch m_devicePatch;
+    int m_playOnNote = -1;
+    int m_minVelocity = 127;
 
 public:
     Marker(const juce::XmlElement* pPatchElement, uint64_t clickTimepoint);
@@ -29,5 +31,13 @@ public:
 
     const DevicePatch* getDevicePatch() const {
         return &m_devicePatch;
+    }
+
+    int getPlayOnNote() const {
+        return m_playOnNote;
+    }
+
+    int getMinVelocity() const {
+        return m_minVelocity;
     }
 };

@@ -15,7 +15,7 @@
 #include "GuitarDashCommon.h"
 #include "SamplesTrack.h"
 #include "MetronomeTrack.h"
-
+#include "TriplePlayConnect.h"
 
 void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
 {
@@ -128,6 +128,13 @@ void TheLambsSong::rewindPlayback()
     m_playbackEnginePtr->seek(0);
 }
 
+void TheLambsSong::onNoteOn(int channel, int noteNumber, std::uint8_t velocity)
+{
+    if (noteNumber == m_playOnNote && velocity >= m_minVelocity) {
+        m_playbackEnginePtr->start();
+    }
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {
@@ -194,18 +201,25 @@ void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce:
     }
 
     m_playbackEnginePtr->seek(0ull);
+
+    m_triplePlayConnectPtr = std::make_unique<TriplePlayConnect>(this);
 }
 
 void TheLambsSong::deactivate()
 {
     m_playbackEnginePtr = nullptr;
+    m_triplePlayConnectPtr = nullptr;
 }
 
 void TheLambsSong::selectProgramChange(int programChangeIndex)
 {
     if (m_markerTrackPtr != nullptr) {
-        auto clickTimepoint = m_markerTrackPtr->getClickTimepoint(programChangeIndex);
+        auto& marker = m_markerTrackPtr->getMarker(programChangeIndex);
+        auto clickTimepoint = marker.getClickTimepoint();
         m_playbackEnginePtr->seek(clickTimepoint);
+
+        m_playOnNote = marker.getPlayOnNote();
+        m_minVelocity = marker.getMinVelocity();
         m_selectedProgramIndex = programChangeIndex;
     } else {
         DBG("[TheLambsSong::selectProgramChange] Missing MidiTrack pointer");

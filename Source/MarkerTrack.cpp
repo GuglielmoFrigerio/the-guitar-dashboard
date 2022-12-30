@@ -40,6 +40,11 @@ uint64_t MarkerTrack::getClickTimepoint(int markerIndex)
     return 0ull;
 }
 
+const Marker& MarkerTrack::getMarker(int markerIndex)
+{
+    return *m_markers[markerIndex];
+}
+
 int MarkerTrack::getIndexFromClicks(uint64_t currentClick)
 {
     for (auto index = 0; index < m_markers.size(); ++index) {

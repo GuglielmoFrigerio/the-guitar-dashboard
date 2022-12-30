@@ -577,6 +577,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TriplePlayConnect.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PublishSubscribeHandler.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -3027,6 +3030,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TriplePlayConnect.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\IMidiInputTarget.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PublishSubscribeHandler.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>

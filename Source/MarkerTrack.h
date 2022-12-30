@@ -26,5 +26,7 @@ public:
         return m_markers.size();
     }
 
+    const Marker& getMarker(int markerIndex);
+
     int getIndexFromClicks(uint64_t currentClick);
 };

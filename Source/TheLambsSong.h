@@ -15,12 +15,14 @@
 #include "BackingTrackMarker.h"
 #include "PlaybackEngine.h"
 #include "MarkerTrack.h"
+#include "IMidiInputTarget.h"
+#include "TriplePlayConnect.h"
 
 class VirtualBand;
 class MidiTrack;
 class PlayerComponent;
 
-class TheLambsSong : public Song
+class TheLambsSong : public Song, public IMidiInputTarget
 {
 private:    // fields
     int m_selectedProgramIndex = 0;
@@ -32,6 +34,9 @@ private:    // fields
     std::unique_ptr<MarkerTrack> m_markerTrackPtr;
     juce::String m_resourcesPath;
     int m_initialBpm = 0;
+    int m_playOnNote = -1;
+    int m_minVelocity = 127;
+    std::unique_ptr<TriplePlayConnect> m_triplePlayConnectPtr;
 
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;
@@ -44,10 +49,11 @@ private:
     void updateCurrentClick(PlayerComponent* pPlayerComponent, ProgramChangesComponent* pProgramChangeComponent) override;
     void rewindPlayback() override;
 
+    void onNoteOn(int channel, int noteNumber, std::uint8_t velocity) override;
+
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
-    ~TheLambsSong() override {
-    }
+    ~TheLambsSong() override {}
 
     void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent) override;
     void deactivate() override;

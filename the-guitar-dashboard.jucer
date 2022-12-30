@@ -16,6 +16,12 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="aU4sJy" name="TriplePlayConnect.cpp" compile="1" resource="0"
+            file="Source/TriplePlayConnect.cpp"/>
+      <FILE id="dlmIWa" name="TriplePlayConnect.h" compile="0" resource="0"
+            file="Source/TriplePlayConnect.h"/>
+      <FILE id="nUJ4zT" name="IMidiInputTarget.h" compile="0" resource="0"
+            file="Source/IMidiInputTarget.h"/>
       <FILE id="S2OI1H" name="PublishSubscribeHandler.cpp" compile="1" resource="0"
             file="Source/PublishSubscribeHandler.cpp"/>
       <FILE id="XieDkL" name="PublishSubscribeHandler.h" compile="0" resource="0"
