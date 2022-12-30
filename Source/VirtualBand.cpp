@@ -73,9 +73,10 @@ juce::String VirtualBand::makeResourcePath()
     }
 }
 
-VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent)
+VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent)
     :   m_pPlayerComponent(pPlayerComponent),
         m_pSongListComponent(pSongListComponent),
+        m_pProgramChangeComponent(pProgramChangeComponent),
         m_songLibraryFileReady(false),
         m_devicesLoaded(false),
         m_sampleEngine(makeResourcePath()),
@@ -163,7 +164,7 @@ void VirtualBand::timerCallback()
             m_pActiveSong->updateMarkers(position, m_pPlayerComponent);
         }
         else {
-            m_pActiveSong->updateCurrentClick(m_pPlayerComponent);
+            m_pActiveSong->updateCurrentClick(m_pPlayerComponent, m_pProgramChangeComponent);
         }
     }
 }

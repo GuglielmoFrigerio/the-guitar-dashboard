@@ -39,3 +39,15 @@ uint64_t MarkerTrack::getClickTimepoint(int markerIndex)
     DBG("[MarkerTrack::getClickTimepoint] invelid markerIndex: " << markerIndex);
     return 0ull;
 }
+
+int MarkerTrack::getIndexFromClicks(uint64_t currentClick)
+{
+    for (auto index = 0; index < m_markers.size(); ++index) {
+        auto& markerPtr = m_markers[index];
+        auto timepoint = markerPtr->getClickTimepoint();
+        if (timepoint > currentClick) {
+            return index - 1;
+        }
+    }
+    return m_markers.size() - 1;
+}

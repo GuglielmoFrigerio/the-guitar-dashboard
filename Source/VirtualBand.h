@@ -32,6 +32,7 @@ private:    // fields
     juce::AudioTransportSource m_transportSource;
     PlayerComponent* m_pPlayerComponent;
     SongListComponent* m_pSongListComponent;
+    ProgramChangesComponent* m_pProgramChangeComponent;
     std::atomic<bool> m_devicesLoaded;
     std::atomic<bool> m_songLibraryFileReady;
     juce::File m_inputFile;
@@ -48,7 +49,7 @@ private:    // implementation
     static juce::String makeResourcePath();
 
 public: // interface
-    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent);
+    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent);
 
     void loadDevices();
     void loadSongLibrary(const juce::File& inputFile);

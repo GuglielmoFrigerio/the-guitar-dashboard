@@ -27,6 +27,7 @@ private:    // fields
     TilesLookAndFeed    m_tilesLookAndFeel;
     int m_horizontalOffset = 0;
     std::unique_ptr<ValueAnimator> m_valueAnimatorPtr;
+    bool m_programChangeEventDisabled = false;
 
 private:    // implementation
     virtual void buttonClicked(juce::Button* pButton) override;
@@ -47,6 +48,7 @@ public:
     std::function<void(int)> onProgramChangeSelected;
 
     void selectProgramChange(int programChangeIndex);
+    void updateProgramChange(int programChangeIndex);
 
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProgramChangesComponent)

@@ -23,8 +23,11 @@ void ProgramChangesComponent::buttonClicked(juce::Button* pButton)
         auto idAsString = pButton->getComponentID();
         auto index = idAsString.getIntValue();
 
-        if (onProgramChangeSelected != nullptr)
+
+        if (!m_programChangeEventDisabled && (onProgramChangeSelected != nullptr))
             onProgramChangeSelected(index);
+
+        m_programChangeEventDisabled = false;
 
         slideTiles(index);
     }
@@ -132,6 +135,14 @@ void ProgramChangesComponent::update(const MarkerTrack* pMarkerTrack)
 void ProgramChangesComponent::selectProgramChange(int programChangeIndex)
 {
     if (programChangeIndex < m_programChanceTiles.size()) {
+        m_programChanceTiles[programChangeIndex]->triggerClick();
+    }
+}
+
+void ProgramChangesComponent::updateProgramChange(int programChangeIndex)
+{
+    if (programChangeIndex < m_programChanceTiles.size()) {
+        m_programChangeEventDisabled = true;
         m_programChanceTiles[programChangeIndex]->triggerClick();
     }
 }

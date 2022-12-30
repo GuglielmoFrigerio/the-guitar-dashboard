@@ -106,13 +106,21 @@ void TheLambsSong::onPlayerStateUpdated(PlayerState newPlayerState)
     }
 }
 
-void TheLambsSong::updateCurrentClick(PlayerComponent* pPlayerComponent)
+void TheLambsSong::updateCurrentClick(PlayerComponent* pPlayerComponent, ProgramChangesComponent* pProgramChangeComponent)
 {
     auto currentClick = (int)m_playbackEnginePtr->getClicks();
     auto clicksPerBeat = (int)m_playbackEnginePtr->getClicksPerBeat();
     auto beats = currentClick / clicksPerBeat;
     auto clicks = currentClick % clicksPerBeat;
     pPlayerComponent->updateCurrentClick(beats, clicks);
+
+    if (m_markerTrackPtr != nullptr) {
+        auto index = m_markerTrackPtr->getIndexFromClicks(currentClick);
+        if (index != m_selectedProgramIndex) {
+            pProgramChangeComponent->updateProgramChange(index);
+            m_selectedProgramIndex = index;
+        }
+    }
 }
 
 void TheLambsSong::rewindPlayback()

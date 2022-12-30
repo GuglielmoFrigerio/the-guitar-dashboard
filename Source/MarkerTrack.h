@@ -25,4 +25,6 @@ public:
     std::size_t getEventCount() const {
         return m_markers.size();
     }
+
+    int getIndexFromClicks(uint64_t currentClick);
 };

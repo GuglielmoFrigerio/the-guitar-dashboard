@@ -41,7 +41,7 @@ private:
     void loadMidiTracks();
     std::unique_ptr<Track> loadSamplesTrack(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
     void onPlayerStateUpdated(PlayerState  newPlayerState) override;
-    void updateCurrentClick(PlayerComponent* pPlayerComponent) override;
+    void updateCurrentClick(PlayerComponent* pPlayerComponent, ProgramChangesComponent* pProgramChangeComponent) override;
     void rewindPlayback() override;
 
 public:
