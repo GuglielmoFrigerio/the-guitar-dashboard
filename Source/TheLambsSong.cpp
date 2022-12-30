@@ -106,6 +106,20 @@ void TheLambsSong::onPlayerStateUpdated(PlayerState newPlayerState)
     }
 }
 
+void TheLambsSong::updateCurrentClick(PlayerComponent* pPlayerComponent)
+{
+    auto currentClick = (int)m_playbackEnginePtr->getClicks();
+    auto clicksPerBeat = (int)m_playbackEnginePtr->getClicksPerBeat();
+    auto beats = currentClick / clicksPerBeat;
+    auto clicks = currentClick % clicksPerBeat;
+    pPlayerComponent->updateCurrentClick(beats, clicks);
+}
+
+void TheLambsSong::rewindPlayback()
+{
+    m_playbackEnginePtr->seek(0);
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {

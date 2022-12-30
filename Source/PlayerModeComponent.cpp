@@ -42,7 +42,6 @@ void PlayerModeComponent::updateToggleState()
 {
     Mode = m_backingTrackMode.getToggleState() ? PlayerMode::BackingTrack : PlayerMode::Song;
 
-    juce::String modeString = (Mode == PlayerMode::BackingTrack) ? "Backing Track" : "Song";
-
-    juce::Logger::outputDebugString("Now mode is " + modeString);
+    if (onModeChange != nullptr)
+        onModeChange();
 }

@@ -38,6 +38,7 @@ private:    // fields
     Song* m_pActiveSong = nullptr;
     juce::String m_resourcesPath;
     SampleEngine m_sampleEngine;
+    PlayerMode m_currentPlayerMode;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;

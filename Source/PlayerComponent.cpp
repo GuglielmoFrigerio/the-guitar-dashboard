@@ -41,6 +41,7 @@ PlayerComponent::PlayerComponent()
     addAndMakeVisible(m_volumeSlider);
     addAndMakeVisible(m_decibelLabel);
     addAndMakeVisible(m_playerModeComponent);
+    addAndMakeVisible(m_clickLabel);
 
     m_playButton.onClick = [this] { startStateChange(PlayerState::Starting); };
     m_stopButton.onClick = [this] { startStateChange(PlayerState::Stopping); };
@@ -69,7 +70,13 @@ PlayerComponent::PlayerComponent()
     m_decibelLabel.setText("Level dB", juce::dontSendNotification);
 
     disable();
-}
+
+    m_playerModeComponent.onModeChange = [this]() {
+        if (onModeChange != nullptr) {
+            onModeChange(m_playerModeComponent.Mode);
+        }
+    };
+ }
 
 void PlayerComponent::paint(juce::Graphics& g)
 {
@@ -92,6 +99,9 @@ void PlayerComponent::resized()
 
     auto modeRect = bounds.removeFromLeft(200);
     m_playerModeComponent.setBounds(modeRect);
+
+    auto clickRect = bounds.removeFromLeft(100);
+    m_clickLabel.setBounds(clickRect);
 
     auto margin = 20;
 
@@ -203,4 +213,10 @@ void PlayerComponent::updateMakerButtons(bool previousEnabled, bool nextEnabled)
         m_nextEnabled = nextEnabled;
         m_nextButton.setEnabled(m_nextEnabled);
     }
+}
+
+void PlayerComponent::updateCurrentClick(int currentBeats, int currentClicks)
+{
+    auto label = juce::String::formatted("%d.%d", currentBeats, currentClicks);
+    m_clickLabel.setText(label, juce::dontSendNotification);
 }

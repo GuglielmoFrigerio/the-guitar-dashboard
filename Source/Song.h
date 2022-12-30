@@ -57,4 +57,8 @@ public:
     virtual void updateMarkers(double , PlayerComponent*) {}
 
     virtual void onPlayerStateUpdated(PlayerState) {}
+
+    virtual void updateCurrentClick(PlayerComponent* pPlayerComponent) {}
+
+    virtual void rewindPlayback() {}
 };

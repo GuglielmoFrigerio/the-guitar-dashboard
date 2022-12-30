@@ -43,11 +43,17 @@ private:    // implementation
     void seekAtTick(std::uint64_t offsetTicks);
 
 public:
-    PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute = 120, int clicksPerBeat = 480);
+    PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute = 120, int clicksPerBeat = DefaultClicksPerBeat);
     ~PlaybackEngine();
 
     void start();
     void stop();
     void setBeatsPerMinute(int beatsPerSecond);
     void seek(std::uint64_t clickPosition);
+    double getClicks() const {
+        return m_previousClick;
+    }
+    double getClicksPerBeat() const {
+        return m_clicksPerBeat;
+    }
 };

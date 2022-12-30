@@ -38,6 +38,7 @@ private:    // fields
     DecibelSlider   m_volumeSlider;
     juce::Label     m_decibelLabel;
     PlayerModeComponent m_playerModeComponent;
+    juce::Label     m_clickLabel;
 
 private:    // implementation
     void sendStateUpdate(PlayerState playerState);
@@ -60,6 +61,7 @@ public:
     std::function<void()> onNextMarker;
     std::function<void()> onPreviousMarker;
     std::function<void(float)> onChangedGain;
+    std::function<void(PlayerMode)> onModeChange;
 
     void changeState(PlayerState newPlayerState);
 
@@ -72,4 +74,5 @@ public:
     }
 
     void updateMakerButtons(bool previousEnabled, bool nextEnabled);
+    void updateCurrentClick(int currentBeats, int currentClicks);
 };

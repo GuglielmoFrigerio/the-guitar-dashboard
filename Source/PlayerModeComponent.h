@@ -41,6 +41,8 @@ public:
 
     PlayerMode Mode = PlayerMode::BackingTrack;
 
+    std::function<void(void)> onModeChange;
+
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PlayerModeComponent)
 };

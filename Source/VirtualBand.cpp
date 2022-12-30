@@ -40,6 +40,11 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
     }
     else if (m_pActiveSong != nullptr) {
         m_pActiveSong->onPlayerStateUpdated(newPlayerState);
+
+        auto newState = (newPlayerState == PlayerState::Starting) ? PlayerState::Playing : PlayerState::Stopped;
+
+        m_pPlayerComponent->changeState(newState);
+
     }
 }
 
@@ -79,10 +84,17 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
     m_pPlayerComponent->onPlayerCommand = [this](PlayerState playerState, PlayerMode mode) { onPlayerStateUpdated(playerState, mode); };
-    m_pPlayerComponent->onChangePosition = [this](float newPosition) { m_transportSource.setPosition(newPosition); };
+    m_pPlayerComponent->onChangePosition = [this](float newPosition) { 
+        m_transportSource.setPosition(newPosition); 
+        if (m_pActiveSong != nullptr && newPosition == 0.0 && m_currentPlayerMode == PlayerMode::Song) {
+            m_pActiveSong->rewindPlayback();
+        }
+    };
     m_pPlayerComponent->onChangedGain = [this](float newGain) { m_transportSource.setGain(newGain); };
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
+    m_pPlayerComponent->onModeChange = [this](PlayerMode newPlayerMode) { m_currentPlayerMode = newPlayerMode; };
+    m_currentPlayerMode = PlayerMode::BackingTrack;
 }
 
 void VirtualBand::loadDevices()
@@ -145,9 +157,14 @@ void VirtualBand::timerCallback()
     }
 
     if (m_pActiveSong != nullptr) {
-        auto position = m_transportSource.getCurrentPosition();
-        m_pPlayerComponent->updateTrackPosition(position);
-        m_pActiveSong->updateMarkers(position, m_pPlayerComponent);
+        if (m_currentPlayerMode == PlayerMode::BackingTrack) {
+            auto position = m_transportSource.getCurrentPosition();
+            m_pPlayerComponent->updateTrackPosition(position);
+            m_pActiveSong->updateMarkers(position, m_pPlayerComponent);
+        }
+        else {
+            m_pActiveSong->updateCurrentClick(m_pPlayerComponent);
+        }
     }
 }
 
