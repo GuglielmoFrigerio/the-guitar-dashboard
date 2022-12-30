@@ -42,7 +42,7 @@ bool SampleEvent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
 
         for (auto channel = 0; channel < numOutputChannels; ++channel)
         {
-            bufferToFill.buffer->copyFrom(channel,
+            bufferToFill.buffer->addFrom(channel,
                 outputSamplesOffset,
                 *m_pSampleBuffer,
                 channel % numInputChannels,
