@@ -77,9 +77,12 @@ void PlaybackEngine::stoppedHandler()
 
 void PlaybackEngine::startingHandler()
 {
-    m_startTicks.store(juce::Time::getHighResolutionTicks() - m_stopOffsetTicks);
+    auto nowTicks = juce::Time::getHighResolutionTicks();
+    auto newStart = nowTicks - m_stopOffsetTicks;
+    m_startTicks.store(newStart);
     m_currentState.store(State::Started);
-    play(0ull);
+    auto offset = nowTicks - newStart;
+    play(offset);
 }
 
 void PlaybackEngine::startedHandler()
