@@ -57,6 +57,7 @@ bool SampleEvent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
         if (m_position == m_pSampleBuffer->getNumSamples()) {
             m_position = 0;
             again = false;
+            break;
         }
     }
     return again;

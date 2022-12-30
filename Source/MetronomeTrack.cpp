@@ -18,7 +18,7 @@ MetronomeTrack::MetronomeTrack(VirtualBand* pVirtualBand)
 
     juce::String sampleName = "Stick.wav";
 
-    for (auto tick = 0; tick < 4; tick++) {
+    for (auto tick = 0; tick < 8; tick++) {
         std::int64_t clickTimepoint = tick * DefaultClicksPerBeat;
         std::unique_ptr<EventList> eventListPtr = std::make_unique<EventList>(clickTimepoint);
         std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName, 0);

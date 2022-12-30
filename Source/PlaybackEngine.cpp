@@ -79,6 +79,7 @@ void PlaybackEngine::startingHandler()
 {
     m_startTicks.store(juce::Time::getHighResolutionTicks() - m_stopOffsetTicks);
     m_currentState.store(State::Started);
+    play(0ull);
 }
 
 void PlaybackEngine::startedHandler()
