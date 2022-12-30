@@ -25,7 +25,7 @@ void EventList::addEvent(std::unique_ptr<Event>& eventPtr)
     m_events.emplace_back(std::move(eventPtr));
 }
 
-std::int64_t EventList::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+void EventList::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
     beforePlaying();
     for (auto it = m_events.begin(); it != m_events.end(); ++it)
@@ -34,7 +34,17 @@ std::int64_t EventList::play(std::uint64_t currentClick, std::uint64_t previousC
         eventPtr->play(currentClick, previousClick, track);
     }
     afterPlaying();
-    return std::int64_t();
+}
+
+void EventList::seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+{
+    beforeSeeking();
+    for (auto it = m_events.begin(); it != m_events.end(); ++it)
+    {
+        auto& eventPtr = *it;
+        eventPtr->seek(currentClick, previousClick, track);
+    }
+    afterSeeking();
 }
 
 void EventList::enumerateEvents(std::function<bool(const Event* pEvent, int index)> callback) const

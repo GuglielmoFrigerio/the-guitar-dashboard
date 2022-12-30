@@ -10,10 +10,14 @@
 
 #include "MidiEvent.h"
 
-std::int64_t MidiEvent::play(std::uint64_t , std::uint64_t , Track& )
+void MidiEvent::play(std::uint64_t , std::uint64_t , Track& )
 {
     m_pMidiOutput->addMessage(m_midiMessage);
-    return std::int64_t();
+}
+
+void MidiEvent::seek(std::uint64_t , std::uint64_t , Track& )
+{
+    m_pMidiOutput->addMessage(m_midiMessage);
 }
 
 MidiEvent::MidiEvent(const juce::MidiMessage& midiMessage, IMidiOutput* pMidiOutput)

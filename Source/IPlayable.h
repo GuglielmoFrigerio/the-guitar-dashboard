@@ -16,7 +16,8 @@ class Track;
 
 class IPlayable {
 public:
-    virtual std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) = 0;
+    virtual void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) = 0;
+    virtual void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) = 0;
 
     virtual ~IPlayable()
     {

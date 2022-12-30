@@ -20,7 +20,8 @@ private:    // fields
     IMidiOutput* m_pMidiOutput;
 
 private:    // overriden
-    std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
 
 public:     // interface
     MidiEvent(const juce::MidiMessage& midiMessage, IMidiOutput* pMidiOutput);

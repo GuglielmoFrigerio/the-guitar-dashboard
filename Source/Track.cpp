@@ -28,10 +28,10 @@ std::int64_t Track::findCurrentIndex(std::int64_t currentClick)
         }
         previousClick = clickTimepoint;
     }
-    return std::int64_t();
+    return previousClick;
 }
 
-std::int64_t Track::play(std::int64_t currentClick, std::int64_t previousClick)
+void Track::play(std::int64_t currentClick, std::int64_t previousClick)
 {
     if (previousClick >= currentClick) {
         previousClick = findCurrentIndex(currentClick);
@@ -47,5 +47,10 @@ std::int64_t Track::play(std::int64_t currentClick, std::int64_t previousClick)
         }
         else break;
     }
-    return 0;
+}
+
+void Track::seek(std::int64_t currentClick, std::int64_t previousClick)
+{
+    findCurrentIndex(currentClick);
+    m_eventList[m_currentIndex]->seek(currentClick, previousClick, *this);
 }

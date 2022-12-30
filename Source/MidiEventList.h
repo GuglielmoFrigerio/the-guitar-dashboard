@@ -21,6 +21,9 @@ private:    // implementation
     void beforePlaying() override;
     void afterPlaying() override;
 
+    void beforeSeeking() override;
+    void afterSeeking() override;
+
 public:
     MidiEventList(std::uint64_t clickTimepoint, IMidiOutput* pMidiOutput);
     void addMidiEvent(const juce::MidiMessage& midiMessage);

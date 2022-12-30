@@ -40,6 +40,7 @@ private:    // implementation
     void startedHandler();
     void stoppingHandler();
     void play(std::uint64_t offsetTicks);
+    void seekAtTick(std::uint64_t offsetTicks);
 
 public:
     PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute = 120, int clicksPerBeat = 480);

@@ -11,10 +11,13 @@
 #include <memory>
 #include "SampleEvent.h"
 
-std::int64_t SampleEvent::play(std::uint64_t, std::uint64_t, Track& )
+void SampleEvent::play(std::uint64_t, std::uint64_t, Track& )
 {
     m_pSampleEngine->addSampleEvent(this);
-    return 0;
+}
+
+void SampleEvent::seek(std::uint64_t , std::uint64_t , Track& )
+{
 }
 
 SampleEvent::SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename, std::uint64_t id)

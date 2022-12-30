@@ -31,7 +31,8 @@ protected:    // fields
 protected:  // interface
     void    addTrack(std::unique_ptr<Track>& newTrack);
 
-    std::int64_t play(std::int64_t currentClick, std::int64_t previousClick) override;
+    void play(std::int64_t currentClick, std::int64_t previousClick) override;
+    void seek(std::int64_t currentClick, std::int64_t previousClick) override;
 
 public:
     Song(const juce::String& name);

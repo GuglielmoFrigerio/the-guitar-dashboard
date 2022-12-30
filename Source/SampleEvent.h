@@ -22,7 +22,8 @@ private:    // fields
     int m_position = 0;
 
 private:    // implementation
-    std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
 
 public:     // public interface
     SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename, std::uint64_t id);

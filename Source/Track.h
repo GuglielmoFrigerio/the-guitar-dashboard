@@ -32,6 +32,7 @@ public:
     int getEventCount() const {
         return (int)m_eventList.size();
     }
-    std::int64_t play(std::int64_t currentClick, std::int64_t previousClick) override;
+    void play(std::int64_t currentClick, std::int64_t previousClick) override;
+    void seek(std::int64_t currentClick, std::int64_t previousClick) override;
 
 };

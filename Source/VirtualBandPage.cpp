@@ -111,19 +111,19 @@ void VirtualBandPage::timerCallback()
 
 void VirtualBandPage::setupKeyHandlers()
 {
-    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& key, Component* ) {
+    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& , Component* ) {
         previousProgramChange();
     });
 
-    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& key, Component* ) {
+    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& , Component* ) {
         nextProgramChange();
     });
 
-    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& key, Component* ) {
+    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& , Component* ) {
         nextMarker();
     });
 
-    m_keyHandlerMap.emplace(80, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(80, [this](const juce::KeyPress& , Component* ) {
         previousMarker();
     });
 

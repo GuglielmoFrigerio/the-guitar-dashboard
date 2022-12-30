@@ -62,7 +62,7 @@ void PlaybackEngine::seek(std::uint64_t clickPosition)
     auto currentState = m_currentState.load();
     if (currentState == State::Stopped) {
         m_stopOffsetTicks = offsetTicks;
-        play(offsetTicks);
+        seekAtTick(offsetTicks);
         return;
     }
     else if (currentState == State::Started) {
@@ -100,5 +100,13 @@ void PlaybackEngine::play(std::uint64_t offsetTicks)
     auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
     std::int64_t currentClick = (std::int64_t)round(currentClickDbl);
     m_pPlaybackTarget->play(currentClick, m_previousClick);
+    m_previousClick = currentClick;
+}
+
+void PlaybackEngine::seekAtTick(std::uint64_t offsetTicks)
+{
+    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
+    std::int64_t currentClick = (std::int64_t)round(currentClickDbl);
+    m_pPlaybackTarget->seek(currentClick, m_previousClick);
     m_previousClick = currentClick;
 }

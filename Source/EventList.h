@@ -24,13 +24,16 @@ private:    // fields
 protected: // interface
     virtual void beforePlaying() {}
     virtual void afterPlaying() {}
+    virtual void beforeSeeking() {}
+    virtual void afterSeeking() {}
 
 public:     // interface
     EventList(std::unique_ptr<Event>& firstEvent);
     EventList(std::int64_t clicktimepoint);
 
     void addEvent(std::unique_ptr<Event>& eventPtr);
-    std::int64_t play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
 
     void enumerateEvents(std::function<bool (const Event* pEvent, int index)> callback) const;
 
