@@ -17,6 +17,12 @@
 #include "MetronomeTrack.h"
 #include "TriplePlayConnect.h"
 
+void TheLambsSong::stopPlayback()
+{
+    if (m_playbackEnginePtr != nullptr)
+        m_playbackEnginePtr->stop();
+}
+
 void TheLambsSong::nextMarker(juce::AudioTransportSource* pAudioTransportSource)
 {
     if (!m_backingTrackMarkers.empty()) {

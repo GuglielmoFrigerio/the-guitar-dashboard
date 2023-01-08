@@ -9,8 +9,12 @@
 */
 
 #pragma once
+#include <JuceHeader.h>
+#include "IAutomationTarget.h"
 #include "Track.h"
 
 class AutomationTrack : public Track {
+public:
+    AutomationTrack(const juce::XmlElement* pPatchesElement, IAutomationTarget* pAutomationTarget);
 
 };

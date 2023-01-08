@@ -16,6 +16,12 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="fZ5SQK" name="IAutomationTarget.h" compile="0" resource="0"
+            file="Source/IAutomationTarget.h"/>
+      <FILE id="Ie8qkE" name="AutomationEvent.cpp" compile="1" resource="0"
+            file="Source/AutomationEvent.cpp"/>
+      <FILE id="TdgQx9" name="AutomationEvent.h" compile="0" resource="0"
+            file="Source/AutomationEvent.h"/>
       <FILE id="f9RaAb" name="TempoSyncHandler.cpp" compile="1" resource="0"
             file="Source/TempoSyncHandler.cpp"/>
       <FILE id="UpIbDM" name="TempoSyncHandler.h" compile="0" resource="0"

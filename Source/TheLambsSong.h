@@ -17,12 +17,13 @@
 #include "MarkerTrack.h"
 #include "IMidiInputTarget.h"
 #include "TriplePlayConnect.h"
+#include "IAutomationTarget.h"
 
 class VirtualBand;
 class MidiTrack;
 class PlayerComponent;
 
-class TheLambsSong : public Song, public IMidiInputTarget
+class TheLambsSong : public Song, public IMidiInputTarget, public IAutomationTarget
 {
 private:    // fields
     int m_selectedProgramIndex = 0;
@@ -60,6 +61,8 @@ private:    // fields
 
     BackgroungPlayerStateHandler m_backgroundPlayerStateHandler;
 
+private:    // IAutomationTarget interface implementaiton
+    void stopPlayback() override;
 
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;
