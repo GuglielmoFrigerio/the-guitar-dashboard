@@ -141,6 +141,7 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\TempoSyncHandler.cpp"/>
     <ClCompile Include="..\..\Source\TriplePlayConnect.cpp"/>
     <ClCompile Include="..\..\Source\PublishSubscribeHandler.cpp"/>
     <ClCompile Include="..\..\Source\MetronomeTrack.cpp"/>
@@ -2337,6 +2338,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\TempoSyncHandler.h"/>
     <ClInclude Include="..\..\Source\TriplePlayConnect.h"/>
     <ClInclude Include="..\..\Source\IMidiInputTarget.h"/>
     <ClInclude Include="..\..\Source\PublishSubscribeHandler.h"/>

@@ -37,3 +37,4 @@ juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, j
 void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler);
 
 std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename);
+std::int64_t getTickTimepoint(const juce::XmlElement* pElement);

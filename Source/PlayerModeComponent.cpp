@@ -24,7 +24,7 @@ PlayerModeComponent::PlayerModeComponent()
 
     setSize(200, 200);
     
-    m_backingTrackMode.setToggleState(true, true);
+    m_songMode.setToggleState(true, true);
 }
 
 PlayerModeComponent::~PlayerModeComponent()

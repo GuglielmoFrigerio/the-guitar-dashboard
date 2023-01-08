@@ -138,8 +138,10 @@ juce::String FractalDevice::findAssociatedOutput(const juce::MidiDeviceInfo& inp
 {
     for (auto& outputInfo : outputDeviceInfo)
     {
-        if (stringsAreSimilar(inputInfo.name, outputInfo.name, 6, 3))
-            return  outputInfo.identifier;
+        if (!inputInfo.name.contains("TriplePlay")) {
+            if (stringsAreSimilar(inputInfo.name, outputInfo.name, 6, 3))
+                return  outputInfo.identifier;
+        }
     }
     return juce::String();
 }

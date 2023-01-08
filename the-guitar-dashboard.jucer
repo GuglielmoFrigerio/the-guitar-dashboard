@@ -16,6 +16,10 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="f9RaAb" name="TempoSyncHandler.cpp" compile="1" resource="0"
+            file="Source/TempoSyncHandler.cpp"/>
+      <FILE id="UpIbDM" name="TempoSyncHandler.h" compile="0" resource="0"
+            file="Source/TempoSyncHandler.h"/>
       <FILE id="aU4sJy" name="TriplePlayConnect.cpp" compile="1" resource="0"
             file="Source/TriplePlayConnect.cpp"/>
       <FILE id="dlmIWa" name="TriplePlayConnect.h" compile="0" resource="0"

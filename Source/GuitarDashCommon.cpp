@@ -82,3 +82,11 @@ std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename)
 
 }
 
+std::int64_t getTickTimepoint(const juce::XmlElement* pElement)
+{
+    auto tick = pElement->getIntAttribute("tick");
+    auto offset = pElement->getIntAttribute("offset");
+
+    return tick * DefaultClicksPerBeat + offset;
+}
+

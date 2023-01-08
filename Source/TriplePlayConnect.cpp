@@ -26,8 +26,9 @@ TriplePlayConnect::TriplePlayConnect(IMidiInputTarget* pMidiInputTarget)
 {
     auto inputDevices = juce::MidiInput::getAvailableDevices();
     for (auto& deviceInfo : inputDevices) {
-        if (deviceInfo.name == "Axe-Fx III MIDI In") {
+        if (deviceInfo.name == "TriplePlay Connect") {
             m_midiInputPtr = juce::MidiInput::openDevice(deviceInfo.identifier, this); 
+            m_midiInputPtr->start();
             break;
         }
     }

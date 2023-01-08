@@ -38,6 +38,29 @@ private:    // fields
     int m_minVelocity = 127;
     std::unique_ptr<TriplePlayConnect> m_triplePlayConnectPtr;
 
+    class BackgroungPlayerStateHandler {
+    private:
+        PlayerState m_currentState;
+        PlayerState m_nextState;
+
+    public:
+        BackgroungPlayerStateHandler();
+
+        void timerCallback(std::function<void()> onPlaying, std::function<void()> onStopped);
+
+        void backgroundStarted();
+
+        void backgroundStopped();
+
+        void starting();
+
+        void stopping();
+
+    };
+
+    BackgroungPlayerStateHandler m_backgroundPlayerStateHandler;
+
+
 private:
     void nextMarker(juce::AudioTransportSource* pAudioTransportSource) override;
     void previousMarker(juce::AudioTransportSource* pAudioTransportSource) override;

@@ -39,7 +39,7 @@ public:
 
     void resized() override;
 
-    PlayerMode Mode = PlayerMode::BackingTrack;
+    PlayerMode Mode = PlayerMode::Song;
 
     std::function<void(void)> onModeChange;
 

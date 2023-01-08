@@ -26,6 +26,7 @@ SampleEngine::~SampleEngine()
 
 void SampleEngine::addSampleEvent(SampleEvent* pSampleEvent)
 {
+    DBG("SampleEngine::addSampleEvent");
     auto pNewSampleEntryVector =  new SampleEntryVector();
     auto pOldSampleEntryVector = m_pSamples.load();
     for (auto& entry : *pOldSampleEntryVector) {

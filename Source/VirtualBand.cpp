@@ -95,7 +95,7 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onPreviousMarker = [this] { previousMarker(); };
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
     m_pPlayerComponent->onModeChange = [this](PlayerMode newPlayerMode) { m_currentPlayerMode = newPlayerMode; };
-    m_currentPlayerMode = PlayerMode::BackingTrack;
+    m_currentPlayerMode = PlayerMode::Song;
 }
 
 void VirtualBand::loadDevices()

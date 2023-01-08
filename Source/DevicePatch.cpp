@@ -35,6 +35,6 @@ DevicePatch DevicePatch::parse(const juce::XmlElement* pPatchElement, uint64_t c
     auto programNumber = getElementValueAsInt(pPatchElement);
     auto sceneNumber = pPatchElement->getIntAttribute("scene");
     auto name = pPatchElement->getStringAttribute("name");
-    auto ct = pPatchElement->getIntAttribute("clickTimepoint", (int)clickTimepoint);
-    return DevicePatch(programNumber, sceneNumber, name, ct);
+    auto ct = getTickTimepoint(pPatchElement);
+    return DevicePatch(programNumber, sceneNumber, name, (ct > 0) ? ct : clickTimepoint);
 }

@@ -97,10 +97,12 @@ void TheLambsSong::onPlayerStateUpdated(PlayerState newPlayerState)
         switch (newPlayerState) {
         case PlayerState::Starting:
             m_playbackEnginePtr->start();
+            m_backgroundPlayerStateHandler.starting();
             break;
 
         case PlayerState::Stopping:
             m_playbackEnginePtr->stop();
+            m_backgroundPlayerStateHandler.stopping();
             break;
         }
     }
@@ -108,6 +110,11 @@ void TheLambsSong::onPlayerStateUpdated(PlayerState newPlayerState)
 
 void TheLambsSong::updateCurrentClick(PlayerComponent* pPlayerComponent, ProgramChangesComponent* pProgramChangeComponent)
 {
+    m_backgroundPlayerStateHandler.timerCallback(
+        [pPlayerComponent]() { pPlayerComponent->changeState(PlayerState::Playing); },
+        [pPlayerComponent]() { pPlayerComponent->changeState(PlayerState::Stopped); }
+    );
+
     auto currentClick = (int)m_playbackEnginePtr->getClicks();
     auto clicksPerBeat = (int)m_playbackEnginePtr->getClicksPerBeat();
     auto beats = currentClick / clicksPerBeat;
@@ -132,6 +139,7 @@ void TheLambsSong::onNoteOn(int channel, int noteNumber, std::uint8_t velocity)
 {
     if (noteNumber == m_playOnNote && velocity >= m_minVelocity) {
         m_playbackEnginePtr->start();
+        m_backgroundPlayerStateHandler.backgroundStarted();
     }
 }
 
@@ -236,4 +244,41 @@ std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 {
     auto eventCount = (m_markerTrackPtr != nullptr) ? m_markerTrackPtr->getEventCount() : 0;
     return std::make_tuple(m_selectedProgramIndex, static_cast<int>(eventCount));
+}
+
+TheLambsSong::BackgroungPlayerStateHandler::BackgroungPlayerStateHandler()
+    : m_currentState(PlayerState::Stopped), m_nextState(PlayerState::Stopped) {
+}
+
+void TheLambsSong::BackgroungPlayerStateHandler::timerCallback(std::function<void()> onPlaying, std::function<void()> onStopped)
+{
+    if (m_currentState != m_nextState) {
+        if (m_nextState == PlayerState::Playing)
+            onPlaying();
+        else {
+            onStopped();
+        }
+
+        m_currentState = m_nextState;
+    }
+}
+
+void TheLambsSong::BackgroungPlayerStateHandler::backgroundStarted()
+{
+    m_nextState = PlayerState::Playing;
+}
+
+void TheLambsSong::BackgroungPlayerStateHandler::backgroundStopped()
+{
+    m_nextState = PlayerState::Stopped;
+}
+
+void TheLambsSong::BackgroungPlayerStateHandler::starting()
+{
+    m_currentState = m_nextState = PlayerState::Playing;
+}
+
+void TheLambsSong::BackgroungPlayerStateHandler::stopping()
+{
+    m_currentState = m_nextState = PlayerState::Stopping;
 }
