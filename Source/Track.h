@@ -11,6 +11,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <JuceHeader.h>
 #include "EventList.h"
 #include "IPlaybackTarget.h"
 
@@ -24,6 +25,7 @@ protected:    // fields
 protected:  // interface
     void    addEvent(std::unique_ptr<Event>& newEvent);
     std::int64_t findCurrentIndex(std::int64_t currentClick);
+    void loadFromXml(const juce::XmlElement* pRootElement, const std::string& elementName, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler);
 
 public:
     virtual ~Track() {}

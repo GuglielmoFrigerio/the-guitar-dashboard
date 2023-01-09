@@ -9,13 +9,19 @@
 */
 #include "GuitarDashCommon.h"
 #include "AutomationTrack.h"
+#include "AutomationEvent.h"
 
 AutomationTrack::AutomationTrack(const juce::XmlElement* pPatchesElement, IAutomationTarget* pAutomationTarget)
 {
-    int64_t currentClickTimepoint = 0;
-    for (auto* pPatchElement : pPatchesElement->getChildWithTagNameIterator("Patch")) {
-        auto markerPtr = Marker::parse(pPatchElement, currentClickTimepoint);
-        currentClickTimepoint = markerPtr->getClickTimepoint() + DefaultClicksPerBeat;
-        m_markers.push_back(std::move(markerPtr));
-    }
+    loadFromXml(pPatchesElement, "Patch", [this](const juce::XmlElement* pChildElement, std::int64_t clickTimepoint) {
+
+
+        std::string actionName = pChildElement->getStringAttribute("action");
+        if (actionName.length() > 0) {
+            auto event = std::make_unique<AutomationEvent>(actionName);
+            auto eventListPtr = std::make_unique<EventList>(std::move(event));
+            return eventListPtr;
+        }
+        return std::unique_ptr<EventList>();
+    });
 }

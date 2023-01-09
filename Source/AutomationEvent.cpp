@@ -9,3 +9,16 @@
 */
 
 #include "AutomationEvent.h"
+
+void AutomationEvent::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+{
+}
+
+void AutomationEvent::seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+{
+}
+
+AutomationEvent::AutomationEvent(const std::string& actionName)
+    : m_actionName(actionName)
+{
+}

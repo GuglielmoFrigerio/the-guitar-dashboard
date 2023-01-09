@@ -20,7 +20,7 @@ SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand*
     for (auto* pSampleElement : pSamplesElement->getChildWithTagNameIterator("Sample")) {
         auto sampleName = pSampleElement->getStringAttribute("name");
 
-        std::int64_t clickTimepoint = getTickTimepoint(pSampleElement);
+        std::int64_t clickTimepoint = getTickTimepoint(pSampleElement, 0);
         std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName, 0);
 
         if (currentEventListPtr == nullptr)
