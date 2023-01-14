@@ -16,10 +16,10 @@ AutomationTrack::AutomationTrack(const juce::XmlElement* pPatchesElement, IAutom
     loadFromXml(pPatchesElement, "Patch", [this](const juce::XmlElement* pChildElement, std::int64_t clickTimepoint) {
 
 
-        std::string actionName = pChildElement->getStringAttribute("action");
+        juce::String actionName = pChildElement->getStringAttribute("action");
         if (actionName.length() > 0) {
-            auto event = std::make_unique<AutomationEvent>(actionName);
-            auto eventListPtr = std::make_unique<EventList>(std::move(event));
+            std::unique_ptr<Event> eventPtr = std::make_unique<AutomationEvent>(actionName);
+            auto eventListPtr = std::make_unique<EventList>(eventPtr);
             return eventListPtr;
         }
         return std::unique_ptr<EventList>();

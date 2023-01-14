@@ -18,7 +18,7 @@ void AutomationEvent::seek(std::uint64_t currentClick, std::uint64_t previousCli
 {
 }
 
-AutomationEvent::AutomationEvent(const std::string& actionName)
+AutomationEvent::AutomationEvent(const juce::String& actionName)
     : m_actionName(actionName)
 {
 }
