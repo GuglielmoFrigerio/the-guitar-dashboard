@@ -11,11 +11,6 @@
 #include "Track.h"
 #include "GuitarDashCommon.h"
 
-void Track::addEvent(std::unique_ptr<Event>& newEvent)
-{
-    m_eventList.emplace_back(std::make_unique<EventList>(newEvent));
-}
-
 std::int64_t Track::findCurrentIndex(std::int64_t currentClick)
 {
     std::int64_t previousClick = -1;
@@ -35,12 +30,12 @@ void Track::loadFromXml(const juce::XmlElement* pRootElement, const std::string&
 {
     int64_t currentClickTimepoint = 0;
     for (auto* pChildElement : pRootElement->getChildWithTagNameIterator(elementName)) {
-        auto ct = getTickTimepoint(pChildElement, currentClickTimepoint);
+        auto ct = getClickTimepoint(pChildElement, currentClickTimepoint);
         auto eventListPtr = childElementHandler(pChildElement, ct);
         if (eventListPtr != nullptr) {
             m_eventList.emplace_back(std::move(eventListPtr));
         }
-        currentClickTimepoint = eventListPtr->getClickTimepoint() + DefaultClicksPerBeat;
+        currentClickTimepoint = ct + DefaultClicksPerBeat;
     }
 }
 

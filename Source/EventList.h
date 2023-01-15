@@ -28,7 +28,7 @@ protected: // interface
     virtual void afterSeeking() {}
 
 public:     // interface
-    EventList(std::unique_ptr<Event>& firstEvent);
+    EventList(std::unique_ptr<Event>& firstEvent, std::int64_t clickTimepoint);
     EventList(std::int64_t clicktimepoint);
 
     void addEvent(std::unique_ptr<Event>& eventPtr);

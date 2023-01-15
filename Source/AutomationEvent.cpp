@@ -8,17 +8,32 @@
   ==============================================================================
 */
 
+#include "GuitarDashCommon.h"
 #include "AutomationEvent.h"
 
-void AutomationEvent::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+void AutomationEvent::play(std::uint64_t, std::uint64_t, Track&)
 {
+    (this->*m_eventHandler)();
 }
 
-void AutomationEvent::seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
+void AutomationEvent::seek(std::uint64_t, std::uint64_t, Track&)
 {
+    (this->*m_eventHandler)();
 }
 
-AutomationEvent::AutomationEvent(const juce::String& actionName)
-    : m_actionName(actionName)
+void AutomationEvent::stopPlayback()
 {
+    m_pAutomationTarget->stopPlayback();
+}
+
+AutomationEvent::AutomationEvent(const juce::String& actionName, IAutomationTarget* pAutomationTarget)
+    : m_pAutomationTarget(pAutomationTarget)
+{
+    if (actionName == "stop")
+        m_eventHandler = &AutomationEvent::stopPlayback;
+    else {
+        juce::String message;
+        message << "Unknown action '" << actionName << "'";
+        throw exceptionFactory(message);
+    }
 }

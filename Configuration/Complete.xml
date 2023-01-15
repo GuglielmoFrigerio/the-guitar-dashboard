@@ -120,9 +120,9 @@
         <Marker>00:05:40</Marker>
       </Track>
       <Patch name="Intro" scene="1" playOnNote="47" minVelocity="50">509</Patch>
-      <Patch name="Acoustic" scene="8" tick="64" offset="0">470</Patch>
-      <Patch name="Reprise" scene="2" tick="72" offset="0">509</Patch>
-      <Patch name="Acoustic" scene="8" tick="86" offset="0">470</Patch>
+      <Patch name="Acoustic" scene="8" click="64" offset="0">470</Patch>
+      <Patch name="Reprise" scene="2" click="72" offset="0">509</Patch>
+      <Patch name="Acoustic" scene="8" click="86" offset="0">470</Patch>
       <Patch name="Intro" scene="1">509</Patch>
       <Patch name="Slide" scene="1">471</Patch>
       <Patch name="Trillo" scene="1" action="stop">
@@ -130,7 +130,7 @@
       <Patch name="Solo" scene="8">318</Patch>
       <Patch name="Finale" scene="1">509</Patch>
       <Samples>
-        <Sample name="fof-vocal-1.wav" tick="0" offset="0" />
+        <Sample name="fof-vocal-1.wav" click="0" offset="0" />
       </Samples>
     </Song>
     <Song name="The Return of the Giant Hogweed">
@@ -242,7 +242,7 @@
       <Patch name="No Delay" scene="4">234</Patch>
       <Patch name="Solo" scene="8">317</Patch>
       <Samples>
-        <Sample name="EppingTapping.wav" tick="2" offset="0" />
+        <Sample name="EppingTapping.wav" click="2" offset="0" />
       </Samples>
     </Song>
   </Library>

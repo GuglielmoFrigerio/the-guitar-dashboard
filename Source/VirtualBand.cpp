@@ -153,8 +153,8 @@ void VirtualBand::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
 void VirtualBand::timerCallback()
 {
     if (m_devicesLoaded && m_songLibraryFileReady) {
-        loadSongCollection("Agosto 2021");
         m_songLibraryFileReady = false;
+        loadSongCollection("Agosto 2021");
     }
 
     if (m_pActiveSong != nullptr) {

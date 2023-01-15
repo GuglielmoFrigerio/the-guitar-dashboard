@@ -58,7 +58,7 @@ public:
 
     virtual void onPlayerStateUpdated(PlayerState) {}
 
-    virtual void updateCurrentClick(PlayerComponent* pPlayerComponent, ProgramChangesComponent* pProgramChangeComponent) {}
+    virtual void updateCurrentClick(PlayerComponent* , ProgramChangesComponent* ) {}
 
     virtual void rewindPlayback() {}
 };

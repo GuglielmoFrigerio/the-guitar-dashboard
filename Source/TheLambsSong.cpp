@@ -16,6 +16,7 @@
 #include "SamplesTrack.h"
 #include "MetronomeTrack.h"
 #include "TriplePlayConnect.h"
+#include "AutomationTrack.h"
 
 void TheLambsSong::stopPlayback()
 {
@@ -141,7 +142,7 @@ void TheLambsSong::rewindPlayback()
     m_playbackEnginePtr->seek(0);
 }
 
-void TheLambsSong::onNoteOn(int channel, int noteNumber, std::uint8_t velocity)
+void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
 {
     if (noteNumber == m_playOnNote && velocity >= m_minVelocity) {
         m_playbackEnginePtr->start();
@@ -180,8 +181,12 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
         addTrack(sampleTrackPtr);
     }
 
-    std::unique_ptr<Track> metronomeTrack = std::make_unique<MetronomeTrack>(pVirtualBand);
-    addTrack(metronomeTrack);
+    std::unique_ptr<Track> metronomeTrackPtr = std::make_unique<MetronomeTrack>(pVirtualBand);
+    addTrack(metronomeTrackPtr);
+
+    std::unique_ptr<Track> automationTrackPtr = std::make_unique<AutomationTrack>(pPatchesElement, this);
+    if (automationTrackPtr->getEventCount() > 0)
+        addTrack(automationTrackPtr);
 
     m_initialBpm = pPatchesElement->getIntAttribute("initialBpm");
 }

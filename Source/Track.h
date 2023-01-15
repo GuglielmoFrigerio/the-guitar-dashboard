@@ -23,7 +23,6 @@ protected:    // fields
     int m_currentIndex = 0;
 
 protected:  // interface
-    void    addEvent(std::unique_ptr<Event>& newEvent);
     std::int64_t findCurrentIndex(std::int64_t currentClick);
     void loadFromXml(const juce::XmlElement* pRootElement, const std::string& elementName, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler);
 

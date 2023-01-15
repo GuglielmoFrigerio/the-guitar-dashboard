@@ -10,7 +10,8 @@
 
 #include "EventList.h"
 
-EventList::EventList(std::unique_ptr<Event>& firstEvent)
+EventList::EventList(std::unique_ptr<Event>& firstEvent, std::int64_t clickTimepoint)
+    : m_clickTimepoint(clickTimepoint)
 {
     m_events.emplace_back(std::move(firstEvent));
 }
@@ -39,6 +40,7 @@ void EventList::play(std::uint64_t currentClick, std::uint64_t previousClick, Tr
 void EventList::seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
     beforeSeeking();
+
     for (auto it = m_events.begin(); it != m_events.end(); ++it)
     {
         auto& eventPtr = *it;
