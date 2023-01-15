@@ -10,6 +10,7 @@
 
 #pragma once
 #include <string>
+#include <atomic>
 #include <JuceHeader.h>
 #include "SampleEngine.h"
 #include "Event.h"
@@ -20,13 +21,14 @@ private:    // fields
     std::uint64_t m_id;
     SampleEngine* m_pSampleEngine;
     int m_position = 0;
+    static std::atomic_int g_idFactory;
 
 private:    // implementation
     void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
     void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
 
 public:     // public interface
-    SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename, std::uint64_t id);
+    SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename);
     bool getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
     std::uint64_t getId() const {
         return m_id;

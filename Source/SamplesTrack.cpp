@@ -21,7 +21,7 @@ SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand*
         auto sampleName = pSampleElement->getStringAttribute("name");
 
         std::int64_t clickTimepoint = getClickTimepoint(pSampleElement, 0);
-        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName, 0);
+        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName);
 
         if (currentEventListPtr == nullptr)
             currentEventListPtr = std::make_unique<EventList>(clickTimepoint);

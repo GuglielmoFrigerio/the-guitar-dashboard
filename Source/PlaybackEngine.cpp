@@ -103,8 +103,11 @@ void PlaybackEngine::play(std::uint64_t offsetTicks)
 {
     auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
     std::int64_t currentClick = (std::int64_t)round(currentClickDbl);
-    m_pPlaybackTarget->play(currentClick, m_previousClick);
-    m_previousClick = currentClick;
+    if (currentClick != m_previousClick) {
+        DBG("PlaybackEngine::play current click: " << currentClick);
+        m_pPlaybackTarget->play(currentClick, m_previousClick);
+        m_previousClick = currentClick;
+    }
 }
 
 void PlaybackEngine::seekAtTick(std::uint64_t offsetTicks)

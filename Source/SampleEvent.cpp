@@ -11,8 +11,11 @@
 #include <memory>
 #include "SampleEvent.h"
 
-void SampleEvent::play(std::uint64_t, std::uint64_t, Track& )
+std::atomic_int SampleEvent::g_idFactory = 0;
+
+void SampleEvent::play(std::uint64_t currentClick, std::uint64_t, Track& )
 {
+    DBG("SampleEvent::play current click: " << currentClick << " id: " << m_id);
     m_pSampleEngine->addSampleEvent(this);
 }
 
@@ -20,10 +23,12 @@ void SampleEvent::seek(std::uint64_t , std::uint64_t , Track& )
 {
 }
 
-SampleEvent::SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename, std::uint64_t id)
-    : m_pSampleEngine(pSampleEngine), m_id(id)
+SampleEvent::SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename)
+    : m_pSampleEngine(pSampleEngine)
 {
+    m_id = ++g_idFactory;
     m_pSampleBuffer = pSampleEngine->getSampleBuffer(sampleFilename);
+    DBG("SampleEvent name: " << sampleFilename << " id: " << m_id);
 }
 
 bool SampleEvent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
