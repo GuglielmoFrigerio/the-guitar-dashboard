@@ -68,8 +68,8 @@ juce::String VirtualBand::makeResourcePath()
     }
     else {
         auto applicationFolder = juce::File::getSpecialLocation(juce::File::SpecialLocationType::currentApplicationFile);
-        auto path = applicationFolder.getFullPathName();
-        return path + "/../../../../../Resources/Tracks/";
+        auto path = applicationFolder.getParentDirectory().getFullPathName();
+        return path + "/../../../../Resources/";
     }
 }
 
