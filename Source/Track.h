@@ -21,6 +21,7 @@ class Track : public IPlaybackTarget {
 protected:    // fields
     std::vector<std::unique_ptr<EventList>> m_eventList;
     int m_currentIndex = 0;
+    std::int64_t m_seekClick;
 
 protected:  // interface
     std::int64_t findCurrentIndex(std::int64_t currentClick);

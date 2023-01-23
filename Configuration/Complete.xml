@@ -131,6 +131,7 @@
       <Patch name="Finale" scene="1">509</Patch>
       <Samples>
         <Sample name="fof-vocal-1.wav" click="0" offset="0" />
+        <Sample name="fof-vocal-2.wav" click="7" offset="270" />
       </Samples>
     </Song>
     <Song name="The Return of the Giant Hogweed">

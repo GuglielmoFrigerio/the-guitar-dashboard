@@ -44,10 +44,12 @@ void Track::play(std::int64_t currentClick, std::int64_t previousClick)
     if (previousClick >= currentClick) {
         previousClick = findCurrentIndex(currentClick);
     }
+
+    auto previous = (m_seekClick == previousClick) ? previousClick - 1 : previousClick;
     auto eventListPtr = m_eventList[m_currentIndex].get();
     auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
-    while (eventListClickTimepoint <= currentClick && eventListClickTimepoint > previousClick) {
-        eventListPtr->play(currentClick, previousClick, *this);
+    while (eventListClickTimepoint <= currentClick && eventListClickTimepoint > previous) {
+        eventListPtr->play(currentClick, previous, *this);
         if (m_currentIndex < (m_eventList.size() - 1)) {
             ++m_currentIndex;
             eventListPtr = m_eventList[m_currentIndex].get();
@@ -61,4 +63,5 @@ void Track::seek(std::int64_t currentClick, std::int64_t previousClick)
 {
     findCurrentIndex(currentClick);
     m_eventList[m_currentIndex]->seek(currentClick, previousClick, *this);
+    m_seekClick = currentClick;
 }
