@@ -63,13 +63,15 @@
       <Patch name="Sol" scene="6">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
       <Patch name="Solo" scene="1">476</Patch>
+      <Patch name="Tastiera" scene="1">246</Patch>
     </Song>
     <Song name="Fly On A Windshield/Broadway Melody of 1974">
       <Track name="Fly on a WindshieldBroadway Melody of 1974 - Genesis.mp3">
         <Marker>00:01:15</Marker>
         <Marker>00:04:15</Marker>
       </Track>
-      <Patch name="Strumming" scene="1">125</Patch>
+      <Patch name="Strumming" scene="1">
+        125</Patch>
       <Patch name="Fly Solo" scene="3">495</Patch>
       <Patch name="Broadway Fa" scene="3">35</Patch>
       <Patch name="Cupità" scene="1">497</Patch>
@@ -81,14 +83,16 @@
     </Song>
     <Song name="Watcher Of The Skies">
       <Track name="Watcher Of The Skies.mp3">
-        <Marker>00:01:27</Marker>
+        <Marker>
+          00:01:27</Marker>
         <Marker>00:03:04</Marker>
         <Marker>00:05:47</Marker>
       </Track>
       <Patch name="base crescendo" scene="1">460</Patch>
       <Patch name="solo" scene="2">460</Patch>
       <Patch name="base" scene="1">460</Patch>
-      <Patch name="envelope (Sol# - Fa)" scene="8">462</Patch>
+      <Patch name="envelope (Sol# - Fa)" scene="8">
+        462</Patch>
       <Patch name="base" scene="1">460</Patch>
       <Patch name="solo" scene="2">460</Patch>
       <Patch name="base" scene="1">460</Patch>
@@ -98,14 +102,16 @@
       <Track name="Dancing With The Moonlight Knight (2008 - Remaster).mp3">
         <Marker>00:01:14</Marker>
         <Marker>00:01:57</Marker>
-        <Marker>00:02:28</Marker>
+        <Marker>
+          00:02:28</Marker>
         <Marker>00:05:10</Marker>
       </Track>
       <Patch name="Intro" scene="1">456</Patch>
       <Patch name="Tapping" scene="1">282</Patch>
       <Patch name="Pitch 24" scene="2">282</Patch>
       <Patch name="Pitch 12" scene="3">282</Patch>
-      <Patch name="Envelope" scene="4">282</Patch>
+      <Patch name="Envelope" scene="4">
+        282</Patch>
       <Patch name="Env Clean" scene="5">282</Patch>
       <Patch name="Arpeggio" scene="6">282</Patch>
       <Patch name="Solo" scene="1">282</Patch>
@@ -115,14 +121,16 @@
     </Song>
     <Song name="Firth of Fifth" initialBpm="65">
       <Track name="Firth Of Fifth - Genesis.mp3">
-        <Marker>00:01:08</Marker>
+        <Marker>
+          00:01:08</Marker>
         <Marker>00:05:08</Marker>
         <Marker>00:05:40</Marker>
       </Track>
       <Patch name="Intro" scene="1" playOnNote="47" minVelocity="50">509</Patch>
       <Patch name="Acoustic" scene="8" click="64" offset="0">470</Patch>
       <Patch name="Reprise" scene="2" click="72" offset="0">509</Patch>
-      <Patch name="Acoustic" scene="8" click="86" offset="0">470</Patch>
+      <Patch name="Acoustic" scene="8" click="86" offset="0">
+        470</Patch>
       <Patch name="Intro" scene="1">509</Patch>
       <Patch name="Slide" scene="1">471</Patch>
       <Patch name="Trillo" scene="1" action="stop">
