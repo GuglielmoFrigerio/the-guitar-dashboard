@@ -59,6 +59,7 @@
       <Patch name="Strumming" scene="1">99</Patch>
     </Song>
     <Song name="Anyway">
+      <Patch name="Tastiera" scene="1">246</Patch>
       <Track name="Anyway - Genesis.mp3" />
       <Patch name="Sol" scene="6">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
@@ -67,7 +68,8 @@
     </Song>
     <Song name="Fly On A Windshield/Broadway Melody of 1974">
       <Track name="Fly on a WindshieldBroadway Melody of 1974 - Genesis.mp3">
-        <Marker>00:01:15</Marker>
+        <Marker>
+          00:01:15</Marker>
         <Marker>00:04:15</Marker>
       </Track>
       <Patch name="Strumming" scene="1">
@@ -241,11 +243,11 @@
       <Patch name="Envelope" scene="3">238</Patch>
       <Patch name="No Envelope" scene="4">238</Patch>
       <Patch name="Delay" scene="3">234</Patch>
-      <Patch name="Si" scene="1">262</Patch>
+      <Patch name="Si" scene="1">
+        262</Patch>
       <Patch name="12" scene="1">491</Patch>
       <Patch name="Seconda parte" scene="4">449</Patch>
-      <Patch name="Wah" scene="5">
-        449</Patch>
+      <Patch name="Wah" scene="5">449</Patch>
       <Patch name="Envelope" scene="3">238</Patch>
       <Patch name="No Envelope" scene="4">238</Patch>
       <Patch name="No Delay" scene="4">234</Patch>
