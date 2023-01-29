@@ -23,4 +23,6 @@ private:
 public:
     TriplePlayConnect(IMidiInputTarget* pMidiInputTarget);
     ~TriplePlayConnect();
+
+    std::function<void(int)> onSongSelect;
 };

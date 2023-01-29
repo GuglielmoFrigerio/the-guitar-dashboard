@@ -131,7 +131,7 @@ void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChan
 
 void VirtualBand::activateSong(int songIndex)
 {
-    m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent);
+    m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent, m_pSongListComponent);
 }
 
 void VirtualBand::selectProgramChange(int programChangeIndex)
@@ -154,7 +154,7 @@ void VirtualBand::timerCallback()
 {
     if (m_devicesLoaded && m_songLibraryFileReady) {
         m_songLibraryFileReady = false;
-        loadSongCollection("Agosto 2021");
+        loadSongCollection("Default Library");
     }
 
     if (m_pActiveSong != nullptr) {

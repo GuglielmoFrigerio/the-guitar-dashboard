@@ -43,14 +43,15 @@ Song* SongCollection::activateSong(
     int songIndex, 
     juce::AudioFormatManager* pAudioFormatManager, 
     juce::AudioTransportSource* pAudioTransportSource, 
-    PlayerComponent* m_pPlayerComponent)
+    PlayerComponent* pPlayerComponent,
+    SongListComponent* pSongListComponent)
 {
     if (songIndex < m_songs.size()) {
         if (m_currentSongIndex >= 0 && m_currentSongIndex < m_songs.size())
             m_songs[m_currentSongIndex]->deactivate();
         m_currentSongIndex = songIndex;
         auto& songPtr = m_songs[m_currentSongIndex];
-        songPtr->activate(pAudioFormatManager, pAudioTransportSource, m_pPlayerComponent);
+        songPtr->activate(pAudioFormatManager, pAudioTransportSource, pPlayerComponent, pSongListComponent);
         return songPtr.get();
     }
     else {

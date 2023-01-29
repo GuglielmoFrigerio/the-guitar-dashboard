@@ -33,10 +33,6 @@ Song::Song(const juce::String& name)
 {
 }
 
-void Song::activate(juce::AudioFormatManager*, juce::AudioTransportSource* , PlayerComponent* )
-{
-}
-
 void Song::deactivate()
 {
 }

@@ -19,6 +19,17 @@ void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const
         auto velocity = message.getVelocity();
         m_pMidiInputTarget->onNoteOn(channel, noteNumber, velocity);
     }
+    if (message.isController()) {
+        auto controllerNumber = message.getControllerNumber();
+        auto controllerValue = message.getControllerValue();
+    }
+    if (message.isProgramChange()) {
+
+        auto pcn = message.getProgramChangeNumber();
+        if (onSongSelect != nullptr)
+            onSongSelect(pcn);
+
+    }
 }
 
 TriplePlayConnect::TriplePlayConnect(IMidiInputTarget* pMidiInputTarget)
