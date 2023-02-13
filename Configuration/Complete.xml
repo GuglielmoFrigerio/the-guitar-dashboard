@@ -12,7 +12,7 @@
       <Patch name="base" scene="1">460</Patch>
       <Patch name="envelope (Sol# - Fa)" scene="8"> 462</Patch>
       <Patch name="base" scene="1">460</Patch>
-      <Patch name="solo" scene="2">460</Patch>
+      <Patch name="solo" scene="2"> 460</Patch>
       <Patch name="base" scene="1">460</Patch>
       <Patch name="envelope" scene="1">394</Patch>
     </Song>
@@ -34,7 +34,7 @@
     <Song name="Get'em Out By Friday">
       <Track name="Get 'Em Out By Friday.mp3" message="Pedale Sx al Minimo!" />
       <Patch name="Intro" scene="1">507</Patch>
-      <Patch name="Intro Diatonic 1" scene="2">507</Patch>
+      <Patch name="Intro Diatonic 1" scene="2"> 507</Patch>
       <Patch name="Intro Diatonic 2" scene="3"> 507</Patch>
       <Patch name="La-Re-Mi" scene="5">0</Patch>
       <Patch name="Arpeggio1" scene="1">389</Patch>
@@ -61,7 +61,7 @@
         <Marker>00:05:40</Marker>
       </Track>
       <Patch name="Intro" scene="1" playOnNote="47" minVelocity="50"> 509</Patch>
-      <Patch name="Acoustic" scene="8" click="64" offset="0">470</Patch>
+      <Patch name="Acoustic" scene="8" click="64" offset="0"> 470</Patch>
       <Patch name="Reprise" scene="2" click="72" offset="0"> 509</Patch>
       <Patch name="Acoustic" scene="8" click="86" offset="0"> 470</Patch>
       <Patch name="Intro" scene="1">509</Patch>
@@ -87,7 +87,7 @@
       <Track name="Anyway - Genesis.mp3" />
       <Patch name="Sol" scene="6">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
-      <Patch name="Solo" scene="1">476</Patch>
+      <Patch name="Solo" scene="1"> 476</Patch>
       <Patch name="Tastiera" scene="1">246</Patch>
     </Song>
     <Song name="Here Comes the Supernatural Anaesthetist">
@@ -99,7 +99,7 @@
     <Song name="The Lamia" initialBpm="64" preCount="On">
       <Track name="The Lamia - Genesis.mp3" />
       <Patch name="Arpeggio 1" scene="1">95</Patch>
-      <Patch name="Arpeggio 2" scene="2">464</Patch>
+      <Patch name="Arpeggio 2" scene="2"> 464</Patch>
       <Patch name="Envelope" scene="1">464</Patch>
       <Patch name="Arpeggio 1" scene="1">95</Patch>
       <Patch name="Arpeggio 2" scene="2">464</Patch>
@@ -109,13 +109,13 @@
     </Song>
     <Song name="Dancing with the Moonlit Knight">
       <Track name="Dancing With The Moonlight Knight (2008 - Remaster).mp3">
-        <Marker>00:01:14</Marker>
+        <Marker> 00:01:14</Marker>
         <Marker>00:01:57</Marker>
         <Marker> 00:02:28</Marker>
         <Marker> 00:05:10</Marker>
       </Track>
       <Patch name="Intro" scene="1">456</Patch>
-      <Patch name="Tapping" scene="1">282</Patch>
+      <Patch name="Tapping" scene="1"> 282</Patch>
       <Patch name="Pitch 24" scene="2">282</Patch>
       <Patch name="Pitch 12" scene="3"> 282</Patch>
       <Patch name="Envelope" scene="4"> 282</Patch>
@@ -123,17 +123,20 @@
       <Patch name="Arpeggio" scene="6">282</Patch>
       <Patch name="Solo" scene="1">282</Patch>
       <Patch name="Reprise" scene="7">282</Patch>
-      <Patch name="Clean Mid Pickup" scene="1">456</Patch>
+      <Patch name="Clean Mid Pickup" scene="1"> 456</Patch>
       <Patch scene="8">458</Patch>
     </Song>
     <Song name="The Battle Of Epping Forest">
-      <Track name="05-The-Battle-of-Epping-Forest.mp3"></Track>
+      <Track name="05-The-Battle-of-Epping-Forest.mp3">
+        <Marker>00:01:36</Marker>
+        <Marker>00:10:49</Marker>
+      </Track>
       <Patch name="Intro" scene="1">92</Patch>
       <Patch name="Prima parte" scene="3"> 449</Patch>
       <Patch name="Seconda parte" scene="4">449</Patch>
       <Patch name="Wah" scene="5">449</Patch>
       <Patch name="Envelope" scene="3">238</Patch>
-      <Patch name="No Envelope" scene="4">238</Patch>
+      <Patch name="No Envelope" scene="4"> 238</Patch>
       <Patch name="Delay" scene="3">234</Patch>
       <Patch name="Si" scene="1"> 262</Patch>
       <Patch name="12" scene="1">491</Patch>
@@ -141,7 +144,7 @@
       <Patch name="Wah" scene="5"> 449</Patch>
       <Patch name="Envelope" scene="3">238</Patch>
       <Patch name="No Envelope" scene="4">238</Patch>
-      <Patch name="No Delay" scene="4">234</Patch>
+      <Patch name="No Delay" scene="4"> 234</Patch>
       <Patch name="Solo" scene="8">317</Patch>
       <Samples>
         <Sample name="EppingTapping.wav" click="2" offset="0" />
@@ -173,7 +176,7 @@
     <Song name="The Return of the Giant Hogweed">
       <Track name="The Return Of The Giant Hogweed.mp3">
         <Marker> 00:04:06</Marker>
-        <Marker>00:05:15</Marker>
+        <Marker> 00:05:15</Marker>
       </Track>
       <Patch name="intro" scene="1">475</Patch>
       <Patch name="-12" scene="2">508</Patch>
@@ -181,7 +184,7 @@
       <Patch name="Stacco" scene="4">508</Patch>
       <Patch name="Clean" scene="5"> 508</Patch>
       <Patch name="Dist" scene="4">508</Patch>
-      <Patch name="Clean" scene="5">508</Patch>
+      <Patch name="Clean" scene="5"> 508</Patch>
       <Patch name="-12" scene="2">508</Patch>
       <Patch name="+12" scene="3">508</Patch>
       <Patch name="Stacco" scene="4">508</Patch>
@@ -190,7 +193,7 @@
       <Patch name="Clean" scene="5">508</Patch>
       <Patch name="Solo con Flauto" scene="8"> 450</Patch>
       <Patch name="+12" scene="3">508</Patch>
-      <Patch name="Dist" scene="4">508</Patch>
+      <Patch name="Dist" scene="4"> 508</Patch>
       <Patch name="Clean" scene="5">508</Patch>
       <Patch name="SoloReverb" scene="1">451</Patch>
       <Patch name="SoloReverbDiat" scene="2">451</Patch>
@@ -222,20 +225,21 @@
     </Song>
     <Song name="Aftergow">
       <Track name="09-Afterglow.mp3"></Track>
-      <Patch name="Guitar" scene="1">391</Patch>
+      <Patch name="Guitar" scene="1"> 391</Patch>
     </Song>
     <Song name="Blood On The Rooftops">
       <Track name="06-Blood-on-the-Rooftops.mp3"></Track>
       <!-- <Patch name="Intro" scene="1">456</Patch> -->
       <Patch name="Intro" scene="1">355</Patch>
       <Patch name="arpeggio" scene="2"> 443</Patch>
-      <!--Try 125. -->
+      <!--Try
+      125. -->
     </Song>
     <Song name="The Lamb Lies Down On Broadway">
       <Track name="The Lamb Lies Down on Broadway - Genesis.mp3"></Track>
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Envelope" scene="5">237</Patch>
-      <Patch name="Strumming" scene="1">236</Patch>
+      <Patch name="Strumming" scene="1"> 236</Patch>
     </Song>
   </Library>
 </AxeFxIII>
