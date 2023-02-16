@@ -40,6 +40,7 @@ private:    // fields
     juce::String m_resourcesPath;
     SampleEngine m_sampleEngine;
     PlayerMode m_currentPlayerMode;
+    std::unique_ptr<MidiDevice> m_nullMidiDevice;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;

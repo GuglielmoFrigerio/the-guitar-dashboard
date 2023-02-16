@@ -15,22 +15,26 @@
 
 void MidiEventList::beforePlaying()
 {
-    m_pMidiOutput->setupBuffer();
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->setupBuffer();
 }
 
 void MidiEventList::afterPlaying()
 {
-    m_pMidiOutput->send();
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->send();
 }
 
 void MidiEventList::beforeSeeking()
 {
-    m_pMidiOutput->setupBuffer();
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->setupBuffer();
 }
 
 void MidiEventList::afterSeeking()
 {
-    m_pMidiOutput->send();
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->send();
 }
 
 MidiEventList::MidiEventList(std::uint64_t clickTimepoint, IMidiOutput* pMidiOutput)

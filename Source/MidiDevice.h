@@ -17,14 +17,15 @@
 class MidiDevice : public juce::MidiInputCallback
 {
 protected:  // fields
-    std::shared_ptr<juce::MidiOutput> m_midiOutPortPtr;
-    std::unique_ptr<juce::MidiInput> m_midiInPortPtr;
-    std::unique_ptr<MidiOutput> m_midiOutputPtr;
+    std::shared_ptr<juce::MidiOutput> m_midiOutPortPtr = nullptr;
+    std::unique_ptr<juce::MidiInput> m_midiInPortPtr = nullptr;
+    std::unique_ptr<MidiOutput> m_midiOutputPtr = nullptr;
     bool m_inputStarted = false;
     int m_currentProgramNumber = -1;
     int m_currentSceneNumber = -1;
 
-private:    // implementation
+protected:    // implementation
+    MidiDevice();
 
 public:     // interface
     MidiDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);

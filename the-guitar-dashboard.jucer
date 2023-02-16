@@ -16,6 +16,10 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="O9qwnN" name="NullMidiDevice.cpp" compile="1" resource="0"
+            file="Source/NullMidiDevice.cpp"/>
+      <FILE id="nIEzHB" name="NullMidiDevice.h" compile="0" resource="0"
+            file="Source/NullMidiDevice.h"/>
       <FILE id="fZ5SQK" name="IAutomationTarget.h" compile="0" resource="0"
             file="Source/IAutomationTarget.h"/>
       <FILE id="Ie8qkE" name="AutomationEvent.cpp" compile="1" resource="0"

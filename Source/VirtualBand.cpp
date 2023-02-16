@@ -12,6 +12,7 @@
 #include "GuitarDashCommon.h"
 #include "SongListComponent.h"
 #include "PlayerComponent.h"
+#include "NullMidiDevice.h"
 
 void VirtualBand::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
@@ -96,6 +97,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
     m_pPlayerComponent->onModeChange = [this](PlayerMode newPlayerMode) { m_currentPlayerMode = newPlayerMode; };
     m_currentPlayerMode = PlayerMode::Song;
+
+    m_nullMidiDevice = std::make_unique<NullMidiDevice>();
 }
 
 void VirtualBand::loadDevices()
@@ -121,7 +124,7 @@ MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
         if (dt == deviceType)
             return fractalDevicePtr.get();
     }
-    return nullptr;
+    return m_nullMidiDevice.get();
 }
 
 void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
