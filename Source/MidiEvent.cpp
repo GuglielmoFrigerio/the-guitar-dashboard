@@ -12,12 +12,14 @@
 
 void MidiEvent::play(std::uint64_t , std::uint64_t , Track& )
 {
-    m_pMidiOutput->addMessage(m_midiMessage);
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->addMessage(m_midiMessage);
 }
 
 void MidiEvent::seek(std::uint64_t , std::uint64_t , Track& )
 {
-    m_pMidiOutput->addMessage(m_midiMessage);
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->addMessage(m_midiMessage);
 }
 
 MidiEvent::MidiEvent(const juce::MidiMessage& midiMessage, IMidiOutput* pMidiOutput)

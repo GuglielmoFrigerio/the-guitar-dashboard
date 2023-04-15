@@ -51,7 +51,7 @@ public:
     void setBeatsPerMinute(int beatsPerSecond);
     void seek(std::uint64_t clickPosition);
     double getClicks() const {
-        return m_previousClick;
+        return (double)m_previousClick;
     }
     double getClicksPerBeat() const {
         return m_clicksPerBeat;

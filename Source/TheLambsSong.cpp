@@ -17,6 +17,7 @@
 #include "MetronomeTrack.h"
 #include "TriplePlayConnect.h"
 #include "AutomationTrack.h"
+#include "SongListComponent.h"
 
 void TheLambsSong::stopPlayback()
 {
@@ -191,7 +192,11 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
     m_initialBpm = pPatchesElement->getIntAttribute("initialBpm");
 }
 
-void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent)
+void TheLambsSong::activate(
+    juce::AudioFormatManager* pAudioFormatManager, 
+    juce::AudioTransportSource* pAudioTransportSource, 
+    PlayerComponent* pPlayerComponent,
+    SongListComponent* pSongListComponent)
 {
     m_playbackEnginePtr = std::make_unique<PlaybackEngine>(this);
     if (m_initialBpm > 0) {
@@ -222,6 +227,9 @@ void TheLambsSong::activate(juce::AudioFormatManager* pAudioFormatManager, juce:
     m_playbackEnginePtr->seek(0ull);
 
     m_triplePlayConnectPtr = std::make_unique<TriplePlayConnect>(this);
+    m_triplePlayConnectPtr->onSongSelect = [pSongListComponent](int songIndex) {
+        pSongListComponent->selectSong(songIndex);
+    };
 }
 
 void TheLambsSong::deactivate()

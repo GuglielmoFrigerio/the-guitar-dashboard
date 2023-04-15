@@ -12,6 +12,8 @@
 #include <vector>
 #include <memory>
 #include <JuceHeader.h>
+#include "SongListComponent.h"
+
 
 class Song;
 class VirtualBand;
@@ -33,7 +35,8 @@ public:
         int songIndex, 
         juce::AudioFormatManager* pAudioFormatManager, 
         juce::AudioTransportSource* pAudioTransportSource,
-        PlayerComponent* m_pPlayerComponent);
+        PlayerComponent* pPlayerComponent,
+        SongListComponent* pSongListComponent);
 
     void selectProgramChange(int programChangeIndex);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);

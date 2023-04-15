@@ -16,6 +16,7 @@
 #include "MidiOutput.h"
 #include "MarkerTrack.h"
 
+class SongListComponent;
 class ProgramChangesComponent;
 class PlayerComponent;
 enum class PlayerState;
@@ -43,7 +44,11 @@ public:
         return m_name;
     }
 
-    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* m_pPlayerComponent);
+    virtual void activate(
+        juce::AudioFormatManager* pAudioFormatManager,
+        juce::AudioTransportSource* pAudioTransportSource,
+        PlayerComponent* pPlayerComponent,
+        SongListComponent* pSongListComponent) = 0;
 
     virtual void deactivate();
 

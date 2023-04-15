@@ -12,6 +12,7 @@
 #include "GuitarDashCommon.h"
 #include "SongListComponent.h"
 #include "PlayerComponent.h"
+#include "NullMidiDevice.h"
 
 void VirtualBand::changeListenerCallback(juce::ChangeBroadcaster* source)
 {
@@ -96,6 +97,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_pPlayerComponent->onNextMarker = [this] { nextMarker(); };
     m_pPlayerComponent->onModeChange = [this](PlayerMode newPlayerMode) { m_currentPlayerMode = newPlayerMode; };
     m_currentPlayerMode = PlayerMode::Song;
+
+    m_nullMidiDevice = std::make_unique<NullMidiDevice>();
 }
 
 void VirtualBand::loadDevices()
@@ -121,7 +124,7 @@ MidiDevice* VirtualBand::getDevice(FractalDeviceType deviceType) const
         if (dt == deviceType)
             return fractalDevicePtr.get();
     }
-    return nullptr;
+    return m_nullMidiDevice.get();
 }
 
 void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)
@@ -131,7 +134,7 @@ void VirtualBand::updateProgramChangesList(ProgramChangesComponent* pProgramChan
 
 void VirtualBand::activateSong(int songIndex)
 {
-    m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent);
+    m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent, m_pSongListComponent);
 }
 
 void VirtualBand::selectProgramChange(int programChangeIndex)
@@ -154,7 +157,7 @@ void VirtualBand::timerCallback()
 {
     if (m_devicesLoaded && m_songLibraryFileReady) {
         m_songLibraryFileReady = false;
-        loadSongCollection("Agosto 2021");
+        loadSongCollection("Default Library");
     }
 
     if (m_pActiveSong != nullptr) {

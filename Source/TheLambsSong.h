@@ -81,7 +81,12 @@ public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
     ~TheLambsSong() override {}
 
-    void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* pPlayerComponent) override;
+    void activate(
+        juce::AudioFormatManager* pAudioFormatManager, 
+        juce::AudioTransportSource* pAudioTransportSource, 
+        PlayerComponent* pPlayerComponent,
+        SongListComponent* pSongListComponent) override;
+
     void deactivate() override;
 
     void selectProgramChange(int programChangeIndex) override;
