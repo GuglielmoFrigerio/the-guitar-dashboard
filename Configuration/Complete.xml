@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <AxeFxIII>
   <Library name="Default Library">
     <Song name="Watcher Of The Skies">
@@ -237,6 +237,7 @@
     </Song>
     <Song name="The Lamb Lies Down On Broadway">
       <Track name="The Lamb Lies Down on Broadway - Genesis.mp3"></Track>
+      <Patch name="Fly" scene="3">238</Patch>
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Envelope" scene="5">237</Patch>
       <Patch name="Strumming" scene="1"> 236</Patch>
