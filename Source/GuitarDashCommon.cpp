@@ -95,6 +95,6 @@ std::int64_t getClickTimepoint(const juce::XmlElement* pElement, std::int64_t cu
 std::exception exceptionFactory(const juce::String& message)
 {
     DBG(message);
-    return std::exception(message.getCharPointer());
+    return std::exception();
 }
 
