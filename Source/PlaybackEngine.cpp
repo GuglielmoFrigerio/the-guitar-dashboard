@@ -39,7 +39,7 @@ PlaybackEngine::~PlaybackEngine()
 void PlaybackEngine::start()
 {
     if (m_currentState == State::Stopped) {
-        //m_currentState.store(State::Starting);
+        m_currentState.store(State::Starting);
     }
 }
 
