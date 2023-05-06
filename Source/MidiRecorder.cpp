@@ -7,13 +7,18 @@
 
   ==============================================================================
 */
-
+#include <stdio.h>
+#include <time.h>
 #include "MidiRecorder.h"
 #include "GuitarDashCommon.h"
 
-MidiRecorder::MidiRecorder(PlaybackEngine* pPlaybackEngine)
+MidiRecorder::MidiRecorder(PlaybackEngine* pPlaybackEngine, const juce::String& resourcePath)
     : m_pPlaybackEngine(pPlaybackEngine)
 {
+    auto resourceRoot = juce::File::getCurrentWorkingDirectory().getChildFile(resourcePath);
+
+    m_recordFolder = resourceRoot.getChildFile("recordings/midi");
+    m_recordFolder.createDirectory();
     
 }
 
@@ -26,10 +31,10 @@ void MidiRecorder::addQuarterNote(int noteNumber, juce::MidiMessageSequence& mid
     midiMessageSequence.addEvent(noteOffMsg, m_currentClick);
 }
 
-void MidiRecorder::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)
+void MidiRecorder::handleIncomingMidiMessage(juce::MidiInput*, const juce::MidiMessage& message)
 {
     auto currentClick = m_pPlaybackEngine->getCurrentClick();
-    m_midiMessageSequence.addEvent(message, currentClick);
+    m_midiMessageSequence.addEvent(message, (double)currentClick);
 }
 
 void MidiRecorder::test()
@@ -54,19 +59,29 @@ void MidiRecorder::test()
 
 juce::File MidiRecorder::getFilename()
 {
-    return juce::File::getCurrentWorkingDirectory().getChildFile("./example.mid");
+    time_t rawtime;
+    struct tm* timeinfo;
+    char buffer[80];
+
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+
+    strftime(buffer, 80, "%Y.%m.%d_%H_%M_%S.mid", timeinfo);
+    return m_recordFolder.getChildFile(buffer);
 }
 
 void MidiRecorder::saveFile()
 {
-    auto midiFilePtr = std::make_unique<juce::MidiFile>();
-    midiFilePtr->setTicksPerQuarterNote(DefaultClicksPerBeat);
+    if (m_midiMessageSequence.getNumEvents() > 0) {
+        auto midiFilePtr = std::make_unique<juce::MidiFile>();
+        midiFilePtr->setTicksPerQuarterNote(DefaultClicksPerBeat);
 
-    midiFilePtr->addTrack(m_midiMessageSequence);
+        midiFilePtr->addTrack(m_midiMessageSequence);
 
-    auto outputFile = getFilename();
+        auto outputFile = getFilename();
 
-    juce::FileOutputStream fos(outputFile);
+        juce::FileOutputStream fos(outputFile);
 
-    midiFilePtr->writeTo(fos);
+        midiFilePtr->writeTo(fos);
+    }
 }

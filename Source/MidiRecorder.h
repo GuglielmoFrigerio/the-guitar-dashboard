@@ -18,14 +18,15 @@ private:
     double m_currentClick = 0.0;
     PlaybackEngine* m_pPlaybackEngine;
     juce::MidiMessageSequence m_midiMessageSequence;
+    juce::File m_recordFolder;
 
 private:
     void addQuarterNote(int noteNumber, juce::MidiMessageSequence& midiMessageSequence);
-    void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
+    void handleIncomingMidiMessage(juce::MidiInput*, const juce::MidiMessage& message) override;
     juce::File getFilename();
 
 public:
-    MidiRecorder(PlaybackEngine* pPlaybackEngine);
+    MidiRecorder(PlaybackEngine* pPlaybackEngine, const juce::String& resourcePath);
     void test();
     void saveFile();
 };

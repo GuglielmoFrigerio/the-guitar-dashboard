@@ -100,10 +100,6 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_currentPlayerMode = PlayerMode::Song;
 
     m_nullMidiDevice = std::make_unique<NullMidiDevice>();
-
-    MidiRecorder mr;
-
-    mr.test();
 }
 
 void VirtualBand::loadDevices()

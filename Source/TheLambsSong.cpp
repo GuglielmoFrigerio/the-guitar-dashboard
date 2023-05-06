@@ -104,11 +104,13 @@ void TheLambsSong::onPlayerStateUpdated(PlayerState newPlayerState)
     if (m_playbackEnginePtr != nullptr) {
         switch (newPlayerState) {
         case PlayerState::Starting:
+            setupMidiRecorder();
             m_playbackEnginePtr->start();
             m_backgroundPlayerStateHandler.starting();
             break;
 
         case PlayerState::Stopping:
+            stopMidiRecorder();
             m_playbackEnginePtr->stop();
             m_backgroundPlayerStateHandler.stopping();
             break;
@@ -154,7 +156,7 @@ void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
 void TheLambsSong::setupMidiRecorder()
 {
     if (m_triplePlayConnectPtr != nullptr) {
-        m_midiRecorderPtr = std::make_shared<MidiRecorder>();
+        m_midiRecorderPtr = std::make_shared<MidiRecorder>(m_playbackEnginePtr.get(), m_resourcesPath);
         std::shared_ptr<juce::MidiInputCallback> midiInputCallbackPtr = m_midiRecorderPtr;
         m_triplePlayConnectPtr->setMidiInputCallback(midiInputCallbackPtr);
     }
