@@ -20,6 +20,10 @@ void MidiRecorder::addQuarterNote(int noteNumber, juce::MidiMessageSequence& mid
     midiMessageSequence.addEvent(noteOffMsg, m_currentClick);
 }
 
+void MidiRecorder::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)
+{
+}
+
 void MidiRecorder::test()
 {
     auto midiFilePtr = std::make_unique<juce::MidiFile>();

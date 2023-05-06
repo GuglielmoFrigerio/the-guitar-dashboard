@@ -18,6 +18,7 @@
 #include "IMidiInputTarget.h"
 #include "TriplePlayConnect.h"
 #include "IAutomationTarget.h"
+#include "MidiRecorder.h"
 
 class VirtualBand;
 class MidiTrack;
@@ -38,6 +39,7 @@ private:    // fields
     int m_playOnNote = -1;
     int m_minVelocity = 127;
     std::unique_ptr<TriplePlayConnect> m_triplePlayConnectPtr;
+    std::shared_ptr<MidiRecorder> m_midiRecorderPtr;
 
     class BackgroungPlayerStateHandler {
     private:
@@ -76,6 +78,8 @@ private:
     void rewindPlayback() override;
 
     void onNoteOn(int channel, int noteNumber, std::uint8_t velocity) override;
+
+    void setupMidiRecorder();
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);

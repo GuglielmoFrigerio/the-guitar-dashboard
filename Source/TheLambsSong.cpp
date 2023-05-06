@@ -151,6 +151,14 @@ void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
     }
 }
 
+void TheLambsSong::setupMidiRecorder()
+{
+    if (m_triplePlayConnectPtr != nullptr) {
+        m_midiRecorderPtr = std::make_shared<MidiRecorder>();
+        m_triplePlayConnectPtr->setMidiInputCallback(m_midiRecorderPtr.get());
+    }
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
     :   Song(pPatchesElement->getStringAttribute("name"))
 {

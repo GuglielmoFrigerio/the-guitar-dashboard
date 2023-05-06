@@ -27,7 +27,7 @@ private:    // fields
     double                  m_clicksPerBeat = (double)DefaultClicksPerBeat;
     std::atomic<double>     m_ticksVsClicks = 0.0;
     IPlaybackTarget*        m_pPlaybackTarget = nullptr;
-    std::int64_t            m_previousClick = -1;
+    std::atomic_int64_t     m_previousClick = -1;
     std::int64_t            m_stopOffsetTicks;
     enum class State { Stopped = 0, Starting = 1, Started = 2, Stopping = 3};
     std::atomic<State>      m_currentState = State::Stopped;

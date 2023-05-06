@@ -29,6 +29,8 @@ PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMin
     m_stateHandlers[(int)State::Starting] = &PlaybackEngine::startingHandler;
     m_stateHandlers[(int)State::Started] = &PlaybackEngine::startedHandler;
     m_stateHandlers[(int)State::Stopping] = &PlaybackEngine::stoppingHandler;
+
+    auto lockFree = std::atomic_uint64_t::is_always_lock_free;
 }
 
 PlaybackEngine::~PlaybackEngine()
