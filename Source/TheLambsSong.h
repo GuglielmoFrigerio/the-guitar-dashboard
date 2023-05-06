@@ -80,6 +80,7 @@ private:
     void onNoteOn(int channel, int noteNumber, std::uint8_t velocity) override;
 
     void setupMidiRecorder();
+    void stopMidiRecorder();
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);

@@ -11,6 +11,12 @@
 #include "MidiRecorder.h"
 #include "GuitarDashCommon.h"
 
+MidiRecorder::MidiRecorder(PlaybackEngine* pPlaybackEngine)
+    : m_pPlaybackEngine(pPlaybackEngine)
+{
+    
+}
+
 void MidiRecorder::addQuarterNote(int noteNumber, juce::MidiMessageSequence& midiMessageSequence)
 {
     auto noteOnMsg = juce::MidiMessage::noteOn(1, noteNumber, juce::uint8(127));
@@ -22,6 +28,8 @@ void MidiRecorder::addQuarterNote(int noteNumber, juce::MidiMessageSequence& mid
 
 void MidiRecorder::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)
 {
+    auto currentClick = m_pPlaybackEngine->getCurrentClick();
+    m_midiMessageSequence.addEvent(message, currentClick);
 }
 
 void MidiRecorder::test()
@@ -38,6 +46,25 @@ void MidiRecorder::test()
     midiFilePtr->addTrack(mms);
 
     auto outputFile = juce::File::getCurrentWorkingDirectory().getChildFile("./example.mid");
+
+    juce::FileOutputStream fos(outputFile);
+
+    midiFilePtr->writeTo(fos);
+}
+
+juce::File MidiRecorder::getFilename()
+{
+    return juce::File::getCurrentWorkingDirectory().getChildFile("./example.mid");
+}
+
+void MidiRecorder::saveFile()
+{
+    auto midiFilePtr = std::make_unique<juce::MidiFile>();
+    midiFilePtr->setTicksPerQuarterNote(DefaultClicksPerBeat);
+
+    midiFilePtr->addTrack(m_midiMessageSequence);
+
+    auto outputFile = getFilename();
 
     juce::FileOutputStream fos(outputFile);
 

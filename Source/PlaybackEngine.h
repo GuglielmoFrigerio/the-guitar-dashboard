@@ -56,4 +56,8 @@ public:
     double getClicksPerBeat() const {
         return m_clicksPerBeat;
     }
+    
+    std::uint64_t getCurrentClick() const {
+        return m_previousClick.load();
+    }
 };
