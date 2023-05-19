@@ -13,7 +13,7 @@
 
 void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message)
 {
-    auto midiInputCallbackPtr = m_midiInputCallbackPtr.load();
+    auto midiInputCallbackPtr = m_midiInputCallbackPtr;
     if (midiInputCallbackPtr != nullptr)
         midiInputCallbackPtr->handleIncomingMidiMessage(source, message);
 
@@ -59,10 +59,10 @@ TriplePlayConnect::~TriplePlayConnect()
 
 void TriplePlayConnect::setMidiInputCallback(std::shared_ptr<juce::MidiInputCallback>& midiInputCallbackPtr)
 {
-    m_midiInputCallbackPtr.store(midiInputCallbackPtr);
+    m_midiInputCallbackPtr = midiInputCallbackPtr;
 }
 
 void TriplePlayConnect::clearMidiInputCallback()
 {
-    m_midiInputCallbackPtr.store(nullptr);
+    m_midiInputCallbackPtr = nullptr;
 }

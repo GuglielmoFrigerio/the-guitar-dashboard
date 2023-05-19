@@ -16,7 +16,7 @@ class TriplePlayConnect : public juce::MidiInputCallback {
 private:
     IMidiInputTarget* m_pMidiInputTarget;
     std::unique_ptr<juce::MidiInput> m_midiInputPtr;
-    std::atomic<std::shared_ptr<juce::MidiInputCallback>> m_midiInputCallbackPtr;
+    std::shared_ptr<juce::MidiInputCallback> m_midiInputCallbackPtr;
 
 private:
     void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
