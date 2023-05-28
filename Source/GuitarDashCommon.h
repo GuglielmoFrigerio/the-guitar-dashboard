@@ -33,6 +33,7 @@ bool stringsAreSimilar(const juce::String& first, const juce::String& second, in
 int getElementValueAsInt(const juce::XmlElement* pInputElement);
 
 juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, juce::StringRef attributeName, juce::StringRef attributeValue);
+void enumChildElements(const juce::XmlElement* pInputElement, juce::StringRef elementName, std::function<void (const juce::XmlElement* pChildElement)> elementConsumer);
 
 void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler);
 

@@ -56,10 +56,46 @@ void VirtualBand::loadSongCollection(juce::StringRef collectionName)
 
     auto rootElementPtr = configDocument.getDocumentElement();
     if (rootElementPtr != nullptr) {
+
+        if (m_pActiveSong != nullptr) {
+            m_transportSource.setSource(nullptr);
+            m_pActiveSong->deactivate();
+        }
+
         auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", collectionName);
         m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);
         m_pSongListComponent->update(m_songCollectionPtr.get());
     }
+}
+
+juce::String VirtualBand::loadLibraries()
+{
+    juce::XmlDocument configDocument(m_inputFile);
+
+    m_librariesComboBox.clear();
+
+    juce::String defaultLibraryName;
+
+    m_librariesComboBox.onChange = [this] {
+        auto id = m_librariesComboBox.getSelectedId();
+        auto libraryName = m_librariesComboBox.getItemText(id - 1);
+        loadSongCollection(libraryName);
+    };
+
+    auto index = 1;
+    auto rootElementPtr = configDocument.getDocumentElement();
+    if (rootElementPtr != nullptr) {
+        enumChildElements(rootElementPtr.get(), "Library", [this, &index, &defaultLibraryName](const juce::XmlElement* pChildElement) {
+            auto value = pChildElement->getStringAttribute("name");
+            if (index == 1)
+                defaultLibraryName = value;
+            m_librariesComboBox.addItem(value, index++);
+        });
+    }
+
+    m_librariesComboBox.setSelectedId(1, juce::sendNotification);
+
+    return defaultLibraryName;
 }
 
 juce::String VirtualBand::makeResourcePath()
@@ -75,14 +111,15 @@ juce::String VirtualBand::makeResourcePath()
     }
 }
 
-VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent)
+VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox)
     :   m_pPlayerComponent(pPlayerComponent),
         m_pSongListComponent(pSongListComponent),
         m_pProgramChangeComponent(pProgramChangeComponent),
         m_songLibraryFileReady(false),
         m_devicesLoaded(false),
         m_sampleEngine(makeResourcePath()),
-        m_resourcesPath(makeResourcePath())
+        m_resourcesPath(makeResourcePath()),
+        m_librariesComboBox(librariesComboBox)
 {
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
@@ -158,7 +195,7 @@ void VirtualBand::timerCallback()
 {
     if (m_devicesLoaded && m_songLibraryFileReady) {
         m_songLibraryFileReady = false;
-        loadSongCollection("Default Library");
+        loadLibraries();
     }
 
     if (m_pActiveSong != nullptr) {

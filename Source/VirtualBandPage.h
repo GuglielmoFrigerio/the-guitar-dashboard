@@ -28,6 +28,7 @@ private:    // fields
     std::unique_ptr<VirtualBand> m_virtualBandPtr;
     juce::TextButton m_loadSongLibraryButton;
     std::unique_ptr<juce::FileChooser> m_chooserPtr;
+    juce::ComboBox m_librariesComboBox;
     SongListComponent m_songListComponent;
     ProgramChangesComponent m_programChangesComponent;
     juce::ApplicationProperties& m_properties;

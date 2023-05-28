@@ -41,16 +41,18 @@ private:    // fields
     SampleEngine m_sampleEngine;
     PlayerMode m_currentPlayerMode;
     std::unique_ptr<MidiDevice> m_nullMidiDevice;
+    juce::ComboBox& m_librariesComboBox;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
     void onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mode);
     void loadSongCollection(juce::StringRef collectionName);
+    juce::String loadLibraries();
 
     static juce::String makeResourcePath();
 
 public: // interface
-    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent);
+    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox);
 
     void loadDevices();
     void loadSongLibrary(const juce::File& inputFile);

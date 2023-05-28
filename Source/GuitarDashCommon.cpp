@@ -46,6 +46,17 @@ juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, j
     return nullptr;
 }
 
+void enumChildElements(const juce::XmlElement* pInputElement, juce::StringRef elementName, std::function<void(const juce::XmlElement* pChildElement)> elementConsumer)
+{
+    for (auto* pChildElement : pInputElement->getChildIterator()) {
+        auto value = pChildElement->getTagName();
+        if (value == elementName)
+        {
+            elementConsumer(pChildElement);
+        }
+    }
+}
+
 void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler)
 {
     auto columns = componentWidth / minWidth;

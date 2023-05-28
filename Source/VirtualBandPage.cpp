@@ -145,6 +145,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
         m_trackPlayerKeyManager(66, 32)
 {
     addAndMakeVisible(m_loadSongLibraryButton);
+    addAndMakeVisible(m_librariesComboBox);
     addAndMakeVisible(m_songListComponent);
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
@@ -152,7 +153,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
 
     setupKeyHandlers();
 
-    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent, &m_programChangesComponent);
+    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent, &m_programChangesComponent, m_librariesComboBox);
     m_virtualBandPtr->loadDevices();
 
     // Some platforms require permissions to open input channels so request that here
@@ -198,7 +199,10 @@ VirtualBandPage::~VirtualBandPage()
 void VirtualBandPage::resized()
 {
     auto rect = getLocalBounds();
-    m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
+    auto right = rect.removeFromTop(24);
+    auto left = right.removeFromLeft(rect.getWidth() / 2);
+    m_loadSongLibraryButton.setBounds(left);
+    m_librariesComboBox.setBounds(right);
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
     m_playerComponent.setBounds(rect.removeFromBottom(160));
     m_notificationComponent.setBounds(rect.removeFromBottom(40));

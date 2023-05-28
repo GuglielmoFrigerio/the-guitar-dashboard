@@ -243,4 +243,14 @@
       <Patch name="Strumming" scene="1"> 236</Patch>
     </Song>
   </Library>
+  <Library name="Solos">
+    <Song name="Aqualung">
+      <Track name="Aqualung (Jethro Tull) - Guitar Backing Track (with Vocals).mp3">
+        <Marker>00:03:28</Marker>
+      </Track>
+      <Patch name="default" scene="2">223</Patch>
+      <Patch name="default" scene="8">484</Patch>
+    </Song>
+  </Library>
+  <Library name="Improvvisations"></Library>
 </AxeFxIII>
