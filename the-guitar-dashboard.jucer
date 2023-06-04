@@ -83,6 +83,9 @@
             file="Source/PlaybackEngine.h"/>
       <FILE id="PzQlT3" name="KeyManager.cpp" compile="1" resource="0" file="Source/KeyManager.cpp"
             xcodeResource="0"/>
+      <FILE id="jOErE3" name="AudioRecorder.cpp" compile="1" resource="0"
+            file="Source/AudioRecorder.cpp"/>
+      <FILE id="UrUeHI" name="AudioRecorder.h" compile="0" resource="0" file="Source/AudioRecorder.h"/>
       <FILE id="zqTEnQ" name="KeyManager.h" compile="0" resource="0" file="Source/KeyManager.h"/>
       <FILE id="uSWpUn" name="ValueAnimator.cpp" compile="1" resource="0"
             file="Source/ValueAnimator.cpp"/>

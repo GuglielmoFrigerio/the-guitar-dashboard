@@ -249,8 +249,29 @@
         <Marker>00:03:28</Marker>
       </Track>
       <Patch name="default" scene="2">223</Patch>
-      <Patch name="default" scene="8">484</Patch>
+      <Patch name="PLINI" scene="8">484</Patch>
+    </Song>
+    <Song name="Pink Floyd - Confortably Numb">
+      <Track name="Pink Floyd - Comfortably Numb (Guitar Backing Track).mp3">
+        <Marker>00:02:01</Marker>
+        <Marker>00:04:24</Marker>
+      </Track>
+      <Patch name="PLINI" scene="8">484</Patch>
+      <Patch name="Solo Finale" scene="8">224</Patch>
+    </Song>
+    <Song name="Pink Floyd - Time">
+      <Track name="Pink Floyd - Time (solo backing track).mp3"></Track>
+      <Patch name="PLINI" scene="8">484</Patch>
     </Song>
   </Library>
-  <Library name="Improvvisations"></Library>
+  <Library name="Improvvisations">
+    <Song name="D mixolydian backing track">
+      <Track name="D mixolydian backing track.mp3"></Track>
+      <Patch name="PLINI" scene="8">484</Patch>
+    </Song>
+    <Song name="Cruising Smooth Groove Guitar Backing Track Jam in E Minor">
+      <Track name="Cruising Smooth Groove Guitar Backing Track Jam in E Minor.mp3"> </Track>
+      <Patch name="PLINI" scene="8">484</Patch>
+    </Song>
+  </Library>
 </AxeFxIII>

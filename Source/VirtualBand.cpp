@@ -48,6 +48,12 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
         m_pPlayerComponent->changeState(newState);
 
     }
+
+    if (newPlayerState == PlayerState::Starting)
+        m_audioRecorder.startRecording();
+
+    else if (newPlayerState == PlayerState::Stopping)
+        m_audioRecorder.stop();
 }
 
 void VirtualBand::loadSongCollection(juce::StringRef collectionName)
@@ -111,7 +117,7 @@ juce::String VirtualBand::makeResourcePath()
     }
 }
 
-VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox)
+VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox, juce::AudioDeviceManager& deviceManager)
     :   m_pPlayerComponent(pPlayerComponent),
         m_pSongListComponent(pSongListComponent),
         m_pProgramChangeComponent(pProgramChangeComponent),
@@ -119,7 +125,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
         m_devicesLoaded(false),
         m_sampleEngine(makeResourcePath()),
         m_resourcesPath(makeResourcePath()),
-        m_librariesComboBox(librariesComboBox)
+        m_librariesComboBox(librariesComboBox),
+        m_audioRecorder(getResourcePath())
 {
     m_formatManager.registerBasicFormats();
     m_transportSource.addChangeListener(this);
@@ -137,6 +144,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_currentPlayerMode = PlayerMode::Song;
 
     m_nullMidiDevice = std::make_unique<NullMidiDevice>();
+
+    deviceManager.addAudioCallback(&m_audioRecorder);
 }
 
 void VirtualBand::loadDevices()

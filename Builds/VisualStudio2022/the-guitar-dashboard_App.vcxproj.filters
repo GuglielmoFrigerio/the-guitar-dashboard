@@ -631,6 +631,9 @@
     <ClCompile Include="..\..\Source\KeyManager.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\AudioRecorder.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ValueAnimator.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -3124,6 +3127,9 @@
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PlaybackEngine.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\AudioRecorder.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\KeyManager.h">

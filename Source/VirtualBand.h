@@ -17,6 +17,7 @@
 #include "FractalDevice.h"
 #include "ProgramChangesComponent.h"
 #include "SampleEngine.h"
+#include "AudioRecorder.h"
 
 class SongListComponent;
 class PlayerComponent;
@@ -42,6 +43,7 @@ private:    // fields
     PlayerMode m_currentPlayerMode;
     std::unique_ptr<MidiDevice> m_nullMidiDevice;
     juce::ComboBox& m_librariesComboBox;
+    AudioRecorder m_audioRecorder;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
@@ -52,7 +54,7 @@ private:    // implementation
     static juce::String makeResourcePath();
 
 public: // interface
-    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox);
+    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox, juce::AudioDeviceManager& deviceManager);
 
     void loadDevices();
     void loadSongLibrary(const juce::File& inputFile);

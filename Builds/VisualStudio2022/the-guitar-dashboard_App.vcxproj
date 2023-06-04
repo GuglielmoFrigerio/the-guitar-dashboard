@@ -159,6 +159,7 @@
     <ClCompile Include="..\..\Source\MidiEventList.cpp"/>
     <ClCompile Include="..\..\Source\PlaybackEngine.cpp"/>
     <ClCompile Include="..\..\Source\KeyManager.cpp"/>
+    <ClCompile Include="..\..\Source\AudioRecorder.cpp"/>
     <ClCompile Include="..\..\Source\ValueAnimator.cpp"/>
     <ClCompile Include="..\..\Source\PlayerModeComponent.cpp"/>
     <ClCompile Include="..\..\Source\NotificationComponent.cpp"/>
@@ -2381,6 +2382,7 @@
     <ClInclude Include="..\..\Source\IPlaybackTarget.h"/>
     <ClInclude Include="..\..\Source\AverageComputer.h"/>
     <ClInclude Include="..\..\Source\PlaybackEngine.h"/>
+    <ClInclude Include="..\..\Source\AudioRecorder.h"/>
     <ClInclude Include="..\..\Source\KeyManager.h"/>
     <ClInclude Include="..\..\Source\ValueAnimator.h"/>
     <ClInclude Include="..\..\Source\PlayerModeComponent.h"/>

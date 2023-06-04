@@ -153,7 +153,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
 
     setupKeyHandlers();
 
-    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent, &m_programChangesComponent, m_librariesComboBox);
+    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent, &m_programChangesComponent, m_librariesComboBox, deviceManager);
     m_virtualBandPtr->loadDevices();
 
     // Some platforms require permissions to open input channels so request that here
