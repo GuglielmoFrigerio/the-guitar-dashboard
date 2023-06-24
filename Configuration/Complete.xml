@@ -239,8 +239,15 @@
       <Track name="The Lamb Lies Down on Broadway - Genesis.mp3"></Track>
       <Patch name="Fly" scene="3">238</Patch>
       <Patch name="Intro" scene="1">236</Patch>
+      <Patch name="Dist" scene="1">220</Patch>
+      <Patch name="Intro" scene="1">236</Patch>
+      <Patch name="Dist" scene="1">220</Patch>
+      <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Envelope" scene="5">237</Patch>
       <Patch name="Strumming" scene="1"> 236</Patch>
+      <Patch name="Dist" scene="1">220</Patch>
+      <Patch name="Intro" scene="1">236</Patch>
+      <Patch name="Dist" scene="1">220</Patch>
     </Song>
   </Library>
   <Library name="Solos">
