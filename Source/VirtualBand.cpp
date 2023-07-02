@@ -49,8 +49,10 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
 
     }
 
-    if (newPlayerState == PlayerState::Starting)
-        m_audioRecorder.startRecording();
+    if (newPlayerState == PlayerState::Starting) {
+        juce::String folderName = m_pActiveSong != nullptr ? m_pActiveSong->getName() : "default";
+        m_audioRecorder.startRecording(folderName);
+    }
 
     else if (newPlayerState == PlayerState::Stopping)
         m_audioRecorder.stop();

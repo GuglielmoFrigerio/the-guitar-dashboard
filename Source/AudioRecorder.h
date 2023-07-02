@@ -22,7 +22,7 @@ private:
     juce::File m_recordFolder;
 
 private:    // implementation
-    juce::File getFilename()
+    juce::File getFilename(const juce::String& folderName)
     {
         time_t rawtime;
         struct tm* timeinfo;
@@ -32,7 +32,11 @@ private:    // implementation
         timeinfo = localtime(&rawtime);
 
         strftime(buffer, 80, "%Y.%m.%d_%H_%M_%S.wav", timeinfo);
-        return m_recordFolder.getChildFile(buffer);
+
+        auto folder = m_recordFolder.getChildFile(folderName);
+        folder.createDirectory();
+
+        return folder.getChildFile(buffer);
     }
 
 private: //AudioIODeviceCallback overrides
@@ -55,11 +59,11 @@ public: // public interface
         m_recordFolder.createDirectory();
     }
 
-    void startRecording()
+    void startRecording(const juce::String& folderName)
     {
         stop();
 
-        auto file = getFilename();
+        auto file = getFilename(folderName);
 
         if (m_sampleRate > 0)
         {
