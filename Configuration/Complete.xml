@@ -82,13 +82,17 @@
       <Patch name="Rito" scene="1">370</Patch>
       <Patch name="Solo" scene="8">370</Patch>
     </Song>
-    <Song name="Anyway">
-      <Patch name="Tastiera" scene="1">246</Patch>
+    <Song name="Anyway" metronome="false">
       <Track name="Anyway - Genesis.mp3" />
-      <Patch name="Sol" scene="6">485</Patch>
+      <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
+      <Patch name="Sol" scene="6" action="stop" playOnNote="48" minVelocity="50">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
       <Patch name="Solo" scene="1"> 476</Patch>
       <Patch name="Tastiera" scene="1">246</Patch>
+      <Samples>
+        <Sample name="Anyway - controcanto 1.wav" click="0" offset="0" />
+        <Sample name="Anyway - controcanto 2.wav" click="1" offset="0" />
+      </Samples>
     </Song>
     <Song name="Here Comes the Supernatural Anaesthetist">
       <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
@@ -238,10 +242,6 @@
     <Song name="The Lamb Lies Down On Broadway">
       <Track name="The Lamb Lies Down on Broadway - Genesis.mp3"></Track>
       <Patch name="Fly" scene="3">238</Patch>
-      <Patch name="Intro" scene="1">236</Patch>
-      <Patch name="Dist" scene="1">220</Patch>
-      <Patch name="Intro" scene="1">236</Patch>
-      <Patch name="Dist" scene="1">220</Patch>
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Envelope" scene="5">237</Patch>
       <Patch name="Strumming" scene="1"> 236</Patch>

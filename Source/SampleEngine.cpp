@@ -56,7 +56,8 @@ juce::AudioSampleBuffer* SampleEngine::getSampleBuffer(const juce::String& sampl
         auto filename = m_resourcePath + juce::String("Samples/") + sampleName;
         auto fullPathname = juce::File::getCurrentWorkingDirectory().getChildFile(filename);
         juce::File file(fullPathname);
-        std::unique_ptr<juce::AudioFormatReader> readerPtr(m_formatManager.createReaderFor(file));
+        auto pFormatReader = m_formatManager.createReaderFor(file);
+        std::unique_ptr<juce::AudioFormatReader> readerPtr(pFormatReader);
         if (readerPtr == nullptr) {
             return nullptr;
         }

@@ -150,6 +150,7 @@ void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
     if (noteNumber == m_playOnNote && velocity >= m_minVelocity) {
         m_playbackEnginePtr->start();
         m_backgroundPlayerStateHandler.backgroundStarted();
+        m_playOnNote = -1;
     }
 }
 
@@ -200,8 +201,12 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
         addTrack(sampleTrackPtr);
     }
 
-    std::unique_ptr<Track> metronomeTrackPtr = std::make_unique<MetronomeTrack>(pVirtualBand);
-    addTrack(metronomeTrackPtr);
+    auto metronome = pPatchesElement->getBoolAttribute("metronome", true);
+
+    if (metronome) {
+        std::unique_ptr<Track> metronomeTrackPtr = std::make_unique<MetronomeTrack>(pVirtualBand);
+        addTrack(metronomeTrackPtr);
+    }
 
     std::unique_ptr<Track> automationTrackPtr = std::make_unique<AutomationTrack>(pPatchesElement, this);
     if (automationTrackPtr->getEventCount() > 0)
