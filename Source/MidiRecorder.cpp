@@ -72,16 +72,16 @@ juce::File MidiRecorder::getFilename()
 
 void MidiRecorder::saveFile()
 {
-    if (m_midiMessageSequence.getNumEvents() > 0) {
-        auto midiFilePtr = std::make_unique<juce::MidiFile>();
-        midiFilePtr->setTicksPerQuarterNote(DefaultClicksPerBeat);
+    //if (m_midiMessageSequence.getNumEvents() > 0) {
+    //    auto midiFilePtr = std::make_unique<juce::MidiFile>();
+    //    midiFilePtr->setTicksPerQuarterNote(DefaultClicksPerBeat);
 
-        midiFilePtr->addTrack(m_midiMessageSequence);
+    //    midiFilePtr->addTrack(m_midiMessageSequence);
 
-        auto outputFile = getFilename();
+    //    auto outputFile = getFilename();
 
-        juce::FileOutputStream fos(outputFile);
+    //    juce::FileOutputStream fos(outputFile);
 
-        midiFilePtr->writeTo(fos);
-    }
+    //    midiFilePtr->writeTo(fos);
+    //}
 }

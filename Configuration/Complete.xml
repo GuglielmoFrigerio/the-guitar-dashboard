@@ -85,13 +85,13 @@
     <Song name="Anyway" metronome="false">
       <Track name="Anyway - Genesis.mp3" />
       <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
-      <Patch name="Sol" scene="6" action="stop" playOnNote="48" minVelocity="50">485</Patch>
+      <Patch name="Sol" scene="6" action="stop">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
       <Patch name="Solo" scene="1"> 476</Patch>
-      <Patch name="Tastiera" scene="1">246</Patch>
+      <Patch name="Mute 2" scene="6" action="stop" playOnNote="48" minVelocity="50">206</Patch>
       <Samples>
         <Sample name="Anyway - controcanto 1.wav" click="0" offset="0" />
-        <Sample name="Anyway - controcanto 2.wav" click="1" offset="0" />
+        <Sample name="Anyway - controcanto 2.wav" click="4" offset="1" />
       </Samples>
     </Song>
     <Song name="Here Comes the Supernatural Anaesthetist">

@@ -136,6 +136,11 @@ void TheLambsSong::updateCurrentClick(PlayerComponent* pPlayerComponent, Program
         if (index != m_selectedProgramIndex) {
             pProgramChangeComponent->updateProgramChange(index);
             m_selectedProgramIndex = index;
+
+            auto marker = m_markerTrackPtr->getMarker(index);
+            m_playOnNote = marker.getPlayOnNote();
+            m_minVelocity = marker.getMinVelocity();
+
         }
     }
 }
