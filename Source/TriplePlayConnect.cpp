@@ -41,7 +41,7 @@ TriplePlayConnect::TriplePlayConnect(IMidiInputTarget* pMidiInputTarget)
 {
     auto inputDevices = juce::MidiInput::getAvailableDevices();
     for (auto& deviceInfo : inputDevices) {
-        if (deviceInfo.name == "TriplePlay Connect") {
+        if (deviceInfo.name == "TriplePlay Connect TP Guitar") {
             m_midiInputPtr = juce::MidiInput::openDevice(deviceInfo.identifier, this); 
             m_midiInputPtr->start();
             break;
