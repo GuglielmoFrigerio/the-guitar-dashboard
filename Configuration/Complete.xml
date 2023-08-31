@@ -249,6 +249,12 @@
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Dist" scene="1">220</Patch>
     </Song>
+    <Song name="I Know What I Like">
+      <Track name="I Know What I Like.mp3">
+      </Track>
+      <Patch name="Pong Chorus" scene="1">99</Patch>
+      <Patch name="Wha Wha" scene="1">210</Patch>
+    </Song>
   </Library>
   <Library name="Solos">
     <Song name="Aqualung">
