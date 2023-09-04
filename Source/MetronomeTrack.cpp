@@ -12,16 +12,16 @@
 #include "GuitarDashCommon.h"
 #include "SampleEvent.h"
 
-MetronomeTrack::MetronomeTrack(VirtualBand* pVirtualBand)
+MetronomeTrack::MetronomeTrack(VirtualBand* pVirtualBand, int metronomeBeats)
 {
     auto pSampleEngine = pVirtualBand->getSampleEngine();
 
     juce::String sampleName = "Stick.wav";
 
-    for (auto tick = 0; tick < 16; tick++) {
+    for (auto tick = 0; tick < metronomeBeats; tick++) {
         std::int64_t clickTimepoint = tick * DefaultClicksPerBeat;
         std::unique_ptr<EventList> eventListPtr = std::make_unique<EventList>(clickTimepoint);
-        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName);
+        std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName, 1, 0.0);
         eventListPtr->addEvent(sampleEventPtr);
         m_eventList.emplace_back(std::move(eventListPtr));
     }

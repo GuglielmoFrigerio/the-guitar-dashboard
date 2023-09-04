@@ -36,12 +36,19 @@ void TriplePlayConnect::handleIncomingMidiMessage(juce::MidiInput* source, const
     }
 }
 
+juce::String TriplePlayConnect::getDeviceName() const
+{
+    auto osType = juce::SystemStats::getOperatingSystemType();
+    return ((osType & juce::SystemStats::Windows) != 0) ? "TriplePlay Connect" : "TriplePlay Connect TP Guitar";
+}
+
 TriplePlayConnect::TriplePlayConnect(IMidiInputTarget* pMidiInputTarget)
     : m_pMidiInputTarget(pMidiInputTarget)
 {
+    auto deviceName = getDeviceName();
     auto inputDevices = juce::MidiInput::getAvailableDevices();
     for (auto& deviceInfo : inputDevices) {
-        if (deviceInfo.name == "TriplePlay Connect TP Guitar") {
+        if (deviceInfo.name == deviceName) {
             m_midiInputPtr = juce::MidiInput::openDevice(deviceInfo.identifier, this); 
             m_midiInputPtr->start();
             break;
@@ -58,7 +65,7 @@ TriplePlayConnect::~TriplePlayConnect()
 }
 
 void TriplePlayConnect::setMidiInputCallback(std::shared_ptr<juce::MidiInputCallback>& midiInputCallbackPtr)
-{
+{   
     m_midiInputCallbackPtr = midiInputCallbackPtr;
 }
 

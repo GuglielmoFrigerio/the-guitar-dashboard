@@ -32,11 +32,15 @@ private:
     juce::String m_resourcePath;
     std::unordered_map<juce::String, std::unique_ptr<juce::AudioSampleBuffer>> m_sampleBufferMap;
 
+private:    // implementation
+    static void setAudioBufferSampleGain(juce::AudioSampleBuffer* pAudioBuffer, int channel, int sampleIndex, float gain);
+    static void setAudioBufferGain(juce::AudioSampleBuffer* pAudioBuffer, float gain);
+
 public:
     SampleEngine(const juce::String& resourcePath);
     ~SampleEngine();
     void addSampleEvent(SampleEvent* pSampleEvent);
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 
-    juce::AudioSampleBuffer* getSampleBuffer(const juce::String& sampleName);
+    juce::AudioSampleBuffer* getSampleBuffer(const juce::String& sampleName, float gain);
 };

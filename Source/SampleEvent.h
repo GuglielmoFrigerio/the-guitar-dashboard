@@ -22,13 +22,14 @@ private:    // fields
     SampleEngine* m_pSampleEngine;
     int m_position = 0;
     static std::atomic_int g_idFactory;
+    int m_channelOffset;
 
 private:    // implementation
     void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
     void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
 
 public:     // public interface
-    SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename);
+    SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename, int outputTrack, float volumeInDb);
     bool getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
     std::uint64_t getId() const {
         return m_id;

@@ -206,10 +206,10 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
         addTrack(sampleTrackPtr);
     }
 
-    auto metronome = pPatchesElement->getBoolAttribute("metronome", true);
+    auto metronomeBeats = pPatchesElement->getIntAttribute("metronomeBeats", 8);
 
-    if (metronome) {
-        std::unique_ptr<Track> metronomeTrackPtr = std::make_unique<MetronomeTrack>(pVirtualBand);
+    if (metronomeBeats > 0) {
+        std::unique_ptr<Track> metronomeTrackPtr = std::make_unique<MetronomeTrack>(pVirtualBand, metronomeBeats);
         addTrack(metronomeTrackPtr);
     }
 

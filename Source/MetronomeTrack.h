@@ -16,5 +16,5 @@
 
 class MetronomeTrack : public Track {
 public:
-    MetronomeTrack(VirtualBand* pVirtualBand);
+    MetronomeTrack(VirtualBand* pVirtualBand, int metronomeBeats);
 };

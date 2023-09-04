@@ -54,7 +54,7 @@
       <Patch name="LaReMiSi" scene="5">502</Patch>
       <Patch name="ArpFinale" scene="2"> 3</Patch>
     </Song>
-    <Song name="Firth of Fifth" initialBpm="65">
+    <Song name="Firth of Fifth" initialBpm="65" >
       <Track name="Firth Of Fifth - Genesis.mp3">
         <Marker> 00:01:08</Marker>
         <Marker>00:05:08</Marker>
@@ -70,7 +70,7 @@
       <Patch name="Solo" scene="8">318</Patch>
       <Patch name="Finale" scene="1"> 509</Patch>
       <Samples>
-        <Sample name="fof-vocal-1.wav" click="0" offset="0" />
+        <Sample name="fof-vocal-1.wav" click="0" offset="0" outputTrack="1" volume="-10"/>
         <Sample name="fof-vocal-2.wav" click="7" offset="270" />
       </Samples>
     </Song>
@@ -94,11 +94,18 @@
         <Sample name="Anyway - controcanto 2.wav" click="4" offset="1" />
       </Samples>
     </Song>
-    <Song name="Here Comes the Supernatural Anaesthetist">
-      <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
+    <Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">
+      <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3" ></Track>
       <Patch name="Clean Intro" scene="1"> 439</Patch>
-      <Patch name="Solo" scene="8">222</Patch>
+      <Patch name="Clean Intro" scene="1" click="4" offset="0"> 439</Patch>
+      <Patch name="Solo" scene="8" click="64" offset="0">222</Patch>
       <Patch name="Solo Finale" scene="1">31</Patch>
+      <Samples>
+        <Sample name="Supernatural Vocal.wav" click="0" offset="0" />
+      </Samples>
+      <AutomationTrack>
+        <AutomationEvent click="60" offset="0" action="stop"></AutomationEvent>
+      </AutomationTrack>
     </Song>
     <Song name="The Lamia" initialBpm="64" preCount="On">
       <Track name="The Lamia - Genesis.mp3" />
@@ -250,10 +257,13 @@
       <Patch name="Dist" scene="1">220</Patch>
     </Song>
     <Song name="I Know What I Like">
-      <Track name="I Know What I Like.mp3">
-      </Track>
+      <Track name="I Know What I Like.mp3"> </Track>
       <Patch name="Pong Chorus" scene="1">99</Patch>
       <Patch name="Wha Wha" scene="1">210</Patch>
+    </Song>
+    <Song name="Dance on a volcano">
+      <Track name="Genesis Dance on a Volcano.mp3"></Track>
+      <Patch name="Arpeggio" scene="5">209</Patch>
     </Song>
   </Library>
   <Library name="Solos">

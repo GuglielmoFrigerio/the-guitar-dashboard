@@ -23,11 +23,15 @@ void SampleEvent::seek(std::uint64_t , std::uint64_t , Track& )
 {
 }
 
-SampleEvent::SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename)
+SampleEvent::SampleEvent(SampleEngine* pSampleEngine, const juce::String& sampleFilename, int outputTrack, float volumeInDb)
     : m_pSampleEngine(pSampleEngine)
 {
+
+    auto gain = juce::Decibels::decibelsToGain(volumeInDb);
+
+    m_channelOffset = (outputTrack - 1) * 2;
     m_id = ++g_idFactory;
-    m_pSampleBuffer = pSampleEngine->getSampleBuffer(sampleFilename);
+    m_pSampleBuffer = pSampleEngine->getSampleBuffer(sampleFilename, gain);
     DBG("SampleEvent name: " << sampleFilename << " id: " << m_id);
 }
 
@@ -45,7 +49,7 @@ bool SampleEvent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferTo
         auto bufferSamplesRemaining = m_pSampleBuffer->getNumSamples() - m_position;
         auto samplesThisTime = juce::jmin(outputSamplesRemaining, bufferSamplesRemaining);
 
-        for (auto channel = 0; channel < numOutputChannels; ++channel)
+        for (auto channel = m_channelOffset; channel < m_channelOffset + 2; ++channel)
         {
             bufferToFill.buffer->addFrom(channel,
                 outputSamplesOffset,

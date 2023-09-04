@@ -20,6 +20,7 @@ private:
 
 private:
     void handleIncomingMidiMessage(juce::MidiInput* source, const juce::MidiMessage& message) override;
+    juce::String getDeviceName() const;
 
 public:
     TriplePlayConnect(IMidiInputTarget* pMidiInputTarget);
