@@ -319,4 +319,10 @@
       <Patch name="PLINI" scene="8">484</Patch>
     </Song>
   </Library>
+  <Library name="Tones">
+    <Song name="Epics">
+      <Patch name="Dream Theater Rig" scene="4">146</Patch>
+      <Patch name="PLINI" scene="8">484</Patch>
+    </Song>
+  </Library>
 </AxeFxIII>
