@@ -264,8 +264,9 @@
     <Song name="Dance on a volcano">
       <Track name="Genesis Dance on a Volcano.mp3"></Track>
       <Patch name="Arpeggio" scene="5">209</Patch>
+      <Patch name="LA#" scene="5">273</Patch>
       <Patch name="Mugugno 1" scene="5">227</Patch>
-      <Patch name="Arpeggio" scene="5">209</Patch>
+      <Patch name="LA#" scene="5">273</Patch>
       <Patch name="Fly" scene="3">238</Patch>
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Envelope" scene="5">237</Patch>
