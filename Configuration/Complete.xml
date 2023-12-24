@@ -32,7 +32,9 @@
       <Patch name="Cuckoon" scene="2">492</Patch>
     </Song>
     <Song name="Get'em Out By Friday">
-      <Track name="Get 'Em Out By Friday.mp3" message="Pedale Sx al Minimo!" />
+      <Track name="Get 'Em Out By Friday.mp3" message="Pedale Sx al Minimo!" >
+        <Marker>00:03:50</Marker>
+      </Track>
       <Patch name="Intro" scene="1">507</Patch>
       <Patch name="Intro Diatonic 1" scene="2"> 507</Patch>
       <Patch name="Intro Diatonic 2" scene="3"> 507</Patch>
@@ -83,7 +85,9 @@
       <Patch name="Solo" scene="8">370</Patch>
     </Song>
     <Song name="Anyway" metronome="false">
-      <Track name="Anyway - Genesis.mp3" />
+      <Track name="Anyway - Genesis.mp3" >
+        <Marker> 00:01:23</Marker>
+      </Track>
       <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
       <Patch name="Sol" scene="6" action="stop">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
@@ -306,9 +310,12 @@
       <Patch name="PLINI" scene="8">484</Patch>
     </Song>
     <Song name="Easter Marillion">
-      <Track name="Easter Marillion">
-        <Patch name="PLINI" scene="8">484</Patch>
-      </Track>
+      <Track name="Easter Marillion"></Track>
+      <Patch name="PLINI" scene="8">484</Patch>
+    </Song>
+    <Song name="Message in the Bottle">
+      <Track name="The Police - Message In a Bottle Guitar Backing Track (No Guitar).mp3"></Track>
+      <Patch name="Message in the Bottle" scene="1">114</Patch>
     </Song>
   </Library>
   <Library name="Improvvisations">
@@ -316,6 +323,7 @@
       <Track name="D mixolydian backing track.mp3"></Track>
       <Patch name="PLINI" scene="8">484</Patch>
       <Patch name="JP2Cat" scene="1">112</Patch>
+      <Patch name="Rumblin' Teles!" scene="6">279</Patch>
     </Song>
     <Song name="Cruising Smooth Groove Guitar Backing Track Jam in E Minor">
       <Track name="Cruising Smooth Groove Guitar Backing Track Jam in E Minor.mp3"> </Track>

@@ -62,6 +62,8 @@ void Track::play(std::int64_t currentClick, std::int64_t previousClick)
 void Track::seek(std::int64_t currentClick, std::int64_t previousClick)
 {
     findCurrentIndex(currentClick);
-    m_eventList[m_currentIndex]->seek(currentClick, previousClick, *this);
+    if (m_currentIndex < m_eventList.size()) {
+        m_eventList[m_currentIndex]->seek(currentClick, previousClick, *this);
+    }
     m_seekClick = currentClick;
 }

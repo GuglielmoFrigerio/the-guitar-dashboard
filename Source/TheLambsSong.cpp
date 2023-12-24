@@ -133,7 +133,7 @@ void TheLambsSong::updateCurrentClick(PlayerComponent* pPlayerComponent, Program
 
     if (m_markerTrackPtr != nullptr) {
         auto index = m_markerTrackPtr->getIndexFromClicks(currentClick);
-        if (index != m_selectedProgramIndex) {
+        if (index != m_selectedProgramIndex && index >= 0) {
             pProgramChangeComponent->updateProgramChange(index);
             m_selectedProgramIndex = index;
 
