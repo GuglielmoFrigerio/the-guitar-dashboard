@@ -23,6 +23,6 @@ MetronomeTrack::MetronomeTrack(VirtualBand* pVirtualBand, int metronomeBeats)
         std::unique_ptr<EventList> eventListPtr = std::make_unique<EventList>(clickTimepoint);
         std::unique_ptr<Event> sampleEventPtr = std::make_unique<SampleEvent>(pSampleEngine, sampleName, 1, 0.0);
         eventListPtr->addEvent(sampleEventPtr);
-        m_eventList.emplace_back(std::move(eventListPtr));
+        addEventList(eventListPtr);
     }
 }

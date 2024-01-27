@@ -175,17 +175,17 @@ void TheLambsSong::stopMidiRecorder()
     m_midiRecorderPtr = nullptr;
 }
 
-TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand)
-    :   Song(pPatchesElement->getStringAttribute("name"))
+TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pVirtualBand)
+    :   Song(pSongElement->getStringAttribute("name"))
 {
     m_resourcesPath = pVirtualBand->getResourcePath();
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
-    auto trackPtr = MidiTrack::loadFromPatchesElement(pPatchesElement, pMidiDevice);
+    auto trackPtr = MidiTrack::loadFromPatchesElement(pSongElement, pMidiDevice);
     addTrack(trackPtr);
 
-    m_markerTrackPtr = std::make_unique<MarkerTrack>(pPatchesElement);
+    m_markerTrackPtr = std::make_unique<MarkerTrack>(pSongElement);
 
-    auto pTrackElement = pPatchesElement->getChildByName("Track");
+    auto pTrackElement = pSongElement->getChildByName("Track");
     if (pTrackElement != nullptr) {
         m_trackName = pTrackElement->getStringAttribute("name");
 
@@ -201,23 +201,23 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand*
         }
     }
 
-    auto sampleTrackPtr = loadSamplesTrack(pPatchesElement, pVirtualBand);
+    auto sampleTrackPtr = loadSamplesTrack(pSongElement, pVirtualBand);
     if (sampleTrackPtr != nullptr) {
         addTrack(sampleTrackPtr);
     }
 
-    auto metronomeBeats = pPatchesElement->getIntAttribute("metronomeBeats", 8);
+    auto metronomeBeats = pSongElement->getIntAttribute("metronomeBeats", 8);
 
     if (metronomeBeats > 0) {
         std::unique_ptr<Track> metronomeTrackPtr = std::make_unique<MetronomeTrack>(pVirtualBand, metronomeBeats);
         addTrack(metronomeTrackPtr);
     }
 
-    std::unique_ptr<Track> automationTrackPtr = std::make_unique<AutomationTrack>(pPatchesElement, this);
+    std::unique_ptr<Track> automationTrackPtr = std::make_unique<AutomationTrack>(pSongElement, this);
     if (automationTrackPtr->getEventCount() > 0)
         addTrack(automationTrackPtr);
 
-    m_initialBpm = pPatchesElement->getIntAttribute("initialBpm");
+    m_initialBpm = pSongElement->getIntAttribute("initialBpm");
 }
 
 void TheLambsSong::activate(

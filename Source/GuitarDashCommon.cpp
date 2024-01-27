@@ -95,10 +95,10 @@ std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename)
 
 std::int64_t getClickTimepoint(const juce::XmlElement* pElement, std::int64_t currentClickTimepoint)
 {
+    auto beat = pElement->getIntAttribute("beat");
     auto click = pElement->getIntAttribute("click");
-    auto offset = pElement->getIntAttribute("offset");
 
-    auto ct = click * DefaultClicksPerBeat + offset;
+    auto ct = beat * DefaultClicksPerBeat + click;
 
     return (ct > 0) ? ct : currentClickTimepoint;
 }

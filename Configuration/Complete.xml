@@ -63,17 +63,17 @@
         <Marker>00:05:40</Marker>
       </Track>
       <Patch name="Intro" scene="1" playOnNote="47" minVelocity="50"> 509</Patch>
-      <Patch name="Acoustic" scene="8" click="64" offset="0"> 470</Patch>
-      <Patch name="Reprise" scene="2" click="72" offset="0"> 509</Patch>
-      <Patch name="Acoustic" scene="8" click="86" offset="0"> 470</Patch>
+      <Patch name="Acoustic" scene="8" beat="64" click="0"> 470</Patch>
+      <Patch name="Reprise" scene="2" beat="72" click="0"> 509</Patch>
+      <Patch name="Acoustic" scene="8" beat="86" click="0"> 470</Patch>
       <Patch name="Intro" scene="1">509</Patch>
       <Patch name="Slide" scene="1">471</Patch>
       <Patch name="Trillo" scene="1" action="stop"> 509</Patch>
       <Patch name="Solo" scene="8">318</Patch>
       <Patch name="Finale" scene="1"> 509</Patch>
       <Samples>
-        <Sample name="fof-vocal-1.wav" click="0" offset="0" outputTrack="1" volume="-10" />
-        <Sample name="fof-vocal-2.wav" click="7" offset="270" />
+        <Sample name="fof-vocal-1.wav" beat="0" click="0" outputTrack="1" volume="-10" />
+        <Sample name="fof-vocal-2.wav" beat="7" click="270" />
       </Samples>
     </Song>
     <Song name="Lilywhite Lilith">
@@ -84,32 +84,30 @@
       <Patch name="Rito" scene="1">370</Patch>
       <Patch name="Solo" scene="8">370</Patch>
     </Song>
-    <Song name="Anyway" metronome="false">
+    <Song name="Anyway" metronomeBeats="0" initialBpm="78">
       <Track name="Anyway - Genesis.mp3" >
         <Marker> 00:01:23</Marker>
       </Track>
       <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
-      <Patch name="Sol" scene="6" action="stop">485</Patch>
+      <Patch name="Sol" scene="6" >485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
       <Patch name="Solo" scene="1"> 476</Patch>
       <Patch name="Mute 2" scene="6" action="stop" playOnNote="48" minVelocity="50">206</Patch>
       <Samples>
-        <Sample name="Anyway - controcanto 1.wav" click="0" offset="0" />
-        <Sample name="Anyway - controcanto 2.wav" click="4" offset="1" />
+        <Sample name="Anyway - controcanto 1.wav" beat="0" click="0" />
+        <Sample name="Anyway - controcanto 2.wav" beat="4" click="1" />
       </Samples>
     </Song>
     <Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">
       <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
       <Patch name="Clean Intro" scene="1"> 439</Patch>
-      <Patch name="Clean Intro" scene="1" click="4" offset="0"> 439</Patch>
-      <Patch name="Solo" scene="8" click="64" offset="0">222</Patch>
+      <Patch name="Clean Intro" scene="1" beat="4" click="0"> 439</Patch>
+      <Patch name="Solo" scene="8" beat="64" click="0">222</Patch>
       <Patch name="Solo Finale" scene="1">31</Patch>
+      <AutomationEvent beat="60" click="0" action="stop"></AutomationEvent>
       <Samples>
-        <Sample name="Supernatural Vocal.wav" click="0" offset="0" />
+        <Sample name="Supernatural Vocal.wav" beat="0" click="0" />
       </Samples>
-      <AutomationTrack>
-        <AutomationEvent click="60" offset="0" action="stop"></AutomationEvent>
-      </AutomationTrack>
     </Song>
     <Song name="The Lamia" initialBpm="64" preCount="On">
       <Track name="The Lamia - Genesis.mp3" />
@@ -162,7 +160,7 @@
       <Patch name="No Delay" scene="4"> 234</Patch>
       <Patch name="Solo" scene="8">317</Patch>
       <Samples>
-        <Sample name="EppingTapping.wav" click="2" offset="0" />
+        <Sample name="EppingTapping.wav" beat="2" click="0" />
       </Samples>
     </Song>
     <Song name="Can Utility">
@@ -270,7 +268,12 @@
       <Track name="Genesis Dance on a Volcano.mp3"></Track>
       <Patch name="Arpeggio" scene="5">209</Patch>
       <Patch name="LA#" scene="5">273</Patch>
+      <Patch name="Arpeggio" scene="5">209</Patch>
+      <Patch name="LA#" scene="5">273</Patch>
+      <Patch name="Arpeggio" scene="5">209</Patch>
       <Patch name="Mugugno 1" scene="5">227</Patch>
+      <Patch name="LA#" scene="5">273</Patch>
+      <Patch name="Arpeggio" scene="5">209</Patch>
       <Patch name="LA#" scene="5">273</Patch>
       <Patch name="Fly" scene="3">238</Patch>
       <Patch name="Intro" scene="1">236</Patch>
@@ -279,6 +282,25 @@
       <Patch name="Dist" scene="1">220</Patch>
       <Patch name="Intro" scene="1">236</Patch>
       <Patch name="Dist" scene="1">220</Patch>
+    </Song>
+    <Song name="The Great Gig" initialBpm="65" metronomeBeats="0" >
+      <Track name="The Great Gig.mp3"></Track>
+      <Patch name="Slide" playOnNote="60" minVelocity="50" scene="1">200</Patch>
+      <Patch name="Slide" beat="3" click="0" scene="1" action="stop" playOnNote="62" minVelocity="50">200</Patch>
+      <Patch name="Slide" beat="6" click="0" scene="1" action="stop" playOnNote="67" minVelocity="50">200</Patch>
+      <Patch name="Slide" beat="8" click="0" scene="1" action="stop" playOnNote="62" minVelocity="50">200</Patch>
+      <Patch name="Slide" beat="11" click="0" scene="1" action="stop" playOnNote="65" minVelocity="50">200</Patch>
+      <Patch name="Slide" beat="14" click="0" scene="1" action="stop" playOnNote="65" minVelocity="50">200</Patch>
+      <Samples>
+        <Sample name="tgg-1.wav" beat="0" click="0" />
+        <Sample name="tgg-2.wav" beat="3" click="1" />
+        <Sample name="tgg-3.wav" beat="6" click="1" />
+        <Sample name="tgg-2.wav" beat="8" click="1" />
+        <Sample name="tgg-4.wav" beat="11" click="1" />
+      </Samples>
+    </Song>
+    <Song name="Unquiet Slumbers"  >
+      <Patch name="Classical" scene="1">347</Patch>
     </Song>
   </Library>
   <Library name="Solos">

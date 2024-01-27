@@ -29,12 +29,12 @@ SamplesTrack::SamplesTrack(const juce::XmlElement* pSamplesElement, VirtualBand*
             currentEventListPtr = std::make_unique<EventList>(clickTimepoint);
 
         if (clickTimepoint > currentEventListPtr->getClickTimepoint()) {
-            m_eventList.emplace_back(std::move(currentEventListPtr));
+            addEventList(currentEventListPtr);
             currentEventListPtr = std::make_unique<EventList>(clickTimepoint);
         }
         currentEventListPtr->addEvent(sampleEventPtr);
     }
     if ((currentEventListPtr != nullptr) && (currentEventListPtr->getEventCount() > 0)) {
-        m_eventList.emplace_back(std::move(currentEventListPtr));
+        addEventList(currentEventListPtr);
     }
 }

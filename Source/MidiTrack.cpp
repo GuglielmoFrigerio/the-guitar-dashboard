@@ -22,7 +22,7 @@ void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
     for (auto* pPatchElement : pPatchesElement->getChildWithTagNameIterator("Patch")) {
         std::unique_ptr<EventList> programChangeEventsPtr = MidiEventList::parse(pPatchElement, m_midiChannel, currentClickTimepoint, m_pMidiDevice->getMidiOutput());
         currentClickTimepoint = programChangeEventsPtr->getClickTimepoint() + DefaultClicksPerBeat;
-        m_eventList.emplace_back(std::move(programChangeEventsPtr));
+        addEventList(programChangeEventsPtr);
     }
 }
 

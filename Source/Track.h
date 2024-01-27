@@ -25,7 +25,8 @@ protected:    // fields
 
 protected:  // interface
     std::int64_t findCurrentIndex(std::int64_t currentClick);
-    void loadFromXml(const juce::XmlElement* pRootElement, const std::string& elementName, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler);
+    void loadFromXml(const juce::XmlElement* pRootElement, std::function<bool(const juce::String& elementName)> elementNameTest, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler);
+    void addEventList(std::unique_ptr<EventList>& eventListPtr);
 
 public:
     virtual ~Track() {}

@@ -17,4 +17,9 @@ class AutomationTrack : public Track {
 public:
     AutomationTrack(const juce::XmlElement* pPatchesElement, IAutomationTarget* pAutomationTarget);
 
+private:    // implementation
+    std::unique_ptr<EventList> parseElement(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint, IAutomationTarget* pAutomationTarget);
+
+    static bool elementNameTest(const juce::String& elementName);
+
 };

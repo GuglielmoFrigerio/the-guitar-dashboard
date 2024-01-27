@@ -26,17 +26,31 @@ std::int64_t Track::findCurrentIndex(std::int64_t currentClick)
     return previousClick;
 }
 
-void Track::loadFromXml(const juce::XmlElement* pRootElement, const std::string& elementName, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler)
+void Track::loadFromXml(const juce::XmlElement* pRootElement, std::function<bool (const juce::String& elementName)> elementNameTest, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler)
 {
     int64_t currentClickTimepoint = 0;
-    for (auto* pChildElement : pRootElement->getChildWithTagNameIterator(elementName)) {
-        auto ct = getClickTimepoint(pChildElement, currentClickTimepoint);
-        auto eventListPtr = childElementHandler(pChildElement, ct);
-        if (eventListPtr != nullptr) {
-            m_eventList.emplace_back(std::move(eventListPtr));
+    for (auto* pChildElement : pRootElement->getChildIterator()) {
+        auto elementName = pChildElement->getTagName();
+        if (elementNameTest(elementName)) {
+            auto ct = getClickTimepoint(pChildElement, currentClickTimepoint);
+            auto eventListPtr = childElementHandler(pChildElement, ct);
+            if (eventListPtr != nullptr) {
+                addEventList(eventListPtr);
+            }
+            currentClickTimepoint = ct + DefaultClicksPerBeat;
         }
-        currentClickTimepoint = ct + DefaultClicksPerBeat;
     }
+}
+
+void Track::addEventList(std::unique_ptr<EventList>& eventListPtr)
+{
+    auto size = m_eventList.size();
+    if (size > 0) {
+        auto ct = m_eventList[size - 1]->getClickTimepoint();
+        auto incomingCt = eventListPtr->getClickTimepoint();
+        jassert(ct < incomingCt);
+    }
+    m_eventList.emplace_back(std::move(eventListPtr));
 }
 
 void Track::play(std::int64_t currentClick, std::int64_t previousClick)
