@@ -310,6 +310,7 @@
       </Track>
       <Patch name="default" scene="2">223</Patch>
       <Patch name="PLINI" scene="8">484</Patch>
+      <Patch name="Stuffed Crest" scene="3">477</Patch>
     </Song>
     <Song name="Pink Floyd - Confortably Numb">
       <Track name="Pink Floyd - Comfortably Numb (Guitar Backing Track).mp3">
@@ -356,6 +357,16 @@
     <Song name="Epics">
       <Patch name="Dream Theater Rig" scene="4">146</Patch>
       <Patch name="PLINI" scene="8">484</Patch>
+      <Patch name="Ed, Stevie, Jimi and Howard" scene="1">140</Patch>
+      <Patch name="MS KieselCrasher" scene="5">214</Patch>
+      <Patch name="Multiband Dist Template" scene="1">215</Patch>
+      <Patch name="Stuffed Crest" scene="3">477</Patch>
+    </Song>
+    <Song name="Dreamy">
+      <Patch name="Texas Stars" scene="2">138</Patch>
+    </Song>
+    <Song name="Clean">
+      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
     </Song>
   </Library>
 </AxeFxIII>
