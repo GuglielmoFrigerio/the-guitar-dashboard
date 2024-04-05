@@ -53,9 +53,10 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
         juce::String folderName = m_pActiveSong != nullptr ? m_pActiveSong->getName() : "default";
         m_audioRecorder.startRecording(folderName);
     }
-
-    else if (newPlayerState == PlayerState::Stopping)
+    else if (newPlayerState == PlayerState::Stopping) {
         m_audioRecorder.stop();
+    }
+    m_sampleEngine.stopAll();
 }
 
 void VirtualBand::loadSongCollection(juce::StringRef collectionName)

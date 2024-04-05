@@ -43,4 +43,5 @@ public:
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 
     juce::AudioSampleBuffer* getSampleBuffer(const juce::String& sampleName, float gain);
+    void stopAll();
 };

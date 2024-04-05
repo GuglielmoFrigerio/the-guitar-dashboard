@@ -89,13 +89,13 @@
         <Marker> 00:01:23</Marker>
       </Track>
       <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
-      <Patch name="Sol" scene="6" >485</Patch>
+      <Patch name="Sol" scene="6" action="stop" >485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
       <Patch name="Solo" scene="1"> 476</Patch>
       <Patch name="Mute 2" scene="6" action="stop" playOnNote="48" minVelocity="50">206</Patch>
       <Samples>
-        <Sample name="Anyway - controcanto 1.wav" beat="0" click="0" />
-        <Sample name="Anyway - controcanto 2.wav" beat="4" click="1" />
+        <Sample name="Anyway - controcanto 1.wav" beat="0" click="0" volume="6" />
+        <Sample name="Anyway - controcanto 2.wav" beat="4" click="1" volume="6" />
       </Samples>
     </Song>
     <Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">

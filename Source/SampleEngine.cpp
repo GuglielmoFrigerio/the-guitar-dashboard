@@ -87,3 +87,16 @@ juce::AudioSampleBuffer* SampleEngine::getSampleBuffer(const juce::String& sampl
     }
     return it->second.get();
 }
+
+void SampleEngine::stopAll()
+{
+    auto pNewSampleEntryVector = new SampleEntryVector();
+    auto pOldSampleEntryVector = m_pSamples.load();
+    m_pSamples.store(pNewSampleEntryVector);
+
+    for (auto& entry : *pOldSampleEntryVector) {
+        entry.m_pSampleEvent->reset();
+    }
+
+    delete pOldSampleEntryVector;
+}

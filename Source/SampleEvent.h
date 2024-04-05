@@ -34,4 +34,8 @@ public:     // public interface
     std::uint64_t getId() const {
         return m_id;
     }
+
+    void reset() {
+        m_position = 0;
+    }
 };
