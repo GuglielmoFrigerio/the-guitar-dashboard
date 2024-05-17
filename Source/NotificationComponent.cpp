@@ -39,7 +39,7 @@ void NotificationComponent::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (22.0f);
-    g.drawText ("NotificationComponent", getLocalBounds(),
+    g.drawText (m_message, getLocalBounds(),
                 juce::Justification::centred, true);   // draw some placeholder text
 }
 
@@ -48,4 +48,10 @@ void NotificationComponent::resized()
     // This method is where you should set the bounds of any child
     // components that your component contains..
 
+}
+
+void NotificationComponent::setMessage(const juce::String& message)
+{
+    m_message = message;
+    repaint();
 }
