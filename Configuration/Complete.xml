@@ -39,12 +39,12 @@
       <Patch name="Intro Diatonic 1" scene="2"> 507</Patch>
       <Patch name="Intro Diatonic 2" scene="3"> 507</Patch>
       <Patch name="La-Re-Mi" scene="5">0</Patch>
-      <Patch name="Arpeggio1" scene="1">389</Patch>
+      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
       <Patch name="Crescendo" scene="4">454</Patch>
       <Patch name="La" scene="2">443</Patch>
-      <Patch name="Arpeggio1" scene="1">389</Patch>
+      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
       <Patch name="La" scene="2">443</Patch>
-      <Patch name="Arpeggio1" scene="1">389</Patch>
+      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
       <Patch name="Crescendo" scene="4"> 454</Patch>
       <Patch name="Solo" scene="4"> 194</Patch>
       <Patch name="NotineSilenziose" scene="1">3</Patch>
@@ -52,7 +52,7 @@
       <Patch name="NotineSilenziose" scene="1">3</Patch>
       <Patch name="Slide" scene="2">331</Patch>
       <Patch name="NotineSilenziose" scene="1">3</Patch>
-      <Patch name="Arpeggio1" scene="1">389</Patch>
+      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
       <Patch name="LaReMiSi" scene="5">502</Patch>
       <Patch name="ArpFinale" scene="2"> 3</Patch>
     </Song>
@@ -302,6 +302,9 @@
     <Song name="Unquiet Slumbers"  >
       <Patch name="Classical" scene="1">347</Patch>
     </Song>
+    <Song name="The Musical Box" >
+      <Track name="The Musical Box.mp3"></Track>
+    </Song>
   </Library>
   <Library name="Solos">
     <Song name="Aqualung">
@@ -361,6 +364,7 @@
       <Patch name="MS KieselCrasher" scene="5">214</Patch>
       <Patch name="Multiband Dist Template" scene="1">215</Patch>
       <Patch name="Stuffed Crest" scene="3">477</Patch>
+      <Patch name="Always With Me" scene="4">092</Patch>
     </Song>
     <Song name="Dreamy">
       <Patch name="Texas Stars" scene="2">138</Patch>
