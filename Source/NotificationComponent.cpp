@@ -38,7 +38,7 @@ void NotificationComponent::paint (juce::Graphics& g)
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
 
     g.setColour (juce::Colours::white);
-    g.setFont (22.0f);
+    g.setFont (28.0f);
     g.drawText (m_message, getLocalBounds(),
                 juce::Justification::centred, true);   // draw some placeholder text
 }

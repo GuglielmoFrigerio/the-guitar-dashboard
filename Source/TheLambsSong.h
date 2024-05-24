@@ -40,6 +40,7 @@ private:    // fields
     int m_minVelocity = 127;
     std::unique_ptr<TriplePlayConnect> m_triplePlayConnectPtr;
     std::shared_ptr<MidiRecorder> m_midiRecorderPtr;
+    std::vector<juce::String> m_patchMessages;
 
     class BackgroungPlayerStateHandler {
     private:
@@ -81,6 +82,7 @@ private:
 
     void setupMidiRecorder();
     void stopMidiRecorder();
+    void loadPatchMessages(const juce::XmlElement* pPatchesElement);
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
@@ -94,7 +96,7 @@ public:
 
     void deactivate() override;
 
-    void selectProgramChange(int programChangeIndex) override;
+    juce::String selectProgramChange(int programChangeIndex) override;
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;
 
     std::tuple<int, int> getSelectedProgramInfo() const override;

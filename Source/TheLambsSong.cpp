@@ -175,6 +175,14 @@ void TheLambsSong::stopMidiRecorder()
     m_midiRecorderPtr = nullptr;
 }
 
+void TheLambsSong::loadPatchMessages(const juce::XmlElement* pSongElement)
+{
+    for (auto* pPatchElement : pSongElement->getChildWithTagNameIterator("Patch")) {
+        auto message = pPatchElement->getStringAttribute("message");
+        m_patchMessages.push_back(message);
+    }
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pVirtualBand)
     :   Song(pSongElement->getStringAttribute("name"))
 {
@@ -216,6 +224,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pV
     std::unique_ptr<Track> automationTrackPtr = std::make_unique<AutomationTrack>(pSongElement, this);
     if (automationTrackPtr->getEventCount() > 0)
         addTrack(automationTrackPtr);
+
+    loadPatchMessages(pSongElement);
 
     m_initialBpm = pSongElement->getIntAttribute("initialBpm");
 }
@@ -266,7 +276,7 @@ void TheLambsSong::deactivate()
     m_triplePlayConnectPtr = nullptr;
 }
 
-void TheLambsSong::selectProgramChange(int programChangeIndex)
+juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
     if (m_markerTrackPtr != nullptr) {
         auto& marker = m_markerTrackPtr->getMarker(programChangeIndex);
@@ -279,6 +289,11 @@ void TheLambsSong::selectProgramChange(int programChangeIndex)
     } else {
         DBG("[TheLambsSong::selectProgramChange] Missing MidiTrack pointer");
     }
+
+    if (programChangeIndex < m_patchMessages.size()) {
+        return  m_patchMessages[programChangeIndex];
+    }
+    return juce::String();
 }
 
 void TheLambsSong::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)

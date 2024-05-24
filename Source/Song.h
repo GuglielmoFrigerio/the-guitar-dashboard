@@ -52,7 +52,7 @@ public:
 
     virtual void deactivate();
 
-    virtual void selectProgramChange(int) {}
+    virtual juce::String selectProgramChange(int) { return juce::String(); }
     virtual void updateProgramChangesList(ProgramChangesComponent*) {}
     virtual std::tuple<int, int> getSelectedProgramInfo() const = 0;
 

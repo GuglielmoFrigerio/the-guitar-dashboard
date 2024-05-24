@@ -60,14 +60,13 @@ Song* SongCollection::activateSong(
     }
 }
 
-void SongCollection::selectProgramChange(int programChangeIndex)
+juce::String SongCollection::selectProgramChange(int programChangeIndex)
 {
     if (m_currentSongIndex >= -1 && m_currentSongIndex < m_songs.size()) {
-        m_songs[m_currentSongIndex]->selectProgramChange(programChangeIndex);
+        return m_songs[m_currentSongIndex]->selectProgramChange(programChangeIndex);
     }
-    else {
-        DBG("[SongCollection::selectProgramChange] index is out bounds");
-    }
+    DBG("[SongCollection::selectProgramChange] index is out bounds");
+    return juce::String();
 }
 
 void SongCollection::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)

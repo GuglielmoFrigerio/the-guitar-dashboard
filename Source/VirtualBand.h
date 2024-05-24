@@ -62,7 +62,7 @@ public: // interface
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
     void activateSong(int songIndex);
-    void selectProgramChange(int programChangeIndex);
+    juce::String selectProgramChange(int programChangeIndex);
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);

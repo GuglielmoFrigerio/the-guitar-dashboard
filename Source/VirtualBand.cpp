@@ -187,9 +187,9 @@ void VirtualBand::activateSong(int songIndex)
     m_pActiveSong = m_songCollectionPtr->activateSong(songIndex, &m_formatManager, &m_transportSource, m_pPlayerComponent, m_pSongListComponent);
 }
 
-void VirtualBand::selectProgramChange(int programChangeIndex)
+juce::String VirtualBand::selectProgramChange(int programChangeIndex)
 {
-    m_songCollectionPtr->selectProgramChange(programChangeIndex);
+    return m_songCollectionPtr->selectProgramChange(programChangeIndex);
 }
 
 void VirtualBand::prepareToPlay(int samplesPerBlockExpected, double sampleRate)

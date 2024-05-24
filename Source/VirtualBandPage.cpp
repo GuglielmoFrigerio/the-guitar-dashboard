@@ -175,7 +175,10 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
         m_virtualBandPtr->activateSong(songIndex);
         m_virtualBandPtr->updateProgramChangesList(&m_programChangesComponent);
     };
-    m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { m_virtualBandPtr->selectProgramChange(programChangeIndex); };
+    m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { 
+        auto patchMessage = m_virtualBandPtr->selectProgramChange(programChangeIndex); 
+        m_notificationComponent.setMessage(patchMessage);
+    };
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
     addKeyListener(this);

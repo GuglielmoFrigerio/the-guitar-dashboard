@@ -38,6 +38,6 @@ public:
         PlayerComponent* pPlayerComponent,
         SongListComponent* pSongListComponent);
 
-    void selectProgramChange(int programChangeIndex);
+    juce::String selectProgramChange(int programChangeIndex);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
 };
