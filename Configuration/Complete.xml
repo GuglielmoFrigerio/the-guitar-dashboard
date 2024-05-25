@@ -169,7 +169,7 @@
         <Marker> 00:05:25</Marker>
       </Track>
       <!--<Patch name="Intro" scene="1">491</Patch>-->
-      <Patch name="Intro" scene="1">510</Patch>
+      <Patch name="Intro" scene="2">99</Patch>
       <Patch name="Re min" scene="1">503</Patch>
       <Patch name="SIb+ Do+ Envelope " scene="2">503</Patch>
       <Patch name="Strumming" scene="1">503</Patch>
