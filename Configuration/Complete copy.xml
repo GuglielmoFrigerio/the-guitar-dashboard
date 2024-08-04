@@ -7,8 +7,8 @@
         <Marker>00:03:04</Marker>
         <Marker>00:05:47</Marker>
       </Track>
-      <Patch name="base crescendo" scene="1" >460</Patch>
-      <Patch name="solo" scene="2" >460</Patch>
+      <Patch name="base crescendo" scene="1">460</Patch>
+      <Patch name="solo" scene="2">460</Patch>
       <Patch name="base" scene="1">460</Patch>
       <Patch name="envelope (Sol# - Fa)" scene="8"> 462</Patch>
       <Patch name="base" scene="1">460</Patch>
@@ -32,19 +32,17 @@
       <Patch name="Cuckoon" scene="2">492</Patch>
     </Song>
     <Song name="Get'em Out By Friday">
-      <Track name="Get 'Em Out By Friday.mp3" >
-        <Marker>00:03:50</Marker>
-      </Track>
-      <Patch name="Intro" scene="1" message="Pedale Sx al Minimo!">507</Patch>
+      <Track name="Get 'Em Out By Friday.mp3" message="Pedale Sx al Minimo!" />
+      <Patch name="Intro" scene="1">507</Patch>
       <Patch name="Intro Diatonic 1" scene="2"> 507</Patch>
       <Patch name="Intro Diatonic 2" scene="3"> 507</Patch>
       <Patch name="La-Re-Mi" scene="5">0</Patch>
-      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
+      <Patch name="Arpeggio1" scene="1">389</Patch>
       <Patch name="Crescendo" scene="4">454</Patch>
       <Patch name="La" scene="2">443</Patch>
-      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
+      <Patch name="Arpeggio1" scene="1">389</Patch>
       <Patch name="La" scene="2">443</Patch>
-      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
+      <Patch name="Arpeggio1" scene="1">389</Patch>
       <Patch name="Crescendo" scene="4"> 454</Patch>
       <Patch name="Solo" scene="4"> 194</Patch>
       <Patch name="NotineSilenziose" scene="1">3</Patch>
@@ -52,7 +50,7 @@
       <Patch name="NotineSilenziose" scene="1">3</Patch>
       <Patch name="Slide" scene="2">331</Patch>
       <Patch name="NotineSilenziose" scene="1">3</Patch>
-      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
+      <Patch name="Arpeggio1" scene="1">389</Patch>
       <Patch name="LaReMiSi" scene="5">502</Patch>
       <Patch name="ArpFinale" scene="2"> 3</Patch>
     </Song>
@@ -63,17 +61,17 @@
         <Marker>00:05:40</Marker>
       </Track>
       <Patch name="Intro" scene="1" playOnNote="47" minVelocity="50"> 509</Patch>
-      <Patch name="Acoustic" scene="8" beat="64" click="0"> 470</Patch>
-      <Patch name="Reprise" scene="2" beat="72" click="0"> 509</Patch>
-      <Patch name="Acoustic" scene="8" beat="86" click="0"> 470</Patch>
+      <Patch name="Acoustic" scene="8" click="64" offset="0"> 470</Patch>
+      <Patch name="Reprise" scene="2" click="72" offset="0"> 509</Patch>
+      <Patch name="Acoustic" scene="8" click="86" offset="0"> 470</Patch>
       <Patch name="Intro" scene="1">509</Patch>
       <Patch name="Slide" scene="1">471</Patch>
       <Patch name="Trillo" scene="1" action="stop"> 509</Patch>
       <Patch name="Solo" scene="8">318</Patch>
       <Patch name="Finale" scene="1"> 509</Patch>
       <Samples>
-        <Sample name="fof-vocal-1.wav" beat="0" click="0" outputTrack="1" volume="-10" />
-        <Sample name="fof-vocal-2.wav" beat="7" click="270" />
+        <Sample name="fof-vocal-1.wav" click="0" offset="0" />
+        <Sample name="fof-vocal-2.wav" click="7" offset="270" />
       </Samples>
     </Song>
     <Song name="Lilywhite Lilith">
@@ -84,30 +82,23 @@
       <Patch name="Rito" scene="1">370</Patch>
       <Patch name="Solo" scene="8">370</Patch>
     </Song>
-    <Song name="Anyway" metronomeBeats="0" initialBpm="78">
-      <Track name="Anyway - Genesis.mp3" >
-        <Marker> 00:01:23</Marker>
-      </Track>
+    <Song name="Anyway" metronome="false">
+      <Track name="Anyway - Genesis.mp3" />
       <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
-      <Patch name="Sol" scene="6" action="stop" >485</Patch>
+      <Patch name="Sol" scene="6" action="stop">485</Patch>
       <Patch name="Enfasi" scene="7">485</Patch>
       <Patch name="Solo" scene="1"> 476</Patch>
       <Patch name="Mute 2" scene="6" action="stop" playOnNote="48" minVelocity="50">206</Patch>
       <Samples>
-        <Sample name="Anyway - controcanto 1.wav" beat="0" click="0" volume="6" />
-        <Sample name="Anyway - controcanto 2.wav" beat="4" click="1" volume="6" />
+        <Sample name="Anyway - controcanto 1.wav" click="0" offset="0" />
+        <Sample name="Anyway - controcanto 2.wav" click="4" offset="1" />
       </Samples>
     </Song>
-    <Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">
+    <Song name="Here Comes the Supernatural Anaesthetist">
       <Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
       <Patch name="Clean Intro" scene="1"> 439</Patch>
-      <Patch name="Clean Intro" scene="1" beat="4" click="0"> 439</Patch>
-      <Patch name="Solo" scene="8" beat="64" click="0">222</Patch>
+      <Patch name="Solo" scene="8">222</Patch>
       <Patch name="Solo Finale" scene="1">31</Patch>
-      <AutomationEvent beat="60" click="0" action="stop"></AutomationEvent>
-      <Samples>
-        <Sample name="Supernatural Vocal.wav" beat="0" click="0" />
-      </Samples>
     </Song>
     <Song name="The Lamia" initialBpm="64" preCount="On">
       <Track name="The Lamia - Genesis.mp3" />
@@ -144,7 +135,7 @@
         <Marker>00:01:36</Marker>
         <Marker>00:10:49</Marker>
       </Track>
-      <Patch name="Intro" scene="1">28</Patch>
+      <Patch name="Intro" scene="1">92</Patch>
       <Patch name="Prima parte" scene="3"> 449</Patch>
       <Patch name="Seconda parte" scene="4">449</Patch>
       <Patch name="Wah" scene="5">449</Patch>
@@ -160,7 +151,7 @@
       <Patch name="No Delay" scene="4"> 234</Patch>
       <Patch name="Solo" scene="8">317</Patch>
       <Samples>
-        <Sample name="EppingTapping.wav" beat="2" click="0" />
+        <Sample name="EppingTapping.wav" click="2" offset="0" />
       </Samples>
     </Song>
     <Song name="Can Utility">
@@ -168,8 +159,7 @@
         <Marker>00:04:30</Marker>
         <Marker> 00:05:25</Marker>
       </Track>
-      <!--<Patch name="Intro" scene="1">491</Patch>-->
-      <Patch name="Intro" scene="2">99</Patch>
+      <Patch name="Intro" scene="1"> 491</Patch>
       <Patch name="Re min" scene="1">503</Patch>
       <Patch name="SIb+ Do+ Envelope " scene="2">503</Patch>
       <Patch name="Strumming" scene="1">503</Patch>
@@ -260,58 +250,10 @@
       <Patch name="Dist" scene="1">220</Patch>
     </Song>
     <Song name="I Know What I Like">
-      <Track name="I Know What I Like.mp3"> </Track>
+      <Track name="I Know What I Like.mp3">
+      </Track>
       <Patch name="Pong Chorus" scene="1">99</Patch>
       <Patch name="Wha Wha" scene="1">210</Patch>
-    </Song>
-    <Song name="Dance on a volcano">
-      <Track name="Genesis Dance on a Volcano.mp3"></Track>
-      <Patch name="Arpeggio" scene="5">209</Patch>
-      <Patch name="LA#" scene="5">273</Patch>
-      <Patch name="Arpeggio" scene="5">209</Patch>
-      <Patch name="LA#" scene="5">273</Patch>
-      <Patch name="Arpeggio" scene="5">209</Patch>
-      <Patch name="Mugugno 1" scene="5">227</Patch>
-      <Patch name="LA#" scene="5">273</Patch>
-      <Patch name="Arpeggio" scene="5">209</Patch>
-      <Patch name="LA#" scene="5">273</Patch>
-      <Patch name="Fly" scene="3">238</Patch>
-      <Patch name="Intro" scene="1">236</Patch>
-      <Patch name="Envelope" scene="5">237</Patch>
-      <Patch name="Strumming" scene="1"> 236</Patch>
-      <Patch name="Dist" scene="1">220</Patch>
-      <Patch name="Intro" scene="1">236</Patch>
-      <Patch name="Dist" scene="1">220</Patch>
-    </Song>
-    <Song name="The Great Gig" initialBpm="65" metronomeBeats="0" >
-      <Track name="The Great Gig.mp3"></Track>
-      <Patch name="Slide" playOnNote="60" minVelocity="50" scene="1">200</Patch>
-      <Patch name="Slide" beat="3" click="0" scene="1" action="stop" playOnNote="62" minVelocity="50">200</Patch>
-      <Patch name="Slide" beat="6" click="0" scene="1" action="stop" playOnNote="67" minVelocity="50">200</Patch>
-      <Patch name="Slide" beat="8" click="0" scene="1" action="stop" playOnNote="62" minVelocity="50">200</Patch>
-      <Patch name="Slide" beat="11" click="0" scene="1" action="stop" playOnNote="65" minVelocity="50">200</Patch>
-      <Patch name="Slide" beat="14" click="0" scene="1" action="stop" playOnNote="65" minVelocity="50">200</Patch>
-      <Samples>
-        <Sample name="tgg-1.wav" beat="0" click="0" />
-        <Sample name="tgg-2.wav" beat="3" click="1" />
-        <Sample name="tgg-3.wav" beat="6" click="1" />
-        <Sample name="tgg-2.wav" beat="8" click="1" />
-        <Sample name="tgg-4.wav" beat="11" click="1" />
-      </Samples>
-    </Song>
-    <Song name="Unquiet Slumbers"  >
-      <Patch name="Classical" scene="1">347</Patch>
-    </Song>
-    <Song name="The Musical Box" >
-      <Track name="The Musical Box.mp3"></Track>
-      <Patch name="Strumming" scene="1"> 125</Patch>
-      <Patch name="Intro" scene="1">456</Patch>
-      <Patch name="Acoustic" scene="8" beat="64" click="0"> 470</Patch>
-      <Patch name="Arpeggio 2" scene="2"> 464</Patch>
-      <Patch name="Musical Box 1" scene="1">211</Patch>
-      <Patch name="Strumming" scene="1">99</Patch>
-      <Patch name="Boh" scene="1">226</Patch>
-      <Patch name="Rumblin' Teles!" scene="6">279</Patch>
     </Song>
   </Library>
   <Library name="Solos">
@@ -321,8 +263,6 @@
       </Track>
       <Patch name="default" scene="2">223</Patch>
       <Patch name="PLINI" scene="8">484</Patch>
-      <Patch name="Stuffed Crest" scene="3">477</Patch>
-      <Patch name="ALLSORTS FW: 26.00" scene="2">162</Patch>
     </Song>
     <Song name="Pink Floyd - Confortably Numb">
       <Track name="Pink Floyd - Comfortably Numb (Guitar Backing Track).mp3">
@@ -345,44 +285,19 @@
       <Patch name="PLINI" scene="8">484</Patch>
     </Song>
     <Song name="Easter Marillion">
-      <Track name="Easter Marillion"></Track>
-      <Patch name="PLINI" scene="8">484</Patch>
-    </Song>
-    <Song name="Message in the Bottle">
-      <Track name="The Police - Message In a Bottle Guitar Backing Track (No Guitar).mp3"></Track>
-      <Patch name="Message in the Bottle" scene="1">114</Patch>
+      <Track name="Easter Marillion">
+        <Patch name="PLINI" scene="8">484</Patch>
+      </Track>
     </Song>
   </Library>
   <Library name="Improvvisations">
     <Song name="D mixolydian backing track">
       <Track name="D mixolydian backing track.mp3"></Track>
       <Patch name="PLINI" scene="8">484</Patch>
-      <Patch name="JP2Cat" scene="1">112</Patch>
-      <Patch name="Rumblin' Teles!" scene="6">279</Patch>
     </Song>
     <Song name="Cruising Smooth Groove Guitar Backing Track Jam in E Minor">
       <Track name="Cruising Smooth Groove Guitar Backing Track Jam in E Minor.mp3"> </Track>
       <Patch name="PLINI" scene="8">484</Patch>
-    </Song>
-  </Library>
-  <Library name="Tones">
-    <Song name="Epics">
-      <Patch name="Dream Theater Rig" scene="4">146</Patch>
-      <Patch name="PLINI" scene="8">484</Patch>
-      <Patch name="Ed, Stevie, Jimi and Howard" scene="1">140</Patch>
-      <Patch name="MS KieselCrasher" scene="5">214</Patch>
-      <Patch name="Multiband Dist Template" scene="1">215</Patch>
-      <Patch name="Stuffed Crest" scene="3">477</Patch>
-      <Patch name="Always With Me" scene="4">092</Patch>
-      <Patch name="Comfortably Numb P.U.L.S.E" scene="1">169</Patch>
-      <Patch name="ALLSORTS FW: 26.00" scene="2">162</Patch>
-      <Patch name="76 Uxbridge Road 25.04" scene="3">161</Patch>
-    </Song>
-    <Song name="Dreamy">
-      <Patch name="Texas Stars" scene="2">138</Patch>
-    </Song>
-    <Song name="Clean">
-      <Patch name="Acoustic / Vocals" scene="1">494</Patch>
     </Song>
   </Library>
 </AxeFxIII>
