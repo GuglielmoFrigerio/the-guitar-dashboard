@@ -36,7 +36,6 @@ private:    // fields
     ProgramChangesComponent* m_pProgramChangeComponent;
     std::atomic<bool> m_devicesLoaded;
     std::atomic<bool> m_songLibraryFileReady;
-    juce::File m_inputFile;
     Song* m_pActiveSong = nullptr;
     juce::String m_resourcesPath;
     SampleEngine m_sampleEngine;
@@ -44,12 +43,15 @@ private:    // fields
     std::unique_ptr<MidiDevice> m_nullMidiDevice;
     juce::ComboBox& m_librariesComboBox;
     AudioRecorder m_audioRecorder;
+    std::unique_ptr<juce::XmlElement> m_configElementPtr;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
     void onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mode);
     void loadSongCollection(juce::StringRef collectionName);
     juce::String loadLibraries();
+    void loadConfig();
+    void sendBoxTest();
 
     static juce::String makeResourcePath();
 
@@ -57,7 +59,7 @@ public: // interface
     VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox, juce::AudioDeviceManager& deviceManager);
 
     void loadDevices();
-    void loadSongLibrary(const juce::File& inputFile);
+    void loadSongLibrary();
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);

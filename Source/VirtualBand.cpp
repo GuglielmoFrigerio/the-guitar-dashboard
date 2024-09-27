@@ -59,19 +59,41 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
     m_sampleEngine.stopAll();
 }
 
+void VirtualBand::loadConfig()
+{
+    juce::MemoryBlock mb(BinaryData::Libraries_xml, BinaryData::Libraries_xmlSize);
+    
+    juce::String content = mb.toString();
+    m_configElementPtr = juce::XmlDocument::parse(content);
+}
+
+void VirtualBand::sendBoxTest() {
+    juce::File f(juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getFullPathName() + juce::File::getSeparatorString() + "sandbox-example.txt");
+    
+    auto exists = f.existsAsFile();
+    
+    if (!exists) {
+        if (f.create().ok()) {
+            f.replaceWithText("Here comes the flood");
+            juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::InfoIcon, "Created", "File sandbox-example.txt has been created");
+        }
+    } else {
+        auto content = f.loadFileAsString();
+        DBG("File sandbox-example.txt already exists. Content: " << content);
+        juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::InfoIcon, "Read", content);
+    }
+}
+
 void VirtualBand::loadSongCollection(juce::StringRef collectionName)
 {
-    juce::XmlDocument configDocument(m_inputFile);
-
-    auto rootElementPtr = configDocument.getDocumentElement();
-    if (rootElementPtr != nullptr) {
+    if (m_configElementPtr != nullptr) {
 
         if (m_pActiveSong != nullptr) {
             m_transportSource.setSource(nullptr);
             m_pActiveSong->deactivate();
         }
 
-        auto pLibraryElement = getChildWithAttribute(rootElementPtr.get(), "name", collectionName);
+        auto pLibraryElement = getChildWithAttribute(m_configElementPtr.get(), "name", collectionName);
         m_songCollectionPtr = SongCollection::loadFromLibraryElement(pLibraryElement, this);
         m_pSongListComponent->update(m_songCollectionPtr.get());
     }
@@ -79,10 +101,7 @@ void VirtualBand::loadSongCollection(juce::StringRef collectionName)
 
 juce::String VirtualBand::loadLibraries()
 {
-    juce::XmlDocument configDocument(m_inputFile);
-
     m_librariesComboBox.clear();
-
     juce::String defaultLibraryName;
 
     m_librariesComboBox.onChange = [this] {
@@ -92,9 +111,8 @@ juce::String VirtualBand::loadLibraries()
     };
 
     auto index = 1;
-    auto rootElementPtr = configDocument.getDocumentElement();
-    if (rootElementPtr != nullptr) {
-        enumChildElements(rootElementPtr.get(), "Library", [this, &index, &defaultLibraryName](const juce::XmlElement* pChildElement) {
+    if (m_configElementPtr != nullptr) {
+        enumChildElements(m_configElementPtr.get(), "Library", [this, &index, &defaultLibraryName](const juce::XmlElement* pChildElement) {
             auto value = pChildElement->getStringAttribute("name");
             if (index == 1)
                 defaultLibraryName = value;
@@ -149,6 +167,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     m_nullMidiDevice = std::make_unique<NullMidiDevice>();
 
     deviceManager.addAudioCallback(&m_audioRecorder);
+    
+    loadConfig();
 }
 
 void VirtualBand::loadDevices()
@@ -160,9 +180,8 @@ void VirtualBand::loadDevices()
     });
 }
 
-void VirtualBand::loadSongLibrary(const juce::File& inputFile)
+void VirtualBand::loadSongLibrary()
 {
-    m_inputFile = inputFile;
     m_songLibraryFileReady = true;
 }
 
