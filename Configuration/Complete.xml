@@ -330,6 +330,7 @@
       </Track>
       <Patch name="PLINI" scene="8">484</Patch>
       <Patch name="Solo Finale" scene="8">224</Patch>
+      <Patch name="Comfortably Numb P.U.L.S.E" scene="1">169</Patch>
     </Song>
     <Song name="Pink Floyd - Time">
       <Track name="Pink Floyd - Time (solo backing track).mp3"></Track>
@@ -338,6 +339,10 @@
     <Song name="Pink Floyd - Money">
       <Track name="Backing Track Guitar - Money solo - Pink Floyd.mp3"> </Track>
       <Patch name="PLINI" scene="8">484</Patch>
+    </Song>
+    <Song name="Another Brick In The Wall">
+      <Track name="Pink Floyd - Another Brick In The Wall  Solo Backing Track.mp3"></Track>
+      <Patch namw="AHB-Pink-F-AnotherBrickInTheWall" scene="2">219</Patch>
     </Song>
     <Song name="Hotel California">
       <Track name="hotel California guitar solo backing track.mp3"></Track>
@@ -350,6 +355,10 @@
     <Song name="Message in the Bottle">
       <Track name="The Police - Message In a Bottle Guitar Backing Track (No Guitar).mp3"></Track>
       <Patch name="Message in the Bottle" scene="1">114</Patch>
+    </Song>
+    <Song name="Roxanne">
+      <Patch name="ChimeyEchos" scene="1">160</Patch>
+      <Patch name="DancingHumming" scene="1">226</Patch>
     </Song>
   </Library>
   <Library name="Improvvisations">
@@ -376,12 +385,19 @@
       <Patch name="Comfortably Numb P.U.L.S.E" scene="1">169</Patch>
       <Patch name="ALLSORTS FW: 26.00" scene="2">162</Patch>
       <Patch name="76 Uxbridge Road 25.04" scene="3">161</Patch>
+      <Patch name="Kermit's Rig" scene="7">290</Patch>
+      <Patch name="DB : EVH W/D/W 2015 TOUR" scene="1">280</Patch>
+      <Patch name="Crunch Chorus" scene="1">129</Patch>
+      <Patch name="JV M5 LIVE 2024" scene="4">133</Patch>
+      <Patch name="JV M5 LIVE 2024 2" scene="5">133</Patch>
+      <Patch name="DynamoFlanger" scene="1">182</Patch>
     </Song>
     <Song name="Dreamy">
       <Patch name="Texas Stars" scene="2">138</Patch>
     </Song>
     <Song name="Clean">
       <Patch name="Acoustic / Vocals" scene="1">494</Patch>
+      <Patch name="Ultraverb" scene="1">148</Patch>
     </Song>
   </Library>
 </AxeFxIII>
