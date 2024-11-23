@@ -24,7 +24,7 @@ class PlayerComponent;
 enum class PlayerState;
 enum class PlayerMode;
 
-class VirtualBand : public IDeviceHost, public juce::ChangeListener
+class VirtualBand : public IDeviceHost, public juce::ChangeListener, public juce::URL::DownloadTaskListener
 {
 private:    // fields
     std::unique_ptr<SongCollection> m_songCollectionPtr;
@@ -52,6 +52,9 @@ private:    // implementation
     juce::String loadLibraries();
     void loadConfig();
     void sendBoxTest();
+    void downloadTest();
+    void finished (juce::URL::DownloadTask *task, bool success) override;
+    void progress (juce::URL::DownloadTask *task, juce::int64 bytesDownloaded, juce::int64 totalLength) override;
 
     static juce::String makeResourcePath();
 

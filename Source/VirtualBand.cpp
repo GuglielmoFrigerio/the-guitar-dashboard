@@ -67,6 +67,48 @@ void VirtualBand::loadConfig()
     m_configElementPtr = juce::XmlDocument::parse(content);
 }
 
+
+void VirtualBand::finished (juce::URL::DownloadTask *task, bool success) {
+    
+}
+
+void VirtualBand::progress (juce::URL::DownloadTask *task, juce::int64 bytesDownloaded, juce::int64 totalLength) {
+    DBG("bytesDownloaded: " << bytesDownloaded << " totalLength: " << totalLength);
+}
+
+void VirtualBand::downloadTest() {
+    
+    juce::URL testUrl("https://www.google.com");
+    auto content = testUrl.readEntireTextStream();
+    
+    juce::URL binaryUrl("https://link.testfile.org/PDF20MB");
+    
+    auto inputStream = binaryUrl.createInputStream(juce::URL::InputStreamOptions (juce::URL::ParameterHandling::inAddress));
+    
+    juce::WebInputStream* pWebInputStream = dynamic_cast<juce::WebInputStream*>(inputStream.get());
+    if (pWebInputStream != nullptr){
+        char buffer[256];
+        auto readCount = pWebInputStream->InputStream::read(buffer, sizeof(buffer));
+        DBG(readCount);
+    }
+    
+    auto appGroup = "group.guitarAppGroup";
+    juce::File downloadDestination = juce::File::getContainerForSecurityApplicationGroupIdentifier(appGroup);
+    juce::File f = downloadDestination.getChildFile("archive.zip");
+    
+    auto exists = f.existsAsFile();
+    if (exists)
+        f.deleteFile();
+    
+    auto dnlOpts = juce::URL::DownloadTaskOptions()
+        .withSharedContainer(appGroup)
+        .withListener(this);
+
+    juce::URL download("https://link.testfile.org/PDF20MB");
+
+    auto downloadTask = download.downloadToFile(f, dnlOpts);
+}
+
 void VirtualBand::sendBoxTest() {
     juce::File f(juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory).getFullPathName() + juce::File::getSeparatorString() + "sandbox-example.txt");
     
@@ -169,6 +211,8 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     deviceManager.addAudioCallback(&m_audioRecorder);
     
     loadConfig();
+    
+    downloadTest();
 }
 
 void VirtualBand::loadDevices()
