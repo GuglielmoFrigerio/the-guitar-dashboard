@@ -88,10 +88,10 @@
       <Track name="Anyway - Genesis.mp3" >
         <Marker> 00:01:23</Marker>
       </Track>
-      <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50">206</Patch>
-      <Patch name="Sol" scene="6" action="stop" >485</Patch>
-      <Patch name="Enfasi" scene="7">485</Patch>
-      <Patch name="Solo" scene="1"> 476</Patch>
+      <Patch name="Mute" scene="1" playOnNote="47" minVelocity="50" message="Pedale al massimo!">206</Patch>
+      <Patch name="Sol" scene="6" action="stop" message="Pedale al massimo!">485</Patch>
+      <Patch name="Enfasi" scene="7" message="Pedale al massimo!">485</Patch>
+      <Patch name="Solo" scene="1" > 476</Patch>
       <Patch name="Mute 2" scene="6" action="stop" playOnNote="48" minVelocity="50">206</Patch>
       <Samples>
         <Sample name="Anyway - controcanto 1.wav" beat="0" click="0" volume="6" />
@@ -375,7 +375,7 @@
   </Library>
   <Library name="Tones">
     <Song name="Epics">
-      <Patch name="Dream Theater Rig" scene="4">146</Patch>
+      <Patch name="Dream Theater Rig (Easter)" scene="4">146</Patch>
       <Patch name="PLINI" scene="8">484</Patch>
       <Patch name="Ed, Stevie, Jimi and Howard" scene="1">140</Patch>
       <Patch name="MS KieselCrasher" scene="5">214</Patch>
@@ -394,6 +394,7 @@
     </Song>
     <Song name="Dreamy">
       <Patch name="Texas Stars" scene="2">138</Patch>
+      <Patch name="Pat Metheny" scene="2">358</Patch>
     </Song>
     <Song name="Clean">
       <Patch name="Acoustic / Vocals" scene="1">494</Patch>
