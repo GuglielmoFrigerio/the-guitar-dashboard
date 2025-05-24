@@ -211,7 +211,7 @@
 			<Patch name="Intro Diatonic 1" scene="2"> 507</Patch>
 			<Patch name="Intro Diatonic 2" scene="3"> 507</Patch>
 			<Patch name="La-Re-Mi" scene="5">0</Patch>
-			<Patch name="Acoustic / Vocals" scene="1">494</Patch>
+			<Patch name="Acoustic / Vocals" scene="1">4</Patch>
 			<Patch name="Crescendo" scene="4">454</Patch>
 			<Patch name="La" scene="2">443</Patch>
 			<Patch name="Acoustic / Vocals" scene="1">494</Patch>
@@ -301,8 +301,20 @@
 			<Patch name="Si b" scene="1"> 496</Patch>
 			<Patch name="Reprise" scene="8">501</Patch>
 			<Patch name="Power Chords" scene="1">383</Patch>
+			<Patch name="Clean Bridge" scene="1">134</Patch>
+			<Patch name="Solo" scene="8">135</Patch>
 		</Song>
-		<Song name="Lilywhite Lilith">
+		<Song name="In the Cage Live">
+		  <Track name="In the Cage (Medley_ Cinema Show  The Colony of Slippermen) (Live) (1994 Remaster).mp3"></Track>
+		  <Patch name="Intro" scene="8">501</Patch>
+		  <Patch name="Power Chords" scene="1">383</Patch>
+		  <Patch name="Si b" scene="1"> 496</Patch>
+		  <Patch name="Reprise" scene="8">501</Patch>
+		  <Patch name="Power Chords" scene="1">248</Patch>
+		  <Patch name="Clean Bridge" scene="1">134</Patch>
+		  <Patch name="Solo" scene="8">135</Patch>
+		</Song>
+    <Song name="Lilywhite Lilith">
 			<Track name="Lilywhite Lilith - Genesis.mp3"></Track>
 			<Patch name="Intro" scene="8"> 370</Patch>
 			<Patch name="Rito" scene="1">370</Patch>
