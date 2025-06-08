@@ -245,7 +245,11 @@ void TheLambsSong::activate(
         auto trackPath = getTrackPath();
         auto file = applicationFolder.getChildFile(trackPath);
         if (file != juce::File{}) {
-            auto* pReader = pAudioFormatManager->createReaderFor(file);
+            std::unique_ptr<juce::InputStream>misPtr = std::make_unique<juce::MemoryInputStream> (
+                       BinaryData::Dancing_With_The_Moonlight_Knight_2008__Remaster_mp3,
+                       BinaryData::Dancing_With_The_Moonlight_Knight_2008__Remaster_mp3Size, false);
+            
+            auto* pReader = pAudioFormatManager->createReaderFor(std::move(misPtr));
 
             if (pReader != nullptr) {
                 auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
