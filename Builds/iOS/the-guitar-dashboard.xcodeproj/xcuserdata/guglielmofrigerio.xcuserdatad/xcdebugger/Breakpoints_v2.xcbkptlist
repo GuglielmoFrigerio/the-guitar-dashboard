@@ -39,32 +39,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8F6EC247-6311-4CAA-B613-E001D7EEB62D"
+            uuid = "E07CC468-390A-4264-9BD8-C947242D336B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../Source/VirtualBand.cpp"
+            filePath = "../../Source/TheLambsSong.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "VirtualBand::finished(task, success)"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "TheLambsSong::activate(pAudioFormatManager, pAudioTransportSource, pPlayerComponent, pSongListComponent)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3E836BD3-84CD-45E2-86AE-56350828F568"
+            uuid = "D822DB9E-BCA0-4D88-B155-55D7CE7D63CB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../Source/VirtualBand.cpp"
+            filePath = "../../Source/TheLambsSong.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "VirtualBand::downloadTest()"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "TheLambsSong::activate(pAudioFormatManager, pAudioTransportSource, pPlayerComponent, pSongListComponent)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

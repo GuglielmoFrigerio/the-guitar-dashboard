@@ -5,9 +5,14 @@
               jucerFormatVersion="1" cppLanguageStandard="20">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
     <GROUP id="{7C3AE84D-7970-4FA1-B7E8-E6DD17776479}" name="Configuration">
-      <FILE id="FUeIjl" name="Complete.xml" compile="0" resource="1" file="Configuration/Complete.xml"/>
+      <FILE id="FEHFuD" name="Complete.xml" compile="0" resource="1" file="Builds/iOS/Complete.xml"/>
     </GROUP>
     <GROUP id="{07B5428B-B9D6-8BD7-3654-5B21780B1B06}" name="Resources">
+      <GROUP id="{36F728DD-72D7-406A-F29C-37DDAF1C3D08}" name="Tracks">
+        <FILE id="W5lj2H" name="Dancing With The Moonlight Knight (2008 - Remaster).mp3"
+              compile="0" resource="0" file="Resources/Tracks/Dancing With The Moonlight Knight (2008 - Remaster).mp3"
+              xcodeResource="1"/>
+      </GROUP>
       <GROUP id="{B9F8893E-ABE5-BD3A-5A77-9B8E7278D8DE}" name="Images">
         <FILE id="rtxop6" name="backward.png" compile="0" resource="1" file="Resources/Images/backward.png"/>
         <FILE id="E1ZZ7p" name="component-background-example.png" compile="0"
@@ -17,6 +22,7 @@
         <FILE id="BES6Az" name="play.png" compile="0" resource="1" file="Resources/Images/play.png"/>
         <FILE id="WrnKL9" name="stop.png" compile="0" resource="1" file="Resources/Images/stop.png"/>
       </GROUP>
+      <FILE id="Z0YX7y" name="Libraries.xml" compile="0" resource="1" file="Builds/iOS/Libraries.xml"/>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
       <FILE id="lWLun9" name="MidiRecorder.cpp" compile="1" resource="0"
@@ -278,6 +284,31 @@
         <MODULEPATH id="juce_gui_extra" path="C:\JUCE\modules"/>
       </MODULEPATHS>
     </VS2022>
+    <XCODE_IPHONE targetFolder="Builds/iOS" UIFileSharingEnabled="1" UISupportsDocumentBrowser="1"
+                  microphonePermissionNeeded="1" microphonePermissionsText="Recording"
+                  cameraPermissionNeeded="1" cameraPermissionText="recording feature"
+                  iosBluetoothPermissionNeeded="1" iosBluetoothPermissionText="midi access"
+                  iosContentSharing="1" iosBackgroundAudio="1" iosBackgroundBle="1"
+                  iCloudPermissions="0" networkingMulticast="0" iosAppGroups="1"
+                  iosAppGroupsId="group.guitarAppGroup">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="~/Projects/Guglielmo/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

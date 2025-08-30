@@ -40,7 +40,6 @@ private:    // fields
 
 private:    // implementation
     void chooseSongLibrary();
-    void loadSongLibrary(juce::File& file);
     void onFirstResized();
     void releaseResources() override;
     void timerCallback() override;

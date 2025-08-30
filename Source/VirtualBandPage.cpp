@@ -22,16 +22,21 @@ void VirtualBandPage::chooseSongLibrary()
         | juce::FileBrowserComponent::canSelectFiles;
 
     m_chooserPtr->launchAsync(chooserFlags, [this](const juce::FileChooser& fc)
-        {
-            auto file = fc.getResult();
+    {
+        auto file = fc.getResult();
+        auto fullPath = file.getFullPathName();
+        DBG(fullPath);
+        auto exists = file.existsAsFile();
+        auto content = file.loadFileAsString();
 
-            if (file != juce::File{})
-            {
-                auto pPropertiesFile = m_properties.getUserSettings();
-                pPropertiesFile->setValue("AxeFx3ConfigurationFile", file.getFullPathName());
-                loadSongLibrary(file);
-            }
-        });
+        if (file != juce::File{})
+        {
+            juce::XmlDocument document (file);
+            auto rootElement = document.getDocumentElement();
+            auto message = document.getLastParseError();
+            DBG(message);
+        }
+    });
 }
 
 bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originatingComponent)
@@ -85,19 +90,9 @@ void VirtualBandPage::previousMarker()
     m_virtualBandPtr->previousMarker();
 }
 
-void VirtualBandPage::loadSongLibrary(juce::File& file)
-{
-    m_virtualBandPtr->loadSongLibrary(file);
-}
-
 void VirtualBandPage::onFirstResized()
 {
-    auto pPropertiesFile = m_properties.getUserSettings();
-    auto value = pPropertiesFile->getValue("AxeFx3ConfigurationFile");
-    if (value.length() > 0) {
-        auto file = juce::File(value);
-        loadSongLibrary(file);
-    }
+    m_virtualBandPtr->loadSongLibrary();
 }
 
 void VirtualBandPage::releaseResources()

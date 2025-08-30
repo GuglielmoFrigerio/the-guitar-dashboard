@@ -241,24 +241,37 @@ void TheLambsSong::activate(
         m_playbackEnginePtr->setBeatsPerMinute(m_initialBpm);
     }
     if (!m_trackName.isEmpty()) {
-        auto applicationFolder = juce::File::getCurrentWorkingDirectory();
-        auto trackPath = getTrackPath();
-        auto file = applicationFolder.getChildFile(trackPath);
-        if (file != juce::File{}) {
-            auto* pReader = pAudioFormatManager->createReaderFor(file);
+        juce::File mp3File = juce::File::getSpecialLocation(juce::File::invokedExecutableFile)
+                         .getSiblingFile("Dancing With The Moonlight Knight (2008 - Remaster).mp3");
+        
+        if (!mp3File.existsAsFile())
+        {
+            DBG("File not found: " << mp3File.getFullPathName());
+            return;
+        }
 
-            if (pReader != nullptr) {
-                auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
-                pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
-                m_readerSourcePtr.reset(newSourcePtr.release());
-                auto duration = pAudioTransportSource->getLengthInSeconds();
+        // Create the input stream
+        std::unique_ptr<juce::InputStream> misPtr(mp3File.createInputStream());
 
-                std::vector<double> markers;
-                for (auto& markerObj : m_backingTrackMarkers)
-                    markers.push_back(markerObj.getPosition());
+        if (misPtr == nullptr)
+        {
+            DBG("Failed to create input stream for: " << mp3File.getFullPathName());
+            return;
+        }
+        
+        auto* pReader = pAudioFormatManager->createReaderFor(std::move(misPtr));
 
-                pPlayerComponent->setSongInfo((float)duration, !m_backingTrackMarkers.empty(), markers);
-            }
+        if (pReader != nullptr) {
+            auto newSourcePtr = std::make_unique<juce::AudioFormatReaderSource>(pReader, true);
+            pAudioTransportSource->setSource(newSourcePtr.get(), 0, nullptr, pReader->sampleRate);
+            m_readerSourcePtr.reset(newSourcePtr.release());
+            auto duration = pAudioTransportSource->getLengthInSeconds();
+
+            std::vector<double> markers;
+            for (auto& markerObj : m_backingTrackMarkers)
+                markers.push_back(markerObj.getPosition());
+
+            pPlayerComponent->setSongInfo((float)duration, !m_backingTrackMarkers.empty(), markers);
         }
     }
 
