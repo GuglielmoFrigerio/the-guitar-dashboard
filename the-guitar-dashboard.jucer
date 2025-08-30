@@ -8,11 +8,7 @@
       <FILE id="FEHFuD" name="Complete.xml" compile="0" resource="1" file="Builds/iOS/Complete.xml"/>
     </GROUP>
     <GROUP id="{07B5428B-B9D6-8BD7-3654-5B21780B1B06}" name="Resources">
-      <GROUP id="{36F728DD-72D7-406A-F29C-37DDAF1C3D08}" name="Tracks">
-        <FILE id="W5lj2H" name="Dancing With The Moonlight Knight (2008 - Remaster).mp3"
-              compile="0" resource="0" file="Resources/Tracks/Dancing With The Moonlight Knight (2008 - Remaster).mp3"
-              xcodeResource="1"/>
-      </GROUP>
+      <GROUP id="{36F728DD-72D7-406A-F29C-37DDAF1C3D08}" name="Tracks"/>
       <GROUP id="{B9F8893E-ABE5-BD3A-5A77-9B8E7278D8DE}" name="Images">
         <FILE id="rtxop6" name="backward.png" compile="0" resource="1" file="Resources/Images/backward.png"/>
         <FILE id="E1ZZ7p" name="component-background-example.png" compile="0"

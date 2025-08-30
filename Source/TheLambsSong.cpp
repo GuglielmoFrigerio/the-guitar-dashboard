@@ -241,8 +241,9 @@ void TheLambsSong::activate(
         m_playbackEnginePtr->setBeatsPerMinute(m_initialBpm);
     }
     if (!m_trackName.isEmpty()) {
-        juce::File mp3File = juce::File::getSpecialLocation(juce::File::invokedExecutableFile)
-                         .getSiblingFile("Dancing With The Moonlight Knight (2008 - Remaster).mp3");
+        auto resourceRoot = juce::File::getCurrentWorkingDirectory().getChildFile(m_resourcesPath);
+        auto tracksFolder = resourceRoot.getChildFile("Tracks");
+        juce::File mp3File = tracksFolder.getChildFile(m_trackName);
         
         if (!mp3File.existsAsFile())
         {

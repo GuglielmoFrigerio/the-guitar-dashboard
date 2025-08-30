@@ -93,7 +93,8 @@ void VirtualBand::downloadTest() {
     }
     
     auto appGroup = "group.guitarAppGroup";
-    juce::File downloadDestination = juce::File::getContainerForSecurityApplicationGroupIdentifier(appGroup);
+    //juce::File downloadDestination = juce::File::getContainerForSecurityApplicationGroupIdentifier(appGroup);
+    juce::File downloadDestination;
     juce::File f = downloadDestination.getChildFile("archive.zip");
     
     auto exists = f.existsAsFile();
@@ -212,7 +213,7 @@ VirtualBand::VirtualBand(PlayerComponent* pPlayerComponent, SongListComponent* p
     
     loadConfig();
     
-    downloadTest();
+    //downloadTest();
 }
 
 void VirtualBand::loadDevices()
