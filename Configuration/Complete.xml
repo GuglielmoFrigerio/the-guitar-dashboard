@@ -173,6 +173,7 @@
 			<Patch name="JV M5 LIVE 2024 2" scene="5">133</Patch>
 			<Patch name="DynamoFlanger" scene="1">182</Patch>
 			<Patch name="FriedmanHBE Bridge-Middle" scene="1">506</Patch>
+			<Patch name="Blitz III" scene="2">340</Patch>
 		</Song>
 		<Song name="Dreamy">
 			<Patch name="Texas Stars" scene="2">138</Patch>
@@ -185,6 +186,7 @@
 		<Song name="Edge of brakup">
 			<Patch name="JeffGetsReady" scene="1">362</Patch>
 			<Patch name="JeffGetsReadyDribe" scene="2">362</Patch>
+			<Patch name="Stone in Love" scene="1">321</Patch>
 		</Song>
 	</Library>
 	<Library name="Last">
@@ -232,7 +234,7 @@
 			<Track name="Time Table.mp3">
 				<Marker> 00:00:15</Marker>
 			</Track>
-			<Patch scene="1">467</Patch>
+			<Patch scene="1" message="Pedale al Minimo!">467</Patch>
 		</Song>
 		<Song name="Can Utility">
 			<Track name="Can-Utility and the Coastliners.mp3">
@@ -305,16 +307,16 @@
 			<Patch name="Solo" scene="8">135</Patch>
 		</Song>
 		<Song name="In the Cage Live">
-		  <Track name="In the Cage (Medley_ Cinema Show  The Colony of Slippermen) (Live) (1994 Remaster).mp3"></Track>
-		  <Patch name="Intro" scene="8">501</Patch>
-		  <Patch name="Power Chords" scene="1">383</Patch>
-		  <Patch name="Si b" scene="1"> 496</Patch>
-		  <Patch name="Reprise" scene="8">501</Patch>
-		  <Patch name="Power Chords" scene="1">248</Patch>
-		  <Patch name="Clean Bridge" scene="1">134</Patch>
-		  <Patch name="Solo" scene="8">135</Patch>
+			<Track name="In the Cage (Medley_ Cinema Show  The Colony of Slippermen) (Live) (1994 Remaster).mp3"></Track>
+			<Patch name="Intro" scene="8">501</Patch>
+			<Patch name="Power Chords" scene="1">383</Patch>
+			<Patch name="Si b" scene="1"> 496</Patch>
+			<Patch name="Reprise" scene="8">501</Patch>
+			<Patch name="Power Chords" scene="1">248</Patch>
+			<Patch name="Clean Bridge" scene="1">134</Patch>
+			<Patch name="Solo" scene="8">135</Patch>
 		</Song>
-    <Song name="Lilywhite Lilith">
+		<Song name="Lilywhite Lilith">
 			<Track name="Lilywhite Lilith - Genesis.mp3"></Track>
 			<Patch name="Intro" scene="8"> 370</Patch>
 			<Patch name="Rito" scene="1">370</Patch>
@@ -338,10 +340,10 @@
 		</Song>
 		<Song name="The Lamia" initialBpm="64" preCount="On">
 			<Track name="The Lamia - Genesis.mp3" />
-			<Patch name="Arpeggio 1" scene="1">95</Patch>
+			<Patch name="Arpeggio 1" scene="1" message="Pedale al Massimo!">95</Patch>
 			<Patch name="Arpeggio 2" scene="2"> 464</Patch>
 			<Patch name="Envelope" scene="1">464</Patch>
-			<Patch name="Arpeggio 1" scene="1">95</Patch>
+			<Patch name="Arpeggio 1" scene="1" message="Pedale al Massimo!">95</Patch>
 			<Patch name="Arpeggio 2" scene="2">464</Patch>
 			<Patch name="Envelope" scene="1"> 464</Patch>
 			<Patch name="Slide" scene="1">466</Patch>
@@ -373,7 +375,7 @@
 		</Song>
 		<Song name="Firth of Fifth" initialBpm="65">
 			<Track name="Firth Of Fifth - Genesis.mp3">
-				<Marker> 00:01:08</Marker>
+				<Marker>00:01:08</Marker>
 				<Marker>00:05:08</Marker>
 				<Marker>00:05:40</Marker>
 			</Track>
@@ -418,6 +420,14 @@
 		<Song name="Aftergow">
 			<Track name="09-Afterglow.mp3"></Track>
 			<Patch name="Guitar" scene="1"> 391</Patch>
+		</Song>
+		<Song name="The Musical Box">
+			<Track name="The Musical Box.mp3">
+				<Marker>00:07:31</Marker>
+				<Marker>00:09:20</Marker>
+			</Track>
+			<Patch name="Arpeggio" scene="8" message="Pedali al minimo!" >275</Patch>
+			<Patch name="Solo" scene="8">320</Patch>
 		</Song>
 	</Library>
 </AxeFxIII>
