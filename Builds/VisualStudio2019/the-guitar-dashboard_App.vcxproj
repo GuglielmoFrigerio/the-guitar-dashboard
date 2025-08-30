@@ -4256,6 +4256,12 @@
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\documentation\BeatsAndCkicks.xlsx"/>
+    <None Include="..\..\documentation\Get'em Notes.docx"/>
+    <None Include="..\..\documentation\MidiNoteNumbers.xlsx"/>
+    <None Include="..\..\documentation\readme.md"/>
+    <None Include="..\..\documentation\the-guitar-dashboard.docx"/>
+    <None Include="..\..\documentation\the-guitar-dashboard.vpd"/>
     <None Include="..\iOS\Complete.xml"/>
     <None Include="..\..\Resources\Images\backward.png"/>
     <None Include="..\..\Resources\Images\component-background-example.png"/>

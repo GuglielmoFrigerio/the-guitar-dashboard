@@ -4,6 +4,19 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1" cppLanguageStandard="20">
   <MAINGROUP id="qmqmmz" name="the-guitar-dashboard">
+    <GROUP id="{B1FB47D3-1840-9A81-FE13-D56AFBAAE9DE}" name="Documentation">
+      <FILE id="ThqQOm" name="BeatsAndCkicks.xlsx" compile="0" resource="0"
+            file="documentation/BeatsAndCkicks.xlsx"/>
+      <FILE id="oVg48s" name="Get'em Notes.docx" compile="0" resource="0"
+            file="documentation/Get'em Notes.docx"/>
+      <FILE id="gUG5lY" name="MidiNoteNumbers.xlsx" compile="0" resource="0"
+            file="documentation/MidiNoteNumbers.xlsx"/>
+      <FILE id="U3zbBM" name="readme.md" compile="0" resource="0" file="documentation/readme.md"/>
+      <FILE id="Jc8Fsb" name="the-guitar-dashboard.docx" compile="0" resource="0"
+            file="documentation/the-guitar-dashboard.docx"/>
+      <FILE id="je6gLf" name="the-guitar-dashboard.vpd" compile="0" resource="0"
+            file="documentation/the-guitar-dashboard.vpd"/>
+    </GROUP>
     <GROUP id="{7C3AE84D-7970-4FA1-B7E8-E6DD17776479}" name="Configuration">
       <FILE id="FEHFuD" name="Complete.xml" compile="0" resource="1" file="Builds/iOS/Complete.xml"/>
     </GROUP>

@@ -2,6 +2,9 @@
 
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="the-guitar-dashboard\Documentation">
+      <UniqueIdentifier>{CBB3D345-CFDB-CC07-390A-F3CC6D2291DD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="the-guitar-dashboard\Configuration">
       <UniqueIdentifier>{D43AD117-61B8-C725-0183-009C2613C496}</UniqueIdentifier>
     </Filter>
@@ -7802,6 +7805,24 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\documentation\BeatsAndCkicks.xlsx">
+      <Filter>the-guitar-dashboard\Documentation</Filter>
+    </None>
+    <None Include="..\..\documentation\Get'em Notes.docx">
+      <Filter>the-guitar-dashboard\Documentation</Filter>
+    </None>
+    <None Include="..\..\documentation\MidiNoteNumbers.xlsx">
+      <Filter>the-guitar-dashboard\Documentation</Filter>
+    </None>
+    <None Include="..\..\documentation\readme.md">
+      <Filter>the-guitar-dashboard\Documentation</Filter>
+    </None>
+    <None Include="..\..\documentation\the-guitar-dashboard.docx">
+      <Filter>the-guitar-dashboard\Documentation</Filter>
+    </None>
+    <None Include="..\..\documentation\the-guitar-dashboard.vpd">
+      <Filter>the-guitar-dashboard\Documentation</Filter>
+    </None>
     <None Include="..\iOS\Complete.xml">
       <Filter>the-guitar-dashboard\Configuration</Filter>
     </None>

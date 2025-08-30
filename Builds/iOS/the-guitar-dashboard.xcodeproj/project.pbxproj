@@ -109,6 +109,7 @@
 
 /* Begin PBXFileReference section */
 		01CB2C150ADCDD0FD863445D /* AxeFx2Device.h */ /* AxeFx2Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AxeFx2Device.h; path = ../../Source/AxeFx2Device.h; sourceTree = SOURCE_ROOT; };
+		01DC5D5DCD1703CB89F92BE9 /* BeatsAndCkicks.xlsx */ /* BeatsAndCkicks.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file.xlsx; name = BeatsAndCkicks.xlsx; path = ../../documentation/BeatsAndCkicks.xlsx; sourceTree = SOURCE_ROOT; };
 		048034E190F41B7321C5D2B4 /* NullMidiDevice.h */ /* NullMidiDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NullMidiDevice.h; path = ../../Source/NullMidiDevice.h; sourceTree = SOURCE_ROOT; };
 		058BBCF2B0CCEAB567ADCC72 /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
 		07CA111D6FBDF77629D227BC /* forward.png */ /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = ../../Resources/Images/forward.png; sourceTree = SOURCE_ROOT; };
@@ -142,6 +143,7 @@
 		25247F6FC55216470D59CB93 /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2580261C8FE671BF2EA30F66 /* ProgramChangesComponent.h */ /* ProgramChangesComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProgramChangesComponent.h; path = ../../Source/ProgramChangesComponent.h; sourceTree = SOURCE_ROOT; };
 		27DF55B8F44958D65B3A99BD /* AverageComputer.h */ /* AverageComputer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AverageComputer.h; path = ../../Source/AverageComputer.h; sourceTree = SOURCE_ROOT; };
+		28E4B3E0B49FB3FC037B6D27 /* the-guitar-dashboard.docx */ /* the-guitar-dashboard.docx */ = {isa = PBXFileReference; lastKnownFileType = file.docx; name = "the-guitar-dashboard.docx"; path = "../../documentation/the-guitar-dashboard.docx"; sourceTree = SOURCE_ROOT; };
 		2B4B2C66F63810B4BFF97B6B /* TimePoint.cpp */ /* TimePoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimePoint.cpp; path = ../../Source/TimePoint.cpp; sourceTree = SOURCE_ROOT; };
 		2DE1CE1D1338936E5FDF58DC /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
 		2E456223443713E62DD092DE /* MidiTrack.cpp */ /* MidiTrack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiTrack.cpp; path = ../../Source/MidiTrack.cpp; sourceTree = SOURCE_ROOT; };
@@ -164,6 +166,7 @@
 		42E4B2FFC56A30B198B3EF35 /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = "~/JUCE/modules/juce_core"; sourceTree = "<absolute>"; };
 		43015BE0BB827AE866A1FDA1 /* CircularBuffer.cpp */ /* CircularBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CircularBuffer.cpp; path = ../../Source/CircularBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		44ECCFFF4680285C05A2C801 /* VirtualBandPage.cpp */ /* VirtualBandPage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualBandPage.cpp; path = ../../Source/VirtualBandPage.cpp; sourceTree = SOURCE_ROOT; };
+		46C66221AC47451BA21A1F20 /* MidiNoteNumbers.xlsx */ /* MidiNoteNumbers.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file.xlsx; name = MidiNoteNumbers.xlsx; path = ../../documentation/MidiNoteNumbers.xlsx; sourceTree = SOURCE_ROOT; };
 		471808EDC8FBBB1C6F4EC5A5 /* PlayerButton.cpp */ /* PlayerButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerButton.cpp; path = ../../Source/PlayerButton.cpp; sourceTree = SOURCE_ROOT; };
 		471BA2913DF8D82A0CE6248B /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = "~/JUCE/modules/juce_data_structures"; sourceTree = "<absolute>"; };
 		4A03FA300575292F45684279 /* CorrelationSet.h */ /* CorrelationSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CorrelationSet.h; path = ../../Source/CorrelationSet.h; sourceTree = SOURCE_ROOT; };
@@ -202,6 +205,7 @@
 		72A0E2CECFE6201B1153D5CB /* AVFoundation.framework */ /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		74731A245F7392A44B69EF16 /* VirtualBandPage.h */ /* VirtualBandPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualBandPage.h; path = ../../Source/VirtualBandPage.h; sourceTree = SOURCE_ROOT; };
 		752F39E6A995835E2679CCBB /* MidiMessageFilter.cpp */ /* MidiMessageFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiMessageFilter.cpp; path = ../../Source/MidiMessageFilter.cpp; sourceTree = SOURCE_ROOT; };
+		75D2C6A994AE73B37D612196 /* readme.md */ /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = readme.md; path = ../../documentation/readme.md; sourceTree = SOURCE_ROOT; };
 		77EE519E15AEFC61AE92536B /* SongListComponent.cpp */ /* SongListComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SongListComponent.cpp; path = ../../Source/SongListComponent.cpp; sourceTree = SOURCE_ROOT; };
 		793EF2973C5131C66BAA4763 /* VirtualBand.cpp */ /* VirtualBand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualBand.cpp; path = ../../Source/VirtualBand.cpp; sourceTree = SOURCE_ROOT; };
 		79CE58ED5AD885AAD5E80250 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
@@ -209,6 +213,7 @@
 		7BDE5C3538E317F86B439D4D /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
 		7CC85C90B4809DE56DBAC8FD /* PlayerButton.h */ /* PlayerButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerButton.h; path = ../../Source/PlayerButton.h; sourceTree = SOURCE_ROOT; };
 		7CEDB9F773DE69C82D3570EB /* Song.h */ /* Song.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Song.h; path = ../../Source/Song.h; sourceTree = SOURCE_ROOT; };
+		7D267F26D77B0A612D9AB68F /* the-guitar-dashboard.vpd */ /* the-guitar-dashboard.vpd */ = {isa = PBXFileReference; lastKnownFileType = file.vpd; name = "the-guitar-dashboard.vpd"; path = "../../documentation/the-guitar-dashboard.vpd"; sourceTree = SOURCE_ROOT; };
 		80715DE0217EA34403309684 /* TimeSlider.cpp */ /* TimeSlider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimeSlider.cpp; path = ../../Source/TimeSlider.cpp; sourceTree = SOURCE_ROOT; };
 		8143727973B09CEC5000E850 /* AutomationTrack.h */ /* AutomationTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AutomationTrack.h; path = ../../Source/AutomationTrack.h; sourceTree = SOURCE_ROOT; };
 		814430DC3C28A279592B8F4B /* CoreServices.framework */ /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
@@ -293,6 +298,7 @@
 		F6E1DAD81EECB3A7E0B69DBF /* Song.cpp */ /* Song.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Song.cpp; path = ../../Source/Song.cpp; sourceTree = SOURCE_ROOT; };
 		F76288505D186D08638F4B55 /* Lfo.cpp */ /* Lfo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Lfo.cpp; path = ../../Source/Lfo.cpp; sourceTree = SOURCE_ROOT; };
 		FB9124B010E5C7FF022800CA /* SongCollection.cpp */ /* SongCollection.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SongCollection.cpp; path = ../../Source/SongCollection.cpp; sourceTree = SOURCE_ROOT; };
+		FDC9257A6B0C3063CE7EC0DD /* Get'em Notes.docx */ /* Get'em Notes.docx */ = {isa = PBXFileReference; lastKnownFileType = file.docx; name = "Get'em Notes.docx"; path = "../../documentation/Get'em Notes.docx"; sourceTree = SOURCE_ROOT; };
 		FEBAAE607ECA2DA89B1F45EA /* FractalDevice.h */ /* FractalDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FractalDevice.h; path = ../../Source/FractalDevice.h; sourceTree = SOURCE_ROOT; };
 		FF1EF04BCD772E3F86FC7025 /* Accelerate.framework */ /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		FF73A9F708B73071575F66B7 /* UniformTypeIdentifiers.framework */ /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
@@ -344,6 +350,7 @@
 		34A5803D3E3C25C9350C77BB /* the-guitar-dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				C8FAC4483FCF9F70C42FD558,
 				BFDD7D3A00D5CA3D89EDBD73,
 				CEDA20CE61A0B762D08C481C,
 				4519B3949C9089E3EF381A7F,
@@ -575,6 +582,19 @@
 				8D593126521B5C48E5FE68BA,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C8FAC4483FCF9F70C42FD558 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				01DC5D5DCD1703CB89F92BE9,
+				FDC9257A6B0C3063CE7EC0DD,
+				46C66221AC47451BA21A1F20,
+				75D2C6A994AE73B37D612196,
+				28E4B3E0B49FB3FC037B6D27,
+				7D267F26D77B0A612D9AB68F,
+			);
+			name = Documentation;
 			sourceTree = "<group>";
 		};
 		CEDA20CE61A0B762D08C481C /* Resources */ = {
