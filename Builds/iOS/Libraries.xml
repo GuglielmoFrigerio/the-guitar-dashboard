@@ -223,6 +223,7 @@
 			<Patch name="Envelope" scene="3">238</Patch>
 			<Patch name="No Envelope" scene="4">238</Patch>
 			<Patch name="No Delay" scene="4"> 234</Patch>
+			<Patch name="Strumming" scene="1">72</Patch>
 			<Patch name="Solo" scene="8">317</Patch>
 			<Samples>
 				<Sample name="EppingTapping.wav" beat="2" click="0" />

@@ -21,7 +21,7 @@ void Song::play(std::int64_t currentClick, std::int64_t previousClick) {
     }
 }
 
-    
+void Song::seek(std::int64_t currentClick, std::int64_t previousClick)
 {
     for (auto it = m_tracks.begin(); it != m_tracks.end(); ++it) {
         (*it)->seek(currentClick, previousClick);
