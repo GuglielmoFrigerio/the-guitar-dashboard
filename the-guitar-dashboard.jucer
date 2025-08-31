@@ -34,6 +34,11 @@
       <FILE id="Z0YX7y" name="Libraries.xml" compile="0" resource="1" file="Builds/iOS/Libraries.xml"/>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="WDxJKI" name="SongPatch.cpp" compile="1" resource="0" file="Source/SongPatch.cpp"/>
+      <FILE id="XECJ8s" name="SongPatch.h" compile="0" resource="0" file="Source/SongPatch.h"/>
+      <FILE id="u1kUiI" name="MidiModifier.cpp" compile="1" resource="0"
+            file="Source/MidiModifier.cpp"/>
+      <FILE id="gdyH2C" name="MidiModifier.h" compile="0" resource="0" file="Source/MidiModifier.h"/>
       <FILE id="lWLun9" name="MidiRecorder.cpp" compile="1" resource="0"
             file="Source/MidiRecorder.cpp"/>
       <FILE id="NzTUgI" name="MidiRecorder.h" compile="0" resource="0" file="Source/MidiRecorder.h"/>

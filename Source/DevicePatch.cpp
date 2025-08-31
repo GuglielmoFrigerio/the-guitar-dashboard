@@ -32,8 +32,18 @@ void DevicePatch::addMidiEvents(MidiEventList* pMidiEventListPtr, int midiChanne
 
 DevicePatch DevicePatch::parse(const juce::XmlElement* pPatchElement, uint64_t clickTimepoint)
 {
-    auto programNumber = getElementValueAsInt(pPatchElement);
-    auto sceneNumber = pPatchElement->getIntAttribute("scene");
+    int programNumber = 0;
+    int sceneNumber = 0;
+    auto pProgramChange = pPatchElement->getChildByName("ProgramChange");
+    if (pProgramChange != nullptr) {
+        programNumber = pProgramChange->getIntAttribute("program");
+        sceneNumber = pProgramChange->getIntAttribute("scene");
+    }
+    else {
+        programNumber = getElementValueAsInt(pPatchElement);
+        sceneNumber = pPatchElement->getIntAttribute("scene");
+    }
+    
     auto name = pPatchElement->getStringAttribute("name");
     auto ct = getClickTimepoint(pPatchElement, clickTimepoint);
     return DevicePatch(programNumber, sceneNumber, name, ct);

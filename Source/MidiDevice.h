@@ -33,7 +33,6 @@ public:     // interface
 
     void start();
     virtual void sendProgramChange(const DevicePatch& programChange, int midiChannel);
-    void loadProgramChange(const DevicePatch& programChange, int midiChannel);
 
     IMidiOutput* getMidiOutput() const {
         return m_midiOutputPtr.get();

@@ -85,6 +85,7 @@
 		C3B6C4A941F1B41A073EFD75 /* Oscillator.cpp */ = {isa = PBXBuildFile; fileRef = 3EC5240ED182F15573A09148; };
 		C3E8903D9D46971363FAF674 /* FractalDiscoverDevice.cpp */ = {isa = PBXBuildFile; fileRef = 8D1BF1B687DA9681BB837320; };
 		C757294E6BDC16FE82FF9AD6 /* TimeSlider.cpp */ = {isa = PBXBuildFile; fileRef = 80715DE0217EA34403309684; };
+		CE224290264086E9160B23AD /* SongPatch.cpp */ = {isa = PBXBuildFile; fileRef = 71D85E0BC79CA47AC0F92338; };
 		D0A49D28C9538D25CD8ED3DD /* Main.cpp */ = {isa = PBXBuildFile; fileRef = 9AB31229C3B9B838D06240BD; };
 		D2C03A571C30CF2B243C084E /* AudioToolbox.framework */ = {isa = PBXBuildFile; fileRef = 5EDE0DC5561B004419452BA9; };
 		D40FF06F95B4CFD750C1655A /* SampleEngine.cpp */ = {isa = PBXBuildFile; fileRef = 42BE77FA8827E23A43B073B7; };
@@ -96,6 +97,7 @@
 		E5459C08F79DCC2274490FF7 /* include_juce_graphics.mm */ = {isa = PBXBuildFile; fileRef = 7BDE5C3538E317F86B439D4D; };
 		E7D0F7A81F6C6FDC378EC671 /* Accelerate.framework */ = {isa = PBXBuildFile; fileRef = FF1EF04BCD772E3F86FC7025; };
 		EA15240A2448574F773C2380 /* Foundation.framework */ = {isa = PBXBuildFile; fileRef = 25247F6FC55216470D59CB93; };
+		EC6A9915A5433AD9410B71F9 /* MidiModifier.cpp */ = {isa = PBXBuildFile; fileRef = 63E881BFF5E4E8291915A74C; };
 		ECEB006636FE17EF838806A7 /* AutomationEvent.cpp */ = {isa = PBXBuildFile; fileRef = 251221026288A41298B14C37; };
 		F364A7F6398BC8B5D1EA1DF3 /* TempoSyncHandler.cpp */ = {isa = PBXBuildFile; fileRef = A3542B8A8C127304232B8628; };
 		F43D7EDD63665112B048ED14 /* SampleEvent.cpp */ = {isa = PBXBuildFile; fileRef = 5EFB4C0EFE94B8CDDCE8E9AA; };
@@ -180,6 +182,7 @@
 		54951E9EB463770FB7F0FCE4 /* KeyManager.cpp */ /* KeyManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = KeyManager.cpp; path = ../../Source/KeyManager.cpp; sourceTree = SOURCE_ROOT; };
 		5599C48ECE9F44274CD7D622 /* MidiRecorder.cpp */ /* MidiRecorder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiRecorder.cpp; path = ../../Source/MidiRecorder.cpp; sourceTree = SOURCE_ROOT; };
 		561892E263906B58B584E713 /* juce_audio_devices */ /* juce_audio_devices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_devices; path = "~/JUCE/modules/juce_audio_devices"; sourceTree = "<absolute>"; };
+		563B6E92385B980FBAEACF5B /* MidiModifier.h */ /* MidiModifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiModifier.h; path = ../../Source/MidiModifier.h; sourceTree = SOURCE_ROOT; };
 		5695072B86017B6057DA6538 /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = "~/JUCE/modules/juce_gui_extra"; sourceTree = "<absolute>"; };
 		5B158F12587AE07E0078A578 /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		5B22E1C1F2F511F9D71A8A9F /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
@@ -192,16 +195,19 @@
 		619BE66E04678886B883327C /* IMidiOutput.h */ /* IMidiOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IMidiOutput.h; path = ../../Source/IMidiOutput.h; sourceTree = SOURCE_ROOT; };
 		626130554A87823CC675E51C /* PlayerComponent.h */ /* PlayerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlayerComponent.h; path = ../../Source/PlayerComponent.h; sourceTree = SOURCE_ROOT; };
 		628972FFDB7AF2E30411055A /* BinaryData.cpp */ /* BinaryData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
+		63E881BFF5E4E8291915A74C /* MidiModifier.cpp */ /* MidiModifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiModifier.cpp; path = ../../Source/MidiModifier.cpp; sourceTree = SOURCE_ROOT; };
 		649FFDF555BED866DE78E6AF /* AudioBuffer.cpp */ /* AudioBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AudioBuffer.cpp; path = ../../Source/AudioBuffer.cpp; sourceTree = SOURCE_ROOT; };
 		657B65B0578FA8666260E0A2 /* MidiTrack.h */ /* MidiTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiTrack.h; path = ../../Source/MidiTrack.h; sourceTree = SOURCE_ROOT; };
 		662757B474397F587FC1D268 /* CoreAudio.framework */ /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		67650AC4E91F31B5E18CB716 /* MidiEvent.cpp */ /* MidiEvent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiEvent.cpp; path = ../../Source/MidiEvent.cpp; sourceTree = SOURCE_ROOT; };
 		67662FEBE1F95F094321718E /* TimePoint.h */ /* TimePoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TimePoint.h; path = ../../Source/TimePoint.h; sourceTree = SOURCE_ROOT; };
+		678317F1F9D544BB0762A4A2 /* SongPatch.h */ /* SongPatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SongPatch.h; path = ../../Source/SongPatch.h; sourceTree = SOURCE_ROOT; };
 		681E62A0FA080F8742387E2D /* PlaybackEngine.h */ /* PlaybackEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PlaybackEngine.h; path = ../../Source/PlaybackEngine.h; sourceTree = SOURCE_ROOT; };
 		69EFE7DBE331C796DA87E38F /* TilesLookAndFeel.h */ /* TilesLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TilesLookAndFeel.h; path = ../../Source/TilesLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		711DFFA3014ED7B5699F329A /* App.entitlements */ /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = App.entitlements; path = App.entitlements; sourceTree = SOURCE_ROOT; };
 		7141E87AABFF072533936B1C /* SetupPage.cpp */ /* SetupPage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SetupPage.cpp; path = ../../Source/SetupPage.cpp; sourceTree = SOURCE_ROOT; };
 		71D48BD3E85F70F950A090E3 /* CorrelationSlot.cpp */ /* CorrelationSlot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CorrelationSlot.cpp; path = ../../Source/CorrelationSlot.cpp; sourceTree = SOURCE_ROOT; };
+		71D85E0BC79CA47AC0F92338 /* SongPatch.cpp */ /* SongPatch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SongPatch.cpp; path = ../../Source/SongPatch.cpp; sourceTree = SOURCE_ROOT; };
 		72A0E2CECFE6201B1153D5CB /* AVFoundation.framework */ /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		74731A245F7392A44B69EF16 /* VirtualBandPage.h */ /* VirtualBandPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualBandPage.h; path = ../../Source/VirtualBandPage.h; sourceTree = SOURCE_ROOT; };
 		752F39E6A995835E2679CCBB /* MidiMessageFilter.cpp */ /* MidiMessageFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiMessageFilter.cpp; path = ../../Source/MidiMessageFilter.cpp; sourceTree = SOURCE_ROOT; };
@@ -405,6 +411,10 @@
 		4519B3949C9089E3EF381A7F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				71D85E0BC79CA47AC0F92338,
+				678317F1F9D544BB0762A4A2,
+				63E881BFF5E4E8291915A74C,
+				563B6E92385B980FBAEACF5B,
 				5599C48ECE9F44274CD7D622,
 				ED8D4CD675A03A198AFFA846,
 				160CF575B15B1A850CC75811,
@@ -718,6 +728,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE224290264086E9160B23AD,
+				EC6A9915A5433AD9410B71F9,
 				AF4D2471FA6D68D60C9E6BE3,
 				F70A873A566166D4A056367F,
 				ECEB006636FE17EF838806A7,

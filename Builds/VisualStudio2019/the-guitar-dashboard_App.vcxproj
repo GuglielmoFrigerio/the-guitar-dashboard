@@ -146,6 +146,8 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SongPatch.cpp"/>
+    <ClCompile Include="..\..\Source\MidiModifier.cpp"/>
     <ClCompile Include="..\..\Source\MidiRecorder.cpp"/>
     <ClCompile Include="..\..\Source\NullMidiDevice.cpp"/>
     <ClCompile Include="..\..\Source\AutomationEvent.cpp"/>
@@ -2891,6 +2893,8 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SongPatch.h"/>
+    <ClInclude Include="..\..\Source\MidiModifier.h"/>
     <ClInclude Include="..\..\Source\MidiRecorder.h"/>
     <ClInclude Include="..\..\Source\NullMidiDevice.h"/>
     <ClInclude Include="..\..\Source\IAutomationTarget.h"/>

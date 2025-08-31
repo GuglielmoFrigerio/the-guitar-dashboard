@@ -679,6 +679,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\SongPatch.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MidiModifier.cpp">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MidiRecorder.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -3714,6 +3720,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\SongPatch.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MidiModifier.h">
+      <Filter>the-guitar-dashboard\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\MidiRecorder.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
