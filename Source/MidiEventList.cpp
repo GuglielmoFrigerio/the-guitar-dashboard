@@ -48,7 +48,7 @@ void MidiEventList::addMidiEvent(const juce::MidiMessage& midiMessage)
     addEvent(midiEventPtr);
 }
 
-std::unique_ptr<MidiEventList> MidiEventList::parse(juce::XmlElement* pPatchElement, int midiChannel, uint64_t clickTimepoint, IMidiOutput* pMidiOutput)
+std::unique_ptr<MidiEventList> MidiEventList::parse(juce::XmlElement* pPatchElement, const int midiChannel, uint64_t clickTimepoint, IMidiOutput* pMidiOutput)
 {
     auto devicePatch = DevicePatch::parse(pPatchElement, clickTimepoint);
     auto eventListPtr = std::make_unique<MidiEventList>(devicePatch.clickTimepoint, pMidiOutput);

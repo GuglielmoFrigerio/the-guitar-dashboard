@@ -7835,7 +7835,7 @@
     <None Include="..\..\documentation\the-guitar-dashboard.vpd">
       <Filter>the-guitar-dashboard\Documentation</Filter>
     </None>
-    <None Include="..\iOS\Complete.xml">
+    <None Include="..\..\Configuration\Complete.xml">
       <Filter>the-guitar-dashboard\Configuration</Filter>
     </None>
     <None Include="..\..\Resources\Images\backward.png">
@@ -7855,9 +7855,6 @@
     </None>
     <None Include="..\..\Resources\Images\stop.png">
       <Filter>the-guitar-dashboard\Resources\Images</Filter>
-    </None>
-    <None Include="..\iOS\Libraries.xml">
-      <Filter>the-guitar-dashboard\Resources</Filter>
     </None>
     <None Include="..\..\..\..\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\common</Filter>

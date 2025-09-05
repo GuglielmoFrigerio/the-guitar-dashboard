@@ -18,7 +18,7 @@
             file="documentation/the-guitar-dashboard.vpd"/>
     </GROUP>
     <GROUP id="{7C3AE84D-7970-4FA1-B7E8-E6DD17776479}" name="Configuration">
-      <FILE id="FEHFuD" name="Complete.xml" compile="0" resource="1" file="Builds/iOS/Complete.xml"/>
+      <FILE id="M2q5U8" name="Complete.xml" compile="0" resource="0" file="Configuration/Complete.xml"/>
     </GROUP>
     <GROUP id="{07B5428B-B9D6-8BD7-3654-5B21780B1B06}" name="Resources">
       <GROUP id="{36F728DD-72D7-406A-F29C-37DDAF1C3D08}" name="Tracks"/>
@@ -31,7 +31,6 @@
         <FILE id="BES6Az" name="play.png" compile="0" resource="1" file="Resources/Images/play.png"/>
         <FILE id="WrnKL9" name="stop.png" compile="0" resource="1" file="Resources/Images/stop.png"/>
       </GROUP>
-      <FILE id="Z0YX7y" name="Libraries.xml" compile="0" resource="1" file="Builds/iOS/Libraries.xml"/>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
       <FILE id="WDxJKI" name="SongPatch.cpp" compile="1" resource="0" file="Source/SongPatch.cpp"/>

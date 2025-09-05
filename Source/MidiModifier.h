@@ -10,18 +10,26 @@
 
 #pragma once
 #include <JuceHeader.h>
-#include "MidiDevice.h"
+#include "IMidiOutput.h"
 
 
 class MidiModifier {
 private:
-    int m_minValue;
-    int m_maxValue;
+    const int m_midiChannel;
+    int m_startValue;
+    int m_endValue;
     int m_stepValue;
     int m_currentValue;
-    MidiDevice* m_pMidiDevice;
+    int m_midiControl;
+    IMidiOutput* m_pMidiOutput;
+
+private:
+    void sendMessage();
 
 public:
-    MidiModifier(const juce::XmlElement* pPatchElement, MidiDevice* pMidiDevice);
+    MidiModifier(const juce::XmlElement* pMidiModifierElement, IMidiOutput* pMidiOutput, const int midiChannel);
+
+    void stepUp();
+    void stepDown();
 
 };

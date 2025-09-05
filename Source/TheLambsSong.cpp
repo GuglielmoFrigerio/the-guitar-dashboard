@@ -183,12 +183,20 @@ void TheLambsSong::loadPatchMessages(const juce::XmlElement* pSongElement)
     }
 }
 
+void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement)
+{
+    for (auto* pPatchElement : pSongElement->getChildWithTagNameIterator("Patch")) {
+        auto songPatchPtr = std::make_shared<SongPatch>(pPatchElement, &m_midiOutput, 1);
+        m_songPatches.push_back(std::move(songPatchPtr));
+    }
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pVirtualBand)
     :   Song(pSongElement->getStringAttribute("name"))
 {
     m_resourcesPath = pVirtualBand->getResourcePath();
     auto pMidiDevice = pVirtualBand->getDevice(FractalDeviceType::AxeFxIII);
-    auto trackPtr = MidiTrack::loadFromPatchesElement(pSongElement, pMidiDevice);
+    auto trackPtr = MidiTrack::loadFromPatchesElement(pSongElement, pMidiDevice, m_defaultMidiChannel);
     addTrack(trackPtr);
 
     m_markerTrackPtr = std::make_unique<MarkerTrack>(pSongElement);
@@ -226,6 +234,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pV
         addTrack(automationTrackPtr);
 
     loadPatchMessages(pSongElement);
+
+    loadPatches(pSongElement);
 
     m_initialBpm = pSongElement->getIntAttribute("initialBpm");
 }
@@ -292,6 +302,11 @@ void TheLambsSong::deactivate()
 
 juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
+    if (programChangeIndex < m_songPatches.size()) {
+        m_currentPatch = m_songPatches[programChangeIndex];
+    }
+    else m_currentPatch = nullptr;
+
     if (m_markerTrackPtr != nullptr) {
         auto& marker = m_markerTrackPtr->getMarker(programChangeIndex);
         auto clickTimepoint = marker.getClickTimepoint();

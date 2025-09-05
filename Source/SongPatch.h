@@ -9,3 +9,12 @@
 */
 
 #pragma once
+#include "MidiModifier.h"
+
+class SongPatch {
+private:
+    std::unique_ptr<MidiModifier> m_modifierPtr;
+
+public:
+    SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOutput, const int midiChannel);
+};

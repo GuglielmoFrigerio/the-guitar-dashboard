@@ -61,10 +61,10 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
 
 void VirtualBand::loadConfig()
 {
-    juce::MemoryBlock mb(BinaryData::Libraries_xml, BinaryData::Libraries_xmlSize);
-    
-    juce::String content = mb.toString();
-    m_configElementPtr = juce::XmlDocument::parse(content);
+    auto resourceRoot = juce::File::getCurrentWorkingDirectory().getChildFile(m_resourcesPath);
+    juce::File file{ resourceRoot.getParentDirectory().getChildFile("Configuration/Complete.xml")};
+    auto ptr = std::make_unique<juce::XmlDocument>(file);
+    m_configElementPtr = ptr->getDocumentElement();
 }
 
 

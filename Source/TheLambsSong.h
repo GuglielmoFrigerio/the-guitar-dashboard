@@ -19,6 +19,7 @@
 #include "TriplePlayConnect.h"
 #include "IAutomationTarget.h"
 #include "MidiRecorder.h"
+#include "SongPatch.h"
 
 class VirtualBand;
 class MidiTrack;
@@ -41,6 +42,9 @@ private:    // fields
     std::unique_ptr<TriplePlayConnect> m_triplePlayConnectPtr;
     std::shared_ptr<MidiRecorder> m_midiRecorderPtr;
     std::vector<juce::String> m_patchMessages;
+    std::vector<std::shared_ptr<SongPatch>> m_songPatches;
+    std::shared_ptr<SongPatch> m_currentPatch = nullptr;
+    int m_defaultMidiChannel = 1;
 
     class BackgroungPlayerStateHandler {
     private:
@@ -83,6 +87,7 @@ private:
     void setupMidiRecorder();
     void stopMidiRecorder();
     void loadPatchMessages(const juce::XmlElement* pPatchesElement);
+    void loadPatches(const juce::XmlElement* pSongElement);
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);

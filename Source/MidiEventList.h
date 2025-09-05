@@ -27,5 +27,5 @@ private:    // implementation
 public:
     MidiEventList(std::uint64_t clickTimepoint, IMidiOutput* pMidiOutput);
     void addMidiEvent(const juce::MidiMessage& midiMessage);
-    static std::unique_ptr<MidiEventList> parse(juce::XmlElement* pPatchElement, int midiChannel, uint64_t clickTimepoint, IMidiOutput* pMidiOutput);
+    static std::unique_ptr<MidiEventList> parse(juce::XmlElement* pPatchElement, const int midiChannel, uint64_t clickTimepoint, IMidiOutput* pMidiOutput);
 };

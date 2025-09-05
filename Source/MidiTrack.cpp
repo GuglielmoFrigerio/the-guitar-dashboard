@@ -16,11 +16,11 @@
 #include "MidiDevice.h"
 #include "GuitarDashCommon.h"
 
-void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
+void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement, const int midiChannel)
 {
     int64_t currentClickTimepoint = 0;
     for (auto* pPatchElement : pPatchesElement->getChildWithTagNameIterator("Patch")) {
-        std::unique_ptr<EventList> programChangeEventsPtr = MidiEventList::parse(pPatchElement, m_midiChannel, currentClickTimepoint, m_pMidiDevice->getMidiOutput());
+        std::unique_ptr<EventList> programChangeEventsPtr = MidiEventList::parse(pPatchElement, midiChannel, currentClickTimepoint, m_pMidiDevice->getMidiOutput());
         currentClickTimepoint = programChangeEventsPtr->getClickTimepoint() + DefaultClicksPerBeat;
         addEventList(programChangeEventsPtr);
     }
@@ -51,10 +51,10 @@ MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* p
 
 }
 
-std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice)
+std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice, int midiChannel)
 {
     auto newMidiTrack = std::make_unique<MidiTrack>(pMidiDevice);
-    newMidiTrack->loadFromPatches(pPatchesElement);
+    newMidiTrack->loadFromPatches(pPatchesElement, midiChannel);
     return newMidiTrack;
 }
 
