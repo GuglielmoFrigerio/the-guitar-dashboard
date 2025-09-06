@@ -96,4 +96,6 @@ public: // interface
     juce::AudioFormatManager* getAudioFormatManager() {
         return &m_formatManager;
     }
+
+    bool keyPressed(const juce::KeyPress& key);
 };

@@ -105,4 +105,6 @@ public:
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) override;
 
     std::tuple<int, int> getSelectedProgramInfo() const override;
+
+    bool keyPressed(const juce::KeyPress& key) override;
 };

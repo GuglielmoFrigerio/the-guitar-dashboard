@@ -43,6 +43,9 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
 {
     auto keyCode = key.getKeyCode();
 
+    if (m_virtualBandPtr->keyPressed(key))
+        return true;
+
     m_trackPlayerKeyManager.keyPressed(keyCode);
 
     auto it = m_keyHandlerMap.find(keyCode);

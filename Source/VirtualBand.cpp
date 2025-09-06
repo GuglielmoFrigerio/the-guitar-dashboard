@@ -322,3 +322,11 @@ void VirtualBand::previousMarker()
         m_pActiveSong->previousMarker(&m_transportSource);
 }
 
+bool VirtualBand::keyPressed(const juce::KeyPress& key) 
+{
+    if (m_pActiveSong != nullptr)
+        return m_pActiveSong->keyPressed(key);
+    
+    return false;
+}
+

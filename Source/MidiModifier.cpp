@@ -45,3 +45,19 @@ void MidiModifier::stepDown()
 
     sendMessage();
 }
+
+bool MidiModifier::keyPressed(const juce::KeyPress& key) 
+{
+    auto keyCode = key.getKeyCode();
+    if (keyCode == 66) {
+        stepUp();
+        return true;
+    }
+    return false;
+}
+
+void MidiModifier::reset() 
+{
+    m_currentValue = m_startValue;
+    sendMessage();
+}

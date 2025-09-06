@@ -32,4 +32,6 @@ public:
     void stepUp();
     void stepDown();
 
+    bool keyPressed(const juce::KeyPress& key);
+    void reset();
 };

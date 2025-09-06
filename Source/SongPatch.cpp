@@ -17,3 +17,16 @@ SongPatch::SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOu
         m_modifierPtr = std::make_unique<MidiModifier>(pMidiModifierElement, pMidiOutput, midiChannel);
     }
 }
+
+bool SongPatch::keyPressed(const juce::KeyPress& key) 
+{
+    if (m_modifierPtr != nullptr)
+        return m_modifierPtr->keyPressed(key);
+    return false;
+}
+
+void SongPatch::reset()
+{
+    if (m_modifierPtr != nullptr)
+        m_modifierPtr->reset();
+}

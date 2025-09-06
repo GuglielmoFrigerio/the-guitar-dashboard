@@ -304,6 +304,7 @@ juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
     if (programChangeIndex < m_songPatches.size()) {
         m_currentPatch = m_songPatches[programChangeIndex];
+        m_currentPatch->reset();
     }
     else m_currentPatch = nullptr;
 
@@ -335,6 +336,13 @@ std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 {
     auto eventCount = (m_markerTrackPtr != nullptr) ? m_markerTrackPtr->getEventCount() : 0;
     return std::make_tuple(m_selectedProgramIndex, static_cast<int>(eventCount));
+}
+
+bool TheLambsSong::keyPressed(const juce::KeyPress& key)
+{
+    if (m_currentPatch != nullptr)
+        return m_currentPatch->keyPressed(key);
+    return false;
 }
 
 TheLambsSong::BackgroungPlayerStateHandler::BackgroungPlayerStateHandler()

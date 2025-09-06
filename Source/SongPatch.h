@@ -17,4 +17,7 @@ private:
 
 public:
     SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOutput, const int midiChannel);
+
+    bool keyPressed(const juce::KeyPress& key);
+    void reset();
 };

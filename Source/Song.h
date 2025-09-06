@@ -66,4 +66,6 @@ public:
     virtual void updateCurrentClick(PlayerComponent* , ProgramChangesComponent* ) {}
 
     virtual void rewindPlayback() {}
+
+    virtual bool keyPressed(const juce::KeyPress&) { return false; }
 };
