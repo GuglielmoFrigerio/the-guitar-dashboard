@@ -98,4 +98,8 @@ public: // interface
     }
 
     bool keyPressed(const juce::KeyPress& key);
+
+    int getCurrentModifier() const {
+        return m_pActiveSong != nullptr ? m_pActiveSong->getCurrentModifierValue() : -1;
+    }
 };

@@ -113,6 +113,8 @@
             file="Source/ValueAnimator.cpp"/>
       <FILE id="KLMWOZ" name="ValueAnimator.h" compile="0" resource="0" file="Source/ValueAnimator.h"/>
       <GROUP id="{CDE15E17-6795-C384-F22B-7C250F451DB6}" name="Components">
+        <FILE id="rWAriT" name="ModifierComponent.h" compile="0" resource="0"
+              file="Source/ModifierComponent.h"/>
         <FILE id="fl1JrA" name="PlayerModeComponent.cpp" compile="1" resource="0"
               file="Source/PlayerModeComponent.cpp"/>
         <FILE id="iBitC2" name="PlayerModeComponent.h" compile="0" resource="0"

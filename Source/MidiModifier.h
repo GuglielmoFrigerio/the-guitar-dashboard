@@ -33,5 +33,10 @@ public:
     void stepDown();
 
     bool keyPressed(const juce::KeyPress& key);
-    void reset();
+    void start();
+    void end();
+
+    int getCurrentValue() const {
+        return m_currentValue;
+    }
 };

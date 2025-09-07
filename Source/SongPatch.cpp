@@ -25,8 +25,14 @@ bool SongPatch::keyPressed(const juce::KeyPress& key)
     return false;
 }
 
-void SongPatch::reset()
+void SongPatch::start()
 {
     if (m_modifierPtr != nullptr)
-        m_modifierPtr->reset();
+        m_modifierPtr->start();
+}
+
+void SongPatch::end()
+{
+    if (m_modifierPtr != nullptr)
+        m_modifierPtr->end();
 }

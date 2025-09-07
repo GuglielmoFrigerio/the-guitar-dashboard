@@ -17,6 +17,7 @@
 #include "PlayerComponent.h"
 #include "KeyManager.h"
 #include "NotificationComponent.h"
+#include "ModifierComponent.h"
 
 class VirtualBandPage : 
     public juce::AudioAppComponent, 
@@ -31,6 +32,7 @@ private:    // fields
     juce::ComboBox m_librariesComboBox;
     SongListComponent m_songListComponent;
     ProgramChangesComponent m_programChangesComponent;
+    ModifierComponent m_modifierComponent;
     juce::ApplicationProperties& m_properties;
     bool m_firstResize = true;
     PlayerComponent m_playerComponent;
@@ -44,6 +46,7 @@ private:    // implementation
     void releaseResources() override;
     void timerCallback() override;
     void setupKeyHandlers();
+    void updateModifierUi();
 
 private:    // keyboard
     void nextProgramChange();

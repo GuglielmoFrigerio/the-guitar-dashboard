@@ -43,8 +43,11 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
 {
     auto keyCode = key.getKeyCode();
 
-    if (m_virtualBandPtr->keyPressed(key))
+    if (m_virtualBandPtr->keyPressed(key)) {
+        updateModifierUi();
         return true;
+    }
+
 
     m_trackPlayerKeyManager.keyPressed(keyCode);
 
@@ -136,6 +139,12 @@ void VirtualBandPage::setupKeyHandlers()
     });
 }
 
+void VirtualBandPage::updateModifierUi()
+{
+    auto currentModifierValue = m_virtualBandPtr->getCurrentModifier();
+    m_modifierComponent.updateValue(currentModifierValue);
+}
+
 
 VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     :   m_loadSongLibraryButton("Load Songs Library"),
@@ -148,6 +157,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
     addAndMakeVisible(m_notificationComponent);
+    addAndMakeVisible(m_modifierComponent);
 
     setupKeyHandlers();
 
@@ -176,6 +186,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { 
         auto patchMessage = m_virtualBandPtr->selectProgramChange(programChangeIndex); 
         m_notificationComponent.setMessage(patchMessage);
+        updateModifierUi();
     };
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
@@ -186,6 +197,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
             m_virtualBandPtr->stopAndRewind();
         else m_virtualBandPtr->toggleStartStop();
     };
+    updateModifierUi();
 
     startTimer(50);
 }
@@ -206,7 +218,10 @@ void VirtualBandPage::resized()
     m_librariesComboBox.setBounds(right);
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
     m_playerComponent.setBounds(rect.removeFromBottom(160));
-    m_notificationComponent.setBounds(rect.removeFromBottom(40));
+    auto notificationArea = rect.removeFromBottom(40);
+    auto modifierArea = notificationArea.removeFromLeft(150);
+    m_modifierComponent.setBounds(modifierArea);
+    m_notificationComponent.setBounds(notificationArea);
     m_programChangesComponent.setBounds(rect);
 
     if (m_firstResize) {

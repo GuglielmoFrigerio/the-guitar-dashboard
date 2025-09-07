@@ -68,4 +68,5 @@ public:
     virtual void rewindPlayback() {}
 
     virtual bool keyPressed(const juce::KeyPress&) { return false; }
+    virtual int getCurrentModifierValue() const { return -1; }
 };

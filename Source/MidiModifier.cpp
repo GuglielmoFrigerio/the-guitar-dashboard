@@ -56,8 +56,14 @@ bool MidiModifier::keyPressed(const juce::KeyPress& key)
     return false;
 }
 
-void MidiModifier::reset() 
+void MidiModifier::start() 
 {
     m_currentValue = m_startValue;
+    sendMessage();
+}
+
+void MidiModifier::end()
+{
+    m_currentValue = m_endValue;
     sendMessage();
 }

@@ -19,5 +19,12 @@ public:
     SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOutput, const int midiChannel);
 
     bool keyPressed(const juce::KeyPress& key);
-    void reset();
+    void start();
+    void end();
+
+    int getCurrentModifierValue() const {
+        if (m_modifierPtr != nullptr)
+            return m_modifierPtr->getCurrentValue();
+        return -1;
+    }
 };

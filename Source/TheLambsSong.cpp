@@ -183,10 +183,10 @@ void TheLambsSong::loadPatchMessages(const juce::XmlElement* pSongElement)
     }
 }
 
-void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement)
+void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement, IMidiOutput* pMidiOutput)
 {
     for (auto* pPatchElement : pSongElement->getChildWithTagNameIterator("Patch")) {
-        auto songPatchPtr = std::make_shared<SongPatch>(pPatchElement, &m_midiOutput, 1);
+        auto songPatchPtr = std::make_shared<SongPatch>(pPatchElement, pMidiOutput, 1);
         m_songPatches.push_back(std::move(songPatchPtr));
     }
 }
@@ -235,7 +235,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pV
 
     loadPatchMessages(pSongElement);
 
-    loadPatches(pSongElement);
+    auto pMidiOutput = pMidiDevice->getMidiOutput();
+    loadPatches(pSongElement, pMidiOutput);
 
     m_initialBpm = pSongElement->getIntAttribute("initialBpm");
 }
@@ -302,11 +303,14 @@ void TheLambsSong::deactivate()
 
 juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
+    if (m_currentPatchPtr != nullptr)
+        m_currentPatchPtr->end();
+
     if (programChangeIndex < m_songPatches.size()) {
-        m_currentPatch = m_songPatches[programChangeIndex];
-        m_currentPatch->reset();
+        m_currentPatchPtr = m_songPatches[programChangeIndex];
+        m_currentPatchPtr->start();
     }
-    else m_currentPatch = nullptr;
+    else m_currentPatchPtr = nullptr;
 
     if (m_markerTrackPtr != nullptr) {
         auto& marker = m_markerTrackPtr->getMarker(programChangeIndex);
@@ -340,8 +344,8 @@ std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 
 bool TheLambsSong::keyPressed(const juce::KeyPress& key)
 {
-    if (m_currentPatch != nullptr)
-        return m_currentPatch->keyPressed(key);
+    if (m_currentPatchPtr != nullptr)
+        return m_currentPatchPtr->keyPressed(key);
     return false;
 }
 

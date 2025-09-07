@@ -3798,6 +3798,9 @@
     <ClInclude Include="..\..\Source\ValueAnimator.h">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\ModifierComponent.h">
+      <Filter>the-guitar-dashboard\Source\Components</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PlayerModeComponent.h">
       <Filter>the-guitar-dashboard\Source\Components</Filter>
     </ClInclude>
