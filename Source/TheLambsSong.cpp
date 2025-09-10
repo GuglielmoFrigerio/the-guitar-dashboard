@@ -183,10 +183,10 @@ void TheLambsSong::loadPatchMessages(const juce::XmlElement* pSongElement)
     }
 }
 
-void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement)
+void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement, IMidiOutput* pMidiOutput)
 {
     for (auto* pPatchElement : pSongElement->getChildWithTagNameIterator("Patch")) {
-        auto songPatchPtr = std::make_shared<SongPatch>(pPatchElement, &m_midiOutput, 1);
+        auto songPatchPtr = std::make_shared<SongPatch>(pPatchElement, pMidiOutput, 1);
         m_songPatches.push_back(std::move(songPatchPtr));
     }
 }
@@ -235,7 +235,8 @@ TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pV
 
     loadPatchMessages(pSongElement);
 
-    loadPatches(pSongElement);
+    auto pMidiOutput = pMidiDevice->getMidiOutput();
+    loadPatches(pSongElement, pMidiOutput);
 
     m_initialBpm = pSongElement->getIntAttribute("initialBpm");
 }

@@ -87,7 +87,7 @@ private:
     void setupMidiRecorder();
     void stopMidiRecorder();
     void loadPatchMessages(const juce::XmlElement* pPatchesElement);
-    void loadPatches(const juce::XmlElement* pSongElement);
+    void loadPatches(const juce::XmlElement* pSongElement, IMidiOutput* pMidiOutput);
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
