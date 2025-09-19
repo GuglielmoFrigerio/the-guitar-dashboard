@@ -13,7 +13,7 @@
 
 class SongPatch {
 private:
-    std::unique_ptr<MidiModifier> m_modifierPtr;
+    std::shared_ptr<MidiModifier> m_modifierPtr;
 
 public:
     SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOutput, const int midiChannel);

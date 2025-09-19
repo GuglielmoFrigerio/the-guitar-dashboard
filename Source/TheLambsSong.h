@@ -89,6 +89,8 @@ private:
     void loadPatchMessages(const juce::XmlElement* pPatchesElement);
     void loadPatches(const juce::XmlElement* pSongElement, IMidiOutput* pMidiOutput);
 
+    void onTick(std::uint64_t offsetTicks) override;
+
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
     ~TheLambsSong() override {}
@@ -108,6 +110,7 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override;
     int getCurrentModifierValue() const override {
-        return m_currentPatchPtr != nullptr ? m_currentPatchPtr->getCurrentModifierValue() : -1;
+        auto patchPtr = std::atomic_load(&m_currentPatchPtr);
+        return patchPtr != nullptr ? patchPtr->getCurrentModifierValue() : -1;
     }
 };

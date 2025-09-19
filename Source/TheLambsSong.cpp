@@ -19,6 +19,9 @@
 #include "AutomationTrack.h"
 #include "SongListComponent.h"
 
+std::shared_ptr<SongPatch> g_nullSongPatch = nullptr;
+
+
 void TheLambsSong::stopPlayback()
 {
     if (m_playbackEnginePtr != nullptr)
@@ -191,6 +194,10 @@ void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement, IMidiOutput
     }
 }
 
+void TheLambsSong::onTick(std::uint64_t offsetTicks)
+{
+}
+
 TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pVirtualBand)
     :   Song(pSongElement->getStringAttribute("name"))
 {
@@ -303,14 +310,15 @@ void TheLambsSong::deactivate()
 
 juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
-    if (m_currentPatchPtr != nullptr)
-        m_currentPatchPtr->end();
+    auto patchPtr = std::atomic_exchange(&m_currentPatchPtr, g_nullSongPatch);
+    if (patchPtr != nullptr)
+        patchPtr->end();
 
     if (programChangeIndex < m_songPatches.size()) {
-        m_currentPatchPtr = m_songPatches[programChangeIndex];
-        m_currentPatchPtr->start();
+        auto nextPatchPtr = m_songPatches[programChangeIndex];
+        nextPatchPtr->start();
+        std::atomic_store(&m_currentPatchPtr, nextPatchPtr);
     }
-    else m_currentPatchPtr = nullptr;
 
     if (m_markerTrackPtr != nullptr) {
         auto& marker = m_markerTrackPtr->getMarker(programChangeIndex);
@@ -344,8 +352,9 @@ std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 
 bool TheLambsSong::keyPressed(const juce::KeyPress& key)
 {
-    if (m_currentPatchPtr != nullptr)
-        return m_currentPatchPtr->keyPressed(key);
+    auto patchPtr = std::atomic_load(&m_currentPatchPtr);
+    if (patchPtr != nullptr)
+        return patchPtr->keyPressed(key);
     return false;
 }
 

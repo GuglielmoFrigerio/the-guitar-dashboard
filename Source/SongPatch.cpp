@@ -14,7 +14,7 @@ SongPatch::SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOu
 {
     auto pMidiModifierElement = pPatchElement->getChildByName("MidiModifier");
     if (pMidiModifierElement != nullptr) {
-        m_modifierPtr = std::make_unique<MidiModifier>(pMidiModifierElement, pMidiOutput, midiChannel);
+        m_modifierPtr = std::make_shared<MidiModifier>(pMidiModifierElement, pMidiOutput, midiChannel);
     }
 }
 

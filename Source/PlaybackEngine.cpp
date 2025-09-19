@@ -16,6 +16,10 @@ void PlaybackEngine::hiResTimerCallback()
     auto state = m_currentState.load();
     auto statePtr = m_stateHandlers[(int)state];
     (this->*statePtr)();
+
+
+    auto nowTicks = juce::Time::getHighResolutionTicks();
+    m_pPlaybackTarget->onTick(nowTicks);
 }
 
 PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
