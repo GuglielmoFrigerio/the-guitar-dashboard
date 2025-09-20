@@ -34,6 +34,7 @@ protected:  // interface
 
     void play(std::int64_t currentClick, std::int64_t previousClick) override;
     void seek(std::int64_t currentClick, std::int64_t previousClick) override;
+    virtual void onTick(std::uint64_t ) override {}
 
 public:
     Song(const juce::String& name);
@@ -68,4 +69,5 @@ public:
     virtual void rewindPlayback() {}
 
     virtual bool keyPressed(const juce::KeyPress&) { return false; }
+    virtual int getCurrentModifierValue() const { return -1; }
 };

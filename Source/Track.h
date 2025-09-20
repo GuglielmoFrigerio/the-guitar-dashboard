@@ -37,5 +37,6 @@ public:
     }
     void play(std::int64_t currentClick, std::int64_t previousClick) override;
     void seek(std::int64_t currentClick, std::int64_t previousClick) override;
+    void onTick(std::uint64_t) override {}
 
 };

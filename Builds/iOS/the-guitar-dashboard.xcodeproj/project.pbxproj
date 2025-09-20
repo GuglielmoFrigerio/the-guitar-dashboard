@@ -227,6 +227,7 @@
 		83AB9503054296B15CDBF832 /* LimitFollower.h */ /* LimitFollower.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LimitFollower.h; path = ../../Source/LimitFollower.h; sourceTree = SOURCE_ROOT; };
 		846A00AA74E677F108B832BE /* AudioRecorder.h */ /* AudioRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AudioRecorder.h; path = ../../Source/AudioRecorder.h; sourceTree = SOURCE_ROOT; };
 		847238C202ACC88D5573F5F2 /* PublishSubscribeHandler.h */ /* PublishSubscribeHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PublishSubscribeHandler.h; path = ../../Source/PublishSubscribeHandler.h; sourceTree = SOURCE_ROOT; };
+		86135DCED12215A775D88110 /* ModifierComponent.h */ /* ModifierComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ModifierComponent.h; path = ../../Source/ModifierComponent.h; sourceTree = SOURCE_ROOT; };
 		86D44AA51AE9D6E3173A3B77 /* AxeFx3Device.cpp */ /* AxeFx3Device.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AxeFx3Device.cpp; path = ../../Source/AxeFx3Device.cpp; sourceTree = SOURCE_ROOT; };
 		8973B8206BBA0E4597E56D1F /* PitchDetector.h */ /* PitchDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PitchDetector.h; path = ../../Source/PitchDetector.h; sourceTree = SOURCE_ROOT; };
 		8D1BF1B687DA9681BB837320 /* FractalDiscoverDevice.cpp */ /* FractalDiscoverDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FractalDiscoverDevice.cpp; path = ../../Source/FractalDiscoverDevice.cpp; sourceTree = SOURCE_ROOT; };
@@ -617,6 +618,7 @@
 		DCFECA1B60FA5B06D01C8412 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				86135DCED12215A775D88110,
 				1018C883185DDEE7DDC42C8E,
 				14E3F197B3B60A42087C6DF1,
 				C1A1756D8BD47543ACC7E6B0,

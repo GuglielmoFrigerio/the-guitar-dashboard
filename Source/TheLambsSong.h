@@ -43,7 +43,7 @@ private:    // fields
     std::shared_ptr<MidiRecorder> m_midiRecorderPtr;
     std::vector<juce::String> m_patchMessages;
     std::vector<std::shared_ptr<SongPatch>> m_songPatches;
-    std::shared_ptr<SongPatch> m_currentPatch = nullptr;
+    std::atomic<std::shared_ptr<SongPatch>> m_currentPatchPtr = nullptr;
     int m_defaultMidiChannel = 1;
 
     class BackgroungPlayerStateHandler {
@@ -89,6 +89,8 @@ private:
     void loadPatchMessages(const juce::XmlElement* pPatchesElement);
     void loadPatches(const juce::XmlElement* pSongElement, IMidiOutput* pMidiOutput);
 
+    void onTick(std::uint64_t offsetTicks) override;
+
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);
     ~TheLambsSong() override {}
@@ -107,4 +109,8 @@ public:
     std::tuple<int, int> getSelectedProgramInfo() const override;
 
     bool keyPressed(const juce::KeyPress& key) override;
+    int getCurrentModifierValue() const override {
+        auto patchPtr = m_currentPatchPtr.load();
+        return patchPtr != nullptr ? patchPtr->getCurrentModifierValue() : -1;
+    }
 };

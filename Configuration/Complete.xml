@@ -9,7 +9,7 @@
 			</Track>
 			<Patch name="base crescendo" >
 				<ProgramChange scene="6" program="354"/>
-				<MidiModifier startValue="0" endValue="128" stepValue="10" midiControl="7"/>
+				<MidiModifier startValue="0" endValue="127" stepValue="25" midiControl="7"/>
 			</Patch>
 			<Patch name="solo" scene="8" >354</Patch>
 			<Patch name="base" scene="6">354</Patch>

@@ -2929,6 +2929,7 @@
     <ClInclude Include="..\..\Source\AudioRecorder.h"/>
     <ClInclude Include="..\..\Source\KeyManager.h"/>
     <ClInclude Include="..\..\Source\ValueAnimator.h"/>
+    <ClInclude Include="..\..\Source\ModifierComponent.h"/>
     <ClInclude Include="..\..\Source\PlayerModeComponent.h"/>
     <ClInclude Include="..\..\Source\NotificationComponent.h"/>
     <ClInclude Include="..\..\Source\DecibelSlider.h"/>

@@ -14,7 +14,7 @@ SongPatch::SongPatch(const juce::XmlElement* pPatchElement, IMidiOutput* pMidiOu
 {
     auto pMidiModifierElement = pPatchElement->getChildByName("MidiModifier");
     if (pMidiModifierElement != nullptr) {
-        m_modifierPtr = std::make_unique<MidiModifier>(pMidiModifierElement, pMidiOutput, midiChannel);
+        m_modifierPtr = std::make_shared<MidiModifier>(pMidiModifierElement, pMidiOutput, midiChannel);
     }
 }
 
@@ -25,8 +25,14 @@ bool SongPatch::keyPressed(const juce::KeyPress& key)
     return false;
 }
 
-void SongPatch::reset()
+void SongPatch::start()
 {
     if (m_modifierPtr != nullptr)
-        m_modifierPtr->reset();
+        m_modifierPtr->start();
+}
+
+void SongPatch::end()
+{
+    if (m_modifierPtr != nullptr)
+        m_modifierPtr->end();
 }

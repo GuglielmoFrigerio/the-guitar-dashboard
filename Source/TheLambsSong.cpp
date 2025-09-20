@@ -19,6 +19,9 @@
 #include "AutomationTrack.h"
 #include "SongListComponent.h"
 
+std::shared_ptr<SongPatch> g_nullSongPatch = nullptr;
+
+
 void TheLambsSong::stopPlayback()
 {
     if (m_playbackEnginePtr != nullptr)
@@ -157,6 +160,11 @@ void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
         m_backgroundPlayerStateHandler.backgroundStarted();
         m_playOnNote = -1;
     }
+
+    auto patchPtr = m_currentPatchPtr.load();
+    if (patchPtr != nullptr) {
+        patchPtr->onNoteOn(noteNumber);
+    }
 }
 
 void TheLambsSong::setupMidiRecorder()
@@ -188,6 +196,14 @@ void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement, IMidiOutput
     for (auto* pPatchElement : pSongElement->getChildWithTagNameIterator("Patch")) {
         auto songPatchPtr = std::make_shared<SongPatch>(pPatchElement, pMidiOutput, 1);
         m_songPatches.push_back(std::move(songPatchPtr));
+    }
+}
+
+void TheLambsSong::onTick(std::uint64_t offsetTicks)
+{
+    auto patchPtr = std::atomic_load(&m_currentPatchPtr);
+    if (patchPtr != nullptr) {
+        patchPtr->onTick(offsetTicks);
     }
 }
 
@@ -303,11 +319,15 @@ void TheLambsSong::deactivate()
 
 juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
+    auto patchPtr = m_currentPatchPtr.exchange(g_nullSongPatch);
+    if (patchPtr != nullptr)
+        patchPtr->end();
+
     if (programChangeIndex < m_songPatches.size()) {
-        m_currentPatch = m_songPatches[programChangeIndex];
-        m_currentPatch->reset();
+        auto nextPatchPtr = m_songPatches[programChangeIndex];
+        nextPatchPtr->start();
+        m_currentPatchPtr.store(nextPatchPtr);
     }
-    else m_currentPatch = nullptr;
 
     if (m_markerTrackPtr != nullptr) {
         auto& marker = m_markerTrackPtr->getMarker(programChangeIndex);
@@ -341,8 +361,9 @@ std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 
 bool TheLambsSong::keyPressed(const juce::KeyPress& key)
 {
-    if (m_currentPatch != nullptr)
-        return m_currentPatch->keyPressed(key);
+    auto patchPtr = m_currentPatchPtr.load();
+    if (patchPtr != nullptr)
+        return patchPtr->keyPressed(key);
     return false;
 }
 

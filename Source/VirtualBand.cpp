@@ -68,7 +68,7 @@ void VirtualBand::loadConfig()
 }
 
 
-void VirtualBand::finished (juce::URL::DownloadTask *task, bool success) {
+void VirtualBand::finished (juce::URL::DownloadTask *task, bool) {
     
 }
 
