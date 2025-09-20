@@ -33,6 +33,10 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <FILE id="giTcfc" name="MidiModifierTrigger.cpp" compile="1" resource="0"
+            file="Source/MidiModifierTrigger.cpp"/>
+      <FILE id="g08ODz" name="MidiModifierTrigger.h" compile="0" resource="0"
+            file="Source/MidiModifierTrigger.h"/>
       <FILE id="WDxJKI" name="SongPatch.cpp" compile="1" resource="0" file="Source/SongPatch.cpp"/>
       <FILE id="XECJ8s" name="SongPatch.h" compile="0" resource="0" file="Source/SongPatch.h"/>
       <FILE id="u1kUiI" name="MidiModifier.cpp" compile="1" resource="0"

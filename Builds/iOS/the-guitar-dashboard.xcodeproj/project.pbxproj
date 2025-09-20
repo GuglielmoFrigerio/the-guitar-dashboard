@@ -84,6 +84,7 @@
 		C33B39AD237ED17BEFDE92C3 /* CoreText.framework */ = {isa = PBXBuildFile; fileRef = 0FDC42A3C1811539C97C86DE; };
 		C3B6C4A941F1B41A073EFD75 /* Oscillator.cpp */ = {isa = PBXBuildFile; fileRef = 3EC5240ED182F15573A09148; };
 		C3E8903D9D46971363FAF674 /* FractalDiscoverDevice.cpp */ = {isa = PBXBuildFile; fileRef = 8D1BF1B687DA9681BB837320; };
+		C507067C05B4B5394CF525FE /* MidiModifierTrigger.cpp */ = {isa = PBXBuildFile; fileRef = 1B1F1163A506D78B9A1EC147; };
 		C757294E6BDC16FE82FF9AD6 /* TimeSlider.cpp */ = {isa = PBXBuildFile; fileRef = 80715DE0217EA34403309684; };
 		CE224290264086E9160B23AD /* SongPatch.cpp */ = {isa = PBXBuildFile; fileRef = 71D85E0BC79CA47AC0F92338; };
 		D0A49D28C9538D25CD8ED3DD /* Main.cpp */ = {isa = PBXBuildFile; fileRef = 9AB31229C3B9B838D06240BD; };
@@ -128,6 +129,7 @@
 		159DC0609C0CE8FEFF68BA65 /* IDeviceHost.h */ /* IDeviceHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IDeviceHost.h; path = ../../Source/IDeviceHost.h; sourceTree = SOURCE_ROOT; };
 		160CF575B15B1A850CC75811 /* NullMidiDevice.cpp */ /* NullMidiDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NullMidiDevice.cpp; path = ../../Source/NullMidiDevice.cpp; sourceTree = SOURCE_ROOT; };
 		17F42E53C05A19FD273FE4D7 /* include_juce_graphics_Sheenbidi.c */ /* include_juce_graphics_Sheenbidi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_graphics_Sheenbidi.c; path = ../../JuceLibraryCode/include_juce_graphics_Sheenbidi.c; sourceTree = SOURCE_ROOT; };
+		1B1F1163A506D78B9A1EC147 /* MidiModifierTrigger.cpp */ /* MidiModifierTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiModifierTrigger.cpp; path = ../../Source/MidiModifierTrigger.cpp; sourceTree = SOURCE_ROOT; };
 		1BF7EE74B987E97BFE0ED0A2 /* PlayerComponent.cpp */ /* PlayerComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerComponent.cpp; path = ../../Source/PlayerComponent.cpp; sourceTree = SOURCE_ROOT; };
 		1D675A95C0F7CC1B5A0FDFB1 /* MidiDevice.cpp */ /* MidiDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiDevice.cpp; path = ../../Source/MidiDevice.cpp; sourceTree = SOURCE_ROOT; };
 		1E92D2014C4DD8D916CFD986 /* SamplesTrack.cpp */ /* SamplesTrack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SamplesTrack.cpp; path = ../../Source/SamplesTrack.cpp; sourceTree = SOURCE_ROOT; };
@@ -146,6 +148,7 @@
 		2580261C8FE671BF2EA30F66 /* ProgramChangesComponent.h */ /* ProgramChangesComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ProgramChangesComponent.h; path = ../../Source/ProgramChangesComponent.h; sourceTree = SOURCE_ROOT; };
 		27DF55B8F44958D65B3A99BD /* AverageComputer.h */ /* AverageComputer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AverageComputer.h; path = ../../Source/AverageComputer.h; sourceTree = SOURCE_ROOT; };
 		28E4B3E0B49FB3FC037B6D27 /* the-guitar-dashboard.docx */ /* the-guitar-dashboard.docx */ = {isa = PBXFileReference; lastKnownFileType = file.docx; name = "the-guitar-dashboard.docx"; path = "../../documentation/the-guitar-dashboard.docx"; sourceTree = SOURCE_ROOT; };
+		29B29F4FCF8BBDF179281DBE /* MidiModifierTrigger.h */ /* MidiModifierTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiModifierTrigger.h; path = ../../Source/MidiModifierTrigger.h; sourceTree = SOURCE_ROOT; };
 		2B4B2C66F63810B4BFF97B6B /* TimePoint.cpp */ /* TimePoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TimePoint.cpp; path = ../../Source/TimePoint.cpp; sourceTree = SOURCE_ROOT; };
 		2DE1CE1D1338936E5FDF58DC /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
 		2E456223443713E62DD092DE /* MidiTrack.cpp */ /* MidiTrack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiTrack.cpp; path = ../../Source/MidiTrack.cpp; sourceTree = SOURCE_ROOT; };
@@ -411,6 +414,8 @@
 		4519B3949C9089E3EF381A7F /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1B1F1163A506D78B9A1EC147,
+				29B29F4FCF8BBDF179281DBE,
 				71D85E0BC79CA47AC0F92338,
 				678317F1F9D544BB0762A4A2,
 				63E881BFF5E4E8291915A74C,
@@ -728,6 +733,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C507067C05B4B5394CF525FE,
 				CE224290264086E9160B23AD,
 				EC6A9915A5433AD9410B71F9,
 				AF4D2471FA6D68D60C9E6BE3,
@@ -830,7 +836,7 @@
 					"_DEBUG=1",
 					"DEBUG=1",
 					"JUCE_CONTENT_SHARING=1",
-					"JUCE_PROJUCER_VERSION=0x80009",
+					"JUCE_PROJUCER_VERSION=0x8000a",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",
@@ -939,7 +945,7 @@
 					"_NDEBUG=1",
 					"NDEBUG=1",
 					"JUCE_CONTENT_SHARING=1",
-					"JUCE_PROJUCER_VERSION=0x80009",
+					"JUCE_PROJUCER_VERSION=0x8000a",
 					"JUCE_MODULE_AVAILABLE_juce_audio_basics=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_devices=1",
 					"JUCE_MODULE_AVAILABLE_juce_audio_formats=1",

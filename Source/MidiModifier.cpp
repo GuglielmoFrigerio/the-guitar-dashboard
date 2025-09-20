@@ -28,16 +28,10 @@ MidiModifier::MidiModifier(const juce::XmlElement* pMidiModifierElement, IMidiOu
     m_endValue = pMidiModifierElement->getIntAttribute("endValue");
 
     m_minValue = std::min(m_startValue, m_endValue);
-    m_maxValue = std::min(m_startValue, m_endValue);
+    m_maxValue = std::max(m_startValue, m_endValue);
 
     m_stepValue = pMidiModifierElement->getIntAttribute("stepValue");
     m_midiControl = pMidiModifierElement->getIntAttribute("midiControl");
-    m_midiTriggerNote = pMidiModifierElement->getIntAttribute("midiTriggerNote");
-    m_initialDelay = pMidiModifierElement->getIntAttribute("initialDelayTick");
-    m_rampLengthTick = pMidiModifierElement->getIntAttribute("rampLengthTick");
-    if (m_midiTriggerNote > 0 and m_rampLengthTick > 0) {
-        m_stepValue = static_cast<double>((m_endValue - m_startValue) / m_rampLengthTick);
-    }
 
     m_currentValue = m_startValue;
 }
@@ -97,8 +91,9 @@ void MidiModifier::onTick(std::uint64_t currentTick)
 
 void MidiModifier::onNoteOn(int midiNote)
 {
-    if (midiNote == m_midiTriggerNote) {
-        m_beginTickpoint = m_lastTick + m_initialDelay;
-        m_endTickpoint = m_beginTickpoint + m_rampLengthTick;
+    auto it = m_triggers.find(midiNote);
+    if (it != m_triggers.end()) {
+        m_beginTickpoint = m_lastTick + it->second.getInitialDelay();
+        m_endTickpoint = m_beginTickpoint + it->second.getRampLengthTick();
     }
 }

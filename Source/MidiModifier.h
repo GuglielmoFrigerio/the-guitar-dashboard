@@ -11,7 +11,7 @@
 #pragma once
 #include <JuceHeader.h>
 #include "IMidiOutput.h"
-
+#include "MidiModifierTrigger.h"
 
 class MidiModifier {
 private:
@@ -23,7 +23,6 @@ private:
     double m_stepValue;
     double m_currentValue;
     int m_midiControl;
-    int m_midiTriggerNote;
     IMidiOutput* m_pMidiOutput;
 
     int m_lastMidiValue = -1;
@@ -32,8 +31,10 @@ private:
     std::uint64_t m_rampLengthTick = 0;
 
     std::uint64_t m_lastTick = 0;
-    std::int64_t m_beginTickpoint;
-    std::uint64_t m_endTickpoint;
+    std::atomic<std::int64_t> m_beginTickpoint = 0;
+    std::atomic<std::int64_t> m_endTickpoint = 0;
+
+    std::unordered_map<int, MidiModifierTrigger> m_triggers;
 
 private:
     void sendMessage();
