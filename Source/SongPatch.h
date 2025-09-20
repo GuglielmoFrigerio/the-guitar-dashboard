@@ -27,4 +27,14 @@ public:
             return m_modifierPtr->getCurrentValue();
         return -1;
     }
+
+    inline void onTick(std::uint64_t currentTick) {
+        if (m_modifierPtr != nullptr)
+            m_modifierPtr->onTick(currentTick);
+    }
+
+    inline void onNoteOn(int noteNumber) {
+        if (m_modifierPtr != nullptr)
+            m_modifierPtr->onNoteOn(noteNumber);
+    }
 };

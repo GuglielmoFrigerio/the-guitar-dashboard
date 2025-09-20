@@ -16,12 +16,24 @@
 class MidiModifier {
 private:
     const int m_midiChannel;
-    int m_startValue;
-    int m_endValue;
-    int m_stepValue;
-    int m_currentValue;
+    double m_startValue;
+    double m_endValue;
+    double m_minValue;
+    double m_maxValue;
+    double m_stepValue;
+    double m_currentValue;
     int m_midiControl;
+    int m_midiTriggerNote;
     IMidiOutput* m_pMidiOutput;
+
+    int m_lastMidiValue = -1;
+
+    std::uint64_t m_initialDelay = 0;
+    std::uint64_t m_rampLengthTick = 0;
+
+    std::uint64_t m_lastTick = 0;
+    std::int64_t m_beginTickpoint;
+    std::uint64_t m_endTickpoint;
 
 private:
     void sendMessage();
@@ -37,6 +49,9 @@ public:
     void end();
 
     int getCurrentValue() const {
-        return m_currentValue;
+        return static_cast<int>(m_currentValue);
     }
+
+    void onTick(std::uint64_t currentTick);
+    void onNoteOn(int midiNote);
 };

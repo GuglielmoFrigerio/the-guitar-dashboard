@@ -10,6 +10,7 @@
 
 #pragma once
 #include <memory>
+#include <JuceHeader.h>
 #include "IMidiInputTarget.h"
 
 class TriplePlayConnect : public juce::MidiInputCallback {

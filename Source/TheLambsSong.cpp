@@ -160,6 +160,11 @@ void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
         m_backgroundPlayerStateHandler.backgroundStarted();
         m_playOnNote = -1;
     }
+
+    auto patchPtr = m_currentPatchPtr.load();
+    if (patchPtr != nullptr) {
+        patchPtr->onNoteOn(noteNumber);
+    }
 }
 
 void TheLambsSong::setupMidiRecorder()
@@ -196,6 +201,10 @@ void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement, IMidiOutput
 
 void TheLambsSong::onTick(std::uint64_t offsetTicks)
 {
+    auto patchPtr = std::atomic_load(&m_currentPatchPtr);
+    if (patchPtr != nullptr) {
+        patchPtr->onTick(offsetTicks);
+    }
 }
 
 TheLambsSong::TheLambsSong(const juce::XmlElement* pSongElement, VirtualBand* pVirtualBand)
@@ -310,14 +319,14 @@ void TheLambsSong::deactivate()
 
 juce::String TheLambsSong::selectProgramChange(int programChangeIndex)
 {
-    auto patchPtr = std::atomic_exchange(&m_currentPatchPtr, g_nullSongPatch);
+    auto patchPtr = m_currentPatchPtr.exchange(g_nullSongPatch);
     if (patchPtr != nullptr)
         patchPtr->end();
 
     if (programChangeIndex < m_songPatches.size()) {
         auto nextPatchPtr = m_songPatches[programChangeIndex];
         nextPatchPtr->start();
-        std::atomic_store(&m_currentPatchPtr, nextPatchPtr);
+        m_currentPatchPtr.store(nextPatchPtr);
     }
 
     if (m_markerTrackPtr != nullptr) {
@@ -352,7 +361,7 @@ std::tuple<int, int> TheLambsSong::getSelectedProgramInfo() const
 
 bool TheLambsSong::keyPressed(const juce::KeyPress& key)
 {
-    auto patchPtr = std::atomic_load(&m_currentPatchPtr);
+    auto patchPtr = m_currentPatchPtr.load();
     if (patchPtr != nullptr)
         return patchPtr->keyPressed(key);
     return false;

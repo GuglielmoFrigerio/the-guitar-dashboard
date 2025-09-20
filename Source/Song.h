@@ -34,7 +34,7 @@ protected:  // interface
 
     void play(std::int64_t currentClick, std::int64_t previousClick) override;
     void seek(std::int64_t currentClick, std::int64_t previousClick) override;
-    virtual void onTick(std::uint64_t offsetTicks) override {}
+    virtual void onTick(std::uint64_t ) override {}
 
 public:
     Song(const juce::String& name);

@@ -43,7 +43,7 @@ private:    // fields
     std::shared_ptr<MidiRecorder> m_midiRecorderPtr;
     std::vector<juce::String> m_patchMessages;
     std::vector<std::shared_ptr<SongPatch>> m_songPatches;
-    std::shared_ptr<SongPatch> m_currentPatchPtr = nullptr;
+    std::atomic<std::shared_ptr<SongPatch>> m_currentPatchPtr = nullptr;
     int m_defaultMidiChannel = 1;
 
     class BackgroungPlayerStateHandler {
@@ -110,7 +110,7 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override;
     int getCurrentModifierValue() const override {
-        auto patchPtr = std::atomic_load(&m_currentPatchPtr);
+        auto patchPtr = m_currentPatchPtr.load();
         return patchPtr != nullptr ? patchPtr->getCurrentModifierValue() : -1;
     }
 };
