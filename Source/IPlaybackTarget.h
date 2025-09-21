@@ -17,5 +17,5 @@ public:
 
     virtual void play(std::int64_t currentClick, std::int64_t previousClick) = 0;
     virtual void seek(std::int64_t currentClick, std::int64_t previousClick) = 0;
-    virtual void onTick(std::uint64_t offsetTicks) = 0;
+    virtual void onTick(std::int64_t microSeconds) = 0;
 };

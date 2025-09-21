@@ -28,13 +28,13 @@ public:
         return -1;
     }
 
-    inline void onTick(std::uint64_t currentTick) {
+    inline void onTick(std::int64_t microSeconds) {
         if (m_modifierPtr != nullptr)
-            m_modifierPtr->onTick(currentTick);
+            m_modifierPtr->onTick(microSeconds);
     }
 
-    inline void onNoteOn(int noteNumber) {
+    inline void onNoteOn(int noteNumber, int velocity) {
         if (m_modifierPtr != nullptr)
-            m_modifierPtr->onNoteOn(noteNumber);
+            m_modifierPtr->onNoteOn(noteNumber, velocity);
     }
 };

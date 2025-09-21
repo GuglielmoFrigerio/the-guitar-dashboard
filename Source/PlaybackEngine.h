@@ -17,7 +17,7 @@
 
 class PlaybackEngine : public juce::HighResolutionTimer {
 private:    //types
-    using StateHandler = void (PlaybackEngine::*)();
+    using StateHandler = void (PlaybackEngine::*)(juce::int64);
 
 private:    // fields
     double                  m_ticksPerSecond = 0.0;
@@ -32,13 +32,14 @@ private:    // fields
     enum class State { Stopped = 0, Starting = 1, Started = 2, Stopping = 3};
     std::atomic<State>      m_currentState = State::Stopped;
     StateHandler            m_stateHandlers[4];
+    std::int64_t            m_ticksPerMicrosecond;
 
 private:    // implementation
     void hiResTimerCallback() override;
-    void stoppedHandler();
-    void startingHandler();
-    void startedHandler();
-    void stoppingHandler();
+    void stoppedHandler(juce::int64 currentTick);
+    void startingHandler(juce::int64 currentTick);
+    void startedHandler(juce::int64 currentTick);
+    void stoppingHandler(juce::int64 currentTick);
     void play(std::uint64_t offsetTicks);
     void seekAtTick(std::uint64_t offsetTicks);
 

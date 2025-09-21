@@ -179,7 +179,9 @@
 			<Patch name="Tapping" scene="1"> 282</Patch>
 			<Patch name="Pitch 24">
 				<ProgramChange scene="2" program="282"/>
-				<MidiModifier startValue="0" endValue="127" midiControl="7" midiTriggerNote="80" initialDelayTick="1000" rampLengthTick="1000"/>
+				<MidiModifier midiControl="10">
+					<Trigger startValue="0" endValue="127" midiTriggerNote="64" initialDelayTick="1000000" rampLengthTick="1000000"/>
+				</MidiModifier>
 			</Patch>
 			<Patch name="Pitch 12" scene="3"> 282</Patch>
 			<Patch name="Envelope" scene="4"> 282</Patch>

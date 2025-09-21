@@ -89,7 +89,7 @@ private:
     void loadPatchMessages(const juce::XmlElement* pPatchesElement);
     void loadPatches(const juce::XmlElement* pSongElement, IMidiOutput* pMidiOutput);
 
-    void onTick(std::uint64_t offsetTicks) override;
+    void onTick(std::int64_t microSeconds) override;
 
 public:
     TheLambsSong(const juce::XmlElement* pPatchesElement, VirtualBand* pVirtualBand);

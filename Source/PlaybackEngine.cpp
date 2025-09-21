@@ -13,20 +13,23 @@
 
 void PlaybackEngine::hiResTimerCallback()
 {
+    auto nowTicks = juce::Time::getHighResolutionTicks();
     auto state = m_currentState.load();
     auto statePtr = m_stateHandlers[(int)state];
-    (this->*statePtr)();
+    (this->*statePtr)(nowTicks);
 
-
-    auto nowTicks = juce::Time::getHighResolutionTicks();
-    m_pPlaybackTarget->onTick(nowTicks);
+    auto microSeconds = nowTicks / m_ticksPerMicrosecond;
+    m_pPlaybackTarget->onTick(microSeconds);
 }
 
 PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
     : m_pPlaybackTarget(pPlaybackTarget), m_stopOffsetTicks(0), m_currentState(State::Stopped)
 {
     m_clicksPerBeat = (double)clicksPerBeat;
-    m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();
+    auto ticksPerSecond = juce::Time::getHighResolutionTicksPerSecond();
+    m_ticksPerSecond = (double)ticksPerSecond;
+    jassert(ticksPerSecond % 1000000 == 0);
+    m_ticksPerMicrosecond = ticksPerSecond / 1000000;
     setBeatsPerMinute(beatsPerMinute);
     startTimer(m_timespan);
     m_stateHandlers[(int)State::Stopped] = &PlaybackEngine::stoppedHandler;
@@ -76,32 +79,29 @@ void PlaybackEngine::seek(std::uint64_t clickPosition)
     }
 }
 
-void PlaybackEngine::stoppedHandler()
+void PlaybackEngine::stoppedHandler(juce::int64 currentTick)
 {
 
 }
 
-void PlaybackEngine::startingHandler()
+void PlaybackEngine::startingHandler(juce::int64 currentTick)
 {
-    auto nowTicks = juce::Time::getHighResolutionTicks();
-    auto newStart = nowTicks - m_stopOffsetTicks;
+    auto newStart = currentTick - m_stopOffsetTicks;
     m_startTicks.store(newStart);
     m_currentState.store(State::Started);
-    auto offset = nowTicks - newStart;
+    auto offset = currentTick - newStart;
     play(offset);
 }
 
-void PlaybackEngine::startedHandler()
+void PlaybackEngine::startedHandler(juce::int64 currentTick)
 {
-    auto nowTicks = juce::Time::getHighResolutionTicks();
-    auto offsetTicks = nowTicks - m_startTicks.load();
+    auto offsetTicks = currentTick - m_startTicks.load();
     play(offsetTicks);
 }
 
-void PlaybackEngine::stoppingHandler()
+void PlaybackEngine::stoppingHandler(juce::int64 currentTick)
 {
-    auto nowTicks = juce::Time::getHighResolutionTicks();
-    m_stopOffsetTicks = nowTicks - m_startTicks.load();
+    m_stopOffsetTicks = currentTick - m_startTicks.load();
     m_currentState.store(State::Stopped);
 }
 

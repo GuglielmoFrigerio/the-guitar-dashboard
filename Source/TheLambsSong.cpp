@@ -163,7 +163,7 @@ void TheLambsSong::onNoteOn(int, int noteNumber, std::uint8_t velocity)
 
     auto patchPtr = m_currentPatchPtr.load();
     if (patchPtr != nullptr) {
-        patchPtr->onNoteOn(noteNumber);
+        patchPtr->onNoteOn(noteNumber, velocity);
     }
 }
 
@@ -199,11 +199,11 @@ void TheLambsSong::loadPatches(const juce::XmlElement* pSongElement, IMidiOutput
     }
 }
 
-void TheLambsSong::onTick(std::uint64_t offsetTicks)
+void TheLambsSong::onTick(std::int64_t microSeconds)
 {
     auto patchPtr = std::atomic_load(&m_currentPatchPtr);
     if (patchPtr != nullptr) {
-        patchPtr->onTick(offsetTicks);
+        patchPtr->onTick(microSeconds);
     }
 }
 

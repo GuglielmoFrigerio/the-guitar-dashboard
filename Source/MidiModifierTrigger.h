@@ -32,4 +32,16 @@ public:
     inline std::uint64_t getRampLengthTick() const {
         return m_rampLengthTick;
     }
+
+    inline double getStartValue() const {
+        return m_startValue;
+    }
+
+    inline double getEndValue() const {
+        return m_endValue;
+    }
+
+    inline double getStepValue() const {
+        return m_stepValue;
+    }
 };

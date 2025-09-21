@@ -16,11 +16,11 @@
 class MidiModifier {
 private:
     const int m_midiChannel;
-    double m_startValue;
-    double m_endValue;
-    double m_minValue;
-    double m_maxValue;
-    double m_stepValue;
+    std::atomic<double> m_startValue;
+    std::atomic<double> m_endValue;
+    std::atomic<double> m_minValue;
+    std::atomic<double> m_maxValue;
+    std::atomic<double> m_stepValue;
     double m_currentValue;
     int m_midiControl;
     IMidiOutput* m_pMidiOutput;
@@ -30,14 +30,16 @@ private:
     std::uint64_t m_initialDelay = 0;
     std::uint64_t m_rampLengthTick = 0;
 
-    std::uint64_t m_lastTick = 0;
+    std::int64_t m_lastTick = 0;
     std::atomic<std::int64_t> m_beginTickpoint = 0;
     std::atomic<std::int64_t> m_endTickpoint = 0;
 
     std::unordered_map<int, MidiModifierTrigger> m_triggers;
+    int m_minMidiVelocity;
 
 private:
-    void sendMessage();
+    void setupMinMax();
+    void sendMessage(double value);
 
 public:
     MidiModifier(const juce::XmlElement* pMidiModifierElement, IMidiOutput* pMidiOutput, const int midiChannel);
@@ -53,6 +55,6 @@ public:
         return static_cast<int>(m_currentValue);
     }
 
-    void onTick(std::uint64_t currentTick);
-    void onNoteOn(int midiNote);
+    void onTick(std::int64_t microSeconds);
+    void onNoteOn(int midiNote, int velocity);
 };
