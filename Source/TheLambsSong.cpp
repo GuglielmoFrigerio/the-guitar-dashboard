@@ -367,11 +367,11 @@ bool TheLambsSong::keyPressed(const juce::KeyPress& key)
     return false;
 }
 
-TheLambsSong::BackgroungPlayerStateHandler::BackgroungPlayerStateHandler()
+TheLambsSong::BackgroundPlayerStateHandler::BackgroundPlayerStateHandler()
     : m_currentState(PlayerState::Stopped), m_nextState(PlayerState::Stopped) {
 }
 
-void TheLambsSong::BackgroungPlayerStateHandler::timerCallback(std::function<void()> onPlaying, std::function<void()> onStopped)
+void TheLambsSong::BackgroundPlayerStateHandler::timerCallback(std::function<void()> onPlaying, std::function<void()> onStopped)
 {
     if (m_currentState != m_nextState) {
         if (m_nextState == PlayerState::Playing)
@@ -384,22 +384,22 @@ void TheLambsSong::BackgroungPlayerStateHandler::timerCallback(std::function<voi
     }
 }
 
-void TheLambsSong::BackgroungPlayerStateHandler::backgroundStarted()
+void TheLambsSong::BackgroundPlayerStateHandler::backgroundStarted()
 {
     m_nextState = PlayerState::Playing;
 }
 
-void TheLambsSong::BackgroungPlayerStateHandler::backgroundStopped()
+void TheLambsSong::BackgroundPlayerStateHandler::backgroundStopped()
 {
     m_nextState = PlayerState::Stopped;
 }
 
-void TheLambsSong::BackgroungPlayerStateHandler::starting()
+void TheLambsSong::BackgroundPlayerStateHandler::starting()
 {
     m_currentState = m_nextState = PlayerState::Playing;
 }
 
-void TheLambsSong::BackgroungPlayerStateHandler::stopping()
+void TheLambsSong::BackgroundPlayerStateHandler::stopping()
 {
     m_currentState = m_nextState = PlayerState::Stopping;
 }

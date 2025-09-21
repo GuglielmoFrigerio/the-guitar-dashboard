@@ -16,4 +16,5 @@ public:
     virtual void setupBuffer() = 0;
     virtual void addMessage(const juce::MidiMessage& midiMessage) = 0;
     virtual void send() = 0;
+    virtual void sendDirectMessage(const juce::MidiMessage& midiMessage) = 0;
 };

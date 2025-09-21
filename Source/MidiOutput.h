@@ -26,4 +26,5 @@ private:    // IMidiOutput interface implementation
     void setupBuffer() override;
     void addMessage(const juce::MidiMessage& midiMessage) override;
     void send() override;
+    void sendDirectMessage(const juce::MidiMessage& midiMessage) override;
 };

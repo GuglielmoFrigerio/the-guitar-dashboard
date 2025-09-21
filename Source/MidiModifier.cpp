@@ -26,10 +26,8 @@ void MidiModifier::sendMessage(double value)
     int roundedValue = static_cast<int>(std::lround(actualValue));
     if (roundedValue != m_lastMidiValue) {
         auto cc = juce::MidiMessage::controllerEvent(m_midiChannel, m_midiControl, roundedValue);
-        m_pMidiOutput->addMessage(cc);
-        m_pMidiOutput->send();
+        m_pMidiOutput->sendDirectMessage(cc);
         m_lastMidiValue = roundedValue;
-        DBG("control: " << m_midiControl << " value: " << roundedValue);
     }
 }
 

@@ -46,13 +46,13 @@ private:    // fields
     std::atomic<std::shared_ptr<SongPatch>> m_currentPatchPtr = nullptr;
     int m_defaultMidiChannel = 1;
 
-    class BackgroungPlayerStateHandler {
+    class BackgroundPlayerStateHandler {
     private:
         PlayerState m_currentState;
         PlayerState m_nextState;
 
     public:
-        BackgroungPlayerStateHandler();
+        BackgroundPlayerStateHandler();
 
         void timerCallback(std::function<void()> onPlaying, std::function<void()> onStopped);
 
@@ -66,9 +66,9 @@ private:    // fields
 
     };
 
-    BackgroungPlayerStateHandler m_backgroundPlayerStateHandler;
+    BackgroundPlayerStateHandler m_backgroundPlayerStateHandler;
 
-private:    // IAutomationTarget interface implementaiton
+private:    // IAutomationTarget interface implementation
     void stopPlayback() override;
 
 private:
