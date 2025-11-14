@@ -7,7 +7,7 @@
 				<Marker>00:03:04</Marker>
 				<Marker>00:05:47</Marker>
 			</Track>
-			<Patch name="base crescendo" >
+			<Patch name="base crescendo" message="Volume medio">
 				<ProgramChange scene="6" program="354"/>
 				<MidiModifier startValue="0" endValue="127" stepValue="25" midiControl="7"/>
 			</Patch>
@@ -16,7 +16,7 @@
 			<Patch name="envelope (Sol# - Fa)" scene="8"> 462</Patch>
 			<Patch name="base" scene="6">354</Patch>
 			<Patch name="solo" scene="8"> 354</Patch>
-			<Patch name="base" scene="6">354</Patch>
+			<Patch name="base" scene="6">29</Patch>
 			<Patch name="envelope" scene="1">378</Patch>
 		</Song>
 		<Song name="Get'em Out By Friday">
@@ -69,7 +69,7 @@
 		</Song>
 		<Song name="Dance on a volcano">
 			<Track name="Genesis Dance on a Volcano.mp3" message="Pedale Vol al massimo!"></Track>
-			<Patch name="Arpeggio" scene="5">209</Patch>
+			<Patch name="Arpeggio" scene="5" message="Volume al Massimo!">209</Patch>
 			<Patch name="LA#" scene="5">273</Patch>
 			<Patch name="Arpeggio" scene="5">209</Patch>
 			<Patch name="LA#" scene="5">273</Patch>
@@ -120,7 +120,7 @@
 			<Patch name="Clean Bridge" scene="1">134</Patch>
 			<Patch name="Solo" scene="8">135</Patch>
 		</Song>
-		<Song name="In the Cage Live">
+		<!--<Song name="In the Cage Live">
 			<Track name="In the Cage (Medley_ Cinema Show  The Colony of Slippermen) (Live) (1994 Remaster).mp3"></Track>
 			<Patch name="Intro" scene="8">501</Patch>
 			<Patch name="Power Chords" scene="1">383</Patch>
@@ -134,7 +134,7 @@
 			<Track name="cage-solo.mp3"></Track>
 			<Patch name="Clean Bridge" scene="1">134</Patch>
 			<Patch name="Solo" scene="8">135</Patch>
-		</Song>
+		</Song>-->
 		<Song name="Lilywhite Lilith">
 			<Track name="Lilywhite Lilith - Genesis.mp3"></Track>
 			<Patch name="Intro" scene="8"> 370</Patch>
@@ -180,8 +180,11 @@
 			<Patch name="Tapping" scene="1"> 282</Patch>
 			<Patch name="Pitch 24">
 				<ProgramChange scene="2" program="282"/>
-				<MidiModifier midiControl="10">
-					<Trigger startValue="0" endValue="127" midiTriggerNote="64" initialDelayTick="1000000" rampLengthTick="1000000"/>
+				<MidiModifier midiControl="7">
+					<Trigger startValue="127" endValue="0" midiTriggerNote="64" initialDelayTick="125000" rampLengthTick="125000"/>
+					<Trigger startValue="0" endValue="127" midiTriggerNote="69" initialDelayTick="125000" rampLengthTick="125000"/>
+					<Trigger startValue="127" endValue="0" midiTriggerNote="73" initialDelayTick="125000" rampLengthTick="125000"/>
+					<Trigger startValue="0" endValue="127" midiTriggerNote="74" initialDelayTick="125000" rampLengthTick="125000"/>
 				</MidiModifier>
 			</Patch>
 			<Patch name="Pitch 12" scene="3"> 282</Patch>
@@ -192,11 +195,6 @@
 			<Patch name="Reprise" scene="7">282</Patch>
 			<Patch name="Clean Mid Pickup" scene="1"> 456</Patch>
 			<Patch scene="8">458</Patch>
-		</Song>
-		<Song name="I Know What I Like">
-			<Track name="I Know What I Like.mp3"> </Track>
-			<Patch name="Pong Chorus" scene="1">99</Patch>
-			<Patch name="Wha Wha" scene="1">210</Patch>
 		</Song>
 		<Song name="Firth of Fifth" initialBpm="65">
 			<Track name="Firth Of Fifth - Genesis.mp3">
@@ -243,10 +241,6 @@
 				<Sample name="EppingTapping.wav" beat="2" click="0" />
 			</Samples>
 		</Song>
-		<Song name="Aftergow">
-			<Track name="09-Afterglow.mp3"></Track>
-			<Patch name="Guitar" scene="1"> 391</Patch>
-		</Song>
 		<Song name="The Musical Box">
 			<Track name="The Musical Box.mp3">
 				<Marker>00:07:31</Marker>
@@ -254,6 +248,22 @@
 			</Track>
 			<Patch name="Arpeggio" scene="8" message="Pedali al minimo!" >275</Patch>
 			<Patch name="Solo" scene="8">320</Patch>
+		</Song>
+		<!--<Song name="The Knife (Live)">
+			<Track name="The Knife (Live).mp3">
+				<Marker>00:05:35</Marker>
+			</Track>
+			<Patch name="Solo" scene="8">370</Patch>
+		</Song>-->
+		<Song name="Aftergow">
+			<Track name="09-Afterglow.mp3"></Track>
+			<Patch name="Guitar" scene="1"> 391</Patch>
+		</Song>
+		<Song name="I Know What I Like">
+			<Track name="I Know What I Like.mp3"> </Track>
+			<Patch name="Pong Chorus" scene="1">99</Patch>
+			<Patch name="Wha Wha" scene="1">210</Patch>
+			<Patch name="PLINI" scene="8">198</Patch>
 		</Song>
 	</Library>
 	<Library name="Default Library">
@@ -430,6 +440,7 @@
 			<Patch name="DynamoFlanger" scene="1">182</Patch>
 			<Patch name="FriedmanHBE Bridge-Middle" scene="1">506</Patch>
 			<Patch name="Blitz III" scene="2">340</Patch>
+			<Patch name="gugli guglie" scene="1" message="bridge-middle pickup">386</Patch>
 		</Song>
 		<Song name="Dreamy">
 			<Patch name="Texas Stars" scene="2">138</Patch>

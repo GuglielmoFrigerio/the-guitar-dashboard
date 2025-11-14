@@ -94,7 +94,7 @@ void MidiModifier::onTick(std::int64_t microSeconds)
 {
     if (m_beginTickpoint.load() > 0ll) {
         auto deltaT = static_cast<std::int64_t>(microSeconds) - m_beginTickpoint;
-        auto value = deltaT * m_stepValue;
+        auto value = m_startValue +  deltaT * m_stepValue;
         value = std::max(value, m_minValue.load());
         value = std::min(value, m_maxValue.load());
 
@@ -106,11 +106,14 @@ void MidiModifier::onTick(std::int64_t microSeconds)
 
 void MidiModifier::onNoteOn(int midiNote, int velocity)
 {
+    DBG("MidiModifier::onNoteOn note: " << midiNote << " velocity: " << velocity);
     if (velocity >= m_minMidiVelocity) {
         auto it = m_triggers.find(midiNote);
         if (it != m_triggers.end()) {
-            m_beginTickpoint.store(m_lastTick + it->second.getInitialDelay());
-            m_endTickpoint = m_beginTickpoint + it->second.getRampLengthTick();
+            auto initialDelay = it->second.getInitialDelay();
+            auto rampLengthTick = it->second.getRampLengthTick();
+            m_beginTickpoint.store(m_lastTick + initialDelay);
+            m_endTickpoint = m_beginTickpoint + rampLengthTick;
             m_startValue.store(it->second.getStartValue());
             m_endValue.store(it->second.getEndValue());
             m_stepValue.store(it->second.getStepValue());

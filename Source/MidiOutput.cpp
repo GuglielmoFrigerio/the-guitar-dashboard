@@ -51,7 +51,7 @@ void MidiOutput::send()
 void MidiOutput::sendDirectMessage(const juce::MidiMessage& midiMessage)
 {
     if (m_outputPtr != nullptr) {
-        m_outputPtr->sendBlockOfMessagesNow(m_midiBuffer);
+        m_outputPtr->sendMessageNow(midiMessage);
         DBG("MidiOutput::sendDirectMessage: " << midiMessage.getDescription());
     }
     else DBG("MidiOutput::sendDirectMessage: unable to send");
