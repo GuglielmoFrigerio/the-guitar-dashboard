@@ -147,7 +147,6 @@
 			<Track name="Anyway - Genesis.mp3" >
 				<Marker> 00:01:23</Marker>
 			</Track>
-			<Patch name="Mute" scene="1" playOnNote="47" minVelocity="50" message="Pedale al massimo!">206</Patch>
 			<Patch name="Sol" scene="6" action="stop" message="Pedale al massimo!">485</Patch>
 			<Patch name="Enfasi" scene="7" message="Pedale al massimo!">485</Patch>
 			<Patch name="Solo" scene="1" > 476</Patch>
