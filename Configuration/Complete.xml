@@ -264,6 +264,82 @@
 			<Patch name="Wha Wha" scene="1">210</Patch>
 			<Patch name="PLINI" scene="8">198</Patch>
 		</Song>
+		<Song name="The Return of the Giant Hogweed">
+			<Track name="The Return Of The Giant Hogweed.mp3">
+				<Marker> 00:04:06</Marker>
+				<Marker> 00:05:15</Marker>
+			</Track>
+			<Patch name="intro" scene="3">210</Patch>
+			<Patch name="-12" scene="2">508</Patch>
+			<Patch name="+12" scene="3">508</Patch>
+			<Patch name="Stacco" scene="4">508</Patch>
+			<Patch name="Clean" scene="5"> 508</Patch>
+			<Patch name="Dist" scene="4">508</Patch>
+			<Patch name="Clean" scene="5"> 508</Patch>
+			<Patch name="-12" scene="2">508</Patch>
+			<Patch name="+12" scene="3">508</Patch>
+			<Patch name="Stacco" scene="4">508</Patch>
+			<Patch name="Clean" scene="5">508</Patch>
+			<Patch name="Dist" scene="4">508</Patch>
+			<Patch name="Clean" scene="5">508</Patch>
+			<Patch name="Solo con Flauto" scene="1">239</Patch>
+			<Patch name="+12" scene="3">508</Patch>
+			<Patch name="Dist" scene="4"> 508</Patch>
+			<Patch name="Clean" scene="5">508</Patch>
+			<Patch name="SoloReverb" scene="1">397</Patch>
+			<Patch name="Stoppato" scene="2">431</Patch>
+			<Patch name="Solo Delay" scene="7">438</Patch>
+			<Patch name="2nd" scene="4">341</Patch>
+			<Patch name="Finale" scene="1">395</Patch>
+		</Song>
+		<Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">
+			<Track name="Genesis - Here Comes the Supernatural Anaesthetist.mp3"></Track>
+			<Patch name="Clean Intro" scene="1"> 439</Patch>
+			<Patch name="Clean Intro" scene="1" beat="4" click="0"> 439</Patch>
+			<Patch name="Solo" scene="8" beat="64" click="0">222</Patch>
+			<Patch name="Solo Finale" scene="1">31</Patch>
+			<AutomationEvent beat="60" click="0" action="stop"></AutomationEvent>
+			<Samples>
+				<Sample name="Supernatural Vocal.wav" beat="0" click="0" />
+			</Samples>
+		</Song>
+		<Song name="The Chamber of 32 Doors">
+			<Track name="The Chamber of 32 Doors - Genesis.mp3" />
+			<Patch name="Intro (Si)" scene="6">486</Patch>
+			<Patch name="Strumming" scene="1">99</Patch>
+			<Patch name="Intro" scene="6">486</Patch>
+			<Patch name="Strumming" scene="1">99</Patch>
+		</Song>
+		<Song name="Hairless Heart">
+			<Track name="Hairless Heart - Genesis.mp3"></Track>
+			<Patch name="Clean Intro" scene="2">478</Patch>
+			<Patch name="Envelope" scene="6">479</Patch>
+			<Patch name="Dist" scene="3">480</Patch>
+			<Patch name="Envelope" scene="6"> 479</Patch>
+			<Patch name="Dist" scene="3">480</Patch>
+		</Song>
+		<Song name="Counting Out Time">
+			<Track name="Genesis - Counting Out Time (Official Audio).mp3">
+				
+			</Track>
+			<Patch name="Riff" scene="1">53</Patch>
+			<Patch name="PChords" scene="1">91</Patch>
+			<Patch name="Riff" scene="1">53</Patch>
+			<Patch name="PChords" scene="1">91</Patch>
+			<Patch name="Solo" scene="1">52</Patch>
+		</Song>
+		<Song name="The Carpet Crawlers">
+			<Track name="Genesis - Carpet Crawlers (Official Audio).mp3"></Track>
+			<Patch name="Dreamy" scene="8">47</Patch>
+		</Song>
+		<Song name="Blood On The Rooftops">
+			<Track name="06-Blood-on-the-Rooftops.mp3"></Track>
+			<!-- <Patch name="Intro" scene="1">456</Patch> -->
+			<Patch name="Intro" scene="1">355</Patch>
+			<Patch name="arpeggio" scene="2"> 443</Patch>
+			<!--Try
+      125. -->
+		</Song>
 	</Library>
 	<Library name="Default Library">
 		<Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">
@@ -283,50 +359,6 @@
 			<Patch name="Strumming" scene="1">99</Patch>
 			<Patch name="Intro" scene="6">486</Patch>
 			<Patch name="Strumming" scene="1">99</Patch>
-		</Song>
-		<Song name="The Return of the Giant Hogweed">
-			<Track name="The Return Of The Giant Hogweed.mp3">
-				<Marker> 00:04:06</Marker>
-				<Marker> 00:05:15</Marker>
-			</Track>
-			<Patch name="intro" scene="1">475</Patch>
-			<Patch name="-12" scene="2">508</Patch>
-			<Patch name="+12" scene="3">508</Patch>
-			<Patch name="Stacco" scene="4">508</Patch>
-			<Patch name="Clean" scene="5"> 508</Patch>
-			<Patch name="Dist" scene="4">508</Patch>
-			<Patch name="Clean" scene="5"> 508</Patch>
-			<Patch name="-12" scene="2">508</Patch>
-			<Patch name="+12" scene="3">508</Patch>
-			<Patch name="Stacco" scene="4">508</Patch>
-			<Patch name="Clean" scene="5">508</Patch>
-			<Patch name="Dist" scene="4">508</Patch>
-			<Patch name="Clean" scene="5">508</Patch>
-			<Patch name="Solo con Flauto" scene="1">239</Patch>
-			<Patch name="+12" scene="3">508</Patch>
-			<Patch name="Dist" scene="4"> 508</Patch>
-			<Patch name="Clean" scene="5">508</Patch>
-			<Patch name="SoloReverb" scene="1">451</Patch>
-			<Patch name="SoloReverbDiat" scene="2">451</Patch>
-			<Patch name="Solo Delay" scene="7">438</Patch>
-			<Patch name="2nd" scene="4">451</Patch>
-			<Patch name="Finale" scene="1">395</Patch>
-		</Song>
-		<Song name="Hairless Heart">
-			<Track name="Hairless Heart - Genesis.mp3"></Track>
-			<Patch name="Clean Intro" scene="2">478</Patch>
-			<Patch name="Envelope" scene="6">479</Patch>
-			<Patch name="Dist" scene="3">480</Patch>
-			<Patch name="Envelope" scene="6"> 479</Patch>
-			<Patch name="Dist" scene="3">480</Patch>
-		</Song>
-		<Song name="Blood On The Rooftops">
-			<Track name="06-Blood-on-the-Rooftops.mp3"></Track>
-			<!-- <Patch name="Intro" scene="1">456</Patch> -->
-			<Patch name="Intro" scene="1">355</Patch>
-			<Patch name="arpeggio" scene="2"> 443</Patch>
-			<!--Try
-      125. -->
 		</Song>
 		<Song name="The Great Gig" initialBpm="65" metronomeBeats="0" >
 			<Track name="The Great Gig.mp3"></Track>
@@ -440,6 +472,7 @@
 			<Patch name="FriedmanHBE Bridge-Middle" scene="1">506</Patch>
 			<Patch name="Blitz III" scene="2">340</Patch>
 			<Patch name="gugli guglie" scene="1" message="bridge-middle pickup">386</Patch>
+			<Patch name="Stereo spread chorus" scene="1" message="bridge-middle pickup">363</Patch>
 		</Song>
 		<Song name="Dreamy">
 			<Patch name="Texas Stars" scene="2">138</Patch>

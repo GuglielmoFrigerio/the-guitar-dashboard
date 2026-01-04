@@ -1,0 +1,41 @@
+/*
+  ==============================================================================
+
+    TempoMap.h
+    Created: 2 Jan 2026 3:25:37pm
+    Author:  gugli
+
+  ==============================================================================
+*/
+
+#pragma once
+#include <JuceHeader.h>
+
+namespace ne
+{
+	const double PPQ = 960.0;           // Pulses (ticks) per quarter note
+    using SampleOffset = juce::int64;   // absolute sample position or offset
+    using TickOffset = juce::int64;     // musical ticks (PPQ)
+    using SampleIndex = int;            // offset inside current block (0..N-1)
+
+    class TempoMap
+    {
+    private:
+        int m_samplesPerBlock = 0;
+        double m_sampleRate = 44100.0;
+		double m_tempoBPM = 120.0;
+		double m_samplesPerTick = 0.0;
+
+    public:
+        TempoMap() = default;
+		~TempoMap() = default;
+
+        void setTempo(double bpm);
+
+        void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
+
+		SampleOffset ticksToSamples(TickOffset tickOffset) const;
+		TickOffset samplesToTicks(SampleOffset sampleOffset) const;
+    };
+}
+

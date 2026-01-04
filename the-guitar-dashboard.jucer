@@ -33,6 +33,17 @@
       </GROUP>
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
+      <GROUP id="{E5E2B0ED-263C-8965-0D0B-EB98ED2918A4}" name="NewEngine">
+        <FILE id="jBkqFT" name="CommandQueue.cpp" compile="1" resource="0"
+              file="Source/CommandQueue.cpp"/>
+        <FILE id="m71Vc3" name="CommandQueue.h" compile="0" resource="0" file="Source/CommandQueue.h"/>
+        <FILE id="O1E6EM" name="MusicSequencer.cpp" compile="1" resource="0"
+              file="Source/MusicSequencer.cpp"/>
+        <FILE id="UzPGwX" name="MusicSequencer.h" compile="0" resource="0"
+              file="Source/MusicSequencer.h"/>
+        <FILE id="EFO1UC" name="TempoMap.cpp" compile="1" resource="0" file="Source/TempoMap.cpp"/>
+        <FILE id="Og9rLG" name="TempoMap.h" compile="0" resource="0" file="Source/TempoMap.h"/>
+      </GROUP>
       <FILE id="giTcfc" name="MidiModifierTrigger.cpp" compile="1" resource="0"
             file="Source/MidiModifierTrigger.cpp"/>
       <FILE id="g08ODz" name="MidiModifierTrigger.h" compile="0" resource="0"
@@ -167,10 +178,6 @@
       <FILE id="NIxgH5" name="AxeFx2Device.cpp" compile="1" resource="0"
             file="Source/AxeFx2Device.cpp"/>
       <FILE id="y9y66r" name="AxeFx2Device.h" compile="0" resource="0" file="Source/AxeFx2Device.h"/>
-      <FILE id="g7T8Eh" name="FractalDiscoverDevice.cpp" compile="1" resource="0"
-            file="Source/FractalDiscoverDevice.cpp"/>
-      <FILE id="JGdWSw" name="FractalDiscoverDevice.h" compile="0" resource="0"
-            file="Source/FractalDiscoverDevice.h"/>
       <FILE id="s7UrTm" name="ThreadResponse.h" compile="0" resource="0"
             file="Source/ThreadResponse.h"/>
       <FILE id="jOqZpX" name="VirtualBandPage.cpp" compile="1" resource="0"
@@ -255,14 +262,15 @@
         <MODULEPATH id="juce_audio_basics" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_formats" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../../../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_core" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_data_structures" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_events" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_graphics" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../../JUCE/modules"/>
       </MODULEPATHS>
     </VS2019>
     <XCODE_MAC targetFolder="Builds/MacOSX">
@@ -277,11 +285,12 @@
         <MODULEPATH id="juce_events" path="../../juce"/>
         <MODULEPATH id="juce_data_structures" path="../../juce"/>
         <MODULEPATH id="juce_core" path="../../juce"/>
-        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
-        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
         <MODULEPATH id="juce_audio_formats" path="../../juce"/>
         <MODULEPATH id="juce_audio_devices" path="../../juce"/>
         <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2022 targetFolder="Builds/VisualStudio2022">
@@ -293,14 +302,15 @@
         <MODULEPATH id="juce_audio_basics" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_audio_devices" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_audio_formats" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_processors" path="C:\JUCE\modules"/>
-        <MODULEPATH id="juce_audio_utils" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_core" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_data_structures" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_events" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_graphics" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_gui_basics" path="C:\JUCE\modules"/>
         <MODULEPATH id="juce_gui_extra" path="C:\JUCE\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../../JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
     <XCODE_IPHONE targetFolder="Builds/iOS" UIFileSharingEnabled="1" UISupportsDocumentBrowser="1"
@@ -318,14 +328,15 @@
         <MODULEPATH id="juce_audio_basics" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_audio_formats" path="~/Projects/Guglielmo/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="~/Projects/Guglielmo/JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_core" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_data_structures" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_events" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_graphics" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="~/Projects/Guglielmo/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="~/Projects/Guglielmo/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../../../JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_IPHONE>
   </EXPORTFORMATS>
@@ -334,6 +345,8 @@
     <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors_headless" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>

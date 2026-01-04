@@ -33,16 +33,11 @@ private:    // fields
     void (FractalDevice::* m_incomingMessageHandler)(juce::MidiInput* source, const juce::MidiMessage& message);
     ThreadResponse<FirmwareInfo> m_queryFirmwareVersionAnswer;
 
-    static juce::Array<juce::MidiDeviceInfo> g_inputInfoArray;
-    static juce::Array<juce::MidiDeviceInfo> g_outputInfoArray;
-
 public:     // interface
     FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
 
 
-    static void loadDevicesInfo();
     static std::vector<std::unique_ptr<FractalDevice>> loadAvailableDevices();
-    static FractalDeviceType discover(const juce::String inputDeviceId, const juce::String& outputDeviceId);
     static std::unique_ptr<FractalDevice> createDevice(FractalDeviceType deviceType, const juce::String inputDeviceId, const juce::String& outputDeviceId);
 
     virtual FractalDeviceType getDeviceType() = 0;
@@ -59,4 +54,6 @@ private:    // implementation
     std::uint8_t computeChecksum(const uint8_t* pData, int dataLength);
     void sendSysexMessage(uint8_t* pData, int dataLength);
     static juce::String findAssociatedOutput(const juce::MidiDeviceInfo& inputInfo, const juce::Array<juce::MidiDeviceInfo>& outputDeviceInfo);
+
+	static juce::String findDeviceId(const juce::Array<juce::MidiDeviceInfo>& midiDeviceInfoArray, const char* pDeviceName);
 };
