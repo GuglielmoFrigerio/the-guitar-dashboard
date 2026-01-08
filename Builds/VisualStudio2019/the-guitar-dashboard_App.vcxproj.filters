@@ -691,13 +691,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\CommandQueue.cpp">
+    <ClCompile Include="..\..\Source\NewEngine\CommandQueue.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\MusicSequencer.cpp">
+    <ClCompile Include="..\..\Source\NewEngine\MetronomeTrack.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\TempoMap.cpp">
+    <ClCompile Include="..\..\Source\NewEngine\MusicSequencer.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\SampleTrack.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\TempoMap.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\TrackBase.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MidiModifierTrigger.cpp">
@@ -3804,13 +3813,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\CommandQueue.h">
+    <ClInclude Include="..\..\Source\NewEngine\CommandQueue.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\MusicSequencer.h">
+    <ClInclude Include="..\..\Source\NewEngine\MetronomeTrack.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TempoMap.h">
+    <ClInclude Include="..\..\Source\NewEngine\MusicSequencer.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\SampleTrack.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\TempoMap.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\TrackBase.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MidiModifierTrigger.h">

@@ -146,9 +146,12 @@
     <Lib/>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\CommandQueue.cpp"/>
-    <ClCompile Include="..\..\Source\MusicSequencer.cpp"/>
-    <ClCompile Include="..\..\Source\TempoMap.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\CommandQueue.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\MetronomeTrack.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\MusicSequencer.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\SampleTrack.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\TempoMap.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\TrackBase.cpp"/>
     <ClCompile Include="..\..\Source\MidiModifierTrigger.cpp"/>
     <ClCompile Include="..\..\Source\SongPatch.cpp"/>
     <ClCompile Include="..\..\Source\MidiModifier.cpp"/>
@@ -2953,9 +2956,12 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\CommandQueue.h"/>
-    <ClInclude Include="..\..\Source\MusicSequencer.h"/>
-    <ClInclude Include="..\..\Source\TempoMap.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\CommandQueue.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\MetronomeTrack.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\MusicSequencer.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\SampleTrack.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\TempoMap.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\TrackBase.h"/>
     <ClInclude Include="..\..\Source\MidiModifierTrigger.h"/>
     <ClInclude Include="..\..\Source\SongPatch.h"/>
     <ClInclude Include="..\..\Source\MidiModifier.h"/>

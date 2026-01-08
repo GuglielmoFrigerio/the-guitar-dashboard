@@ -16,6 +16,7 @@ namespace ne {
         m_samplesPerBlock = samplesPerBlockExpected;
         m_sampleRate = sampleRate;
         m_currentSamplePosition = 0;
+		m_tempoMap.prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
     void MusicSequencer::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -47,8 +48,12 @@ namespace ne {
             }
         }
         // Update current sample position
-        if (m_playing)
+        if (m_playing) {
             m_currentSamplePosition += bufferToFill.numSamples;
+            for (const auto& trackPtr : m_tracks) {
+                trackPtr->getNextAudioBlock(bufferToFill, m_currentSamplePosition);
+			}
+        }
     }
 
     void MusicSequencer::uiPlay()

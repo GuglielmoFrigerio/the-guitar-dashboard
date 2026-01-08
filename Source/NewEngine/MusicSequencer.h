@@ -9,8 +9,12 @@
 */
 
 #pragma once
+#include <vector>
+#include <memory>
 #include <JuceHeader.h>
 #include "CommandQueue.h"
+#include "TrackBase.h"
+#include "TempoMap.h"
 
 namespace ne {
     class MusicSequencer
@@ -20,6 +24,8 @@ namespace ne {
         double m_sampleRate = 44100.0;
         CommandQueue m_commandQueue;
         bool m_playing = false;
+        std::vector<std::unique_ptr<TrackBase>> m_tracks;
+		TempoMap m_tempoMap;
 
     public:
         void prepareToPlay(int samplesPerBlockExpected, double sampleRate);

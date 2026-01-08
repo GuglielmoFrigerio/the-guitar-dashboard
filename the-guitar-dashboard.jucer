@@ -34,15 +34,23 @@
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
       <GROUP id="{E5E2B0ED-263C-8965-0D0B-EB98ED2918A4}" name="NewEngine">
-        <FILE id="jBkqFT" name="CommandQueue.cpp" compile="1" resource="0"
-              file="Source/CommandQueue.cpp"/>
-        <FILE id="m71Vc3" name="CommandQueue.h" compile="0" resource="0" file="Source/CommandQueue.h"/>
-        <FILE id="O1E6EM" name="MusicSequencer.cpp" compile="1" resource="0"
-              file="Source/MusicSequencer.cpp"/>
-        <FILE id="UzPGwX" name="MusicSequencer.h" compile="0" resource="0"
-              file="Source/MusicSequencer.h"/>
-        <FILE id="EFO1UC" name="TempoMap.cpp" compile="1" resource="0" file="Source/TempoMap.cpp"/>
-        <FILE id="Og9rLG" name="TempoMap.h" compile="0" resource="0" file="Source/TempoMap.h"/>
+        <FILE id="vtSrVP" name="CommandQueue.cpp" compile="1" resource="0"
+              file="Source/NewEngine/CommandQueue.cpp"/>
+        <FILE id="PCOC2q" name="CommandQueue.h" compile="0" resource="0" file="Source/NewEngine/CommandQueue.h"/>
+        <FILE id="VpprPt" name="MetronomeTrack.cpp" compile="1" resource="0"
+              file="Source/NewEngine/MetronomeTrack.cpp"/>
+        <FILE id="ZYS2Id" name="MetronomeTrack.h" compile="0" resource="0"
+              file="Source/NewEngine/MetronomeTrack.h"/>
+        <FILE id="ukZsKZ" name="MusicSequencer.cpp" compile="1" resource="0"
+              file="Source/NewEngine/MusicSequencer.cpp"/>
+        <FILE id="eUIjtg" name="MusicSequencer.h" compile="0" resource="0"
+              file="Source/NewEngine/MusicSequencer.h"/>
+        <FILE id="sMrvIA" name="SampleTrack.cpp" compile="1" resource="0" file="Source/NewEngine/SampleTrack.cpp"/>
+        <FILE id="NxY8BE" name="SampleTrack.h" compile="0" resource="0" file="Source/NewEngine/SampleTrack.h"/>
+        <FILE id="G7ygUq" name="TempoMap.cpp" compile="1" resource="0" file="Source/NewEngine/TempoMap.cpp"/>
+        <FILE id="pJb4zK" name="TempoMap.h" compile="0" resource="0" file="Source/NewEngine/TempoMap.h"/>
+        <FILE id="IodGJD" name="TrackBase.cpp" compile="1" resource="0" file="Source/NewEngine/TrackBase.cpp"/>
+        <FILE id="ScTM3x" name="TrackBase.h" compile="0" resource="0" file="Source/NewEngine/TrackBase.h"/>
       </GROUP>
       <FILE id="giTcfc" name="MidiModifierTrigger.cpp" compile="1" resource="0"
             file="Source/MidiModifierTrigger.cpp"/>
