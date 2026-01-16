@@ -289,7 +289,7 @@
 			<Patch name="SoloReverb" scene="1">397</Patch>
 			<Patch name="Stoppato" scene="2">431</Patch>
 			<Patch name="Solo Delay" scene="7">438</Patch>
-			<Patch name="2nd" scene="4">341</Patch>
+			<Patch name="2nd" scene="1">340</Patch>
 			<Patch name="Finale" scene="1">395</Patch>
 		</Song>
 		<Song name="Here Comes the Supernatural Anaesthetist" initialBpm="122" metronomeBeats="30">
@@ -330,6 +330,7 @@
 		</Song>
 		<Song name="The Carpet Crawlers">
 			<Track name="Genesis - Carpet Crawlers (Official Audio).mp3"></Track>
+			<Patch name="Intro" scene="8">62</Patch>
 			<Patch name="Dreamy" scene="8">47</Patch>
 		</Song>
 		<Song name="Blood On The Rooftops">

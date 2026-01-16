@@ -694,6 +694,9 @@
     <ClCompile Include="..\..\Source\NewEngine\CommandQueue.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\MediaBay.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NewEngine\MetronomeTrack.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
@@ -3814,6 +3817,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\NewEngine\CommandQueue.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\MediaBay.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NewEngine\MetronomeTrack.h">

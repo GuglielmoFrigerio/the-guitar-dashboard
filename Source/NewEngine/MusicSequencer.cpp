@@ -47,12 +47,17 @@ namespace ne {
                 break;
             }
         }
-        // Update current sample position
         if (m_playing) {
-            m_currentSamplePosition += bufferToFill.numSamples;
+            RenderContext renderContext {
+                bufferToFill,
+                m_currentSamplePosition,
+                m_currentSamplePosition + bufferToFill.numSamples,
+                m_tempoMap.samplesToTicks(m_currentSamplePosition)
+			};
             for (const auto& trackPtr : m_tracks) {
-                trackPtr->getNextAudioBlock(bufferToFill, m_currentSamplePosition);
+                trackPtr->getNextAudioBlock(renderContext);
 			}
+            m_currentSamplePosition += bufferToFill.numSamples;
         }
     }
 

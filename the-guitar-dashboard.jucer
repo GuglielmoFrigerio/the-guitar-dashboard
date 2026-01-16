@@ -37,6 +37,8 @@
         <FILE id="vtSrVP" name="CommandQueue.cpp" compile="1" resource="0"
               file="Source/NewEngine/CommandQueue.cpp"/>
         <FILE id="PCOC2q" name="CommandQueue.h" compile="0" resource="0" file="Source/NewEngine/CommandQueue.h"/>
+        <FILE id="EKrPqu" name="MediaBay.cpp" compile="1" resource="0" file="Source/NewEngine/MediaBay.cpp"/>
+        <FILE id="jlN26y" name="MediaBay.h" compile="0" resource="0" file="Source/NewEngine/MediaBay.h"/>
         <FILE id="VpprPt" name="MetronomeTrack.cpp" compile="1" resource="0"
               file="Source/NewEngine/MetronomeTrack.cpp"/>
         <FILE id="ZYS2Id" name="MetronomeTrack.h" compile="0" resource="0"

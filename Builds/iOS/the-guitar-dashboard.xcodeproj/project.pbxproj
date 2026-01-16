@@ -83,6 +83,7 @@
 		B234A9BA2742A6FE94194246 /* KeyManager.cpp */ = {isa = PBXBuildFile; fileRef = 54951E9EB463770FB7F0FCE4; };
 		B2B5430915529AD02302A965 /* include_juce_audio_basics.mm */ = {isa = PBXBuildFile; fileRef = 9C62A542919DF7EF0FFA3168; };
 		B5A60A9CCC79499B4762615F /* CoreServices.framework */ = {isa = PBXBuildFile; fileRef = 814430DC3C28A279592B8F4B; };
+		B850B12E575406DC80D05445 /* MediaBay.cpp */ = {isa = PBXBuildFile; fileRef = 000E2DBE183749748D27AC66; };
 		B86A08A17CE5EDC735A253A6 /* VirtualBandPage.cpp */ = {isa = PBXBuildFile; fileRef = 44ECCFFF4680285C05A2C801; };
 		BBEFC84E8C021EA0A5D6FFEB /* AudioRecorder.cpp */ = {isa = PBXBuildFile; fileRef = E62D15C5090E4909C7762231; };
 		BC15AFB64375A5F0345B2B57 /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = EFC7915E4AF0D3AF83B92407; settings = { ATTRIBUTES = (Weak, ); }; };
@@ -117,6 +118,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000E2DBE183749748D27AC66 /* MediaBay.cpp */ /* MediaBay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MediaBay.cpp; path = ../../Source/NewEngine/MediaBay.cpp; sourceTree = SOURCE_ROOT; };
 		01CB2C150ADCDD0FD863445D /* AxeFx2Device.h */ /* AxeFx2Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AxeFx2Device.h; path = ../../Source/AxeFx2Device.h; sourceTree = SOURCE_ROOT; };
 		01DC5D5DCD1703CB89F92BE9 /* BeatsAndCkicks.xlsx */ /* BeatsAndCkicks.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file.xlsx; name = BeatsAndCkicks.xlsx; path = ../../documentation/BeatsAndCkicks.xlsx; sourceTree = SOURCE_ROOT; };
 		048034E190F41B7321C5D2B4 /* NullMidiDevice.h */ /* NullMidiDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NullMidiDevice.h; path = ../../Source/NullMidiDevice.h; sourceTree = SOURCE_ROOT; };
@@ -230,6 +232,7 @@
 		75D2C6A994AE73B37D612196 /* readme.md */ /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = readme.md; path = ../../documentation/readme.md; sourceTree = SOURCE_ROOT; };
 		77044150B090C7A356BB60E8 /* MetronomeTrack.cpp */ /* MetronomeTrack.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MetronomeTrack.cpp; path = ../../Source/NewEngine/MetronomeTrack.cpp; sourceTree = SOURCE_ROOT; };
 		77EE519E15AEFC61AE92536B /* SongListComponent.cpp */ /* SongListComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SongListComponent.cpp; path = ../../Source/SongListComponent.cpp; sourceTree = SOURCE_ROOT; };
+		78EF4C3EA9F7B6C0CC3E683D /* MediaBay.h */ /* MediaBay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaBay.h; path = ../../Source/NewEngine/MediaBay.h; sourceTree = SOURCE_ROOT; };
 		793EF2973C5131C66BAA4763 /* VirtualBand.cpp */ /* VirtualBand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VirtualBand.cpp; path = ../../Source/VirtualBand.cpp; sourceTree = SOURCE_ROOT; };
 		79CE58ED5AD885AAD5E80250 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 		79F0EF6AE3EC67A8284A0654 /* Lfo.h */ /* Lfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Lfo.h; path = ../../Source/Lfo.h; sourceTree = SOURCE_ROOT; };
@@ -436,6 +439,8 @@
 			children = (
 				1D4232755D5C1D6486A7340A,
 				325DE6E6DE018A9BA3066E1F,
+				000E2DBE183749748D27AC66,
+				78EF4C3EA9F7B6C0CC3E683D,
 				77044150B090C7A356BB60E8,
 				CA76EB247778A4E82BF4C41C,
 				E05FBD28FB1F4CC1D09F3050,
@@ -772,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7BFEEA0737310CBBC6B8E0A,
+				B850B12E575406DC80D05445,
 				A62E6C0042E41CAE50851B1C,
 				A966D7BD4D582E72E2C48EBE,
 				72D86AEC1452E0E096A08550,

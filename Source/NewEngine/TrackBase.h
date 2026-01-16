@@ -12,12 +12,22 @@
 #include <JuceHeader.h>
 
 namespace ne {
+
+    struct RenderContext
+    {
+        const juce::AudioSourceChannelInfo& out;
+        std::int64_t startSample;
+        std::int64_t endSample;      // startSample + numSamples
+        std::int64_t startTick;
+        // Optional: precomputed mapping info for this block
+    };
+
     class TrackBase {
         public:
         TrackBase() = default;
 		virtual ~TrackBase() = default;
 
-        virtual void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill, std::int64_t samplePosition) = 0;
+        virtual void getNextAudioBlock(const RenderContext& renderContext) = 0;
 
     };
 }

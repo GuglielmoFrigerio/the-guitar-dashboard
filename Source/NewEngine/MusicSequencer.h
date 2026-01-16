@@ -11,10 +11,10 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include <JuceHeader.h>
 #include "CommandQueue.h"
 #include "TrackBase.h"
 #include "TempoMap.h"
+#include "MediaBay.h"
 
 namespace ne {
     class MusicSequencer
@@ -26,6 +26,7 @@ namespace ne {
         bool m_playing = false;
         std::vector<std::unique_ptr<TrackBase>> m_tracks;
 		TempoMap m_tempoMap;
+		MediaBay m_mediaBay;
 
     public:
         void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
