@@ -12,12 +12,12 @@
 #include "SampleTrack.h"
 
 namespace ne {
-    class MetronomeTrack : public SampleTrack {
+    class NewMetronomeTrack : public SampleTrack {
     private:
 		const juce::AudioSampleBuffer* m_pClickSampleBuffer;
     public:
-        MetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer);
-        ~MetronomeTrack() override = default;
+        NewMetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer);
+        ~NewMetronomeTrack() override = default;
 		void getNextAudioBlock(const RenderContext& renderContext) override;
     };
 }

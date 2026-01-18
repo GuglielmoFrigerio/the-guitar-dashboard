@@ -34,15 +34,17 @@
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
       <GROUP id="{E5E2B0ED-263C-8965-0D0B-EB98ED2918A4}" name="NewEngine">
+        <FILE id="Gane0M" name="VoiceEngine.cpp" compile="1" resource="0" file="Source/NewEngine/VoiceEngine.cpp"/>
+        <FILE id="JVogoZ" name="VoiceEngine.h" compile="0" resource="0" file="Source/NewEngine/VoiceEngine.h"/>
         <FILE id="vtSrVP" name="CommandQueue.cpp" compile="1" resource="0"
               file="Source/NewEngine/CommandQueue.cpp"/>
         <FILE id="PCOC2q" name="CommandQueue.h" compile="0" resource="0" file="Source/NewEngine/CommandQueue.h"/>
         <FILE id="EKrPqu" name="MediaBay.cpp" compile="1" resource="0" file="Source/NewEngine/MediaBay.cpp"/>
         <FILE id="jlN26y" name="MediaBay.h" compile="0" resource="0" file="Source/NewEngine/MediaBay.h"/>
-        <FILE id="VpprPt" name="MetronomeTrack.cpp" compile="1" resource="0"
-              file="Source/NewEngine/MetronomeTrack.cpp"/>
-        <FILE id="ZYS2Id" name="MetronomeTrack.h" compile="0" resource="0"
-              file="Source/NewEngine/MetronomeTrack.h"/>
+        <FILE id="VpprPt" name="NewMetronomeTrack.cpp" compile="1" resource="0"
+              file="Source/NewEngine/NewMetronomeTrack.cpp"/>
+        <FILE id="ZYS2Id" name="NewMetronomeTrack.h" compile="0" resource="0"
+              file="Source/NewEngine/NewMetronomeTrack.h"/>
         <FILE id="ukZsKZ" name="MusicSequencer.cpp" compile="1" resource="0"
               file="Source/NewEngine/MusicSequencer.cpp"/>
         <FILE id="eUIjtg" name="MusicSequencer.h" compile="0" resource="0"

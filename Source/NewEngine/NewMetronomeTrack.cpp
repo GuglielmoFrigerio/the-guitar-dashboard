@@ -8,16 +8,16 @@
   ==============================================================================
 */
 
-#include "MetronomeTrack.h"
+#include "NewMetronomeTrack.h"
 
 namespace ne {
 
-    MetronomeTrack::MetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer)
+    NewMetronomeTrack::NewMetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer)
         : m_pClickSampleBuffer(pClickSampleBuffer)
     {
     }
 
-    void MetronomeTrack::getNextAudioBlock(const RenderContext& renderContext)
+    void NewMetronomeTrack::getNextAudioBlock(const RenderContext& renderContext)
     {
         //auto clickLength = m_pClickSampleBuffer->getNumSamples();
         //auto samplesPerBeat = 44100; // Assuming 120 BPM and 44100 Hz sample rate for simplicity

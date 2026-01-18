@@ -691,13 +691,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\NewEngine\VoiceEngine.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NewEngine\CommandQueue.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NewEngine\MediaBay.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NewEngine\MetronomeTrack.cpp">
+    <ClCompile Include="..\..\Source\NewEngine\NewMetronomeTrack.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NewEngine\MusicSequencer.cpp">
@@ -3816,13 +3819,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\NewEngine\VoiceEngine.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\NewEngine\CommandQueue.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NewEngine\MediaBay.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NewEngine\MetronomeTrack.h">
+    <ClInclude Include="..\..\Source\NewEngine\NewMetronomeTrack.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NewEngine\MusicSequencer.h">
