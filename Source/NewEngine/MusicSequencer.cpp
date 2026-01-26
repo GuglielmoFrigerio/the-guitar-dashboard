@@ -9,8 +9,10 @@
 */
 
 #include "MusicSequencer.h"
+#include "NewMetronomeTrack.h"
 
 namespace ne {
+
     void MusicSequencer::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
     {
         m_samplesPerBlock = samplesPerBlockExpected;
@@ -59,6 +61,14 @@ namespace ne {
 			}
             m_currentSamplePosition += bufferToFill.numSamples;
         }
+    }
+
+    MusicSequencer::MusicSequencer()
+    {
+        m_tracks.push_back(std::make_unique<NewMetronomeTrack>(
+            m_mediaBay.getMediaBuffer("click", juce::File("./Resources/Samples/Stick.wav")),
+			m_voiceEngine)
+        );
     }
 
     void MusicSequencer::uiPlay()

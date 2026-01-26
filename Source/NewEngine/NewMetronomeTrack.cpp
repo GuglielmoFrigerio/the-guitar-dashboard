@@ -12,8 +12,8 @@
 
 namespace ne {
 
-    NewMetronomeTrack::NewMetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer)
-        : m_pClickSampleBuffer(pClickSampleBuffer)
+    NewMetronomeTrack::NewMetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer, VoiceEngine& voiceEngine)
+		: m_pClickSampleBuffer(pClickSampleBuffer), m_voiceEngine(voiceEngine)
     {
     }
 

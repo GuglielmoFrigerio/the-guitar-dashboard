@@ -15,6 +15,7 @@
 #include "TrackBase.h"
 #include "TempoMap.h"
 #include "MediaBay.h"
+#include "VoiceEngine.h"
 
 namespace ne {
     class MusicSequencer
@@ -27,12 +28,14 @@ namespace ne {
         std::vector<std::unique_ptr<TrackBase>> m_tracks;
 		TempoMap m_tempoMap;
 		MediaBay m_mediaBay;
+		VoiceEngine m_voiceEngine;
 
     public:
         void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
         void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 
     public:
+		MusicSequencer();
         void uiPlay();
         void uiStop();
         void uiSetPositionSamples(std::int64_t newPos);

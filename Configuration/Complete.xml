@@ -312,7 +312,8 @@
 		</Song>
 		<Song name="Hairless Heart">
 			<Track name="Hairless Heart - Genesis.mp3"></Track>
-			<Patch name="Clean Intro" scene="2">478</Patch>
+			<!--<Patch name="Clean Intro" scene="2">478</Patch>-->
+			<Patch name="Clean Intro" scene="8">470</Patch>
 			<Patch name="Envelope" scene="6">479</Patch>
 			<Patch name="Dist" scene="3">480</Patch>
 			<Patch name="Envelope" scene="6"> 479</Patch>
@@ -340,6 +341,11 @@
 			<Patch name="arpeggio" scene="2"> 443</Patch>
 			<!--Try
       125. -->
+		</Song>
+		<Song name="LosEndos">
+			<Track name="LosEndos.mp3">
+			</Track>
+			<Patch name="Intro" scene="1">18</Patch>
 		</Song>
 	</Library>
 	<Library name="Default Library">
