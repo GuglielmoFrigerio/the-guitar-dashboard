@@ -4383,6 +4383,7 @@
     <None Include="..\..\documentation\the-guitar-dashboard.docx"/>
     <None Include="..\..\documentation\the-guitar-dashboard.vpd"/>
     <None Include="..\..\Configuration\Complete.xml"/>
+    <None Include="..\..\Configuration\Focused.xml"/>
     <None Include="..\..\Resources\Images\backward.png"/>
     <None Include="..\..\Resources\Images\component-background-example.png"/>
     <None Include="..\..\Resources\Images\forward.png"/>

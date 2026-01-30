@@ -19,6 +19,7 @@
     </GROUP>
     <GROUP id="{7C3AE84D-7970-4FA1-B7E8-E6DD17776479}" name="Configuration">
       <FILE id="M2q5U8" name="Complete.xml" compile="0" resource="0" file="Configuration/Complete.xml"/>
+      <FILE id="em8hGf" name="Focused.xml" compile="0" resource="1" file="Configuration/Focused.xml"/>
     </GROUP>
     <GROUP id="{07B5428B-B9D6-8BD7-3654-5B21780B1B06}" name="Resources">
       <GROUP id="{36F728DD-72D7-406A-F29C-37DDAF1C3D08}" name="Tracks"/>

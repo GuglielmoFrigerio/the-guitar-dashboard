@@ -289,6 +289,7 @@
 		B7D2C03C7170C02E30FA1BE9 /* AxeFx3Device.h */ /* AxeFx3Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AxeFx3Device.h; path = ../../Source/AxeFx3Device.h; sourceTree = SOURCE_ROOT; };
 		B8C03EE86F1E6D39498CC8A6 /* IModulationSource.h */ /* IModulationSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IModulationSource.h; path = ../../Source/IModulationSource.h; sourceTree = SOURCE_ROOT; };
 		BA7C26DB904DE9FE58C1EC41 /* MidiOutput.h */ /* MidiOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiOutput.h; path = ../../Source/MidiOutput.h; sourceTree = SOURCE_ROOT; };
+		BCD913730FFC2D8087EB8441 /* Focused.xml */ /* Focused.xml */ = {isa = PBXFileReference; lastKnownFileType = file.xml; name = Focused.xml; path = ../../Configuration/Focused.xml; sourceTree = SOURCE_ROOT; };
 		BEB8303CBD3B6C01088FF4E7 /* GuitarDashCommon.cpp */ /* GuitarDashCommon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GuitarDashCommon.cpp; path = ../../Source/GuitarDashCommon.cpp; sourceTree = SOURCE_ROOT; };
 		C0E212DACD1AFFD928B4C68F /* MidiEventList.cpp */ /* MidiEventList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiEventList.cpp; path = ../../Source/MidiEventList.cpp; sourceTree = SOURCE_ROOT; };
 		C1A1756D8BD47543ACC7E6B0 /* NotificationComponent.cpp */ /* NotificationComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationComponent.cpp; path = ../../Source/NotificationComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -633,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				5E989BA7E236782E69E7756D,
+				BCD913730FFC2D8087EB8441,
 			);
 			name = Configuration;
 			sourceTree = "<group>";

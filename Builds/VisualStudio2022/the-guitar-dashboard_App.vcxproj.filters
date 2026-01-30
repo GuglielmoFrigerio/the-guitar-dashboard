@@ -8090,6 +8090,9 @@
     <None Include="..\..\Configuration\Complete.xml">
       <Filter>the-guitar-dashboard\Configuration</Filter>
     </None>
+    <None Include="..\..\Configuration\Focused.xml">
+      <Filter>the-guitar-dashboard\Configuration</Filter>
+    </None>
     <None Include="..\..\Resources\Images\backward.png">
       <Filter>the-guitar-dashboard\Resources\Images</Filter>
     </None>

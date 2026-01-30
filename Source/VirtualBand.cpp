@@ -62,7 +62,7 @@ void VirtualBand::onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mo
 void VirtualBand::loadConfig()
 {
     auto resourceRoot = juce::File::getCurrentWorkingDirectory().getChildFile(m_resourcesPath);
-    juce::File file{ resourceRoot.getParentDirectory().getChildFile("Configuration/Complete.xml")};
+    juce::File file{ resourceRoot.getParentDirectory().getChildFile("Configuration/Focused.xml")};
     auto ptr = std::make_unique<juce::XmlDocument>(file);
     m_configElementPtr = ptr->getDocumentElement();
 }
