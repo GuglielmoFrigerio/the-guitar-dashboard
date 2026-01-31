@@ -346,6 +346,7 @@
 			<Track name="LosEndos.mp3">
 			</Track>
 			<Patch name="Intro" scene="1">18</Patch>
+			<Patch name="Finale" scene="8">285</Patch>
 		</Song>
 	</Library>
 	<Library name="Default Library">
