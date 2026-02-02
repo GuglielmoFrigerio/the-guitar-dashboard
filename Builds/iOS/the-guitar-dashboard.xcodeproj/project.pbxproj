@@ -94,6 +94,7 @@
 		C3B6C4A941F1B41A073EFD75 /* Oscillator.cpp */ = {isa = PBXBuildFile; fileRef = 3EC5240ED182F15573A09148; };
 		C507067C05B4B5394CF525FE /* MidiModifierTrigger.cpp */ = {isa = PBXBuildFile; fileRef = 1B1F1163A506D78B9A1EC147; };
 		C757294E6BDC16FE82FF9AD6 /* TimeSlider.cpp */ = {isa = PBXBuildFile; fileRef = 80715DE0217EA34403309684; };
+		CB78F5376C0A43F0B9A8F6E5 /* MusicSequencerComponent.cpp */ = {isa = PBXBuildFile; fileRef = A751180C4B15D25B922A1AC7; };
 		CE224290264086E9160B23AD /* SongPatch.cpp */ = {isa = PBXBuildFile; fileRef = 71D85E0BC79CA47AC0F92338; };
 		D0A49D28C9538D25CD8ED3DD /* Main.cpp */ = {isa = PBXBuildFile; fileRef = 9AB31229C3B9B838D06240BD; };
 		D2C03A571C30CF2B243C084E /* AudioToolbox.framework */ = {isa = PBXBuildFile; fileRef = 5EDE0DC5561B004419452BA9; };
@@ -277,6 +278,7 @@
 		A3542B8A8C127304232B8628 /* TempoSyncHandler.cpp */ /* TempoSyncHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = TempoSyncHandler.cpp; path = ../../Source/TempoSyncHandler.cpp; sourceTree = SOURCE_ROOT; };
 		A3BE3081760C5BADEFCA5311 /* backward.png */ /* backward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backward.png; path = ../../Resources/Images/backward.png; sourceTree = SOURCE_ROOT; };
 		A6FAC7C622E0D579FBE1163A /* FractalDevice.cpp */ /* FractalDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FractalDevice.cpp; path = ../../Source/FractalDevice.cpp; sourceTree = SOURCE_ROOT; };
+		A751180C4B15D25B922A1AC7 /* MusicSequencerComponent.cpp */ /* MusicSequencerComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MusicSequencerComponent.cpp; path = ../../Source/NewEngine/MusicSequencerComponent.cpp; sourceTree = SOURCE_ROOT; };
 		A7DB4099712C1316BCA336D4 /* GuitarDashCommon.h */ /* GuitarDashCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GuitarDashCommon.h; path = ../../Source/GuitarDashCommon.h; sourceTree = SOURCE_ROOT; };
 		A8926205AEBAABB1C18936CA /* VoiceEngine.cpp */ /* VoiceEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VoiceEngine.cpp; path = ../../Source/NewEngine/VoiceEngine.cpp; sourceTree = SOURCE_ROOT; };
 		ACB816D4F8991585C59F4579 /* PlaybackEngine.cpp */ /* PlaybackEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackEngine.cpp; path = ../../Source/PlaybackEngine.cpp; sourceTree = SOURCE_ROOT; };
@@ -289,6 +291,7 @@
 		B7D2C03C7170C02E30FA1BE9 /* AxeFx3Device.h */ /* AxeFx3Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AxeFx3Device.h; path = ../../Source/AxeFx3Device.h; sourceTree = SOURCE_ROOT; };
 		B8C03EE86F1E6D39498CC8A6 /* IModulationSource.h */ /* IModulationSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IModulationSource.h; path = ../../Source/IModulationSource.h; sourceTree = SOURCE_ROOT; };
 		BA7C26DB904DE9FE58C1EC41 /* MidiOutput.h */ /* MidiOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MidiOutput.h; path = ../../Source/MidiOutput.h; sourceTree = SOURCE_ROOT; };
+		BBB474009B450B4797D90CEF /* MusicSequencerComponent.h */ /* MusicSequencerComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MusicSequencerComponent.h; path = ../../Source/NewEngine/MusicSequencerComponent.h; sourceTree = SOURCE_ROOT; };
 		BCD913730FFC2D8087EB8441 /* Focused.xml */ /* Focused.xml */ = {isa = PBXFileReference; lastKnownFileType = file.xml; name = Focused.xml; path = ../../Configuration/Focused.xml; sourceTree = SOURCE_ROOT; };
 		BEB8303CBD3B6C01088FF4E7 /* GuitarDashCommon.cpp */ /* GuitarDashCommon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GuitarDashCommon.cpp; path = ../../Source/GuitarDashCommon.cpp; sourceTree = SOURCE_ROOT; };
 		C0E212DACD1AFFD928B4C68F /* MidiEventList.cpp */ /* MidiEventList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiEventList.cpp; path = ../../Source/MidiEventList.cpp; sourceTree = SOURCE_ROOT; };
@@ -441,6 +444,8 @@
 		39E7796FF94D0756E33F411A /* NewEngine */ = {
 			isa = PBXGroup;
 			children = (
+				A751180C4B15D25B922A1AC7,
+				BBB474009B450B4797D90CEF,
 				A8926205AEBAABB1C18936CA,
 				2D6D7AAA6D52314C63FF7AC9,
 				1D4232755D5C1D6486A7340A,
@@ -783,6 +788,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB78F5376C0A43F0B9A8F6E5,
 				5E897EF120CD2147444A7112,
 				A7BFEEA0737310CBBC6B8E0A,
 				B850B12E575406DC80D05445,

@@ -32,7 +32,7 @@ private:    // implementation
     void propInit();
 
 private:
-    std::unique_ptr<VirtualBandPage> m_virtualBandPagePtr;
+    std::unique_ptr<juce::AudioAppComponent> m_virtualBandPagePtr;
     juce::TextButton m_setupButton;
     juce::TextButton m_virtualBandButton;
     std::unique_ptr<juce::Component> m_activePage;
