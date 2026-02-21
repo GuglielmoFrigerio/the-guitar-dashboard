@@ -1,0 +1,34 @@
+/*
+  ==============================================================================
+
+    MusicSequencerComponent.h
+    Created: 2 Feb 2026 1:55:35pm
+    Author:  frigeriog-adm
+
+  ==============================================================================
+*/
+
+#pragma once
+
+#include <JuceHeader.h>
+
+//==============================================================================
+/*
+*/
+class MusicSequencerComponent  : public juce::AudioAppComponent
+{
+public:
+    MusicSequencerComponent();
+    ~MusicSequencerComponent() override;
+
+    void paint (juce::Graphics&) override;
+    void resized() override;
+
+private:
+    void releaseResources() override;
+    void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
+    void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill) override;
+
+private:
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MusicSequencerComponent)
+};

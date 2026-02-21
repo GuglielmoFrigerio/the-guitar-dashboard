@@ -174,7 +174,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     else
     {
         // Specify the number of input and output channels that we want to open
-        setAudioChannels(6, 6);
+        setAudioChannels(2, 2);
     }
 
     deviceManager.addChangeListener(this);
@@ -232,6 +232,23 @@ void VirtualBandPage::resized()
 
 void VirtualBandPage::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
+    if (auto* dev = deviceManager.getCurrentAudioDevice())
+    {
+        const auto inBits = dev->getActiveInputChannels();
+        const auto outBits = dev->getActiveOutputChannels();
+
+        const int inCh = inBits.countNumberOfSetBits();
+        const int outCh = outBits.countNumberOfSetBits();
+
+        DBG("Device: " << dev->getName()
+            << " inCh=" << inCh << " outCh=" << outCh
+            << " SR=" << dev->getCurrentSampleRate()
+            << " BS=" << dev->getCurrentBufferSizeSamples());
+    }
+    else
+    {
+        DBG("No current audio device.");
+    }
     m_virtualBandPtr->prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 

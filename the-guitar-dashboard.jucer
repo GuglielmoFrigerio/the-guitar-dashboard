@@ -35,6 +35,10 @@
     </GROUP>
     <GROUP id="{9AFF3D43-D9A7-F2B4-F2F8-71B882C60125}" name="Source">
       <GROUP id="{E5E2B0ED-263C-8965-0D0B-EB98ED2918A4}" name="NewEngine">
+        <FILE id="V1v33t" name="MusicSequencerComponent.cpp" compile="1" resource="0"
+              file="Source/NewEngine/MusicSequencerComponent.cpp"/>
+        <FILE id="k9368V" name="MusicSequencerComponent.h" compile="0" resource="0"
+              file="Source/NewEngine/MusicSequencerComponent.h"/>
         <FILE id="Gane0M" name="VoiceEngine.cpp" compile="1" resource="0" file="Source/NewEngine/VoiceEngine.cpp"/>
         <FILE id="JVogoZ" name="VoiceEngine.h" compile="0" resource="0" file="Source/NewEngine/VoiceEngine.h"/>
         <FILE id="vtSrVP" name="CommandQueue.cpp" compile="1" resource="0"

@@ -1,5 +1,6 @@
 #include "MainComponent.h"
 #include "VirtualBandPage.h"
+#include "NewEngine/MusicSequencerComponent.h"
 
 
 const int MaxInputChannels = 32;
@@ -15,8 +16,13 @@ MainComponent::MainComponent()
     m_virtualBandButton.setButtonText("Virtual Band");
 
     propInit();
+    bool newUi = true;
 
-    m_virtualBandPagePtr = std::make_unique<VirtualBandPage>(m_properties);
+    if (newUi)
+        m_virtualBandPagePtr = std::make_unique<MusicSequencerComponent>();
+    else
+        m_virtualBandPagePtr = std::make_unique<VirtualBandPage>(m_properties);
+
     addAndMakeVisible(m_virtualBandPagePtr.get());
 
     // you add any child components.
