@@ -109,3 +109,14 @@ std::exception exceptionFactory(const juce::String& message)
     return std::exception();
 }
 
+juce::File getAvailableFile(const std::string& relativePath)
+{
+    auto currentFolder = juce::File::getSpecialLocation(juce::File::currentExecutableFile);
+	auto inputFile = currentFolder.getChildFile(relativePath);
+    if (inputFile.exists()) {
+		return inputFile;
+    }
+	auto message = juce::String::formatted("getAvailableFile: unable to find file at %s", relativePath.c_str());
+	throw std::runtime_error(message.toUTF8());
+}
+

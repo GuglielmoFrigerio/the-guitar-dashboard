@@ -17,10 +17,12 @@
 namespace ne {
     class MediaBay {
     private:
+		juce::File m_mediaFolder;
 		std::unordered_map<std::string, std::unique_ptr<juce::AudioSampleBuffer>> m_mediaMap;
 
     public:
-        juce::AudioSampleBuffer* getMediaBuffer(const std::string& mediaName, const juce::File& mediaFile);
+        MediaBay();
+        juce::AudioSampleBuffer* getMediaBuffer(const std::string& mediaName, const std::string& mediaPath);
 		
     };
 }

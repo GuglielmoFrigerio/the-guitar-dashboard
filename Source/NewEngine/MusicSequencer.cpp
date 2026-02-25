@@ -10,6 +10,7 @@
 
 #include "MusicSequencer.h"
 #include "NewMetronomeTrack.h"
+#include "../GuitarDashCommon.h"
 
 namespace ne {
 
@@ -66,7 +67,7 @@ namespace ne {
     MusicSequencer::MusicSequencer()
     {
         m_tracks.push_back(std::make_unique<NewMetronomeTrack>(
-            m_mediaBay.getMediaBuffer("click", juce::File("./Resources/Samples/Stick.wav")),
+            m_mediaBay.getMediaBuffer("click", "./Samples/Stick.wav"),
 			m_voiceEngine)
         );
     }

@@ -19,6 +19,7 @@ MusicSequencerComponent::MusicSequencerComponent()
 
 MusicSequencerComponent::~MusicSequencerComponent()
 {
+    shutdownAudio();
 }
 
 void MusicSequencerComponent::paint (juce::Graphics& g)
@@ -54,8 +55,10 @@ void MusicSequencerComponent::releaseResources()
 
 void MusicSequencerComponent::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
+	m_musicSequencer.prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 
 void MusicSequencerComponent::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
 {
+	m_musicSequencer.getNextAudioBlock(bufferToFill);
 }

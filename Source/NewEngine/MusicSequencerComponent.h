@@ -11,12 +11,16 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "MusicSequencer.h"
 
 //==============================================================================
 /*
 */
 class MusicSequencerComponent  : public juce::AudioAppComponent
 {
+private:
+    ne::MusicSequencer m_musicSequencer;
+
 public:
     MusicSequencerComponent();
     ~MusicSequencerComponent() override;

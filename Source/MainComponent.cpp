@@ -16,7 +16,7 @@ MainComponent::MainComponent()
     m_virtualBandButton.setButtonText("Virtual Band");
 
     propInit();
-    bool newUi = true;
+    bool newUi = false;
 
     if (newUi)
         m_virtualBandPagePtr = std::make_unique<MusicSequencerComponent>();
