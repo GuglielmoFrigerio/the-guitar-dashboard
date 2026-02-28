@@ -62,6 +62,7 @@ namespace ne {
 			}
             m_currentSamplePosition += bufferToFill.numSamples;
         }
+		m_voiceEngine.render(bufferToFill);
     }
 
     MusicSequencer::MusicSequencer()
@@ -70,6 +71,8 @@ namespace ne {
             m_mediaBay.getMediaBuffer("click", "./Samples/Stick.wav"),
 			m_voiceEngine)
         );
+
+		m_tempoMap.setTempo(m_currentTempoBpm);
     }
 
     void MusicSequencer::uiPlay()

@@ -24,11 +24,12 @@ namespace ne {
         int m_samplesPerBlock = 0;
         double m_sampleRate = 44100.0;
         CommandQueue m_commandQueue;
-        bool m_playing = false;
+        bool m_playing = true;
         std::vector<std::unique_ptr<TrackBase>> m_tracks;
 		TempoMap m_tempoMap;
 		MediaBay m_mediaBay;
 		VoiceEngine m_voiceEngine;
+		double m_currentTempoBpm = 120.0;
 
     public:
         void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
