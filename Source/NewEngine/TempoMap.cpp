@@ -19,6 +19,14 @@ namespace ne {
         double ticksPerSecond = beatsPerSecond * PPQ;
         double secondsPerTick = 1.0 / ticksPerSecond;
         m_samplesPerTick = secondsPerTick * m_sampleRate;
+		m_samplesPerBeat = m_samplesPerTick * PPQ;
+    }
+
+    void TempoMap::applyPendingTempo()
+    {
+        double bpm = m_pendingBPM.load();
+        if (bpm != m_tempoBPM)
+            setTempo(bpm); // safe — called only from audio thread
     }
 
     void TempoMap::prepareToPlay(int samplesPerBlockExpected, double sampleRate)

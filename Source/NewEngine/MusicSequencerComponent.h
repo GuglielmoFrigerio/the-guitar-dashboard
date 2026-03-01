@@ -16,10 +16,14 @@
 //==============================================================================
 /*
 */
-class MusicSequencerComponent  : public juce::AudioAppComponent
+class MusicSequencerComponent  :    public juce::AudioAppComponent,
+                                    public juce::Slider::Listener
 {
 private:
     ne::MusicSequencer m_musicSequencer;
+    juce::Slider m_bpmSlider;
+    juce::Label  m_bpmLabel;
+
 
 public:
     MusicSequencerComponent();
@@ -27,6 +31,8 @@ public:
 
     void paint (juce::Graphics&) override;
     void resized() override;
+
+    void sliderValueChanged(juce::Slider* slider) override;
 
 private:
     void releaseResources() override;

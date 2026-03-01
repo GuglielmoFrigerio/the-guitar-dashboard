@@ -10,7 +10,6 @@
 
 #include "MusicSequencer.h"
 #include "NewMetronomeTrack.h"
-#include "../GuitarDashCommon.h"
 
 namespace ne {
 
@@ -20,6 +19,7 @@ namespace ne {
         m_sampleRate = sampleRate;
         m_currentSamplePosition = 0;
 		m_tempoMap.prepareToPlay(samplesPerBlockExpected, sampleRate);
+        m_tempoMap.requestTempo(m_currentTempoBpm);
     }
 
     void MusicSequencer::getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill)
@@ -50,12 +50,14 @@ namespace ne {
                 break;
             }
         }
+		m_tempoMap.applyPendingTempo();
         if (m_playing) {
             RenderContext renderContext {
                 bufferToFill,
                 m_currentSamplePosition,
                 m_currentSamplePosition + bufferToFill.numSamples,
-                m_tempoMap.samplesToTicks(m_currentSamplePosition)
+                m_tempoMap.samplesToTicks(m_currentSamplePosition),
+				m_tempoMap.getSamplesPerBeat()
 			};
             for (const auto& trackPtr : m_tracks) {
                 trackPtr->getNextAudioBlock(renderContext);
@@ -65,14 +67,13 @@ namespace ne {
 		m_voiceEngine.render(bufferToFill);
     }
 
-    MusicSequencer::MusicSequencer()
+    MusicSequencer::MusicSequencer(double defaultBpm)
+		: m_currentTempoBpm(defaultBpm)
     {
         m_tracks.push_back(std::make_unique<NewMetronomeTrack>(
             m_mediaBay.getMediaBuffer("click", "./Samples/Stick.wav"),
 			m_voiceEngine)
         );
-
-		m_tempoMap.setTempo(m_currentTempoBpm);
     }
 
     void MusicSequencer::uiPlay()
@@ -87,6 +88,11 @@ namespace ne {
         Command cmd;
         cmd.m_type = CommandType::Stop;
         m_commandQueue.pushCommand(cmd);
+    }
+
+    void MusicSequencer::uiSetTempo(double bpm)
+    {
+		m_tempoMap.requestTempo(bpm);
     }
 }
 

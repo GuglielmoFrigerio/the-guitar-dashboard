@@ -11,15 +11,32 @@
 #include <JuceHeader.h>
 #include "MusicSequencerComponent.h"
 
+constexpr double kDefaultBpm = 120.0;
+
 //==============================================================================
 MusicSequencerComponent::MusicSequencerComponent()
+	: m_musicSequencer(kDefaultBpm)
 {
+    // --- BPM Slider setup ---
+    m_bpmSlider.setSliderStyle(juce::Slider::LinearHorizontal);
+    m_bpmSlider.setRange(40.0, 208.0, 1.0);   // min, max, step
+    m_bpmSlider.setValue(120.0);               // default BPM
+    m_bpmSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 50, 20);
+    m_bpmSlider.addListener(this);
+    addAndMakeVisible(m_bpmSlider);
+
+    // --- Label setup ---
+    m_bpmLabel.setText("BPM", juce::dontSendNotification);
+    m_bpmLabel.attachToComponent(&m_bpmSlider, true); // true = label on the left
+    addAndMakeVisible(m_bpmLabel);
+
     setAudioChannels(2, 2);
 }
 
 MusicSequencerComponent::~MusicSequencerComponent()
 {
     shutdownAudio();
+    m_bpmSlider.removeListener(this);
 }
 
 void MusicSequencerComponent::paint (juce::Graphics& g)
@@ -44,9 +61,30 @@ void MusicSequencerComponent::paint (juce::Graphics& g)
 
 void MusicSequencerComponent::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
+    auto area = getLocalBounds();
 
+    // Carve out the bottom-left region
+    // Adjust width/height to taste
+    const int sliderWidth = 250;
+    const int sliderHeight = 40;
+    const int labelWidth = 40; // space reserved for the attached label
+    const int margin = 10;
+
+    m_bpmSlider.setBounds(
+        margin + labelWidth,                          // x  (offset for label)
+        area.getHeight() - sliderHeight - margin,     // y  (bottom)
+        sliderWidth,                                  // width
+        sliderHeight                                  // height
+    );
+}
+
+void MusicSequencerComponent::sliderValueChanged(juce::Slider* slider)
+{
+    if (slider == &m_bpmSlider)
+    {
+        double bpm = m_bpmSlider.getValue();
+		m_musicSequencer.uiSetTempo(bpm);
+    }   
 }
 
 void MusicSequencerComponent::releaseResources()

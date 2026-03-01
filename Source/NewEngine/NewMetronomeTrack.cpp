@@ -19,5 +19,9 @@ namespace ne {
 
     void NewMetronomeTrack::getNextAudioBlock(const RenderContext& renderContext)
     {
+		auto offset = renderContext.startSample % renderContext.samplesPerBeat;
+        if (offset < renderContext.out.numSamples) {
+			m_voiceEngine.trigger(m_pClickSampleBuffer, offset, 1.0f);
+        }
 	}
 }

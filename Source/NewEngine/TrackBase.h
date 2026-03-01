@@ -19,7 +19,7 @@ namespace ne {
         std::int64_t startSample;
         std::int64_t endSample;      // startSample + numSamples
         std::int64_t startTick;
-        // Optional: precomputed mapping info for this block
+		std::int64_t samplesPerBeat;        
     };
 
     class TrackBase {

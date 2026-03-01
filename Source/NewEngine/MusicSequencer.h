@@ -29,16 +29,17 @@ namespace ne {
 		TempoMap m_tempoMap;
 		MediaBay m_mediaBay;
 		VoiceEngine m_voiceEngine;
-		double m_currentTempoBpm = 120.0;
+		double m_currentTempoBpm = 100.0;
 
     public:
         void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
         void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
 
     public:
-		MusicSequencer();
+		MusicSequencer(double defaultBpm);
         void uiPlay();
         void uiStop();
         void uiSetPositionSamples(std::int64_t newPos);
+		void uiSetTempo(double bpm);
     };
 }
