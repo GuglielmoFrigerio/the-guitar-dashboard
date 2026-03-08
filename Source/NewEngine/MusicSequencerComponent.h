@@ -12,6 +12,7 @@
 
 #include <JuceHeader.h>
 #include "MusicSequencer.h"
+#include "../PlayerComponent.h"
 
 //==============================================================================
 /*
@@ -23,6 +24,7 @@ private:
     ne::MusicSequencer m_musicSequencer;
     juce::Slider m_bpmSlider;
     juce::Label  m_bpmLabel;
+	PlayerComponent m_playerComponent;
 
 
 public:

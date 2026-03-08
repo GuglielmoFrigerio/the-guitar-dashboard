@@ -72,7 +72,7 @@ void TheLambsSong::updateMarkers(double position, PlayerComponent* pPlayerCompon
                 previousEnabled = true;
         }
 
-        pPlayerComponent->updateMakerButtons(previousEnabled, nextEnabled);
+        pPlayerComponent->updateMarkerButtons(previousEnabled, nextEnabled);
     }
 
 }

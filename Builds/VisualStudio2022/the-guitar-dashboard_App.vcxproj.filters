@@ -3669,6 +3669,9 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\AudioTrack.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\NewEngine\MusicSequencerComponent.h">
@@ -7921,6 +7924,9 @@
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\AudioTrack.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

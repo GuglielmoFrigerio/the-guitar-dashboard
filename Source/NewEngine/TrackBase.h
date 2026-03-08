@@ -13,13 +13,16 @@
 
 namespace ne {
 
+    class TempoMap;
+
     struct RenderContext
     {
         const juce::AudioSourceChannelInfo& out;
         std::int64_t startSample;
         std::int64_t endSample;      // startSample + numSamples
         std::int64_t startTick;
-		std::int64_t samplesPerBeat;        
+        double samplesPerBeat;
+        const TempoMap* tempoMap;    // non-owning pointer to TempoMap
     };
 
     class TrackBase {

@@ -30,6 +30,8 @@ MusicSequencerComponent::MusicSequencerComponent()
     m_bpmLabel.attachToComponent(&m_bpmSlider, true); // true = label on the left
     addAndMakeVisible(m_bpmLabel);
 
+    addAndMakeVisible(m_playerComponent);
+
     setAudioChannels(2, 2);
 }
 
@@ -76,6 +78,9 @@ void MusicSequencerComponent::resized()
         sliderWidth,                                  // width
         sliderHeight                                  // height
     );
+
+    m_playerComponent.setBounds(area.removeFromBottom(160));
+
 }
 
 void MusicSequencerComponent::sliderValueChanged(juce::Slider* slider)

@@ -10,6 +10,8 @@
 
 #include "MusicSequencer.h"
 #include "NewMetronomeTrack.h"
+#include "AudioTrack.h"
+#include "TempoMap.h"
 
 namespace ne {
 
@@ -57,8 +59,9 @@ namespace ne {
                 m_currentSamplePosition,
                 m_currentSamplePosition + bufferToFill.numSamples,
                 m_tempoMap.samplesToTicks(m_currentSamplePosition),
-				m_tempoMap.getSamplesPerBeat()
-			};
+                m_tempoMap.getSamplesPerBeat(),
+                &m_tempoMap
+            };
             for (const auto& trackPtr : m_tracks) {
                 trackPtr->getNextAudioBlock(renderContext);
 			}
@@ -74,6 +77,15 @@ namespace ne {
             m_mediaBay.getMediaBuffer("click", "./Samples/Stick.wav"),
 			m_voiceEngine)
         );
+
+        auto audioTrackPtr = std::make_unique<AudioTrack>(
+            m_mediaBay.getMediaBuffer("los-chitarros", "./Samples/los-chitarros.wav"),
+            m_voiceEngine
+		);
+		audioTrackPtr->setStartTick(static_cast<std::int64_t>(4 * PPQ)); // start at bar 2
+
+
+        m_tracks.push_back(std::move(audioTrackPtr));
     }
 
     void MusicSequencer::uiPlay()

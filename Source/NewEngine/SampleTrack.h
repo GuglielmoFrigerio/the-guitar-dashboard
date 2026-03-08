@@ -10,11 +10,19 @@
 
 #pragma once
 #include "TrackBase.h"
+#include "VoiceEngine.h"
+
 
 namespace ne {
     class SampleTrack : public TrackBase {
+    protected:
+        const juce::AudioSampleBuffer* m_pClickSampleBuffer;
+        VoiceEngine& m_voiceEngine;
+
+    protected:
+        SampleTrack(const juce::AudioSampleBuffer* pClickSampleBuffer, VoiceEngine& voiceEngine);
+
     public:
-        SampleTrack() = default;
         ~SampleTrack() override = default;
     };
 }

@@ -14,9 +14,6 @@
 
 namespace ne {
     class NewMetronomeTrack : public SampleTrack {
-    private:
-		const juce::AudioSampleBuffer* m_pClickSampleBuffer;
-		VoiceEngine& m_voiceEngine;
 
     public:
         NewMetronomeTrack(const juce::AudioSampleBuffer* pClickSampleBuffer, VoiceEngine& voiceEngine);

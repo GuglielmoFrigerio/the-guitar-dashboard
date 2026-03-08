@@ -139,6 +139,7 @@
     <Lib />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\NewEngine\AudioTrack.cpp" />
     <ClCompile Include="..\..\Source\NewEngine\MusicSequencerComponent.cpp" />
     <ClCompile Include="..\..\Source\NewEngine\VoiceEngine.cpp" />
     <ClCompile Include="..\..\Source\NewEngine\CommandQueue.cpp" />
@@ -2952,6 +2953,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_gui_extra.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\NewEngine\AudioTrack.h" />
     <ClInclude Include="..\..\Source\NewEngine\MusicSequencerComponent.h" />
     <ClInclude Include="..\..\Source\NewEngine\VoiceEngine.h" />
     <ClInclude Include="..\..\Source\NewEngine\CommandQueue.h" />

@@ -30,7 +30,7 @@ private:    // fields
     PlayerButton    m_stopButton;
     PlayerButton    m_playButton;
     PlayerButton    m_nextButton;
-    PlayerState     m_playerState;
+    PlayerState     m_playerState = PlayerState::Stopped;
     TimeSlider      m_trackPositionSlider;
     bool            m_draggingPosition = false;
     bool            m_previousEnabled = false;
@@ -65,7 +65,7 @@ public:
 
     void changeState(PlayerState newPlayerState);
 
-    void setSongInfo(float trackDuration, bool hasMarkers, std::vector<double>& markers);
+    void setSongInfo(float trackDuration, bool hasMarkers, const std::vector<double>& markers);
     void updateTrackPosition(float position);
     void toggleStartStop();
     void stopAndRewind();
@@ -73,6 +73,6 @@ public:
         return m_playerState == PlayerState::Playing;
     }
 
-    void updateMakerButtons(bool previousEnabled, bool nextEnabled);
+    void updateMarkerButtons(bool previousEnabled, bool nextEnabled);
     void updateCurrentClick(int currentBeats, int currentClicks);
 };

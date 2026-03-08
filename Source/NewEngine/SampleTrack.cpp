@@ -9,3 +9,11 @@
 */
 
 #include "SampleTrack.h"
+
+namespace ne
+{
+    SampleTrack::SampleTrack(const juce::AudioSampleBuffer* pClickSampleBuffer, VoiceEngine& voiceEngine)
+		: m_pClickSampleBuffer(pClickSampleBuffer), m_voiceEngine(voiceEngine)
+    {
+    }
+}

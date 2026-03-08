@@ -165,15 +165,17 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
     }
 }
 
-void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers, std::vector<double>& markers)
+void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers, const std::vector<double>& markers)
 {
     m_playerState = PlayerState::Stopped;
     m_trackPositionSlider.setTrackDuration(trackDuration);
     m_playButton.setEnabled(true);
 
-    m_trackPositionSlider.setupMarkers(markers);
+    // TimeSlider::setupMarkers expects a non-const vector reference; make a local copy
+    std::vector<double> markersCopy = markers;
+    m_trackPositionSlider.setupMarkers(markersCopy);
 
-    updateMakerButtons(hasMarkers, hasMarkers);
+    updateMarkerButtons(hasMarkers, hasMarkers);
 }
 
 void PlayerComponent::updateTrackPosition(float position)
@@ -203,7 +205,7 @@ void PlayerComponent::stopAndRewind()
     }
 }
 
-void PlayerComponent::updateMakerButtons(bool previousEnabled, bool nextEnabled)
+void PlayerComponent::updateMarkerButtons(bool previousEnabled, bool nextEnabled)
 {
     if (previousEnabled != m_previousEnabled) {
         m_previousEnabled = previousEnabled;
