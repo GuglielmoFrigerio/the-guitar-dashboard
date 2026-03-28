@@ -213,5 +213,17 @@
 			<Patch name="Intro" scene="1">18</Patch>
 			<Patch name="Finale" scene="8">285</Patch>
 		</Song>
+		<Song name="Seven Stones">
+			<Track name="Seven Stones Base.mp3">
+				<Marker>00:00:16</Marker>
+			</Track>
+			<Patch name="Arp" scene="1">184</Patch>
+			<Patch name="Solo" scene="4">194</Patch>
+			<Patch name="Arp" scene="1">184</Patch>
+			<Patch name="Solo" scene="4">194</Patch>
+			<Patch name="Arp" scene="1">184</Patch>
+			<Patch name="Solo" scene="4">194</Patch>
+			<Patch name="Envelope" scene="1">200</Patch>
+		</Song>
 	</Library>
 </AxeFxIII>
