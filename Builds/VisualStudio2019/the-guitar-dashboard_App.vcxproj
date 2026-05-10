@@ -155,6 +155,9 @@
     <ClCompile Include="..\..\Source\NewEngine\SampleTrack.cpp"/>
     <ClCompile Include="..\..\Source\NewEngine\TempoMap.cpp"/>
     <ClCompile Include="..\..\Source\NewEngine\TrackBase.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\AudioTrack.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\Song.cpp"/>
+    <ClCompile Include="..\..\Source\NewEngine\SongCollection.cpp"/>
     <ClCompile Include="..\..\Source\MidiModifierTrigger.cpp"/>
     <ClCompile Include="..\..\Source\SongPatch.cpp"/>
     <ClCompile Include="..\..\Source\MidiModifier.cpp"/>
@@ -2968,6 +2971,9 @@
     <ClInclude Include="..\..\Source\NewEngine\SampleTrack.h"/>
     <ClInclude Include="..\..\Source\NewEngine\TempoMap.h"/>
     <ClInclude Include="..\..\Source\NewEngine\TrackBase.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\AudioTrack.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\Song.h"/>
+    <ClInclude Include="..\..\Source\NewEngine\SongCollection.h"/>
     <ClInclude Include="..\..\Source\MidiModifierTrigger.h"/>
     <ClInclude Include="..\..\Source\SongPatch.h"/>
     <ClInclude Include="..\..\Source\MidiModifier.h"/>

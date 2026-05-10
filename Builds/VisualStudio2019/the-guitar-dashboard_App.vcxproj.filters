@@ -718,6 +718,15 @@
     <ClCompile Include="..\..\Source\NewEngine\TrackBase.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\AudioTrack.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\Song.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\SongCollection.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MidiModifierTrigger.cpp">
       <Filter>the-guitar-dashboard\Source</Filter>
     </ClCompile>
@@ -3847,6 +3856,15 @@
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NewEngine\TrackBase.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\AudioTrack.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\Song.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\SongCollection.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MidiModifierTrigger.h">

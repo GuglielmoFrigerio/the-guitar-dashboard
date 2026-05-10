@@ -60,6 +60,12 @@
         <FILE id="pJb4zK" name="TempoMap.h" compile="0" resource="0" file="Source/NewEngine/TempoMap.h"/>
         <FILE id="IodGJD" name="TrackBase.cpp" compile="1" resource="0" file="Source/NewEngine/TrackBase.cpp"/>
         <FILE id="ScTM3x" name="TrackBase.h" compile="0" resource="0" file="Source/NewEngine/TrackBase.h"/>
+        <FILE id="neAtk01" name="AudioTrack.cpp" compile="1" resource="0" file="Source/NewEngine/AudioTrack.cpp"/>
+        <FILE id="neAtk02" name="AudioTrack.h" compile="0" resource="0" file="Source/NewEngine/AudioTrack.h"/>
+        <FILE id="neSng01" name="Song.cpp" compile="1" resource="0" file="Source/NewEngine/Song.cpp"/>
+        <FILE id="neSng02" name="Song.h" compile="0" resource="0" file="Source/NewEngine/Song.h"/>
+        <FILE id="neSCl01" name="SongCollection.cpp" compile="1" resource="0" file="Source/NewEngine/SongCollection.cpp"/>
+        <FILE id="neSCl02" name="SongCollection.h" compile="0" resource="0" file="Source/NewEngine/SongCollection.h"/>
       </GROUP>
       <FILE id="giTcfc" name="MidiModifierTrigger.cpp" compile="1" resource="0"
             file="Source/MidiModifierTrigger.cpp"/>

@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AxeFxIII>
 	<Library name="The Lambs">
+		<Song name="Watcher Of The Skies">
+			<Track name="Watcher Of The Skies.mp3">
+				<Marker>00:01:27</Marker>
+				<Marker>00:03:04</Marker>
+				<Marker>00:05:47</Marker>
+			</Track>
+			<Patch name="base crescendo" message="Volume medio">
+				<ProgramChange scene="6" program="354"/>
+				<MidiModifier startValue="0" endValue="127" stepValue="25" midiControl="7"/>
+			</Patch>
+			<Patch name="solo" scene="8" >354</Patch>
+			<Patch name="base" scene="6">354</Patch>
+			<Patch name="envelope (Sol# - Fa)" scene="8"> 462</Patch>
+			<Patch name="base" scene="6">354</Patch>
+			<Patch name="solo" scene="8"> 354</Patch>
+			<Patch name="base" scene="6">29</Patch>
+			<Patch name="envelope" scene="1">378</Patch>
+		</Song>
 		<Song name="Get'em Out By Friday">
 			<Track name="Get 'Em Out By Friday.mp3" >
 				<Marker>00:03:50</Marker>
@@ -60,6 +78,34 @@
 			<Patch name="Dist" scene="1">220</Patch>
 			<Patch name="Intro" scene="1">236</Patch>
 			<Patch name="Dist" scene="1">220</Patch>
+		</Song>
+		<Song name="The Musical Box">
+			<Track name="The Musical Box.mp3">
+				<Marker>00:07:31</Marker>
+				<Marker>00:09:20</Marker>
+			</Track>
+			<Patch name="Arpeggio" scene="8" message="Pedali al minimo!" >275</Patch>
+			<Patch name="Solo" scene="8">320</Patch>
+		</Song>
+		<Song name="Firth of Fifth" initialBpm="65">
+			<Track name="Firth Of Fifth - Genesis.mp3">
+				<Marker>00:01:08</Marker>
+				<Marker>00:05:08</Marker>
+				<Marker>00:05:40</Marker>
+			</Track>
+			<Patch name="Intro" scene="1" playOnNote="47" minVelocity="50"> 509</Patch>
+			<Patch name="Acoustic" scene="8" beat="64" click="0"> 470</Patch>
+			<Patch name="Reprise" scene="2" beat="72" click="0"> 509</Patch>
+			<Patch name="Acoustic" scene="8" beat="86" click="0"> 470</Patch>
+			<Patch name="Intro" scene="1">509</Patch>
+			<Patch name="Slide" scene="1">471</Patch>
+			<Patch name="Trillo" scene="1" action="stop"> 509</Patch>
+			<Patch name="Solo" scene="8">318</Patch>
+			<Patch name="Finale" scene="1"> 509</Patch>
+			<Samples>
+				<Sample name="fof-vocal-1.wav" beat="0" click="0" outputTrack="1" volume="-10" />
+				<Sample name="fof-vocal-2.wav" beat="7" click="270" />
+			</Samples>
 		</Song>
 		<Song name="CuckooCocoon">
 			<Track name="Genesis - Cuckoo Cocoon.mp3" />
@@ -183,15 +229,15 @@
 			<Patch name="Envelope" scene="6"> 479</Patch>
 			<Patch name="Dist" scene="3">480</Patch>
 		</Song>
-		<Song name="Counting Out Time">
-			<Track name="Genesis - Counting Out Time (Official Audio).mp3">
-				
-			</Track>
-			<Patch name="Riff" scene="1">53</Patch>
-			<Patch name="PChords" scene="1">91</Patch>
-			<Patch name="Riff" scene="1">53</Patch>
-			<Patch name="PChords" scene="1">91</Patch>
-			<Patch name="Solo" scene="1">52</Patch>
+		<Song name="The Lamb Lies Down On Broadway">
+			<Track name="The Lamb Lies Down on Broadway - Genesis.mp3"></Track>
+			<Patch name="Fly" scene="3">238</Patch>
+			<Patch name="Intro" scene="1">236</Patch>
+			<Patch name="Envelope" scene="5">237</Patch>
+			<Patch name="Strumming" scene="1"> 236</Patch>
+			<Patch name="Dist" scene="1">220</Patch>
+			<Patch name="Intro" scene="1">236</Patch>
+			<Patch name="Dist" scene="1">220</Patch>
 		</Song>
 		<Song name="The Carpet Crawlers">
 			<Track name="Genesis - Carpet Crawlers (Official Audio).mp3"></Track>
@@ -200,10 +246,8 @@
 		</Song>
 		<Song name="Blood On The Rooftops">
 			<Track name="06-Blood-on-the-Rooftops.mp3"></Track>
-			<!-- <Patch name="Intro" scene="1">456</Patch> 
-			<Patch name="Intro" scene="1">355</Patch> -->
 			<Patch name="alternativo" scene="1">299</Patch>
-			<Patch name="arpeggio" scene="2"> 443</Patch>
+			<Patch name="arpeggio" scene="1"> 185</Patch>
 			<!--Try
       125. -->
 		</Song>
@@ -225,5 +269,14 @@
 			<Patch name="Solo" scene="4">194</Patch>
 			<Patch name="Envelope" scene="1">200</Patch>
 		</Song>
-	</Library>
+		<Song name="In the Cage Live">
+			<Track name="In the Cage (Medley_ Cinema Show  The Colony of Slippermen) (Live) (1994 Remaster).mp3"></Track>
+			<Patch name="Intro" scene="8">501</Patch>
+			<Patch name="Power Chords" scene="1">383</Patch>
+			<Patch name="Si b" scene="1"> 496</Patch>
+			<Patch name="Reprise" scene="8">501</Patch>
+			<Patch name="Power Chords" scene="1">248</Patch>
+			<Patch name="Clean Bridge" scene="1">134</Patch>
+			<Patch name="Solo" scene="8">135</Patch>
+		</Song>	</Library>
 </AxeFxIII>
