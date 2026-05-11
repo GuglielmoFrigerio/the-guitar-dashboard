@@ -9,50 +9,75 @@
 */
 
 #include "Track.h"
+#include "GuitarDashCommon.h"
 
-void Track::addEvent(std::unique_ptr<Event>& newEvent)
+std::int64_t Track::findCurrentIndex(std::int64_t currentClick)
 {
-    m_eventList.emplace_back(std::make_unique<EventList>(newEvent));
+    std::int64_t previousClick = -1;
+
+    for (auto index = 0; index < m_eventList.size(); ++index) {
+        auto clickTimepoint = m_eventList[index]->getClickTimepoint();
+        if (clickTimepoint >= currentClick) {
+            m_currentIndex = index;
+            return previousClick;
+        }
+        previousClick = clickTimepoint;
+    }
+    return previousClick;
 }
 
-void Track::play(int index)
+void Track::loadFromXml(const juce::XmlElement* pRootElement, std::function<bool (const juce::String& elementName)> elementNameTest, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler)
 {
-    if (index >= 0 && index < m_eventList.size())    {
-        TimePoint tp;
-        m_eventList[index]->play(tp, *this);
-    } else {
-        DBG("[Track::play] index is out of bounds");
+    int64_t currentClickTimepoint = 0;
+    for (auto* pChildElement : pRootElement->getChildIterator()) {
+        auto elementName = pChildElement->getTagName();
+        if (elementNameTest(elementName)) {
+            auto ct = getClickTimepoint(pChildElement, currentClickTimepoint);
+            auto eventListPtr = childElementHandler(pChildElement, ct);
+            if (eventListPtr != nullptr) {
+                addEventList(eventListPtr);
+            }
+            currentClickTimepoint = ct + DefaultClicksPerBeat;
+        }
     }
 }
 
-std::int64_t Track::play(std::uint64_t currentTick, std::uint64_t previousTick)
+void Track::addEventList(std::unique_ptr<EventList>& eventListPtr)
 {
-    auto& eventListPtr = m_eventList[m_currentIndex];
+    auto size = m_eventList.size();
+    if (size > 0) {
+        auto ct = m_eventList[size - 1]->getClickTimepoint();
+        auto incomingCt = eventListPtr->getClickTimepoint();
+        jassert(ct < incomingCt);
+    }
+    m_eventList.emplace_back(std::move(eventListPtr));
+}
+
+void Track::play(std::int64_t currentClick, std::int64_t previousClick)
+{
+    if (previousClick >= currentClick) {
+        previousClick = findCurrentIndex(currentClick);
+    }
+
+    auto previous = (m_seekClick == previousClick) ? previousClick - 1 : previousClick;
+    auto eventListPtr = m_eventList[m_currentIndex].get();
     auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
-    while (eventListClickTimepoint < currentTick && eventListClickTimepoint >= previousTick) {
-        eventListPtr->play(currentTick, previousTick, *this);
+    while (eventListClickTimepoint <= currentClick && eventListClickTimepoint > previous) {
+        eventListPtr->play(currentClick, previous, *this);
         if (m_currentIndex < (m_eventList.size() - 1)) {
             ++m_currentIndex;
-            auto& eventListPtr = m_eventList[m_currentIndex];
-            auto eventListClickTimepoint = eventListPtr->getClickTimepoint();
+            eventListPtr = m_eventList[m_currentIndex].get();
+            eventListClickTimepoint = eventListPtr->getClickTimepoint();
         }
         else break;
     }
-    return 0;
 }
 
-void Track::enumerateProgramChanges(std::function<void(const ProgramChangeEvent* pProgramChangeEvent, int index)> callback) const
+void Track::seek(std::int64_t currentClick, std::int64_t previousClick)
 {
-    for (auto index = 0; index < m_eventList.size(); index++)
-    {
-        auto& eventList = m_eventList[index];
-        eventList->enumerateEvents([this, index, callback](const Event* pEvent, int eventIndex) {
-            const auto pProgramChangeEvent = dynamic_cast<const ProgramChangeEvent*>(pEvent);
-            if (pProgramChangeEvent != nullptr) {
-                callback(pProgramChangeEvent, index);
-                return false;
-            }
-            return true;
-        });
+    findCurrentIndex(currentClick);
+    if (m_currentIndex < m_eventList.size()) {
+        m_eventList[m_currentIndex]->seek(currentClick, previousClick, *this);
     }
+    m_seekClick = currentClick;
 }

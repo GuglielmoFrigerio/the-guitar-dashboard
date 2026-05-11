@@ -10,34 +10,22 @@
 
 #pragma once
 #include "Track.h"
+#include "IMidiOutput.h"
 
 class MidiDevice;
 
 class MidiTrack : public Track
 {
 private:    // fields
-    int     m_midiChannel = 1;
     MidiDevice* m_pMidiDevice;
 
 private:    // implementation
-    void    loadFromPatches(const juce::XmlElement* pPatchesElement);
+    void    loadFromPatches(const juce::XmlElement* pPatchesElement, const int midiChannel);
 
 public:
     MidiTrack(MidiDevice* pMidiDevice) : m_pMidiDevice(pMidiDevice) {}
-    MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence);
+    MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence, IMidiOutput* pMidiOutput);
 
-    virtual MidiDevice* getMidiDevice() const override
-    {
-        return m_pMidiDevice;
-    }
-
-    virtual int getMidiChannel() const override
-    {
-        return m_midiChannel;
-    }
-
-    virtual void playFirstEvent() override;
-
-    static std::unique_ptr<Track> loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice);
-    static std::unique_ptr<Track> loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice);
+    static std::unique_ptr<Track> loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice, int midiChannel);
+    static std::unique_ptr<Track> loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice, IMidiOutput* pMidiOutput);
 };

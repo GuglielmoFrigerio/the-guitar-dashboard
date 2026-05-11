@@ -1,0 +1,58 @@
+/*
+  ==============================================================================
+
+    MarkerTrack.cpp
+    Created: 4 Sep 2022 5:08:56pm
+    Author:  gugli
+
+  ==============================================================================
+*/
+
+#include "MarkerTrack.h"
+#include "GuitarDashCommon.h"
+
+MarkerTrack::MarkerTrack(const juce::XmlElement* pPatchesElement)
+{
+    int64_t currentClickTimepoint = 0;
+    for (auto* pPatchElement : pPatchesElement->getChildWithTagNameIterator("Patch")) {
+        auto markerPtr = Marker::parse(pPatchElement, currentClickTimepoint);
+        currentClickTimepoint = markerPtr->getClickTimepoint() + DefaultClicksPerBeat;
+        m_markers.push_back(std::move(markerPtr));
+    }
+}
+
+void MarkerTrack::enumerateDevicePatches(std::function<void(const DevicePatch* pDevicePatch, int index)> callback) const
+{
+    for (auto index = 0; index < m_markers.size(); index++)
+    {
+        auto& markerPtr = m_markers[index];
+        auto pDevicePatch = markerPtr->getDevicePatch();
+        callback(pDevicePatch, index);
+    }
+}
+
+uint64_t MarkerTrack::getClickTimepoint(int markerIndex)
+{
+    if (markerIndex < m_markers.size()) {
+        return m_markers[markerIndex]->getClickTimepoint();
+    }
+    DBG("[MarkerTrack::getClickTimepoint] invelid markerIndex: " << markerIndex);
+    return 0ull;
+}
+
+const Marker& MarkerTrack::getMarker(int markerIndex)
+{
+    return *m_markers[markerIndex];
+}
+
+int MarkerTrack::getIndexFromClicks(uint64_t currentClick)
+{
+    for (auto index = 0; index < m_markers.size(); ++index) {
+        auto& markerPtr = m_markers[index];
+        auto timepoint = markerPtr->getClickTimepoint();
+        if (timepoint > currentClick) {
+            return index - 1;
+        }
+    }
+    return m_markers.size() - 1;
+}

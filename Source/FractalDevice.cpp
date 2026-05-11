@@ -11,14 +11,10 @@
 #include <cstdint>
 #include "GuitarDashCommon.h"
 #include "FractalDevice.h"
-#include "FractalDiscoverDevice.h"
 #include "AxeFx2Device.h"
 #include "AxeFx3Device.h"
 
 #define MAX_SYSEX_MSG_LEN   80
-
-juce::Array<juce::MidiDeviceInfo> FractalDevice::g_inputInfoArray;
-juce::Array<juce::MidiDeviceInfo> FractalDevice::g_outputInfoArray;
 
 FractalDevice::FractalDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId)
     :   MidiDevice(inputMidiPortId, outputMidiPortId)
@@ -83,38 +79,26 @@ void FractalDevice::sendSysexMessage(uint8_t* pSysexData, int dataLength)
     m_midiOutPortPtr->sendMessageNow(sysExMsg);
 }
 
-void FractalDevice::loadDevicesInfo()
-{
-    g_inputInfoArray = juce::MidiInput::getAvailableDevices();
-    g_outputInfoArray = juce::MidiOutput::getAvailableDevices();
-}
 
 std::vector<std::unique_ptr<FractalDevice>> FractalDevice::loadAvailableDevices()
 {
     std::vector<std::unique_ptr<FractalDevice>> returnCollection;
 
-    //const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
-    //const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
+    const auto& inputInfoArray = juce::MidiInput::getAvailableDevices();
 
-    for (auto& inputInfo : g_inputInfoArray)
+	const auto& inputDeviceId = findDeviceId(inputInfoArray, "Axe-Fx III MIDI In");
+
+
+    const auto& outputInfoArray = juce::MidiOutput::getAvailableDevices();
+
+    const auto& outputDeviceId = findDeviceId(outputInfoArray, "Axe-Fx III MIDI Out");
+
+	if (!inputDeviceId.isEmpty() && !outputDeviceId.isEmpty())
     {
-        auto outputDeviceId = FractalDevice::findAssociatedOutput(inputInfo, g_outputInfoArray);
-        if (outputDeviceId.isNotEmpty())
-        {
-            auto deviceFound = discover(inputInfo.identifier, outputDeviceId);
-            if (deviceFound != FractalDeviceType::Unknown) {
-                returnCollection.push_back(createDevice(deviceFound, inputInfo.identifier, outputDeviceId));
-            }
-        }
+        returnCollection.push_back(createDevice(FractalDeviceType::AxeFxIII, inputDeviceId, outputDeviceId));
     }
 
     return returnCollection;
-}
-
-FractalDeviceType FractalDevice::discover(const juce::String inputDeviceId, const juce::String& outputDeviceId)
-{
-    auto discoverDevice = std::make_unique<FractalDiscoverDevice>(inputDeviceId, outputDeviceId);
-    return discoverDevice->discover();
 }
 
 std::unique_ptr<FractalDevice> FractalDevice::createDevice(FractalDeviceType deviceType, const juce::String inputDeviceId, const juce::String& outputDeviceId)
@@ -138,10 +122,23 @@ juce::String FractalDevice::findAssociatedOutput(const juce::MidiDeviceInfo& inp
 {
     for (auto& outputInfo : outputDeviceInfo)
     {
-        if (stringsAreSimilar(inputInfo.name, outputInfo.name, 6, 3))
-            return  outputInfo.identifier;
+        if (!inputInfo.name.contains("TriplePlay")) {
+            if (stringsAreSimilar(inputInfo.name, outputInfo.name, 6, 3))
+                return  outputInfo.identifier;
+        }
     }
     return juce::String();
 }
+
+juce::String FractalDevice::findDeviceId(const juce::Array<juce::MidiDeviceInfo>& midiDeviceInfoArray, const char* pDeviceName)
+{
+	for (const auto& deviceInfo : midiDeviceInfoArray)
+    {
+		if (deviceInfo.name.indexOf(pDeviceName) != -1)
+            return deviceInfo.identifier;
+    }
+    return juce::String();
+}
+
 
 

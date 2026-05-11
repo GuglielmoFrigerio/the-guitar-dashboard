@@ -12,7 +12,7 @@
 #include "TheLambsSong.h"
 #include "ProgramChangesComponent.h"
 
-std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand)
+std::unique_ptr<SongCollection> SongCollection::loadFromLibraryElement(const juce::XmlElement* pLibraryElement, VirtualBand* pVirtualBand)
 {
     auto songColletionPtr = std::make_unique<SongCollection>();
 
@@ -43,14 +43,15 @@ Song* SongCollection::activateSong(
     int songIndex, 
     juce::AudioFormatManager* pAudioFormatManager, 
     juce::AudioTransportSource* pAudioTransportSource, 
-    PlayerComponent* m_pPlayerComponent)
+    PlayerComponent* pPlayerComponent,
+    SongListComponent* pSongListComponent)
 {
     if (songIndex < m_songs.size()) {
         if (m_currentSongIndex >= 0 && m_currentSongIndex < m_songs.size())
             m_songs[m_currentSongIndex]->deactivate();
         m_currentSongIndex = songIndex;
         auto& songPtr = m_songs[m_currentSongIndex];
-        songPtr->activate(pAudioFormatManager, pAudioTransportSource, m_pPlayerComponent);
+        songPtr->activate(pAudioFormatManager, pAudioTransportSource, pPlayerComponent, pSongListComponent);
         return songPtr.get();
     }
     else {
@@ -59,14 +60,13 @@ Song* SongCollection::activateSong(
     }
 }
 
-void SongCollection::selectProgramChange(int programChangeIndex)
+juce::String SongCollection::selectProgramChange(int programChangeIndex)
 {
     if (m_currentSongIndex >= -1 && m_currentSongIndex < m_songs.size()) {
-        m_songs[m_currentSongIndex]->selectProgramChange(programChangeIndex);
+        return m_songs[m_currentSongIndex]->selectProgramChange(programChangeIndex);
     }
-    else {
-        DBG("[SongCollection::selectProgramChange] index is out bounds");
-    }
+    DBG("[SongCollection::selectProgramChange] index is out bounds");
+    return juce::String();
 }
 
 void SongCollection::updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent)

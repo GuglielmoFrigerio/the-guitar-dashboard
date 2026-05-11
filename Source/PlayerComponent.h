@@ -14,6 +14,7 @@
 #include "PlayerButton.h"
 #include "TimeSlider.h"
 #include "DecibelSlider.h"
+#include "PlayerModeComponent.h"
 
 enum class PlayerState {
     Stopped,
@@ -29,14 +30,15 @@ private:    // fields
     PlayerButton    m_stopButton;
     PlayerButton    m_playButton;
     PlayerButton    m_nextButton;
-    PlayerState     m_playerState;
+    PlayerState     m_playerState = PlayerState::Stopped;
     TimeSlider      m_trackPositionSlider;
     bool            m_draggingPosition = false;
     bool            m_previousEnabled = false;
     bool            m_nextEnabled = false;
     DecibelSlider   m_volumeSlider;
     juce::Label     m_decibelLabel;
-
+    PlayerModeComponent m_playerModeComponent;
+    juce::Label     m_clickLabel;
 
 private:    // implementation
     void sendStateUpdate(PlayerState playerState);
@@ -54,15 +56,16 @@ public:
     void paint(juce::Graphics&) override;
     void resized() override;
 
-    std::function<void(PlayerState)> onPlayerCommand;
+    std::function<void(PlayerState, PlayerMode)> onPlayerCommand;
     std::function<void(float)> onChangePosition;
     std::function<void()> onNextMarker;
     std::function<void()> onPreviousMarker;
     std::function<void(float)> onChangedGain;
+    std::function<void(PlayerMode)> onModeChange;
 
     void changeState(PlayerState newPlayerState);
 
-    void setSongInfo(float trackDuration, bool hasMarkers, std::vector<double>& markers);
+    void setSongInfo(float trackDuration, bool hasMarkers, const std::vector<double>& markers);
     void updateTrackPosition(float position);
     void toggleStartStop();
     void stopAndRewind();
@@ -70,5 +73,6 @@ public:
         return m_playerState == PlayerState::Playing;
     }
 
-    void updateMakerButtons(bool previousEnabled, bool nextEnabled);
+    void updateMarkerButtons(bool previousEnabled, bool nextEnabled);
+    void updateCurrentClick(int currentBeats, int currentClicks);
 };

@@ -12,6 +12,9 @@
 #include <functional>
 #include <memory>
 #include <JuceHeader.h>
+#include <numeric>
+
+const std::uint64_t DefaultClicksPerBeat = 480ull;
 
 #define M_PI       3.14159265358979323846   // pi
 const float DoublePi = 2.0f * (float)M_PI;
@@ -30,7 +33,11 @@ bool stringsAreSimilar(const juce::String& first, const juce::String& second, in
 int getElementValueAsInt(const juce::XmlElement* pInputElement);
 
 juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, juce::StringRef attributeName, juce::StringRef attributeValue);
+void enumChildElements(const juce::XmlElement* pInputElement, juce::StringRef elementName, std::function<void (const juce::XmlElement* pChildElement)> elementConsumer);
 
 void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler);
 
 std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename);
+std::int64_t getClickTimepoint(const juce::XmlElement* pElement, std::int64_t currentClickTimepoint);
+std::exception exceptionFactory(const juce::String& message);
+juce::File getAvailableFile(const std::string& relativePath);

@@ -11,8 +11,8 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <JuceHeader.h>
 #include "EventList.h"
-#include "ProgramChangeEvent.h"
 #include "IPlaybackTarget.h"
 
 class MidiDevice;
@@ -21,22 +21,22 @@ class Track : public IPlaybackTarget {
 protected:    // fields
     std::vector<std::unique_ptr<EventList>> m_eventList;
     int m_currentIndex = 0;
+    std::int64_t m_seekClick;
 
 protected:  // interface
-    void    addEvent(std::unique_ptr<Event>& newEvent);
+    std::int64_t findCurrentIndex(std::int64_t currentClick);
+    void loadFromXml(const juce::XmlElement* pRootElement, std::function<bool(const juce::String& elementName)> elementNameTest, std::function<std::unique_ptr<EventList>(const juce::XmlElement* pChildElement, std::int64_t clickTimepoint)> childElementHandler);
+    void addEventList(std::unique_ptr<EventList>& eventListPtr);
 
 public:
     virtual ~Track() {}
-    virtual MidiDevice* getMidiDevice() const = 0;
-    virtual int getMidiChannel() const = 0;
-    virtual void play(int index);
     virtual void playFirstEvent() {}
-
-    void enumerateProgramChanges(std::function<void(const ProgramChangeEvent* pProgramChangeEvent, int index)> callback) const;
 
     int getEventCount() const {
         return (int)m_eventList.size();
     }
-    std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) override;
+    void play(std::int64_t currentClick, std::int64_t previousClick) override;
+    void seek(std::int64_t currentClick, std::int64_t previousClick) override;
+    void onTick(std::int64_t) override {}
 
 };

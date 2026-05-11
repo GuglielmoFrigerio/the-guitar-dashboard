@@ -10,7 +10,7 @@
 
 #include "TilesLookAndFeel.h"
 
-void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& button, const juce::Colour& backgroundColour, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown)
+void TilesLookAndFeed::drawButtonBackground(juce::Graphics& g, juce::Button& button, const juce::Colour&, bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown)
 {
     auto idAsString = button.getComponentID();
     auto buttonIndex = idAsString.getIntValue();

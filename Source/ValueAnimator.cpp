@@ -15,8 +15,8 @@
 ValueAnimator::ValueAnimator(int startValue, int endValue, int steps)
     :   m_startValue(startValue), m_endValue(endValue), m_steps(steps), m_currentOutputValue(startValue), m_currentStep(0)
 {
-    m_delta = M_PI / static_cast<float>(m_steps);
-    m_currentInputValue = M_PI;
+    m_delta = float(M_PI) / static_cast<float>(m_steps);
+    m_currentInputValue = float(M_PI);
     m_m = static_cast<float>(m_endValue - m_startValue) / 2.0f;
     m_q = static_cast<float>(m_startValue) + m_m;
 }

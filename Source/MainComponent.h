@@ -30,11 +30,15 @@ public:
 private:    // implementation
     void buttonClicked(juce::Button* button) override;
     void propInit();
+    void createEnginePage();
+    bool isUsingNewEngine();
+    void setUsingNewEngine(bool useNewEngine);
 
 private:
-    std::unique_ptr<VirtualBandPage> m_virtualBandPagePtr;
+    std::unique_ptr<juce::AudioAppComponent> m_virtualBandPagePtr;
     juce::TextButton m_setupButton;
     juce::TextButton m_virtualBandButton;
+    juce::TextButton m_engineToggleButton;
     std::unique_ptr<juce::Component> m_activePage;
     juce::ApplicationProperties m_properties;
 

@@ -93,3 +93,10 @@ void SongListComponent::update(const SongCollection* pSongCollection)
         m_songTiles[0]->setToggleState(true, juce::NotificationType::sendNotification);
     }
 }
+
+void SongListComponent::selectSong(int songIndex)
+{
+    if (songIndex < m_songTiles.size()) {
+        m_songTiles[songIndex]->triggerClick();
+    }
+}

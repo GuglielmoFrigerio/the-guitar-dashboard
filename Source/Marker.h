@@ -2,25 +2,42 @@
   ==============================================================================
 
     Marker.h
-    Created: 26 Aug 2021 2:41:12pm
+    Created: 30 Oct 2022 6:44:29pm
     Author:  gugli
 
   ==============================================================================
 */
 
 #pragma once
+#include <cstdint>
+#include <memory>
 #include <JuceHeader.h>
+#include "DevicePatch.h"
 
-class Marker
-{
-private:    // fields
-    double m_position;
+class Marker {
+private:
+    DevicePatch m_devicePatch;
+    int m_playOnNote = -1;
+    int m_minVelocity = 127;
 
 public:
-    Marker(double position);
+    Marker(const juce::XmlElement* pPatchElement, uint64_t clickTimepoint);
 
-    void activate(juce::AudioTransportSource* pAudioTransportSource);
-    double getPosition() const {
-        return m_position;
+    static std::unique_ptr<Marker> parse(const juce::XmlElement* pPatchElement, uint64_t clickTimepoint);
+
+    std::uint64_t getClickTimepoint() const {
+        return m_devicePatch.clickTimepoint;
+    }
+
+    const DevicePatch* getDevicePatch() const {
+        return &m_devicePatch;
+    }
+
+    int getPlayOnNote() const {
+        return m_playOnNote;
+    }
+
+    int getMinVelocity() const {
+        return m_minVelocity;
     }
 };

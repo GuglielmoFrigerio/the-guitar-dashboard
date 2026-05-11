@@ -15,7 +15,7 @@
 void PlayerComponent::sendStateUpdate(PlayerState playerState)
 {
     if (onPlayerCommand != nullptr)
-        onPlayerCommand(playerState);
+        onPlayerCommand(playerState, m_playerModeComponent.Mode);
 }
 
 void PlayerComponent::disable()
@@ -40,6 +40,8 @@ PlayerComponent::PlayerComponent()
     addAndMakeVisible(m_trackPositionSlider);
     addAndMakeVisible(m_volumeSlider);
     addAndMakeVisible(m_decibelLabel);
+    addAndMakeVisible(m_playerModeComponent);
+    addAndMakeVisible(m_clickLabel);
 
     m_playButton.onClick = [this] { startStateChange(PlayerState::Starting); };
     m_stopButton.onClick = [this] { startStateChange(PlayerState::Stopping); };
@@ -68,7 +70,13 @@ PlayerComponent::PlayerComponent()
     m_decibelLabel.setText("Level dB", juce::dontSendNotification);
 
     disable();
-}
+
+    m_playerModeComponent.onModeChange = [this]() {
+        if (onModeChange != nullptr) {
+            onModeChange(m_playerModeComponent.Mode);
+        }
+    };
+ }
 
 void PlayerComponent::paint(juce::Graphics& g)
 {
@@ -88,6 +96,12 @@ void PlayerComponent::resized()
 
     auto volumeRect = bounds.removeFromRight(500);
     m_volumeSlider.setBounds(volumeRect);
+
+    auto modeRect = bounds.removeFromLeft(200);
+    m_playerModeComponent.setBounds(modeRect);
+
+    auto clickRect = bounds.removeFromLeft(100);
+    m_clickLabel.setBounds(clickRect);
 
     auto margin = 20;
 
@@ -110,7 +124,7 @@ void PlayerComponent::startStateChange(PlayerState newPlayerState)
     }
 }
 
-void PlayerComponent::sliderValueChanged(juce::Slider* slider)
+void PlayerComponent::sliderValueChanged(juce::Slider* )
 {
 }
 
@@ -151,15 +165,17 @@ void PlayerComponent::changeState(PlayerState newPlayerState)
     }
 }
 
-void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers, std::vector<double>& markers)
+void PlayerComponent::setSongInfo(float trackDuration, bool hasMarkers, const std::vector<double>& markers)
 {
     m_playerState = PlayerState::Stopped;
     m_trackPositionSlider.setTrackDuration(trackDuration);
     m_playButton.setEnabled(true);
 
-    m_trackPositionSlider.setupMarkers(markers);
+    // TimeSlider::setupMarkers expects a non-const vector reference; make a local copy
+    std::vector<double> markersCopy = markers;
+    m_trackPositionSlider.setupMarkers(markersCopy);
 
-    updateMakerButtons(hasMarkers, hasMarkers);
+    updateMarkerButtons(hasMarkers, hasMarkers);
 }
 
 void PlayerComponent::updateTrackPosition(float position)
@@ -189,7 +205,7 @@ void PlayerComponent::stopAndRewind()
     }
 }
 
-void PlayerComponent::updateMakerButtons(bool previousEnabled, bool nextEnabled)
+void PlayerComponent::updateMarkerButtons(bool previousEnabled, bool nextEnabled)
 {
     if (previousEnabled != m_previousEnabled) {
         m_previousEnabled = previousEnabled;
@@ -199,4 +215,10 @@ void PlayerComponent::updateMakerButtons(bool previousEnabled, bool nextEnabled)
         m_nextEnabled = nextEnabled;
         m_nextButton.setEnabled(m_nextEnabled);
     }
+}
+
+void PlayerComponent::updateCurrentClick(int currentBeats, int currentClicks)
+{
+    auto label = juce::String::formatted("%d.%d", currentBeats, currentClicks);
+    m_clickLabel.setText(label, juce::dontSendNotification);
 }

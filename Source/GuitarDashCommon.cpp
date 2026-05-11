@@ -46,6 +46,17 @@ juce::XmlElement* getChildWithAttribute(const juce::XmlElement* pInputElement, j
     return nullptr;
 }
 
+void enumChildElements(const juce::XmlElement* pInputElement, juce::StringRef elementName, std::function<void(const juce::XmlElement* pChildElement)> elementConsumer)
+{
+    for (auto* pChildElement : pInputElement->getChildIterator()) {
+        auto value = pChildElement->getTagName();
+        if (value == elementName)
+        {
+            elementConsumer(pChildElement);
+        }
+    }
+}
+
 void computeFlexBox(int minWidth, int tileHeight, int componentWidth, int tileCount, std::function<void(int, int, int, int, int)> tileHandler)
 {
     auto columns = componentWidth / minWidth;
@@ -80,5 +91,32 @@ std::shared_ptr<juce::MidiFile> loadMidiFile(const std::string& inputFilename)
     auto message = juce::String::formatted("loadMidiFile: unable to load midi file from %s", inputFilename.c_str());
     throw std::runtime_error(message.toUTF8());
 
+}
+
+std::int64_t getClickTimepoint(const juce::XmlElement* pElement, std::int64_t currentClickTimepoint)
+{
+    auto beat = pElement->getIntAttribute("beat");
+    auto click = pElement->getIntAttribute("click");
+
+    auto ct = beat * DefaultClicksPerBeat + click;
+
+    return (ct > 0) ? ct : currentClickTimepoint;
+}
+
+std::exception exceptionFactory(const juce::String& message)
+{
+    DBG(message);
+    return std::exception();
+}
+
+juce::File getAvailableFile(const std::string& relativePath)
+{
+    auto currentFolder = juce::File::getSpecialLocation(juce::File::currentExecutableFile);
+	auto inputFile = currentFolder.getChildFile(relativePath);
+    if (inputFile.exists()) {
+		return inputFile;
+    }
+	auto message = juce::String::formatted("getAvailableFile: unable to find file at %s", relativePath.c_str());
+	throw std::runtime_error(message.toUTF8());
 }
 

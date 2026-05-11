@@ -13,20 +13,28 @@
 #include <tuple>
 #include "Track.h"
 #include "IPlaybackTarget.h"
+#include "MidiOutput.h"
+#include "MarkerTrack.h"
 
+class SongListComponent;
 class ProgramChangesComponent;
 class PlayerComponent;
+enum class PlayerState;
 
 class Song : public IPlaybackTarget
 {
 protected:    // fields
     std::vector<std::unique_ptr<Track>> m_tracks;
     juce::String m_name;
+    MidiOutput m_midiOutput;
+    std::unique_ptr<MarkerTrack> m_markerTrackPtr;
 
 protected:  // interface
-    void    addTrack(std::unique_ptr<Track> newTrack);
+    void    addTrack(std::unique_ptr<Track>& newTrack);
 
-    std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick) override;
+    void play(std::int64_t currentClick, std::int64_t previousClick) override;
+    void seek(std::int64_t currentClick, std::int64_t previousClick) override;
+    virtual void onTick(std::int64_t ) override {}
 
 public:
     Song(const juce::String& name);
@@ -37,16 +45,29 @@ public:
         return m_name;
     }
 
-    virtual void activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* m_pPlayerComponent);
+    virtual void activate(
+        juce::AudioFormatManager* pAudioFormatManager,
+        juce::AudioTransportSource* pAudioTransportSource,
+        PlayerComponent* pPlayerComponent,
+        SongListComponent* pSongListComponent) = 0;
 
     virtual void deactivate();
 
-    virtual void selectProgramChange(int programChangeIndex) {}
-    virtual void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent) {}
+    virtual juce::String selectProgramChange(int) { return juce::String(); }
+    virtual void updateProgramChangesList(ProgramChangesComponent*) {}
     virtual std::tuple<int, int> getSelectedProgramInfo() const = 0;
 
     virtual void nextMarker(juce::AudioTransportSource*) {}
     virtual void previousMarker(juce::AudioTransportSource*) {}
 
-    virtual void updateMarkers(double position, PlayerComponent* pPlayerComponent) {}
+    virtual void updateMarkers(double , PlayerComponent*) {}
+
+    virtual void onPlayerStateUpdated(PlayerState) {}
+
+    virtual void updateCurrentClick(PlayerComponent* , ProgramChangesComponent* ) {}
+
+    virtual void rewindPlayback() {}
+
+    virtual bool keyPressed(const juce::KeyPress&) { return false; }
+    virtual int getCurrentModifierValue() const { return -1; }
 };

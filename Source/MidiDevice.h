@@ -11,23 +11,30 @@
 #pragma once
 #include <memory>
 #include <JuceHeader.h>
-#include "ProgramChange.h"
+#include "DevicePatch.h"
+#include "MidiOutput.h"
 
 class MidiDevice : public juce::MidiInputCallback
 {
 protected:  // fields
-    std::unique_ptr<juce::MidiOutput> m_midiOutPortPtr;
-    std::unique_ptr<juce::MidiInput> m_midiInPortPtr;
+    std::shared_ptr<juce::MidiOutput> m_midiOutPortPtr = nullptr;
+    std::unique_ptr<juce::MidiInput> m_midiInPortPtr = nullptr;
+    std::unique_ptr<MidiOutput> m_midiOutputPtr = nullptr;
     bool m_inputStarted = false;
     int m_currentProgramNumber = -1;
     int m_currentSceneNumber = -1;
 
-private:    // implementation
+protected:    // implementation
+    MidiDevice();
 
 public:     // interface
     MidiDevice(const juce::String& inputMidiPortId, const juce::String& outputMidiPortId);
     ~MidiDevice();
 
     void start();
-    virtual void sendProgramChange(const ProgramChange& programChange, int midiChannel);
+    virtual void sendProgramChange(const DevicePatch& programChange, int midiChannel);
+
+    IMidiOutput* getMidiOutput() const {
+        return m_midiOutputPtr.get();
+    }
 };

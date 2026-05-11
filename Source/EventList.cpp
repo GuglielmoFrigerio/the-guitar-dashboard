@@ -10,12 +10,13 @@
 
 #include "EventList.h"
 
-EventList::EventList(std::unique_ptr<Event>& firstEvent)
+EventList::EventList(std::unique_ptr<Event>& firstEvent, std::int64_t clickTimepoint)
+    : m_clickTimepoint(clickTimepoint)
 {
     m_events.emplace_back(std::move(firstEvent));
 }
 
-EventList::EventList(std::uint64_t clicktimepoint)
+EventList::EventList(std::int64_t clicktimepoint)
     :   m_clickTimepoint(clicktimepoint)
 {
 }
@@ -25,18 +26,27 @@ void EventList::addEvent(std::unique_ptr<Event>& eventPtr)
     m_events.emplace_back(std::move(eventPtr));
 }
 
-void EventList::play(const TimePoint& timepoint, Track& track)
+void EventList::play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
+    beforePlaying();
     for (auto it = m_events.begin(); it != m_events.end(); ++it)
     {
-        auto& eventPtr = * it;
-        eventPtr->play(timepoint, track);
+        auto& eventPtr = *it;
+        eventPtr->play(currentClick, previousClick, track);
     }
+    afterPlaying();
 }
 
-std::int64_t EventList::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+void EventList::seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track)
 {
-    return std::int64_t();
+    beforeSeeking();
+
+    for (auto it = m_events.begin(); it != m_events.end(); ++it)
+    {
+        auto& eventPtr = *it;
+        eventPtr->seek(currentClick, previousClick, track);
+    }
+    afterSeeking();
 }
 
 void EventList::enumerateEvents(std::function<bool(const Event* pEvent, int index)> callback) const

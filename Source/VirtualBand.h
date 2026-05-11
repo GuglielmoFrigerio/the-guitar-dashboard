@@ -16,13 +16,15 @@
 #include "IDeviceHost.h"
 #include "FractalDevice.h"
 #include "ProgramChangesComponent.h"
-#include "PlaybackEngine.h"
+#include "SampleEngine.h"
+#include "AudioRecorder.h"
 
 class SongListComponent;
 class PlayerComponent;
 enum class PlayerState;
+enum class PlayerMode;
 
-class VirtualBand : public IDeviceHost, public juce::ChangeListener
+class VirtualBand : public IDeviceHost, public juce::ChangeListener, public juce::URL::DownloadTaskListener
 {
 private:    // fields
     std::unique_ptr<SongCollection> m_songCollectionPtr;
@@ -31,27 +33,41 @@ private:    // fields
     juce::AudioTransportSource m_transportSource;
     PlayerComponent* m_pPlayerComponent;
     SongListComponent* m_pSongListComponent;
+    ProgramChangesComponent* m_pProgramChangeComponent;
     std::atomic<bool> m_devicesLoaded;
     std::atomic<bool> m_songLibraryFileReady;
-    juce::File m_inputFile;
     Song* m_pActiveSong = nullptr;
-    std::unique_ptr<PlaybackEngine> m_playbackEnginePtr;
+    juce::String m_resourcesPath;
+    SampleEngine m_sampleEngine;
+    PlayerMode m_currentPlayerMode;
+    std::unique_ptr<MidiDevice> m_nullMidiDevice;
+    juce::ComboBox& m_librariesComboBox;
+    AudioRecorder m_audioRecorder;
+    std::unique_ptr<juce::XmlElement> m_configElementPtr;
 
 private:    // implementation
     void changeListenerCallback(juce::ChangeBroadcaster* source) override;
-    void onPlayerStateUpdated(PlayerState newPlayerState);
+    void onPlayerStateUpdated(PlayerState newPlayerState, PlayerMode mode);
     void loadSongCollection(juce::StringRef collectionName);
+    juce::String loadLibraries();
+    void loadConfig();
+    void sendBoxTest();
+    void downloadTest();
+    void finished (juce::URL::DownloadTask *task, bool success) override;
+    void progress (juce::URL::DownloadTask *task, juce::int64 bytesDownloaded, juce::int64 totalLength) override;
+
+    static juce::String makeResourcePath();
 
 public: // interface
-    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent);
+    VirtualBand(PlayerComponent * pPlayerComponent, SongListComponent* pSongListComponent, ProgramChangesComponent* pProgramChangeComponent, juce::ComboBox& librariesComboBox, juce::AudioDeviceManager& deviceManager);
 
     void loadDevices();
-    void loadSongLibrary(const juce::File& inputFile);
+    void loadSongLibrary();
 
     virtual MidiDevice* getDevice(FractalDeviceType deviceType) const override;
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
     void activateSong(int songIndex);
-    void selectProgramChange(int programChangeIndex);
+    juce::String selectProgramChange(int programChangeIndex);
 
     void prepareToPlay(int samplesPerBlockExpected, double sampleRate);
     void getNextAudioBlock(const juce::AudioSourceChannelInfo& bufferToFill);
@@ -68,4 +84,22 @@ public: // interface
 
     void nextMarker();
     void previousMarker();
+
+    const juce::String& getResourcePath() const {
+        return m_resourcesPath;
+    }
+
+    SampleEngine* getSampleEngine() {
+        return &m_sampleEngine;
+    }
+
+    juce::AudioFormatManager* getAudioFormatManager() {
+        return &m_formatManager;
+    }
+
+    bool keyPressed(const juce::KeyPress& key);
+
+    int getCurrentModifier() const {
+        return m_pActiveSong != nullptr ? m_pActiveSong->getCurrentModifierValue() : -1;
+    }
 };

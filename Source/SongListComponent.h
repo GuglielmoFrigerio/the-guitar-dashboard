@@ -38,6 +38,8 @@ public:
 
     std::function<void(int)> onSongSelected;
 
+    void selectSong(int songIndex);
+
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SongListComponent)
 };

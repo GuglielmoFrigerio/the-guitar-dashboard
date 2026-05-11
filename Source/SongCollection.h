@@ -12,6 +12,8 @@
 #include <vector>
 #include <memory>
 #include <JuceHeader.h>
+#include "SongListComponent.h"
+
 
 class Song;
 class VirtualBand;
@@ -25,7 +27,7 @@ private:    // fields
     Song* m_pCurrentSong = nullptr;
 
 public:
-    static std::unique_ptr<SongCollection> loadFromLibraryElement(const juce::XmlElement* pLibraryElement, const VirtualBand* pVirtualBand);
+    static std::unique_ptr<SongCollection> loadFromLibraryElement(const juce::XmlElement* pLibraryElement, VirtualBand* pVirtualBand);
     void addSong(std::unique_ptr<Song>& newSong);
 
     void enumerateSongs(std::function<void(const Song* pSong, int index)> callback) const;
@@ -33,8 +35,9 @@ public:
         int songIndex, 
         juce::AudioFormatManager* pAudioFormatManager, 
         juce::AudioTransportSource* pAudioTransportSource,
-        PlayerComponent* m_pPlayerComponent);
+        PlayerComponent* pPlayerComponent,
+        SongListComponent* pSongListComponent);
 
-    void selectProgramChange(int programChangeIndex);
+    juce::String selectProgramChange(int programChangeIndex);
     void updateProgramChangesList(ProgramChangesComponent* pProgramChangesComponent);
 };

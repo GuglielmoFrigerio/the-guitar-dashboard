@@ -22,21 +22,32 @@ void VirtualBandPage::chooseSongLibrary()
         | juce::FileBrowserComponent::canSelectFiles;
 
     m_chooserPtr->launchAsync(chooserFlags, [this](const juce::FileChooser& fc)
-        {
-            auto file = fc.getResult();
+    {
+        auto file = fc.getResult();
+        auto fullPath = file.getFullPathName();
+        DBG(fullPath);
+        auto exists = file.existsAsFile();
+        auto content = file.loadFileAsString();
 
-            if (file != juce::File{})
-            {
-                auto pPropertiesFile = m_properties.getUserSettings();
-                pPropertiesFile->setValue("AxeFx3ConfigurationFile", file.getFullPathName());
-                loadSongLibrary(file);
-            }
-        });
+        if (file != juce::File{})
+        {
+            juce::XmlDocument document (file);
+            auto rootElement = document.getDocumentElement();
+            auto message = document.getLastParseError();
+            DBG(message);
+        }
+    });
 }
 
 bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originatingComponent)
 {
     auto keyCode = key.getKeyCode();
+
+    if (m_virtualBandPtr->keyPressed(key)) {
+        updateModifierUi();
+        return true;
+    }
+
 
     m_trackPlayerKeyManager.keyPressed(keyCode);
 
@@ -47,7 +58,7 @@ bool VirtualBandPage::keyPressed(const juce::KeyPress& key, Component* originati
     return true;
 }
 
-bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* originatingComponent)
+bool VirtualBandPage::keyStateChanged(bool isKeyDown, Component* )
 {
     m_trackPlayerKeyManager.keyStateChanged(isKeyDown);
     return false;
@@ -85,19 +96,9 @@ void VirtualBandPage::previousMarker()
     m_virtualBandPtr->previousMarker();
 }
 
-void VirtualBandPage::loadSongLibrary(juce::File& file)
-{
-    m_virtualBandPtr->loadSongLibrary(file);
-}
-
 void VirtualBandPage::onFirstResized()
 {
-    auto pPropertiesFile = m_properties.getUserSettings();
-    auto value = pPropertiesFile->getValue("AxeFx3ConfigurationFile");
-    if (value.length() > 0) {
-        auto file = juce::File(value);
-        loadSongLibrary(file);
-    }
+    m_virtualBandPtr->loadSongLibrary();
 }
 
 void VirtualBandPage::releaseResources()
@@ -111,31 +112,37 @@ void VirtualBandPage::timerCallback()
 
 void VirtualBandPage::setupKeyHandlers()
 {
-    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(65, [this](const juce::KeyPress& , Component* ) {
         previousProgramChange();
     });
 
-    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(67, [this](const juce::KeyPress& , Component* ) {
         nextProgramChange();
     });
 
-    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(78, [this](const juce::KeyPress& , Component* ) {
         nextMarker();
     });
 
-    m_keyHandlerMap.emplace(80, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(80, [this](const juce::KeyPress& , Component* ) {
         previousMarker();
     });
 
-    m_keyHandlerMap.emplace(juce::KeyPress::rightKey, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(juce::KeyPress::rightKey, [this](const juce::KeyPress& key, Component* ) {
         auto amount = (key.getModifiers().isShiftDown()) ? 5.0 : 10.0;
         m_virtualBandPtr->changeSongPositionBy(amount);
     });
 
-    m_keyHandlerMap.emplace(juce::KeyPress::leftKey, [this](const juce::KeyPress& key, Component* originatingComponent) {
+    m_keyHandlerMap.emplace(juce::KeyPress::leftKey, [this](const juce::KeyPress& key, Component* ) {
         auto amount = (key.getModifiers().isShiftDown()) ? -5.0 : -10.0;
         m_virtualBandPtr->changeSongPositionBy(amount);
     });
+}
+
+void VirtualBandPage::updateModifierUi()
+{
+    auto currentModifierValue = m_virtualBandPtr->getCurrentModifier();
+    m_modifierComponent.updateValue(currentModifierValue);
 }
 
 
@@ -145,14 +152,16 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
         m_trackPlayerKeyManager(66, 32)
 {
     addAndMakeVisible(m_loadSongLibraryButton);
+    addAndMakeVisible(m_librariesComboBox);
     addAndMakeVisible(m_songListComponent);
     addAndMakeVisible(m_programChangesComponent);
     addAndMakeVisible(m_playerComponent);
     addAndMakeVisible(m_notificationComponent);
+    addAndMakeVisible(m_modifierComponent);
 
     setupKeyHandlers();
 
-    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent);
+    m_virtualBandPtr = std::make_unique<VirtualBand>(&m_playerComponent, &m_songListComponent, &m_programChangesComponent, m_librariesComboBox, deviceManager);
     m_virtualBandPtr->loadDevices();
 
     // Some platforms require permissions to open input channels so request that here
@@ -165,7 +174,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
     else
     {
         // Specify the number of input and output channels that we want to open
-        setAudioChannels(6, 6);
+        setAudioChannels(2, 2);
     }
 
     deviceManager.addChangeListener(this);
@@ -174,7 +183,11 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
         m_virtualBandPtr->activateSong(songIndex);
         m_virtualBandPtr->updateProgramChangesList(&m_programChangesComponent);
     };
-    m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { m_virtualBandPtr->selectProgramChange(programChangeIndex); };
+    m_programChangesComponent.onProgramChangeSelected = [this](int programChangeIndex) { 
+        auto patchMessage = m_virtualBandPtr->selectProgramChange(programChangeIndex); 
+        m_notificationComponent.setMessage(patchMessage);
+        updateModifierUi();
+    };
     m_loadSongLibraryButton.onClick = [this] { chooseSongLibrary(); };
 
     addKeyListener(this);
@@ -184,6 +197,7 @@ VirtualBandPage::VirtualBandPage(juce::ApplicationProperties& properties)
             m_virtualBandPtr->stopAndRewind();
         else m_virtualBandPtr->toggleStartStop();
     };
+    updateModifierUi();
 
     startTimer(50);
 }
@@ -198,10 +212,16 @@ VirtualBandPage::~VirtualBandPage()
 void VirtualBandPage::resized()
 {
     auto rect = getLocalBounds();
-    m_loadSongLibraryButton.setBounds(rect.removeFromTop(24));
+    auto right = rect.removeFromTop(24);
+    auto left = right.removeFromLeft(rect.getWidth() / 2);
+    m_loadSongLibraryButton.setBounds(left);
+    m_librariesComboBox.setBounds(right);
     m_songListComponent.setBounds(rect.removeFromTop(rect.getHeight()/2));
     m_playerComponent.setBounds(rect.removeFromBottom(160));
-    m_notificationComponent.setBounds(rect.removeFromBottom(40));
+    auto notificationArea = rect.removeFromBottom(40);
+    auto modifierArea = notificationArea.removeFromLeft(150);
+    m_modifierComponent.setBounds(modifierArea);
+    m_notificationComponent.setBounds(notificationArea);
     m_programChangesComponent.setBounds(rect);
 
     if (m_firstResize) {
@@ -212,6 +232,23 @@ void VirtualBandPage::resized()
 
 void VirtualBandPage::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
+    if (auto* dev = deviceManager.getCurrentAudioDevice())
+    {
+        const auto inBits = dev->getActiveInputChannels();
+        const auto outBits = dev->getActiveOutputChannels();
+
+        const int inCh = inBits.countNumberOfSetBits();
+        const int outCh = outBits.countNumberOfSetBits();
+
+        DBG("Device: " << dev->getName()
+            << " inCh=" << inCh << " outCh=" << outCh
+            << " SR=" << dev->getCurrentSampleRate()
+            << " BS=" << dev->getCurrentBufferSizeSamples());
+    }
+    else
+    {
+        DBG("No current audio device.");
+    }
     m_virtualBandPtr->prepareToPlay(samplesPerBlockExpected, sampleRate);
 }
 

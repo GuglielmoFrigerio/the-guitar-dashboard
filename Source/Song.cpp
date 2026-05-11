@@ -10,24 +10,26 @@
 
 #include "Song.h"
 
-void Song::addTrack(std::unique_ptr<Track> newTrack)
+void Song::addTrack(std::unique_ptr<Track>& newTrack)
 {
     m_tracks.emplace_back(std::move(newTrack));
 }
 
-std::int64_t Song::play(std::uint64_t currentTick, std::uint64_t previousTick) {
+void Song::play(std::int64_t currentClick, std::int64_t previousClick) {
     for (auto it = m_tracks.begin(); it != m_tracks.end(); ++it) {
-        (*it)->play(currentTick, previousTick);
+        (*it)->play(currentClick, previousClick);
     }
-    return 0;
+}
+
+void Song::seek(std::int64_t currentClick, std::int64_t previousClick)
+{
+    for (auto it = m_tracks.begin(); it != m_tracks.end(); ++it) {
+        (*it)->seek(currentClick, previousClick);
+    }
 }
 
 Song::Song(const juce::String& name)
     :   m_name(name)
-{
-}
-
-void Song::activate(juce::AudioFormatManager* pAudioFormatManager, juce::AudioTransportSource* pAudioTransportSource, PlayerComponent* m_pPlayerComponent)
 {
 }
 

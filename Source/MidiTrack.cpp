@@ -12,19 +12,24 @@
 #include "MidiTrack.h"
 #include "TimePoint.h"
 #include "MidiEvent.h"
+#include "MidiEventList.h"
+#include "MidiDevice.h"
+#include "GuitarDashCommon.h"
 
-void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement)
+void MidiTrack::loadFromPatches(const juce::XmlElement* pPatchesElement, const int midiChannel)
 {
+    int64_t currentClickTimepoint = 0;
     for (auto* pPatchElement : pPatchesElement->getChildWithTagNameIterator("Patch")) {
-        auto programChangeEvent = ProgramChangeEvent::parse(pPatchElement);
-        addEvent(programChangeEvent);
+        std::unique_ptr<EventList> programChangeEventsPtr = MidiEventList::parse(pPatchElement, midiChannel, currentClickTimepoint, m_pMidiDevice->getMidiOutput());
+        currentClickTimepoint = programChangeEventsPtr->getClickTimepoint() + DefaultClicksPerBeat;
+        addEventList(programChangeEventsPtr);
     }
 }
 
-MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence)
+MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* pMidiMessageSequence, IMidiOutput* pMidiOutput)
     : m_pMidiDevice(pMidiDevice)
 {
-    std::map<std::uint64_t, std::unique_ptr<EventList>> eventListMap;
+    std::map<std::uint64_t, std::unique_ptr<MidiEventList>> eventListMap;
 
     auto eventCount = pMidiMessageSequence->getNumEvents();
     for (auto index = 0; index < eventCount; ++index) {
@@ -34,11 +39,10 @@ MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* p
         auto it = eventListMap.find(clickTimepoint);
 
         if (it == eventListMap.end()) {
-            auto result = eventListMap.emplace(std::make_pair(clickTimepoint, std::make_unique<EventList>(clickTimepoint)));
+            auto result = eventListMap.emplace(std::make_pair(clickTimepoint, std::make_unique<MidiEventList>(clickTimepoint, pMidiOutput)));
             it = result.first;
         }
-        std::unique_ptr<Event> midiEventPtr = std::make_unique<MidiEvent>(pMidiEventHolder->message);
-        it->second->addEvent(midiEventPtr);
+        it->second->addMidiEvent(pMidiEventHolder->message);
     }
 
     for (auto it = eventListMap.begin(); it != eventListMap.end(); ++it) {
@@ -47,23 +51,15 @@ MidiTrack::MidiTrack(MidiDevice* pMidiDevice, const juce::MidiMessageSequence* p
 
 }
 
-void MidiTrack::playFirstEvent()
-{
-    TimePoint tp;
-
-    if (m_eventList.size() > 0)
-        m_eventList[0]->play(tp, *this);
-}
-
-std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice)
+std::unique_ptr<Track> MidiTrack::loadFromPatchesElement(const juce::XmlElement* pPatchesElement, MidiDevice* pMidiDevice, int midiChannel)
 {
     auto newMidiTrack = std::make_unique<MidiTrack>(pMidiDevice);
-    newMidiTrack->loadFromPatches(pPatchesElement);
+    newMidiTrack->loadFromPatches(pPatchesElement, midiChannel);
     return newMidiTrack;
 }
 
-std::unique_ptr<Track> MidiTrack::loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice)
+std::unique_ptr<Track> MidiTrack::loadFromMidiFile(std::shared_ptr<juce::MidiFile>& midiFilePtr, int trackIndex, MidiDevice* pMidiDevice, IMidiOutput* pMidiOutput)
 {
     auto pMessageSequence = midiFilePtr->getTrack(trackIndex);
-    return std::make_unique<MidiTrack>(pMidiDevice, pMessageSequence);
+    return std::make_unique<MidiTrack>(pMidiDevice, pMessageSequence, pMidiOutput);
 }

@@ -10,16 +10,19 @@
 
 #include "MidiEvent.h"
 
-std::int64_t MidiEvent::play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track)
+void MidiEvent::play(std::uint64_t , std::uint64_t , Track& )
 {
-    return std::int64_t();
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->addMessage(m_midiMessage);
 }
 
-void MidiEvent::play(const TimePoint& timepoint, Track& track)
+void MidiEvent::seek(std::uint64_t , std::uint64_t , Track& )
 {
+    if (m_pMidiOutput != nullptr)
+        m_pMidiOutput->addMessage(m_midiMessage);
 }
 
-MidiEvent::MidiEvent(const juce::MidiMessage& midiMessage)
-    : m_midiMessage(midiMessage)
+MidiEvent::MidiEvent(const juce::MidiMessage& midiMessage, IMidiOutput* pMidiOutput)
+    : m_midiMessage(midiMessage), m_pMidiOutput(pMidiOutput)
 {
 }

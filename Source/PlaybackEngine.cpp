@@ -14,33 +14,112 @@
 void PlaybackEngine::hiResTimerCallback()
 {
     auto nowTicks = juce::Time::getHighResolutionTicks();
-    auto offsetTicks = nowTicks - m_startTicks;
-    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
-    std::uint64_t currentClick = (std::uint64_t)round(currentClickDbl);
-    m_pPlaybackTarget->play(currentClick, m_previousClick);
-    m_previousClick = currentClick;
+    auto state = m_currentState.load();
+    auto statePtr = m_stateHandlers[(int)state];
+    (this->*statePtr)(nowTicks);
+
+    auto microSeconds = nowTicks / m_ticksPerMicrosecond;
+    m_pPlaybackTarget->onTick(microSeconds);
 }
 
 PlaybackEngine::PlaybackEngine(IPlaybackTarget* pPlaybackTarget, int beatsPerMinute, int clicksPerBeat)
+    : m_pPlaybackTarget(pPlaybackTarget), m_stopOffsetTicks(0), m_currentState(State::Stopped)
 {
     m_clicksPerBeat = (double)clicksPerBeat;
-    m_ticksPerSecond = (double) juce::Time::getHighResolutionTicksPerSecond();
+    auto ticksPerSecond = juce::Time::getHighResolutionTicksPerSecond();
+    m_ticksPerSecond = (double)ticksPerSecond;
+    jassert(ticksPerSecond % 1000000 == 0);
+    m_ticksPerMicrosecond = ticksPerSecond / 1000000;
     setBeatsPerMinute(beatsPerMinute);
+    startTimer(m_timespan);
+    m_stateHandlers[(int)State::Stopped] = &PlaybackEngine::stoppedHandler;
+    m_stateHandlers[(int)State::Starting] = &PlaybackEngine::startingHandler;
+    m_stateHandlers[(int)State::Started] = &PlaybackEngine::startedHandler;
+    m_stateHandlers[(int)State::Stopping] = &PlaybackEngine::stoppingHandler;
+
+    auto lockFree = std::atomic_uint64_t::is_always_lock_free;
+}
+
+PlaybackEngine::~PlaybackEngine()
+{
+    stopTimer();
 }
 
 void PlaybackEngine::start()
 {
-    m_startTicks = juce::Time::getHighResolutionTicks();
-    startTimer(m_timespan);
+    if (m_currentState == State::Stopped) {
+        m_currentState.store(State::Starting);
+    }
 }
 
 void PlaybackEngine::stop()
 {
-    stopTimer();
+    if (m_currentState == State::Started) {
+        m_currentState.store(State::Stopping);
+    }
 }
 
 void PlaybackEngine::setBeatsPerMinute(int beatsPerMinute)
 {
     m_beatsPerMinute = beatsPerMinute;
     m_ticksVsClicks.store((m_ticksPerSecond * 60.0) / (m_beatsPerMinute * m_clicksPerBeat));
+}
+
+void PlaybackEngine::seek(std::uint64_t clickPosition)
+{
+    auto offsetTicks = (std::uint64_t)round(clickPosition * m_ticksVsClicks.load());
+    auto currentState = m_currentState.load();
+    if (currentState == State::Stopped) {
+        m_stopOffsetTicks = offsetTicks;
+        seekAtTick(offsetTicks);
+        return;
+    }
+    else if (currentState == State::Started) {
+        m_startTicks.store(juce::Time::getHighResolutionTicks() - offsetTicks);
+    }
+}
+
+void PlaybackEngine::stoppedHandler(juce::int64 currentTick)
+{
+
+}
+
+void PlaybackEngine::startingHandler(juce::int64 currentTick)
+{
+    auto newStart = currentTick - m_stopOffsetTicks;
+    m_startTicks.store(newStart);
+    m_currentState.store(State::Started);
+    auto offset = currentTick - newStart;
+    play(offset);
+}
+
+void PlaybackEngine::startedHandler(juce::int64 currentTick)
+{
+    auto offsetTicks = currentTick - m_startTicks.load();
+    play(offsetTicks);
+}
+
+void PlaybackEngine::stoppingHandler(juce::int64 currentTick)
+{
+    m_stopOffsetTicks = currentTick - m_startTicks.load();
+    m_currentState.store(State::Stopped);
+}
+
+void PlaybackEngine::play(std::uint64_t offsetTicks)
+{
+    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
+    std::int64_t currentClick = (std::int64_t)round(currentClickDbl);
+    if (currentClick != m_previousClick) {
+        //DBG("PlaybackEngine::play current click: " << currentClick << " previous click: " << m_previousClick);
+        m_pPlaybackTarget->play(currentClick, m_previousClick);
+        m_previousClick = currentClick;
+    }
+}
+
+void PlaybackEngine::seekAtTick(std::uint64_t offsetTicks)
+{
+    auto currentClickDbl = (double)offsetTicks / m_ticksVsClicks.load();
+    std::int64_t currentClick = (std::int64_t)round(currentClickDbl);
+    m_pPlaybackTarget->seek(currentClick, m_previousClick);
+    m_previousClick = currentClick;
 }

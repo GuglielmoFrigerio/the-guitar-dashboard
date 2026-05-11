@@ -19,20 +19,29 @@ class EventList : public IPlayable
 {
 private:    // fields
     std::vector<std::unique_ptr<Event>> m_events;
-    std::uint64_t m_clickTimepoint = 0;
+    std::int64_t m_clickTimepoint = 0;
+
+protected: // interface
+    virtual void beforePlaying() {}
+    virtual void afterPlaying() {}
+    virtual void beforeSeeking() {}
+    virtual void afterSeeking() {}
 
 public:     // interface
-    EventList(std::unique_ptr<Event>& firstEvent);
-    EventList(std::uint64_t clicktimepoint);
+    EventList(std::unique_ptr<Event>& firstEvent, std::int64_t clickTimepoint);
+    EventList(std::int64_t clicktimepoint);
 
     void addEvent(std::unique_ptr<Event>& eventPtr);
-    virtual void play(const TimePoint& timepoint, Track& track) override;
-    std::int64_t play(std::uint64_t currentTick, std::uint64_t previousTick, Track& track);
+    void play(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
+    void seek(std::uint64_t currentClick, std::uint64_t previousClick, Track& track) override;
 
     void enumerateEvents(std::function<bool (const Event* pEvent, int index)> callback) const;
 
-    std::uint64_t getClickTimepoint() const {
+    std::int64_t getClickTimepoint() const {
         return m_clickTimepoint;
     }
 
+    std::size_t getEventCount() const {
+        return m_events.size();
+    }
 };
