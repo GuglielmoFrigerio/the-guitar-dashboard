@@ -1,4 +1,4 @@
-#include "Song.h"
+#include "NeSong.h"
 
 namespace ne {
 

@@ -721,10 +721,13 @@
     <ClCompile Include="..\..\Source\NewEngine\AudioTrack.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NewEngine\Song.cpp">
+    <ClCompile Include="..\..\Source\NewEngine\NeSong.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NewEngine\SongCollection.cpp">
+    <ClCompile Include="..\..\Source\NewEngine\NeSongCollection.cpp">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NewEngine\NeSongListComponent.cpp">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MidiModifierTrigger.cpp">
@@ -3861,10 +3864,13 @@
     <ClInclude Include="..\..\Source\NewEngine\AudioTrack.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NewEngine\Song.h">
+    <ClInclude Include="..\..\Source\NewEngine\NeSong.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NewEngine\SongCollection.h">
+    <ClInclude Include="..\..\Source\NewEngine\NeSongCollection.h">
+      <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NewEngine\NeSongListComponent.h">
       <Filter>the-guitar-dashboard\Source\NewEngine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MidiModifierTrigger.h">

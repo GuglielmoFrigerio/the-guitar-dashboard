@@ -3,7 +3,7 @@
 #include <memory>
 #include <functional>
 #include <JuceHeader.h>
-#include "Song.h"
+#include "NeSong.h"
 
 namespace ne {
 

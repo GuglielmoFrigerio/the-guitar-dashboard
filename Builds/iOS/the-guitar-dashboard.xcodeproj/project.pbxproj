@@ -63,6 +63,7 @@
 		8340171807B07BBA80C91854 /* include_juce_gui_extra.mm */ = {isa = PBXBuildFile; fileRef = A0E3CF6F1052362A2706A2DC; };
 		8513588C3AF54565359E2E67 /* PlayerComponent.cpp */ = {isa = PBXBuildFile; fileRef = 1BF7EE74B987E97BFE0ED0A2; };
 		85654448E1A0C470E71C4140 /* Images.xcassets */ = {isa = PBXBuildFile; fileRef = 3FB11A090DB2C04DD9F45D1E; };
+		872D58BA7E3C8B8815E4F53A /* SongListComponent.cpp */ = {isa = PBXBuildFile; fileRef = A8BAD11B0E2B53F1658AD81A; };
 		8890D028D2D347C3C863D16D /* include_juce_graphics_Sheenbidi.c */ = {isa = PBXBuildFile; fileRef = 17F42E53C05A19FD273FE4D7; };
 		8B8F1B20D3CC18D1ACAF0448 /* BinaryData.cpp */ = {isa = PBXBuildFile; fileRef = 628972FFDB7AF2E30411055A; };
 		8CCD7BE7A3639CE1D87E7041 /* include_juce_graphics_Harfbuzz.cpp */ = {isa = PBXBuildFile; fileRef = 5CD3DB222618421AB32A8B2B; };
@@ -142,6 +143,7 @@
 		157C9E3D2D212211A9C8E6F2 /* Marker.h */ /* Marker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Marker.h; path = ../../Source/Marker.h; sourceTree = SOURCE_ROOT; };
 		159DC0609C0CE8FEFF68BA65 /* IDeviceHost.h */ /* IDeviceHost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IDeviceHost.h; path = ../../Source/IDeviceHost.h; sourceTree = SOURCE_ROOT; };
 		160CF575B15B1A850CC75811 /* NullMidiDevice.cpp */ /* NullMidiDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NullMidiDevice.cpp; path = ../../Source/NullMidiDevice.cpp; sourceTree = SOURCE_ROOT; };
+		16CA8D1362FEEFD1046791C6 /* SongListComponent.h */ /* SongListComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SongListComponent.h; path = ../../Source/NewEngine/SongListComponent.h; sourceTree = SOURCE_ROOT; };
 		17F42E53C05A19FD273FE4D7 /* include_juce_graphics_Sheenbidi.c */ /* include_juce_graphics_Sheenbidi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_graphics_Sheenbidi.c; path = ../../JuceLibraryCode/include_juce_graphics_Sheenbidi.c; sourceTree = SOURCE_ROOT; };
 		1B1F1163A506D78B9A1EC147 /* MidiModifierTrigger.cpp */ /* MidiModifierTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MidiModifierTrigger.cpp; path = ../../Source/MidiModifierTrigger.cpp; sourceTree = SOURCE_ROOT; };
 		1BF7EE74B987E97BFE0ED0A2 /* PlayerComponent.cpp */ /* PlayerComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerComponent.cpp; path = ../../Source/PlayerComponent.cpp; sourceTree = SOURCE_ROOT; };
@@ -287,6 +289,7 @@
 		A751180C4B15D25B922A1AC7 /* MusicSequencerComponent.cpp */ /* MusicSequencerComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MusicSequencerComponent.cpp; path = ../../Source/NewEngine/MusicSequencerComponent.cpp; sourceTree = SOURCE_ROOT; };
 		A7DB4099712C1316BCA336D4 /* GuitarDashCommon.h */ /* GuitarDashCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GuitarDashCommon.h; path = ../../Source/GuitarDashCommon.h; sourceTree = SOURCE_ROOT; };
 		A8926205AEBAABB1C18936CA /* VoiceEngine.cpp */ /* VoiceEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VoiceEngine.cpp; path = ../../Source/NewEngine/VoiceEngine.cpp; sourceTree = SOURCE_ROOT; };
+		A8BAD11B0E2B53F1658AD81A /* SongListComponent.cpp */ /* SongListComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SongListComponent.cpp; path = ../../Source/NewEngine/SongListComponent.cpp; sourceTree = SOURCE_ROOT; };
 		ACB816D4F8991585C59F4579 /* PlaybackEngine.cpp */ /* PlaybackEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PlaybackEngine.cpp; path = ../../Source/PlaybackEngine.cpp; sourceTree = SOURCE_ROOT; };
 		ACFCF2C9ADC3045FE5B8FDB0 /* DevicePatch.cpp */ /* DevicePatch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DevicePatch.cpp; path = ../../Source/DevicePatch.cpp; sourceTree = SOURCE_ROOT; };
 		AF3EF4E1BF271C21EBAB1502 /* VirtualBand.h */ /* VirtualBand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VirtualBand.h; path = ../../Source/VirtualBand.h; sourceTree = SOURCE_ROOT; };
@@ -477,6 +480,8 @@
 				C0CC7EB31385D8A91D6045A8,
 				359E6F826E7BBF8E5AC7F76C,
 				9EEBFB19796FB3D4DD88DAC1,
+				A8BAD11B0E2B53F1658AD81A,
+				16CA8D1362FEEFD1046791C6,
 			);
 			name = NewEngine;
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 				4D69E5CB988E5924664F8300,
 				1CACCBFE713D11296A0E65F2,
 				52BFC77105058A1694427EFA,
+				872D58BA7E3C8B8815E4F53A,
 				C507067C05B4B5394CF525FE,
 				CE224290264086E9160B23AD,
 				EC6A9915A5433AD9410B71F9,
